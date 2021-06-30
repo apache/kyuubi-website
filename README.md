@@ -40,20 +40,30 @@ which starts a standalone auto-refreshed web server.
 
 ## Content
 
-To create a new relase, create a file in  ```src/release``` directory. The file name should be ```<version>.md```where version is the release version.
+### Release/news
+To create a new release, create a file in  ```src/release``` directory. The file name should be ```<version>.md```where version is the release version.
 
-Example: src/release/1.3.0.md
+Example: src/release/1.2.0.md
 
 ```
 ---
-title: Release 1.3.0 available
-date: 2021-06-30
+title: release 1.2.0 available
+date: 2021-06-01
 linked: true
 ---
-Content
+For more information check the [release note](https://github.com/NetEase/kyuubi/releases/tag/v1.2.0-rc5).
 ```
 
 `linked: true` attribute means, that it will be displayed on the release page and under the documentation menu. 
 Please remove it from the previous release.
 
+To creat news, create a file in ```src/news``` directory with the similar way. 
+
 Note: date is used to sort the releases when the latests are displayed in the site.
+
+### Docs sub-dir
+The docs are not generated as part of the website.
+
+They are built separately for each release of Kyuubi from the Kyuubi source repository and then copied to the website under the ```content/docs``` directory.
+
+The sub-dir name should like ```r<version>``` such as ```r1.2.0```, please also update soft links ```latest``` and ```stable```.
