@@ -1,0 +1,5 @@
+hugo.exe
+.idea
+.DS_Store
+npm-debug.log
+resources

@@ -1,0 +1,81 @@
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License. See accompanying LICENSE file.
+#
+baseurl = "https://kyuubi.apache.org"
+title = "Apache Kyuubi"
+copyright = "Copyright © 2006-{year} The Apache Software Foundation"
+enableEmoji = true
+footnotereturnlinkcontents = "<sup>^</sup>"
+uglyurls = true
+googleAnalytics = "UA-7453027-1"
+contentDir = "src"
+publishDir = "content"
+
+[[menu.main]]
+  name = "Download"
+  url = "releases.html"
+  weight = 1
+
+
+[[menu.main]]
+  name = "Documentation"
+  identifier = "documentation"
+  weight = 2
+
+[[menu.main]]
+   name = "Latest"
+   parent = "documentation"
+   url = "docs/latest/index.html"
+
+[[menu.main]]
+   name = "Stable"
+   parent = "documentation"
+   url = "docs/stable/index.html"
+
+
+
+
+[[menu.main]]
+   name = "Community"
+   identifier = "community"
+   weight = 3
+
+
+
+[[menu.main]]
+   name = "Development"
+   identifier = "development"
+   weight = 4
+
+[[menu.main]]
+   name = "Help"
+   identifier = "help"
+   weight = 5
+
+[[menu.main]]
+   name = "Sponsorship"
+   url = "https://www.apache.org/foundation/sponsorship.html"
+   parent = "help"
+
+[[menu.main]]
+   name = "Thanks"
+   url = "https://www.apache.org/foundation/thanks.html"
+   parent = "help"
+
+
+# Configure the English version of the website.
+[languages.en]
+  languageCode = "en-us"
+
+[markup.goldmark.renderer]
+unsafe= true
