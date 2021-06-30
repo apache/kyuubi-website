@@ -1,5 +1,5 @@
 ---
-title: The Kyuubi Ecosystem(present and future)
+title: The Kyuubi Ecosystem (present and future)
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

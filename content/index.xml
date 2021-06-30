@@ -6,7 +6,26 @@
     <description>Recent content on Apache Kyuubi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright © 2006-{year} The Apache Software Foundation</copyright><atom:link href="https://kyuubi.apache.org/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright © 2021-{year} The Apache Software Foundation</copyright>
+    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kyuubi.apache.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>accept Kyuubi into Apache Incubator</title>
+      <link>https://kyuubi.apache.org/news/2021-07-01-accept-kyuubi-into-apache-incubator.html</link>
+      <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyuubi.apache.org/news/2021-07-01-accept-kyuubi-into-apache-incubator.html</guid>
+      <description>Kyuubi is accepted into Apache Incubator, see details in incubating status.</description>
+    </item>
+    
+    <item>
+      <title>release 1.2.0 is available</title>
+      <link>https://kyuubi.apache.org/release/1.2.0.html</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyuubi.apache.org/release/1.2.0.html</guid>
+      <description>For more information check the release note.</description>
+    </item>
+    
     <item>
       <title>Apache Kyuubi Releases</title>
       <link>https://kyuubi.apache.org/releases.html</link>
@@ -88,7 +107,7 @@ Hdfs, Yarn, Mapreduce and other components all are parts of this one repository.
     </item>
     
     <item>
-      <title>The Kyuubi Ecosystem(present and future)</title>
+      <title>The Kyuubi Ecosystem (present and future)</title>
       <link>https://kyuubi.apache.org/ecosystems.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

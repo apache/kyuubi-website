@@ -23,7 +23,7 @@ github:
     merge: false
     rebase: false
 notifications:
+  dev:          dev@kyuubi.apache.org
   commits:      commits@kyuubi.apache.org
-  issues:       issues@kyuubi.apache.org
 publish:
   whoami:  asf-site

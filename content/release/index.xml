@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Releases on Apache Kyuubi</title>
+    <link>https://kyuubi.apache.org/release.html</link>
+    <description>Recent content in Releases on Apache Kyuubi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2021-{year} The Apache Software Foundation</copyright>
+    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kyuubi.apache.org/release/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>release 1.2.0 is available</title>
+      <link>https://kyuubi.apache.org/release/1.2.0.html</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyuubi.apache.org/release/1.2.0.html</guid>
+      <description>For more information check the release note.</description>
+    </item>
+    
+  </channel>
+</rss>

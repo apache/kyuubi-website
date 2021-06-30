@@ -13,7 +13,7 @@
 #
 baseurl = "https://kyuubi.apache.org"
 title = "Apache Kyuubi"
-copyright = "Copyright © 2006-{year} The Apache Software Foundation"
+copyright = "Copyright © 2021-{year} The Apache Software Foundation"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 uglyurls = true
