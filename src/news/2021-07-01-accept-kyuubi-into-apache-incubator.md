@@ -17,5 +17,5 @@ linked: true
   limitations under the License. See accompanying LICENSE file.
 -->
 
-Kyuubi is accepted into Apache Incubator, see details in [incubating status](https://incubator.apache.org/projects/kyuubi).
+Kyuubi is accepted into Apache Incubator, see details in [incubation status](https://incubator.apache.org/projects/kyuubi).
 
