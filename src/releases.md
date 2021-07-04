@@ -18,6 +18,8 @@ type: custompage
   limitations under the License. See accompanying LICENSE file.
 -->
 
+See all Kyuubi releases in [github releases page](https://github.com/apache/incubator-kyuubi/releases).
+
 ## License
 
-_The software licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)_
+_The software licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)._
