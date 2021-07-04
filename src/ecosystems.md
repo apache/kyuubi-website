@@ -17,4 +17,4 @@ title: The Kyuubi Ecosystem (present and future)
 
 The figure below shows our vision for the Kyuubi Ecosystem. Some of them have been realized, some in development, and others would not be possible without your help.
 
-<img src="kyuubi_ecosystem.png" title="kyuubi ecosystem" width="700px">
+<img src="kyuubi_ecosystem.png" title="kyuubi ecosystem" width="100%" height="auto">
