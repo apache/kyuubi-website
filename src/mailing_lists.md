@@ -20,6 +20,6 @@ menu:
 -->
 
 ## Mailing Lists
-dev@spark.apache.org is for people who want to contribute code to Kyuubi. ([subscribe](mailto:dev-subscribe@kyuubi.apache.org)) ([unsubscribe](mailto:dev-unsubscribe@kyuubi.apache.org)) ([archives]())
+dev@spark.apache.org is for people who want to contribute code to Kyuubi. ([subscribe](mailto:dev-subscribe@kyuubi.apache.org)) ([unsubscribe](mailto:dev-unsubscribe@kyuubi.apache.org)) ([archives](https://lists.apache.org/list.html?dev@kyuubi.apache.org))
 
-commits@spark.apache.org is for people who want to see changed made in the Kyuubi version control system. ([subscribe](mailto:commits-subscribe@kyuubi.apache.org)) ([unsubscribe](mailto:commits-unsubscribe@kyuubi.apache.org)) ([archives]())
+commits@spark.apache.org is for people who want to see changed made in the Kyuubi version control system. ([subscribe](mailto:commits-subscribe@kyuubi.apache.org)) ([unsubscribe](mailto:commits-unsubscribe@kyuubi.apache.org)) ([archives](https://lists.apache.org/list.html?commits@kyuubi.apache.org))

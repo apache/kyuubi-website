@@ -3,7 +3,7 @@ title: Kyuubi Issue Tracking
 menu:
    main:
       name: "Issue Tracking"
-      parent: "development"
+      parent: "community"
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,3 +18,7 @@ menu:
   See the License for the specific language governing permissions and
   limitations under the License. See accompanying LICENSE file.
 -->
+
+The project tracks bugs and new features on [github issues](https://github.com/apache/incubator-kyuubi/issues).
+
+If you'd like, you can also subscribe to commits@kyuubi.apache.org to get emails about commits.

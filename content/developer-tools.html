@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <base href="https://kyuubi.apache.org">
+    <title>Apache Kyuubi</title>
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/kyuubi.css">
+
+    
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img class="navbar-logo" src="/favicon.ico">
+          <a class="navbar-brand" href="/"> Apache Kyuubi</a>
+        </div>
+        
+   <div id="navbar" class="navbar-collapse collapse">
+     <ul class="nav navbar-nav">
+       
+       
+          
+             <li class=""><a href="releases.html">Download</a></li>
+          
+       
+          
+            <li class="dropdown ">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               
+                  <li ><a href="docs/latest/index.html">Latest</a></li>
+               
+                  <li ><a href="docs/stable/index.html">Stable</a></li>
+               
+               
+               <li role="separator" class="divider"></li>
+               
+               <li><a href="docs/r1.2.0/">1.2.0</a></li>
+               
+               
+             </ul>
+           </li>
+          
+       
+          
+            <li class="dropdown ">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               
+                  <li ><a href="/contributing.html">Contributing to kyuubi</a></li>
+               
+                  <li ><a href="/improvement-proposals.html">Improvement proposals (KPIP)</a></li>
+               
+                  <li ><a href="/issue_tracking.html">Issue Tracking</a></li>
+               
+                  <li ><a href="/mailing_lists.html">Mailing lists</a></li>
+               
+               
+             </ul>
+           </li>
+          
+       
+          
+            <li class="dropdown  active">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Development <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               
+                  <li ><a href="/developer-tools.html">Useful Developer Tools</a></li>
+               
+                  <li ><a href="/version_control.html">Version Control</a></li>
+               
+               
+             </ul>
+           </li>
+          
+       
+          
+            <li class="dropdown ">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               
+                  <li ><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+               
+                  <li ><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+               
+               
+             </ul>
+           </li>
+          
+       
+     </ul>
+	  <ul class="nav navbar-nav navbar-right">
+      <li>
+       <a href="https://www.apache.org/">Apache Software Foundation <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
+      </li>
+
+
+     </ul>
+   </div>
+
+      </div>
+    </nav>
+
+<div class="container">
+<h1>Useful Developer Tools</h1>
+<!---
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<h2 id="building-kyuubi">Building Kyuubi</h2>
+<h3 id="building-kyuubi-with-apache-maven">Building Kyuubi with Apache Maven</h3>
+<p><strong>Kyuubi</strong> is built based on <a href="http://maven.apache.org">Apache Maven</a>,</p>
+<pre><code>./build/mvn clean package -DskipTests
+</code></pre><p>This results in the creation of all sub-modules of Kyuubi project without running any unit test.</p>
+<p>If you want to test it manually, you can start Kyuubi directly from the Kyuubi project root by running</p>
+<pre><code>bin/kyuubi start
+</code></pre><h3 id="building-a-submodule-individually">Building a Submodule Individually</h3>
+<p>For instance, you can build the Kyuubi Common module using:</p>
+<pre><code>build/mvn clean package -pl :kyuubi-common -DskipTests
+</code></pre><h3 id="building-submodules-individually">Building Submodules Individually</h3>
+<p>For instance, you can build the Kyuubi Common module using:</p>
+<pre><code>build/mvn clean package -pl :kyuubi-common,:kyuubi-ha -DskipTests
+</code></pre><h3 id="skipping-some-modules">Skipping Some modules</h3>
+<p>For instance, you can build the Kyuubi modules without Kyuubi Codecov and Assembly modules using:</p>
+<pre><code> mvn clean install -pl '!:kyuubi-codecov,!:kyuubi-assembly' -DskipTests
+</code></pre><h3 id="building-kyuubi-against-different-apache-spark-versions">Building Kyuubi against Different Apache Spark versions</h3>
+<p>Since v1.1.0, Kyuubi support building with different Spark profiles,</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Default</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-Pspark-3.0</td>
+<td>Yes</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>-Pspark-3.1</td>
+<td>No</td>
+<td>1.1.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defining-the-apache-mirror-for-spark">Defining the Apache Mirror for Spark</h3>
+<p>By default, we use <code>https://archive.apache.org/dist/spark/</code> to download the built-in Spark release package,
+but if you find it hard to reach, or the downloading speed is too slow, you can define the <code>spark.archive.mirror</code>
+property to a suitable Apache mirror site. For instance,</p>
+<pre><code>build/mvn clean package -Dspark.archive.mirror=https://mirrors.bfsu.edu.cn/apache/spark/spark-3.0.1
+</code></pre><p>Visit <a href="http://www.apache.org/mirrors/">Apache Mirrors</a> and choose a mirror based on your region.</p>
+<p>Specifically for developers in China mainland, you can use the pre-defined profile named <code>mirror-cn</code> which use
+<code>mirrors.bfsu.edu.cn</code> to speed up Spark Binary downloading. For instance,</p>
+<pre><code>build/mvn clean package -Pmirror-cn
+</code></pre><h2 id="building-a-runnable-distribution">Building a Runnable Distribution</h2>
+<p>To create a Kyuubi distribution like those distributed by <a href="https://github.com/NetEase/kyuubi/releases">Kyuubi Release Page</a>,
+and that is laid out so as to be runnable, use <code>./build/dist</code> in the project root directory.</p>
+<p>For more information on usage, run <code>./build/dist --help</code></p>
+<pre><code class="language-logtalk" data-lang="logtalk">./build/dist - Tool for making binary distributions of Kyuubi Server
+
+Usage:
++--------------------------------------------------------------------------------------+
+| ./build/dist [--name &lt;custom_name&gt;] [--tgz] [--spark-provided] &lt;maven build options&gt; |
++--------------------------------------------------------------------------------------+
+name:           -  custom binary name, using project version if undefined
+tgz:            -  whether to make a whole bundled package
+spark-provided: -  whether to make a package without Spark binary
+</code></pre><p>For instance,</p>
+<pre><code>./build/dist --name custom-name --tgz
+</code></pre><p>This results a Kyuubi distribution named <code>kyuubi-{version}-bin-custom-name.tar.gz</code> for you.</p>
+<p>If you are planing to deploy Kyuubi where <code>spark</code> is provided, in other word, it&rsquo;s not required to bundle spark binary, use</p>
+<pre><code>./build/dist --tgz --spark-provided
+</code></pre><p>Then you will get a Kyuubi distribution without spark binary named <code>kyuubi-{version}-bin-without-spark.tar.gz</code>.</p>
+<h2 id="building-kyuubi-documentation">Building Kyuubi Documentation</h2>
+<p>Follow the steps below and learn how to build the Kyuubi documentation as the one you are watching now.</p>
+<h3 id="install--activate-virtualenv">Install &amp; Activate <code>virtualenv</code></h3>
+<p>Firstly, install <code>virtualenv</code>, this is optional but recommended as it is useful to create an independent environment to resolve dependency issues for building the documentation.</p>
+<pre><code>pip install virtualenv
+</code></pre><p>Switch to the <code>docs</code> root directory.</p>
+<pre><code>cd $KTUUBI_HOME/docs
+</code></pre><p>Create a virtual environment named &lsquo;kyuubi&rsquo; or anything you like using <code>virtualenv</code> if it&rsquo;s not existing.</p>
+<pre><code>virtualenv kyuubi
+</code></pre><p>Activate it,</p>
+<pre><code> source ./kyuubi/bin/activate
+</code></pre><h3 id="install-all-dependencies">Install all dependencies</h3>
+<p>Install all dependencies enumerated in the <code>requirements.txt</code></p>
+<pre><code>pip install -r requirements.txt
+</code></pre><h3 id="create-documentation">Create Documentation</h3>
+<pre><code>make html
+</code></pre><p>If the build process succeed, the HTML pages are in <code>_build/html</code>.</p>
+<h3 id="view-locally">View Locally</h3>
+<p>Open the <code>_build/html/index.html</code> file in your favorite web browser.</p>
+<h2 id="running-tests">Running Tests</h2>
+<p><strong>Kyuubi</strong> can be tested based on <a href="http://maven.apache.org">Apache Maven</a> and the ScalaTest Maven Plugin,
+please refer to the <a href="http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin">ScalaTest documentation</a>,</p>
+<h3 id="running-tests-fully">Running Tests Fully</h3>
+<p>The following is an example of a command to run all the tests:</p>
+<pre><code>./build/mvn clean test
+</code></pre><h3 id="running-tests-for-a-module">Running Tests for a Module</h3>
+<pre><code>./build/mvn clean test -pl :kyuubi-common
+</code></pre><h3 id="running-tests-for-a-single-test">Running Tests for a Single Test</h3>
+<p>When developing locally, it’s convenient to run one single test, or a couple of tests, rather than all.</p>
+<p>With Maven, you can use the -DwildcardSuites flag to run individual Scala tests:</p>
+<pre><code>./build/mvn test -Dtest=none -DwildcardSuites=org.apache.kyuubi.service.FrontendServiceSuite
+</code></pre><p>If you want to make a single test that need integrate with kyuubi-spark-sql-engine module, please build the package for kyuubi-spark-sql-engine module at first.</p>
+<p>You can leverage the ready-made tool for creating a binary distribution.</p>
+<pre><code>./build/dist
+</code></pre><h2 id="debugging-kyuubi">Debugging Kyuubi</h2>
+<p>You can use the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jpda/conninv.html#Plugin">Java Debug Wire Protocol</a> to debug Kyuubi
+with your favorite IDE tool, e.g. Intellij IDEA.</p>
+<h3 id="debugging-server">Debugging Server</h3>
+<p>We can configure the JDWP agent in <code>KYUUBI_JAVA_OPTS</code> for debugging.</p>
+<p>For example,</p>
+<pre><code>KYUUBI_JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 \
+bin/kyuubi start
+</code></pre><p>In the IDE, you set the corresponding parameters(host&amp;port) in debug configurations, for example,</p>
+<div align=center>
+<p><img src="../imgs/idea_debug.png" alt=""></p>
+</div>
+<h3 id="debugging-apps">Debugging Apps</h3>
+<ul>
+<li>Spark Driver</li>
+</ul>
+<pre><code>spark.driver.extraJavaOptions   -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
+</code></pre><ul>
+<li>Spark Executor</li>
+</ul>
+<pre><code>spark.executor.extraJavaOptions   -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
+</code></pre><h2 id="developer-tools">Developer Tools</h2>
+<h3 id="update-project-version">Update Project Version</h3>
+<pre><code>
+build/mvn versions:set -DgenerateBackupPoms=false
+</code></pre><h3 id="update-document-version">Update Document Version</h3>
+<p>Whenever Project version updates, please also update the document version at <code>docs/conf.py</code> to target the upcoming release.</p>
+<p>For example,</p>
+<pre><code>release = '1.2.0'
+</code></pre><h3 id="update-dependency-list">Update Dependency List</h3>
+<p>Kyuubi uses the <code>dev/dependencyList</code> file to indicates what upstream dependencies will actually go to the server-side classpath.</p>
+<p>For Pull requests, a linter for dependency check will be automatically executed in GitHub Actions.</p>
+<p>You can run <code>build/dependency.sh</code> locally first to detect the potential dependency change first.</p>
+<p>If the changes look expected, run <code>build/dependency.sh --replace</code> to update <code>dev/dependencyList</code> in your Pull request.</p>
+
+</div>
+
+<div class="container">
+<footer class="footer container">
+  <div class="col-md-6">
+  <p>Apache Kyuubi, Kyuubi, Apache, the Apache feather logo,
+    and the Apache Kyuubi project logo are either registered trademarks or trademarks of the Apache Software Foundation
+     in the United States and other countries</p>
+  <p>Copyright © 2021-2021 The Apache Software Foundation</p>
+  <p><a href="/privacy_policy.html">Privacy policy</a></p>
+  </div>
+  <div class="col-md-6">
+    <img class="img-responsive" src="/asf_logo_wide.png"/>
+  </div>
+</footer>
+</div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+    $(function() { $('table').addClass('table table-striped'); })
+    </script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-7453027-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</body>
+</html>
+

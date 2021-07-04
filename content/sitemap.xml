@@ -29,6 +29,8 @@
   </url><url>
     <loc>https://kyuubi.apache.org/mailing_lists.html</loc>
   </url><url>
+    <loc>https://kyuubi.apache.org/improvement-proposals.html</loc>
+  </url><url>
     <loc>https://kyuubi.apache.org/usage.html</loc>
   </url><url>
     <loc>https://kyuubi.apache.org/version_control.html</loc>
@@ -38,5 +40,7 @@
     <loc>https://kyuubi.apache.org/tags.html</loc>
   </url><url>
     <loc>https://kyuubi.apache.org/ecosystems.html</loc>
+  </url><url>
+    <loc>https://kyuubi.apache.org/developer-tools.html</loc>
   </url>
 </urlset>

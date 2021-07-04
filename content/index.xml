@@ -41,7 +41,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kyuubi.apache.org/contributing.html</guid>
-      <description>Contributing Before you start, we recommend that you check the Contribution Guidelines first.</description>
+      <description>Contributing to Kyuubi including source code, documents, tests e.t.c. means that you agree to the Apache License v2.0.
+ Better to search the issue history first before reporting an Issue Better to create an Issue to describe the feature or bug first before make a pull request. Better to use English for world widely understanding. Ask us anything  Before you start, please read the Code of Conduct carefully, familiarize yourself with it and refer to it whenever you need it.</description>
     </item>
     
     <item>
@@ -60,7 +61,8 @@ Kyuubi is a distributed multi-tenant Thrift JDBC/ODBC server for large-scale dat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kyuubi.apache.org/issue_tracking.html</guid>
-      <description></description>
+      <description>The project tracks bugs and new features on github issues.
+If you&amp;rsquo;d like, you can also subscribe to commits@kyuubi.apache.org to get emails about commits.</description>
     </item>
     
     <item>
@@ -71,6 +73,17 @@ Kyuubi is a distributed multi-tenant Thrift JDBC/ODBC server for large-scale dat
       <guid>https://kyuubi.apache.org/mailing_lists.html</guid>
       <description>Mailing Lists dev@spark.apache.org is for people who want to contribute code to Kyuubi. (subscribe) (unsubscribe) (archives)
 commits@spark.apache.org is for people who want to see changed made in the Kyuubi version control system. (subscribe) (unsubscribe) (archives)</description>
+    </item>
+    
+    <item>
+      <title>Kyuubi Project Improvement Proposals (KPIP)</title>
+      <link>https://kyuubi.apache.org/improvement-proposals.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyuubi.apache.org/improvement-proposals.html</guid>
+      <description>The purpose of a KBIP is to inform and involve the user community in significant improvements to the Kyuubi codebase throughout the development process to increase user needs.
+KBIPs should be used for significant user-facing or cross-cutting changes, not minor incremental improvements. When in doubt, if a committer thinks a change needs a KBIP, it does.
+What is a KBIP? A KBIP is similar to a product requirement document commonly used in product management.</description>
     </item>
     
     <item>
@@ -91,9 +104,8 @@ At the server-side, Kyuubi server and engines&#39; multi-tenant architecture pro
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://kyuubi.apache.org/version_control.html</guid>
-      <description>Overview The Kyuubi source code resides in the Apache git repository, and available from here: https://gitbox.apache.org/repos/asf?p=kyuubi.git
-The changes are also mirrored to the github repository https://github.com/apache/incubator-kyuubi
-Hdfs, Yarn, Mapreduce and other components all are parts of this one repository.</description>
+      <description>Overview The Kyuubi source code resides in the Apache git repository, and available from here: https://gitbox.apache.org/repos/asf?p=incubator-kyuubi.git
+The changes are also mirrored to the github repository https://github.com/apache/incubator-kyuubi</description>
     </item>
     
     <item>
@@ -113,6 +125,19 @@ Hdfs, Yarn, Mapreduce and other components all are parts of this one repository.
       
       <guid>https://kyuubi.apache.org/ecosystems.html</guid>
       <description>The figure below shows our vision for the Kyuubi Ecosystem. Some of them have been realized, some in development, and others would not be possible without your help.</description>
+    </item>
+    
+    <item>
+      <title>Useful Developer Tools</title>
+      <link>https://kyuubi.apache.org/developer-tools.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyuubi.apache.org/developer-tools.html</guid>
+      <description>Building Kyuubi Building Kyuubi with Apache Maven Kyuubi is built based on Apache Maven,
+./build/mvn clean package -DskipTests This results in the creation of all sub-modules of Kyuubi project without running any unit test.
+If you want to test it manually, you can start Kyuubi directly from the Kyuubi project root by running
+bin/kyuubi start Building a Submodule Individually For instance, you can build the Kyuubi Common module using:
+build/mvn clean package -pl :kyuubi-common -DskipTests Building Submodules Individually For instance, you can build the Kyuubi Common module using:</description>
     </item>
     
   </channel>
