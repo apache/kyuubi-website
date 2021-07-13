@@ -1,5 +1,5 @@
 ---
-title: accept Kyuubi into Apache Incubator
+title: Accept Kyuubi into Apache Incubator
 date: 2021-06-21
 linked: true
 ---

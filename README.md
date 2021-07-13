@@ -47,11 +47,11 @@ Example: src/release/1.2.0.md
 
 ```
 ---
-title: release 1.2.0 available
-date: 2021-06-01
+title: release *** available
+date: 2021-XX-XX
 linked: true
 ---
-For more information check the [release note](https://github.com/NetEase/kyuubi/releases/tag/v1.2.0-rc5).
+For more information check ...
 ```
 
 `linked: true` attribute means, that it will be displayed on the release page and under the documentation menu. 
@@ -66,4 +66,4 @@ The docs are not generated as part of the website.
 
 They are built separately for each release of Kyuubi from the Kyuubi source repository and then copied to the website under the ```content/docs``` directory.
 
-The sub-dir name should like ```r<version>``` such as ```r1.2.0```, please also update soft links ```latest``` and ```stable```.
+The sub-dir name should like ```r<version>``` such as ```r0.0.1```, please also update soft links ```latest``` and ```stable```.
