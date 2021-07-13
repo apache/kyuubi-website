@@ -1,5 +1,6 @@
 hugo.exe
 .idea
+*.iml
 .DS_Store
 npm-debug.log
 resources
