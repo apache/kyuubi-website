@@ -25,5 +25,8 @@ github:
 notifications:
   dev:          dev@kyuubi.apache.org
   commits:      commits@kyuubi.apache.org
+staging:
+  profile: ~
+  whoami:  asf-site
 publish:
   whoami:  asf-site
