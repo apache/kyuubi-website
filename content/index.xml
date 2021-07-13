@@ -9,21 +9,12 @@
     <copyright>Copyright © 2021-{year} The Apache Software Foundation</copyright>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kyuubi.apache.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>accept Kyuubi into Apache Incubator</title>
+      <title>Accept Kyuubi into Apache Incubator</title>
       <link>https://kyuubi.apache.org/news/2021-07-01-accept-kyuubi-into-apache-incubator.html</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://kyuubi.apache.org/news/2021-07-01-accept-kyuubi-into-apache-incubator.html</guid>
       <description>Kyuubi is accepted into Apache Incubator, see details in incubation status.</description>
-    </item>
-    
-    <item>
-      <title>release 1.2.0 is available</title>
-      <link>https://kyuubi.apache.org/release/1.2.0.html</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kyuubi.apache.org/release/1.2.0.html</guid>
-      <description>For more information check the release note.</description>
     </item>
     
     <item>
