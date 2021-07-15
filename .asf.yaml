@@ -23,6 +23,7 @@ github:
     merge: false
     rebase: false
 notifications: ~
+
 staging:
   profile: ~
   whoami:  asf-site
