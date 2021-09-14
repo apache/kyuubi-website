@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1. Kyuubi On Apache Kudu &mdash; Kyuubi 1.3.0 documentation</title>
   
@@ -17,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -30,7 +32,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -52,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Kyuubi
+            <a href="../index.html" class="icon icon-home"> Kyuubi
           
 
           
@@ -86,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Usage Guide</span></p>
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
@@ -114,17 +115,18 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
 </ul>
-<p><span class="caption-text">Kyuubi Insider</span></p>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 </ul>
-<p><span class="caption-text">Contributing</span></p>
+<p class="caption"><span class="caption-text">Contributing</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
 </ul>
-<p><span class="caption-text">Appendix</span></p>
+<p class="caption"><span class="caption-text">Appendix</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
 </ul>
@@ -167,6 +169,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -180,7 +184,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/integrations/kudu.md.txt" rel="nofollow"> View page source</a>
           
         
@@ -194,45 +198,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="kyuubi-on-apache-kudu">
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div class="section" id="kyuubi-on-apache-kudu">
 <h1><span class="section-number">1. </span>Kyuubi On Apache Kudu<a class="headerlink" href="#kyuubi-on-apache-kudu" title="Permalink to this headline">¶</a></h1>
-<section id="what-is-apache-kudu">
+<div class="section" id="what-is-apache-kudu">
 <h2><span class="section-number">1.1. </span>What is Apache Kudu<a class="headerlink" href="#what-is-apache-kudu" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>A new addition to the open source Apache Hadoop ecosystem, Apache Kudu completes Hadoop’s storage layer to enable fast analytics on fast data.</p>
 </div></blockquote>
 <p>When you are reading this documentation, we suppose that you are not necessary to be familiar with <a class="reference external" href="https://kudu.apache.org/">Apache Kudu</a>. But at least, you have one running Kudu cluster which is able to be connected for you. And it is even better for you to understand what Apache Kudu is capable with.</p>
 <p>Anything missing on this page about Apache Kudu background knowledge, you can refer to its official website.</p>
-</section>
-<section id="why-kyuubi-on-kudu">
+</div>
+<div class="section" id="why-kyuubi-on-kudu">
 <h2><span class="section-number">1.2. </span>Why Kyuubi on Kudu<a class="headerlink" href="#why-kyuubi-on-kudu" title="Permalink to this headline">¶</a></h2>
 <p>Basically, Kyuubi can take place of HiveServer2 as a multi tenant ad-hoc SQL on Hadoop solution, with the advantages of speed and power coming from Spark SQL. You can run SQL queries towards both data source and Hive tables whose data is secured only with computing resources you are authorized.</p>
 <blockquote>
 <div><p>Spark SQL supports operating on a variety of data sources through the DataFrame interface. A DataFrame can be operated on using relational transformations and can also be used to create a temporary view. Registering a DataFrame as a temporary view allows you to run SQL queries over its data. This section describes the general methods for loading and saving data using the Spark Data Sources and then goes into specific options that are available for the built-in data sources.</p>
 </div></blockquote>
 <p>In Kyuubi, we can register Kudu tables and other data source tables as Spark temporary views to enable federated union queries across Hive, Kudu, and other data sources.</p>
-</section>
-<section id="kudu-integration-with-apache-spark">
+</div>
+<div class="section" id="kudu-integration-with-apache-spark">
 <h2><span class="section-number">1.3. </span>Kudu Integration with Apache Spark<a class="headerlink" href="#kudu-integration-with-apache-spark" title="Permalink to this headline">¶</a></h2>
 <p>Before integrating Kyuubi with Kudu, we strongly suggest that you integrate and test Spark with Kudu first. You may find the guide from Kudu’s online documentation – <a class="reference external" href="https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark">Kudu Integration with Spark</a></p>
-</section>
-<section id="kudu-integration-with-kyuubi">
+</div>
+<div class="section" id="kudu-integration-with-kyuubi">
 <h2><span class="section-number">1.4. </span>Kudu Integration with Kyuubi<a class="headerlink" href="#kudu-integration-with-kyuubi" title="Permalink to this headline">¶</a></h2>
-<section id="install-kudu-spark-dependency">
+<div class="section" id="install-kudu-spark-dependency">
 <h3>Install Kudu Spark Dependency<a class="headerlink" href="#install-kudu-spark-dependency" title="Permalink to this headline">¶</a></h3>
 <p>Confirm your Kudu cluster version and download the corresponding kudu spark dependency library, such as <a class="reference external" href="https://repo1.maven.org/maven2/org/apache/kudu/kudu-spark3_2.12/1.14.0/kudu-spark3_2.12-1.14.0.jar">org.apache.kudu:kudu-spark3_2.12-1.14.0</a> to <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME</span></code>/jars.</p>
-</section>
-<section id="start-kyuubi">
+</div>
+<div class="section" id="start-kyuubi">
 <h3>Start Kyuubi<a class="headerlink" href="#start-kyuubi" title="Permalink to this headline">¶</a></h3>
 <p>Now, you can start Kyuubi server with this kudu embedded Spark distribution.</p>
-</section>
-<section id="start-beeline-or-other-client-you-prefer">
+</div>
+<div class="section" id="start-beeline-or-other-client-you-prefer">
 <h3>Start Beeline Or Other Client You Prefer<a class="headerlink" href="#start-beeline-or-other-client-you-prefer" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bin/beeline -u <span class="s1">&#39;jdbc:hive2://&lt;host&gt;:&lt;port&gt;/;principal=&lt;if kerberized&gt;;#spark.yarn.queue=kyuubi_test&#39;</span>
 </pre></div>
 </div>
-</section>
-<section id="register-kudu-table-as-spark-temporary-view">
+</div>
+<div class="section" id="register-kudu-table-as-spark-temporary-view">
 <h3>Register Kudu table as Spark Temporary view<a class="headerlink" href="#register-kudu-table-as-spark-temporary-view" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TEMPORARY</span> <span class="k">VIEW</span> <span class="n">kudutest</span>
 <span class="k">USING</span> <span class="n">kudu</span>
@@ -256,8 +275,8 @@
 <span class="mi">2</span> <span class="k">rows</span> <span class="n">selected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">29</span> <span class="n">seconds</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="query-kudu-table">
+</div>
+<div class="section" id="query-kudu-table">
 <h3>Query Kudu Table<a class="headerlink" href="#query-kudu-table" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">kudutest</span><span class="p">;</span>
 <span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span> <span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span> <span class="n">INFO</span> <span class="n">ExecuteStatementInClientMode</span><span class="p">:</span> <span class="n">Running</span> <span class="n">query</span> <span class="s1">&#39;select * from kudutest&#39;</span> <span class="k">with</span> <span class="n">ac3e8553</span><span class="o">-</span><span class="mi">0</span><span class="n">d79</span><span class="o">-</span><span class="mi">4</span><span class="n">c57</span><span class="o">-</span><span class="n">add1</span><span class="o">-</span><span class="mi">7</span><span class="n">d3ffe34ba16</span>
@@ -277,8 +296,8 @@
 <span class="mi">5</span> <span class="k">rows</span> <span class="n">selected</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">083</span> <span class="n">seconds</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="join-kudu-table-with-hive-table">
+</div>
+<div class="section" id="join-kudu-table-with-hive-table">
 <h3>Join Kudu table with Hive table<a class="headerlink" href="#join-kudu-table-with-hive-table" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="k">select</span> <span class="n">t1</span><span class="p">.</span><span class="o">*</span><span class="p">,</span> <span class="n">t2</span><span class="p">.</span><span class="o">*</span> <span class="k">from</span> <span class="n">hive_tbl</span> <span class="n">t1</span> <span class="k">join</span> <span class="n">kudutest</span> <span class="n">t2</span> <span class="k">on</span> <span class="n">t1</span><span class="p">.</span><span class="n">userid</span><span class="o">=</span><span class="n">t2</span><span class="p">.</span><span class="n">userid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
 <span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span> <span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span> <span class="n">INFO</span> <span class="n">ExecuteStatementInClientMode</span><span class="p">:</span> <span class="n">Running</span> <span class="n">query</span> <span class="s1">&#39;select t1.*, t2.* from hive_tbl t1 join kudutest t2 on t1.userid=t2.userid+1&#39;</span> <span class="k">with</span> <span class="mi">6982</span><span class="n">fa5c</span><span class="o">-</span><span class="mi">29</span><span class="n">fa</span><span class="o">-</span><span class="mi">49</span><span class="n">be</span><span class="o">-</span><span class="n">a5bf</span><span class="o">-</span><span class="mi">54</span><span class="n">c935bbad18</span>
@@ -295,10 +314,10 @@
 <span class="mi">3</span> <span class="k">rows</span> <span class="n">selected</span> <span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">63</span> <span class="n">seconds</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="insert-to-kudu-table">
+</div>
+<div class="section" id="insert-to-kudu-table">
 <h3>Insert to Kudu table<a class="headerlink" href="#insert-to-kudu-table" title="Permalink to this headline">¶</a></h3>
-<p>You should notice that only <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> is supported by Kudu, <code class="docutils literal notranslate"><span class="pre">OVERWITRE</span></code> data is not supported</p>
+<p>You should notice that only <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> is supported by Kudu, <code class="docutils literal notranslate"><span class="pre">OVERWRITE</span></code> data is not supported</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="k">insert</span> <span class="n">overwrite</span> <span class="k">table</span> <span class="n">kudutest</span> <span class="k">select</span> <span class="o">*</span>  <span class="k">from</span> <span class="n">hive_tbl</span><span class="p">;</span>
 <span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span> <span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span> <span class="n">INFO</span> <span class="n">ExecuteStatementInClientMode</span><span class="p">:</span> <span class="n">Running</span> <span class="n">query</span> <span class="s1">&#39;insert overwrite table kudutest select *  from hive_tbl&#39;</span> <span class="k">with</span> <span class="mi">1</span><span class="n">afdb791</span><span class="o">-</span><span class="mi">1</span><span class="n">aa7</span><span class="o">-</span><span class="mi">4</span><span class="n">ceb</span><span class="o">-</span><span class="mi">8</span><span class="n">ba8</span><span class="o">-</span><span class="n">ff53c17615d1</span>
 <span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span> <span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span> <span class="n">INFO</span> <span class="n">KyuubiSparkUtil$</span><span class="p">:</span> <span class="n">Application</span> <span class="n">application_1560304876299_3805060</span> <span class="n">has</span> <span class="n">been</span> <span class="n">activated</span>
@@ -354,39 +373,32 @@
 <span class="k">No</span> <span class="k">rows</span> <span class="n">selected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">611</span> <span class="n">seconds</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="references">
+</div>
+</div>
+<div class="section" id="references">
 <h2><span class="section-number">1.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://kudu.apache.org/">https://kudu.apache.org/</a>
 <a class="reference external" href="https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark">https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark</a>
-<a class="reference external" href="https://github.com/NetEase/kyuubi">https://github.com/NetEase/kyuubi</a>
+<a class="reference external" href="https://github.com/apache/incubator-kyuubi">https://github.com/apache/incubator-kyuubi</a>
 <a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources.html">https://spark.apache.org/docs/latest/sql-data-sources.html</a></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../monitor/index.html" class="btn btn-neutral float-right" title="Monitoring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../monitor/index.html" class="btn btn-neutral float-right" title="Monitoring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 
+        &#169; Copyright 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
 this work for additional information regarding copyright ownership.
@@ -401,21 +413,20 @@ distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
+.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

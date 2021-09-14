@@ -1,3 +1,20 @@
+<!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ -->
+
 # Kyuubi On Apache Kudu
 
 ## What is Apache Kudu
@@ -101,7 +118,7 @@ options (
 
 #### Insert to Kudu table
 
-You should notice that only `INSERT INTO` is supported by Kudu, `OVERWITRE` data is not supported
+You should notice that only `INSERT INTO` is supported by Kudu, `OVERWRITE` data is not supported
 
 ```sql
 0: jdbc:hive2://spark5.jd.163.org:10009/> insert overwrite table kudutest select *  from hive_tbl;
@@ -164,5 +181,5 @@ No rows selected (0.611 seconds)
 ## References
 [https://kudu.apache.org/](https://kudu.apache.org/)
 [https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark](https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark)
-[https://github.com/NetEase/kyuubi](https://github.com/NetEase/kyuubi)
+[https://github.com/apache/incubator-kyuubi](https://github.com/apache/incubator-kyuubi)
 [https://spark.apache.org/docs/latest/sql-data-sources.html](https://spark.apache.org/docs/latest/sql-data-sources.html)
