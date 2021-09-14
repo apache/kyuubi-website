@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>2. Deploy Kyuubi engines on Kubernetes &mdash; Kyuubi 1.3.0 documentation</title>
   
@@ -17,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -30,7 +32,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -52,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Kyuubi
+            <a href="../index.html" class="icon icon-home"> Kyuubi
           
 
           
@@ -86,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Usage Guide</span></p>
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploying Kyuubi</a><ul class="current">
@@ -109,17 +110,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
 </ul>
-<p><span class="caption-text">Kyuubi Insider</span></p>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 </ul>
-<p><span class="caption-text">Contributing</span></p>
+<p class="caption"><span class="caption-text">Contributing</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
 </ul>
-<p><span class="caption-text">Appendix</span></p>
+<p class="caption"><span class="caption-text">Appendix</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
 </ul>
@@ -162,6 +164,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -175,7 +179,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/deployment/on_kubernetes.md.txt" rel="nofollow"> View page source</a>
           
         
@@ -189,10 +193,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div align=center><p><img alt="../_images/kyuubi_logo3.png" src="../_images/kyuubi_logo3.png" /></p>
-</div><section id="deploy-kyuubi-engines-on-kubernetes">
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="deploy-kyuubi-engines-on-kubernetes">
 <h1><span class="section-number">2. </span>Deploy Kyuubi engines on Kubernetes<a class="headerlink" href="#deploy-kyuubi-engines-on-kubernetes" title="Permalink to this headline">¶</a></h1>
-<section id="requirements">
+<div class="section" id="requirements">
 <h2><span class="section-number">2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <p>When you want to run Kyuubi’s Spark SQL engines on Kubernetes, you’d better have cognition upon the following things.</p>
 <ul class="simple">
@@ -201,16 +220,16 @@
 <li><p><a class="reference external" href="https://kubernetes.io/docs/reference/kubectl/overview/">Kubectl</a></p></li>
 <li><p>KubeConfig of the target cluster</p></li>
 </ul>
-</section>
-<section id="configurations">
+</div>
+<div class="section" id="configurations">
 <h2><span class="section-number">2.2. </span>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
-<section id="master">
+<div class="section" id="master">
 <h3><span class="section-number">2.2.1. </span>Master<a class="headerlink" href="#master" title="Permalink to this headline">¶</a></h3>
 <p>Spark on Kubernetes config master by using a special format.</p>
 <p><code class="docutils literal notranslate"><span class="pre">spark.master=k8s://https://&lt;k8s-apiserver-host&gt;:&lt;k8s-apiserver-port&gt;</span></code></p>
 <p>You can use cmd <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code> to get api-server host and port.</p>
-</section>
-<section id="docker-image">
+</div>
+<div class="section" id="docker-image">
 <h3><span class="section-number">2.2.2. </span>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this headline">¶</a></h3>
 <p>Spark ships a <code class="docutils literal notranslate"><span class="pre">./bin/docker-image-tool.sh</span></code> script to build and publish the Docker images for running Spark applications on Kubernetes.</p>
 <p>When deploying Kyuubi engines against a Kubernetes cluster, we need to set up the docker images in the Docker registry first.</p>
@@ -225,8 +244,8 @@
 ./bin/docker-image-tool.sh -r &lt;repo&gt; -t my-tag -R ./kubernetes/dockerfiles/spark/bindings/R/Dockerfile build
 </pre></div>
 </div>
-</section>
-<section id="test-cluster">
+</div>
+<div class="section" id="test-cluster">
 <h3><span class="section-number">2.2.3. </span>Test Cluster<a class="headerlink" href="#test-cluster" title="Permalink to this headline">¶</a></h3>
 <p>You can use the shell code to test your cluster whether it is normal or not.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$SPARK_HOME</span>/bin/spark-submit <span class="se">\</span>
@@ -240,8 +259,8 @@
 </pre></div>
 </div>
 <p>When running shell, you can use cmd <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">describe</span> <span class="pre">pod</span> <span class="pre">&lt;podName&gt;</span></code> to check if the information meets expectations.</p>
-</section>
-<section id="serviceaccount">
+</div>
+<div class="section" id="serviceaccount">
 <h3><span class="section-number">2.2.4. </span>ServiceAccount<a class="headerlink" href="#serviceaccount" title="Permalink to this headline">¶</a></h3>
 <p>When use Client mode to submit application, spark driver use the kubeconfig to access api-service to create and watch executor pods.</p>
 <p>When use Cluster mode to submit application, spark driver pod use serviceAccount to access api-service to create and watch executor pods.</p>
@@ -252,8 +271,8 @@ kubectl create serviceaccount spark -n &lt;namespace&gt;
 kubectl create clusterrolebinding spark-role --clusterrole<span class="o">=</span>edit --serviceaccount<span class="o">=</span>&lt;namespace&gt;:spark --namespace<span class="o">=</span>&lt;namespace&gt;
 </pre></div>
 </div>
-</section>
-<section id="volumes">
+</div>
+<div class="section" id="volumes">
 <h3><span class="section-number">2.2.5. </span>Volumes<a class="headerlink" href="#volumes" title="Permalink to this headline">¶</a></h3>
 <p>As it known to us all, Kubernetes can use configurations to mount volumes into driver and executor pods.</p>
 <ul class="simple">
@@ -272,41 +291,34 @@ see <a class="reference external" href="http://spark.apache.org/docs/latest/runn
 </pre></div>
 </div>
 <p>Read <a class="reference external" href="http://spark.apache.org/docs/latest/running-on-kubernetes.html#using-kubernetes-volumes">Using Kubernetes Volumes</a> for more about volumes.</p>
-</section>
-<section id="podtemplatefile">
+</div>
+<div class="section" id="podtemplatefile">
 <h3><span class="section-number">2.2.6. </span>PodTemplateFile<a class="headerlink" href="#podtemplatefile" title="Permalink to this headline">¶</a></h3>
 <p>Kubernetes allows defining pods from template files. Spark users can similarly use template files to define the driver or executor pod configurations that Spark configurations do not support.</p>
 <p>To do so, specify the spark properties <code class="docutils literal notranslate"><span class="pre">spark.kubernetes.driver.podTemplateFile</span></code> and <code class="docutils literal notranslate"><span class="pre">spark.kubernetes.executor.podTemplateFile</span></code> to point to local files accessible to the spark-submit process.</p>
-</section>
-<section id="other">
+</div>
+<div class="section" id="other">
 <h3><span class="section-number">2.2.7. </span>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
 <p>You can read Spark’s official documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/running-on-kubernetes.html">Running on Kubernetes</a> for more information.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="hive_metastore.html" class="btn btn-neutral float-right" title="3. Integration with Hive Metastore" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="on_yarn.html" class="btn btn-neutral float-left" title="1. Deploy Kyuubi engines on Yarn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="hive_metastore.html" class="btn btn-neutral float-right" title="3. Integration with Hive Metastore" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="on_yarn.html" class="btn btn-neutral float-left" title="1. Deploy Kyuubi engines on Yarn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 
+        &#169; Copyright 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
 this work for additional information regarding copyright ownership.
@@ -321,21 +333,20 @@ distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
+.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

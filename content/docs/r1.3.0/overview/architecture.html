@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Kyuubi Architecture &mdash; Kyuubi 1.3.0 documentation</title>
   
@@ -17,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -30,7 +32,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -52,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Kyuubi
+            <a href="../index.html" class="icon icon-home"> Kyuubi
           
 
           
@@ -86,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Usage Guide</span></p>
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
@@ -95,8 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
 </ul>
-<p><span class="caption-text">Kyuubi Insider</span></p>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Overview</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Architecture</a><ul>
@@ -114,12 +116,12 @@
 </ul>
 </li>
 </ul>
-<p><span class="caption-text">Contributing</span></p>
+<p class="caption"><span class="caption-text">Contributing</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
 </ul>
-<p><span class="caption-text">Appendix</span></p>
+<p class="caption"><span class="caption-text">Appendix</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
 </ul>
@@ -162,6 +164,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -175,7 +179,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/overview/architecture.md.txt" rel="nofollow"> View page source</a>
           
         
@@ -189,10 +193,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div align=center><p><img alt="../_images/kyuubi_logo8.png" src="../_images/kyuubi_logo8.png" /></p>
-</div><section id="kyuubi-architecture">
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="kyuubi-architecture">
 <h1>Kyuubi Architecture<a class="headerlink" href="#kyuubi-architecture" title="Permalink to this headline">¶</a></h1>
-<section id="introduction">
+<div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Kyuubi is a high-performance universal JDBC and SQL execution engine. The goal of Kyuubi is to facilitate users to handle big data like ordinary data.</p>
 <p>It provides a standardized JDBC interface with easy-to-use data access in big data scenarios.
@@ -211,8 +230,8 @@ such as cloud-native support and <code class="docutils literal notranslate"><spa
 <p>Kyuubi’s vision is to build on top of Apache Spark and Data Lake technologies to unify the portal and become an ideal data lake management platform.
 It can support data processing e.g. ETL, and analytics e.g. BI, in a pure SQL way.
 All workloads can be done on one platform, using one copy of data, with one SQL interface.</p>
-</section>
-<section id="architecture-overview">
+</div>
+<div class="section" id="architecture-overview">
 <h2>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permalink to this headline">¶</a></h2>
 <p>The fundamental technical architecture of the Kyuubi system is shown in the following diagram.</p>
 <p><img alt="../_images/kyuubi_architecture_new.png" src="../_images/kyuubi_architecture_new.png" /></p>
@@ -233,8 +252,8 @@ maximizing the power of Spark SQL.
 They can manage their lifecycle, cache and recycle themselves,
 and are not affected by failover on the Kyuubi server.</p>
 <p>Next, let us share some of the key design concepts of Kyuubi.</p>
-</section>
-<section id="unified-interface">
+</div>
+<div class="section" id="unified-interface">
 <h2>Unified Interface<a class="headerlink" href="#unified-interface" title="Permalink to this headline">¶</a></h2>
 <p>Kyuubi implements the <a class="reference external" href="https://mvnrepository.com/artifact/org.apache.hive/hive-service-rpc/2.3.7">Hive Service RPC</a> module,
 which provides the same way of accessing data as HiveServer2 and Spark Thrift Server.
@@ -247,8 +266,8 @@ It turns out that everybody knows SQL.</p></li>
 <li><p>JDBC provides a standard API for tool/database developers and makes it possible to write database applications using a pure Java API.</p></li>
 <li><p>There are plenty of free or commercial JDBC tools out there.</p></li>
 </ul>
-</section>
-<section id="runtime-resource-resiliency">
+</div>
+<div class="section" id="runtime-resource-resiliency">
 <h2>Runtime Resource Resiliency<a class="headerlink" href="#runtime-resource-resiliency" title="Permalink to this headline">¶</a></h2>
 <p>The most significant difference between Kyuubi and Spark Thrift Server(STS) is that STS is a single Spark application.
 For example, if it runs on an Apache Hadoop Yarn cluster,
@@ -283,15 +302,15 @@ there is demand. This feature is handy if multiple applications share resources 
 <p>On the one hand, because tom enables Spark’s dynamic resource request feature,
 Spark will efficiently request and recycle executors within the program based on the SQL operations scale and the available resources in the queue.
 On the other hand, when Kyuubi finds that the application has been idle for too long, it will also recycle its application.</p>
-</section>
-<section id="high-availability-load-balance">
+</div>
+<div class="section" id="high-availability-load-balance">
 <h2>High Availability &amp; Load Balance<a class="headerlink" href="#high-availability-load-balance" title="Permalink to this headline">¶</a></h2>
 <p>For an enterprise service, the Service Level Agreement(SLA) commitment must be very high.
 And the concurrency needs to be sufficiently robust to support the entire enterprise’s requests.
 As a single Spark application and without high availability, Spark Thrift Server can hardly meet the SLA and concurrency requirement.
 When there are large query requests, there are potential bottlenecks in metadata service access, scheduling and memory pressure of Spark Driver, or the application’s overall computational resource constraints.</p>
 <p>Kyuubi provides high availability and load balancing solutions based on Zookeeper, as shown in the following diagram.</p>
-<p><img alt="../_images/ha1.png" src="../_images/ha1.png" /></p>
+<p><img alt="../_images/ha.png" src="../_images/ha.png" /></p>
 <p>Let us try to break it down from top to bottom based on the above diagram.</p>
 <ol class="simple">
 <li><p>At the top of the diagram is the client layer. A client can find multiple registered instances of Kyuubi instance (k.i.) from the namespace in the service discovery layer and then choose to connect.
@@ -304,8 +323,8 @@ This is because in the service discovery layer,
 the namespaces used to store the address of the engine instances are isolated based on the user(by default),
 and different users cannot access other’ s instances across the namespace.</p></li>
 </ol>
-</section>
-<section id="authentication-authorization">
+</div>
+<div class="section" id="authentication-authorization">
 <h2>Authentication &amp; Authorization<a class="headerlink" href="#authentication-authorization" title="Permalink to this headline">¶</a></h2>
 <p>In a secure cluster, services should be able to identify and authenticate callers.
 As the fact that the user claims does not necessarily mean this is true.
@@ -313,36 +332,29 @@ The authentication process of Kyuubi is used to verify the user identity that a 
 Once done, a trusted connection will be set up between the client and server if they are successful; otherwise, they will be rejected.</p>
 <p>The authenticated client user will also be the user that creates the associate engine instance, then authorizations for database objects or storage could be applied.
 We also create a <a class="reference external" href="https://mvnrepository.com/artifact/org.apache.submarine/submarine-spark-security">Submarine: Spark Security</a> external plugin to achieve fined-grained SQL standard-based authorization.</p>
-</section>
-<section id="conclusions">
+</div>
+<div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <p>Kyuubi is a unified multi-tenant JDBC interface for large-scale data processing and analytics, built on top of <a class="reference external" href="http://spark.apache.org/">Apache Spark™</a>.
 It extends the Spark Thrift Server’s scenarios in enterprise applications, the most important of which is multi-tenancy support.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="kyuubi_vs_hive.html" class="btn btn-neutral float-right" title="Kyuubi v.s. HiveServer2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="kyuubi_vs_hive.html" class="btn btn-neutral float-right" title="Kyuubi v.s. HiveServer2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 
+        &#169; Copyright 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
 this work for additional information regarding copyright ownership.
@@ -357,21 +369,20 @@ distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
+.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

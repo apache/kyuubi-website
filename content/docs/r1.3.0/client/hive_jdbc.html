@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1. Access Kyuubi with Hive JDBC and ODBC Drivers &mdash; Kyuubi 1.3.0 documentation</title>
   
@@ -17,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -30,7 +32,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -52,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Kyuubi
+            <a href="../index.html" class="icon icon-home"> Kyuubi
           
 
           
@@ -86,7 +87,7 @@
               
             
             
-              <p><span class="caption-text">Usage Guide</span></p>
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
@@ -105,17 +106,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
 </ul>
-<p><span class="caption-text">Kyuubi Insider</span></p>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
 </ul>
-<p><span class="caption-text">Contributing</span></p>
+<p class="caption"><span class="caption-text">Contributing</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
 </ul>
-<p><span class="caption-text">Appendix</span></p>
+<p class="caption"><span class="caption-text">Appendix</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
 </ul>
@@ -158,6 +160,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -171,7 +175,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/client/hive_jdbc.md.txt" rel="nofollow"> View page source</a>
           
         
@@ -185,16 +189,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div align=center><p><img alt="../_images/kyuubi_logo1.png" src="../_images/kyuubi_logo1.png" /></p>
-</div><section id="access-kyuubi-with-hive-jdbc-and-odbc-drivers">
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="access-kyuubi-with-hive-jdbc-and-odbc-drivers">
 <h1><span class="section-number">1. </span>Access Kyuubi with Hive JDBC and ODBC Drivers<a class="headerlink" href="#access-kyuubi-with-hive-jdbc-and-odbc-drivers" title="Permalink to this headline">¶</a></h1>
-<section id="instructions">
+<div class="section" id="instructions">
 <h2><span class="section-number">1.1. </span>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
 <p>Kyuubi does not provide its own JDBC Driver so far,
 as it is fully compatible with Hive JDBC and ODBC drivers that let you connect to popular Business Intelligence (BI) tools to query,
 analyze and visualize data though Spark SQL engines.</p>
-</section>
-<section id="install-hive-jdbc">
+</div>
+<div class="section" id="install-hive-jdbc">
 <h2><span class="section-number">1.2. </span>Install Hive JDBC<a class="headerlink" href="#install-hive-jdbc" title="Permalink to this headline">¶</a></h2>
 <p>For programing, the easiest way to get <code class="docutils literal notranslate"><span class="pre">hive-jdbc</span></code> is from <a class="reference external" href="https://mvnrepository.com/artifact/org.apache.hive/hive-jdbc">the maven central</a>. For example,</p>
 <ul class="simple">
@@ -222,8 +241,8 @@ analyze and visualize data though Spark SQL engines.</p>
 <p>For BI tools, please refer to <a class="reference external" href="../quick_start/index.html">Quick Start</a> to check the guide for the BI tool used.
 If you find there is no specific document for the BI tool that you are using, don’t worry, the configuration part for all BI tools are basically same.
 Also, we will appreciate if you can help us to improve the document.</p>
-</section>
-<section id="jdbc-url">
+</div>
+<div class="section" id="jdbc-url">
 <h2><span class="section-number">1.3. </span>JDBC URL<a class="headerlink" href="#jdbc-url" title="Permalink to this headline">¶</a></h2>
 <p>JDBC URLs have the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jdbc:hive2://&lt;host&gt;:&lt;port&gt;/&lt;dbName&gt;;&lt;sessionConfs&gt;?&lt;sparkConfs&gt;#&lt;[spark|hive]Vars&gt;
@@ -262,43 +281,36 @@ Also, we will appreciate if you can help us to improve the document.</p>
 <td>Optional <code>Semicolon(;)</code> separated <code>key=value</code> parameters for Spark/Hive variables used for variable substitution.</td>
 </tr>
 </tbody>
-</table></section>
-<section id="example">
+</table></div>
+<div class="section" id="example">
 <h2><span class="section-number">1.4. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jdbc:hive2://localhost:10009/default;spark.sql.adaptive.enabled=true?spark.ui.enabled=false#var_x=y
 </pre></div>
 </div>
-</section>
-<section id="unsupported-hive-features">
+</div>
+<div class="section" id="unsupported-hive-features">
 <h2><span class="section-number">1.5. </span>Unsupported Hive Features<a class="headerlink" href="#unsupported-hive-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Connect to HiveServer2 using HTTP transport. <code class="docutils literal notranslate"><span class="pre">transportMode=http</span></code></p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../integrations/index.html" class="btn btn-neutral float-right" title="Integrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Client Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../integrations/index.html" class="btn btn-neutral float-right" title="Integrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Client Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 
+        &#169; Copyright 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
 this work for additional information regarding copyright ownership.
@@ -313,21 +325,20 @@ distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
+.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
