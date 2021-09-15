@@ -35,12 +35,14 @@ publishDir = "content"
 [[menu.main]]
    name = "Latest"
    parent = "documentation"
-   url = "https://kyuubi.readthedocs.io/en/v1.3.0-incubating/"
+   url = "docs/latest/index.html"
 
 [[menu.main]]
    name = "Stable"
    parent = "documentation"
-   url = "https://kyuubi.readthedocs.io/en/stable/"
+   url = "docs/stable/index.html"
+
+
 
 
 [[menu.main]]
