@@ -9,12 +9,12 @@
     <copyright>Copyright © 2021-{year} The Apache Software Foundation</copyright>
     <lastBuildDate>Tue, 14 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kyuubi.apache.org/news/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apache Kyuubi(Incubating) 1.3.0 released</title>
-      <link>https://kyuubi.apache.org/news/2021-09-14-kyuubi-1.3.0-released.html</link>
+      <title>Apache Kyuubi(Incubating) 1.3.0-incubating released</title>
+      <link>https://kyuubi.apache.org/news/2021-09-14-kyuubi-1.3.0-incubating-released.html</link>
       <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://kyuubi.apache.org/news/2021-09-14-kyuubi-1.3.0-released.html</guid>
-      <description>We are happy to announce the availability of Apache Kyuubi(Incubating) 1.3.0! Visit the release notes to read about the new features, or download the released today.</description>
+      <guid>https://kyuubi.apache.org/news/2021-09-14-kyuubi-1.3.0-incubating-released.html</guid>
+      <description>We are happy to announce the availability of Apache Kyuubi(Incubating) 1.3.0-incubating! Visit the release notes to read about the new features, or download the released today.</description>
     </item>
     
     <item>

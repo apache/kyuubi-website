@@ -9,11 +9,11 @@
     <copyright>Copyright © 2021-{year} The Apache Software Foundation</copyright>
     <lastBuildDate>Tue, 14 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kyuubi.apache.org/release/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apache Kyuubi(Incubating) Release 1.3.0</title>
-      <link>https://kyuubi.apache.org/release/1.3.0.html</link>
+      <title>Apache Kyuubi(Incubating) Release 1.3.0-incubating</title>
+      <link>https://kyuubi.apache.org/release/1.3.0-incubating.html</link>
       <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://kyuubi.apache.org/release/1.3.0.html</guid>
+      <guid>https://kyuubi.apache.org/release/1.3.0-incubating.html</guid>
       <description>Highlight   Fully verified with the latest Spark 3.0/3.1
   Build on JDK11
   Provide enhanced AQE in Kyuubi Spark Extensions (for Spark 3.1)
