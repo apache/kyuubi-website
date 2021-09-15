@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
     <base href="https://kyuubi.apache.org">
-    <title>Apache Kyuubi</title>
+    <title>Apache Kyuubi&trade; - Multi-tenant Thrift JDBC/ODBC server</title>
 
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -58,8 +58,6 @@
                
                
                <li role="separator" class="divider"></li>
-               
-               <li><a href="docs/r1.2.0/">1.2.0</a></li>
                
                
              </ul>
@@ -130,6 +128,170 @@
 <section id="main">
   <div>
     <h1 id="title">Releases Archive</h1>
+        <ul id="list">
+            
+            <h1><a href="/release/1.3.0.html">Apache Kyuubi(Incubating) Release 1.3.0</a></h1>
+            <p><small>2021 Sep 14 </small></p>
+
+            <!---
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<h1 id="highlight">Highlight</h1>
+<ul>
+<li>
+<p>Fully verified with the latest Spark 3.0/3.1</p>
+</li>
+<li>
+<p>Build on JDK11</p>
+</li>
+<li>
+<p>Provide enhanced AQE in Kyuubi Spark Extensions (for Spark 3.1)</p>
+</li>
+<li>
+<p>Provide several auxiliary SQL functions as a supplement to Spark&rsquo;s built-in Functions</p>
+</li>
+<li>
+<p>Major improvements of Spark on Kubernetes, include documents, integration tests, tools, etc.</p>
+</li>
+<li>
+<p>Support engine/session level configurable initialize SQL statements</p>
+</li>
+<li>
+<p>Support custom authentication implementation</p>
+</li>
+<li>
+<p>Support stop Spark engine through Web UI</p>
+</li>
+<li>
+<p>Support single session mode</p>
+</li>
+<li>
+<p>Several improvements of observability</p>
+</li>
+<li>
+<p>Fully tested with the all data lake platforms Delta, Iceberg</p>
+</li>
+<li>
+<p>Fully tested with MiniYARNCluster</p>
+</li>
+</ul>
+<h2 id="functionality">Functionality</h2>
+<ul>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/631">[KYUUBI #631]</a>: Add kyuubi-spark-extensions-3-1 module</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/657">[KYUUBI #657]</a><a href="https://github.com/apache/incubator-kyuubi/issues/659">[KYUUBI #659]</a> Provides auxiliary SQL functions as supplement to Spark&rsquo;s built-in Functions</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/897">[KYUUBI #897]</a>: Support stop Spark engine through Web UI</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/762">[KYUUBI #762]</a>: Add Kyuubi Hive JDBC Module</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/926">[KYUUBI #926]</a>: Support add repartition for OptimizedCreateHiveTableAsSelectCommand</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/670">[KYUUBI #670]</a>: KyuubiSQLException support sqlState and errorCode</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/707">[KYUUBI #707]</a>: Respect spark.sql.catalogImplementation in engine</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/641">[KYUUBI #641]</a>: Support custom authentication</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/751">[KYUUBI #751]</a>: Support single session mode</p>
+</li>
+<li>
+<p>[1.2]<a href="https://github.com/apache/incubator-kyuubi/issues/457">[KYUUBI #457]</a>: Support configurable initialize sql statement for engine startup</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/857">[KYUUBI #857]</a>: Support configurable initialize SQL statement for each session</p>
+</li>
+</ul>
+<h2 id="integration">Integration</h2>
+<ul>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/755">[KYUUBI #755]</a>: Default build against Spark 3.1</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/693">[KYUUBI #693]</a><a href="https://github.com/apache/incubator-kyuubi/pull/760">[KYUUBI #760]</a>: Support build against JDK11</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/768">[KYUUBI #768]</a>[K8S]: Add module shuffle-files-cleaner</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/844">[KYUUBI #844]</a>[K8S]: Exposing Kyuubi as a NodePort service</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/859">[KYUUBI #859]</a>[K8S]: Add kubernetes configmap</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/656">[KYUUBI #656]</a>[K8S]: Document how to deploy Kyuubi engines on Kubernetes</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/776">[KYUUBI #776]</a>[K8S]: Run kyuubi on Kubernetes - make basic dockerfile and example</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/444">[KYUUBI #444]</a><a href="https://github.com/apache/incubator-kyuubi/issues/854">[KYUUBI #854]</a>[TEST][K8S]: Add minikube for K8s integration test</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/712">[KYUUBI #712]</a>[LDAP]: Add a new config property authentication.ldap.guidKey</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/643">[KYUUBI #643]</a>[TEST]: Test Detla 1.0.0 with Spark 3.1</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/948">[KYUUBI #948]</a>[TEST]: Test Iceberg 0.12.0 with Spark 3.0/3.1</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/527">[KYUUBI #527]</a>[TEST][YARN]: Test with MiniYARNCluster</p>
+</li>
+</ul>
+<h2 id="observability">Observability</h2>
+<ul>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/737">[KYUUBI #737]</a>: Add monitor module</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/727">[KYUUBI #727]</a>: Add the listener for each SQL</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/767">[KYUUBI #767]</a>: Add statement event tracking</p>
+</li>
+</ul>
+<h2 id="performance">Performance</h2>
+<ul>
+<li>[1.2]<a href="https://github.com/apache/incubator-kyuubi/pull/629">[KYUUBI #629]</a>: Refine distributed lock to lock only engine bootstrap</li>
+</ul>
+<h2 id="others">Others</h2>
+<ul>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/416">[KYUUBI #416]</a>: Detected Dependency List Change for better dependency management</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/pull/487">[KYUUBI #487]</a><a href="https://github.com/apache/incubator-kyuubi/pull/566">[KYUUBI #566]</a>: Add TPC-DS DDL test cases</p>
+</li>
+<li>
+<p><a href="https://github.com/apache/incubator-kyuubi/issues/871">[KYUUBI #871]</a>: Change module name kyuubi-main to kyuubi-server</p>
+</li>
+</ul>
+
+
+            
+        </ul>
   </div>
 
 </section>
