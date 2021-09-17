@@ -2,7 +2,7 @@
 title: Kyuubi Project Improvement Proposals (KPIP)
 menu:
     main:
-        name: "Improvement proposals (KPIP)"
+        name: "Improvement Proposals (KPIP)"
         parent: "community"
 ---
 <!---

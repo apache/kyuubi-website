@@ -2,7 +2,7 @@
 title: Contributing
 menu:
     main:
-        name: "Contributing to kyuubi"
+        name: "Contributing to Kyuubi"
         parent: "community"
 ---
 <!---

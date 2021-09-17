@@ -36,11 +36,13 @@ publishDir = "content"
    name = "Latest"
    parent = "documentation"
    url = "docs/latest/index.html"
+   weight = 1
 
 [[menu.main]]
    name = "Stable"
    parent = "documentation"
    url = "docs/stable/index.html"
+   weight = 2
 
 [[menu.main]]
    name = "1.3.0-incubating"
