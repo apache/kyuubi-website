@@ -18,7 +18,7 @@ type: custompage
   limitations under the License. See accompanying LICENSE file.
 -->
 
-See all Kyuubi releases in [github releases page](https://github.com/apache/incubator-kyuubi/releases).
+- [1.3.0-incubating](/release/1.3.0-incubating.html)
 
 ## License
 
