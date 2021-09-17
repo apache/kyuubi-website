@@ -25,4 +25,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: asf-site
-          publish_dir: ./content
+          publish_dir: content
+          destination_dir: content
