@@ -11,6 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License. See accompanying LICENSE file.
 #
-The day part of the dates were missing at the original Hadoop site. During the migration we added the latest day of each month.
+The day part of the dates were missing at the original Kyuubi site. During the migration we added the latest day of each month.
 
 If you would like to create new news item, just create new file with the exact date in the file name, don't use the `xx` pattern any more.
