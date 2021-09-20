@@ -16,6 +16,45 @@
 
   <h1>Download</h1>
 
+  <p>Kyuubi is released as source code tarballs with corresponding binary
+    tarballs for convenience. The downloads are distributed via mirror sites
+    and should be checked for tampering using GPG or SHA-512.</p>
+
+  <p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Version</th>
+      <th>Release date</th>
+      <th>Source download</th>
+      <th>Binary download</th>
+      <th>Release notes</th>
+    </tr>
+    </thead>
+  {{range first 5 (where (where .Site.Pages "Section" "release") ".Params.linked" true) }}
+    <tr>
+      <td>{{.File.BaseFileName }}</td>
+      <td>{{dateFormat "2006 Jan 2 " .Date}}</td>
+      <td>
+        <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz">Binary Download</a>
+        (
+        <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.sha512">checksum</a>
+        <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>
+        )
+      </td>
+      <td>
+        <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz">Source Download</a>
+        (
+        <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">checksum</a>
+        <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.asc">signature</a>)
+      </td>
+      <td>
+        <a href="/release/{{.File.BaseFileName }}.html">Announcement</a>
+      </td>
+    </tr>
+  {{end}}
+  </table>
+  </p>
   {{.Content}}
 </div>
 {{partial "footer.html" .}}
