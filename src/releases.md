@@ -37,7 +37,7 @@ type: custompage
     [Apache](https://www.apache.org/dyn/closer.lua/incubator/kyuubi/).
 3.  shasum -a 512 apache-kyuubi-X.Y.Z-incubating-source.tgz
 
-All previous releases of Kyuubi are available from the [Apache release
+All releases of Kyuubi are available from the [Apache release
 archive](https://archive.apache.org/dist/incubator/kyuubi/) site.
 
 ## License
