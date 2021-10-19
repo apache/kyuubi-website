@@ -15,6 +15,6 @@ title: Description
   limitations under the License. See accompanying LICENSE file.
 -->
 
-<img src="kyuubi-logo.jpg" title="kyuubi-logo" width="200px">Apache Kyuubi (Incubating)
+<img src="kyuubi_logo.png" title="kyuubi-logo" width="200px">Apache Kyuubi (Incubating)
 
 Kyuubi is a distributed multi-tenant Thrift JDBC/ODBC server for large-scale data management, processing, and analytics, built on top of Apache Spark and designed to support more engines (i.e., Flink).
