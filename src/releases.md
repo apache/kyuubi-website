@@ -25,7 +25,7 @@ type: custompage
 2.  Download the signature file apache-kyuubi-X.Y.Z-incubating-source.tgz.asc from
     [Apache](https://www.apache.org/dyn/closer.lua/incubator/kyuubi/).
 3.  Download the [Kyuubi
-    KEYS](https://www.apache.org/dyn/closer.lua/incubator/kyuubi/KEYS/KEYS) file.
+    KEYS](https://www.apache.org/dyn/closer.lua/incubator/kyuubi/KEYS) file.
 4.  gpg --import KEYS
 5.  gpg --verify apache-kyuubi-X.Y.Z-incubating-source.tgz.asc
 
