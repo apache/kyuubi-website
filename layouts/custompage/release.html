@@ -14,11 +14,16 @@
 {{partial "header.html" .}}
 <div class="container">
 
-  <h1>Download</h1>
+  <h1>Download Apache Kyuubi (Incubating)</h1>
 
-  <p>Kyuubi is released as source code tarballs with corresponding binary
-    tarballs for convenience. The downloads are distributed via mirror sites
-    and should be checked for tampering using GPG or SHA-512.</p>
+  <ol>
+    <li>
+      <p>Choose a Kyuubi version to download</p>
+    </li>
+    <li>
+      <p>Verify this with corresponding checksums, signatures and <a href="https://downloads.apache.org/incubator/kyuubi/KEYS">project release KEYS</a>. Here is <a href="https://www.apache.org/dyn/closer.cgi#verify">Verify Instructions</a>.</p>
+    </li>
+  </ol>
 
   <p>
   <table class="table table-striped">
@@ -37,16 +42,16 @@
       <td>{{dateFormat "2006 Jan 2 " .Date}}</td>
       <td>
         <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz">source</a>
-        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">checksum</a>
+        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">checksums</a>,
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.asc">signature</a>)
       </td>
       <td>
         <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz">binary</a>
-        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.sha512">checksum</a>
+        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.sha512">checksums</a>,
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>)
       </td>
       <td>
-        <a href="/release/{{.File.BaseFileName }}.html">Announcement</a>
+        <a href="/release/{{.File.BaseFileName }}.html">release notes</a>
       </td>
     </tr>
   {{end}}

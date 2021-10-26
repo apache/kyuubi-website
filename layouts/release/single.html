@@ -19,28 +19,5 @@
     {{.Content}}
     <small>{{dateFormat "2006 Jan 2 " .Date}}</small>
   </div>
-  <div class="col-md-4">
-      <p>
-          <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/KEYS" class="btn btn-primary">KEYS</a>
-          <a href="https://www.apache.org/dyn/closer.cgi#verify" class="btn btn-primary">Verify Instructions</a>
-      </p>
-      <p>
-        <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz" class="btn btn-success">Binary Download</a>
-        (
-          <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.sha512">checksum</a>
-          <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>
-        )
-      </p>
-      <p>
-        <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz" class="btn btn-warning">Source Download</a>
-        (
-          <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">checksum</a>
-          <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.asc">signature</a>
-        )
-      </p>
-      <p>
-        <a href="{{.Site.BaseURL}}/docs/r{{.File.BaseFileName }}" class="btn btn-primary">Documentation</a>
-      </p>
-  </div>
 </div>
 {{partial "footer.html" .}}
