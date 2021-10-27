@@ -21,7 +21,7 @@
       <p>Choose a Kyuubi version to download</p>
     </li>
     <li>
-      <p>Verify this with corresponding checksums, signatures and <a href="https://downloads.apache.org/incubator/kyuubi/KEYS">project release KEYS</a>. Here is <a href="https://www.apache.org/dyn/closer.cgi#verify">Verify Instructions</a>.</p>
+      <p>Verify this with corresponding hashes(sha512), signatures and <a href="https://downloads.apache.org/incubator/kyuubi/KEYS">project release KEYS</a>. The instructions for checking hashes(sha512) and signatures is indicated on <a href="https://www.apache.org/dyn/closer.cgi#verify">Verify Instructions</a> page.</p>
     </li>
   </ol>
 
@@ -42,12 +42,12 @@
       <td>{{dateFormat "2006 Jan 2 " .Date}}</td>
       <td>
         <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz">source</a>
-        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">checksums</a>,
+        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">sha512</a>,
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.asc">signature</a>)
       </td>
       <td>
         <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz">binary</a>
-        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.sha512">checksums</a>,
+        (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.sha512">sha512</a>,
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>)
       </td>
       <td>
