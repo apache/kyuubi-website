@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi" href="aqe.html" />
+    <link rel="prev" title="The Engine Configuration Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#basics">Basics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#configurations">Configurations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../settings.html">1. Introduction to the Kyuubi Configurations System</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">The Engine Configuration Guide</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aqe.html">2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+          <li><a href="index.html">The Engine Configuration Guide</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/deployment/spark/dynamic_allocation.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../../_images/kyuubi_logo.png" src="../../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="how-to-use-spark-dynamic-resource-allocation-dra-in-kyuubi">
+<h1><span class="section-number">1. </span>How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi<a class="headerlink" href="#how-to-use-spark-dynamic-resource-allocation-dra-in-kyuubi" title="Permalink to this headline">¶</a></h1>
+<p>When we adopt Kyuubi in a production environment,
+we always want to use the environment’s computing resources more cost-effectively and efficiently.
+Cluster managers such as  K8S and Yarn manage the cluster compute resources,
+divided into different queues or namespaces with different ACLs and quotas.</p>
+<p>In Kyuubi, we acquire computing resources from the cluster manager to submit the engines.
+The engines respond to various types of client requests,
+some of which consume many computing resources to process,
+while others may require very few resources to complete.
+If we have fixed-sized engines,
+a.k.a. with a fixed number for <code class="docutils literal notranslate"><span class="pre">spark.executor.instances</span></code>,
+it may cause a waste of resources for some lightweight workloads,
+while for some heavyweight workloads,
+it should probably not have enough concurrency capacity resulting in poor performance.</p>
+<p>When the engine has executor idled,
+we should release it back to the resource pool promptly,
+and conversely, when the engine is doing chubby tasks,
+we should be able to get and use more resources more efficiently.
+On the one hand, we need to rely on the resource manager’s capabilities for efficient resource allocation,
+resource isolation, and sharing.
+On the other hand, we need to enable Spark’s DRA feature for the engines’ executors’ elastic scaling.</p>
+<div class="section" id="the-basics-of-dynamic-resource-allocation">
+<h2><span class="section-number">1.1. </span>The Basics of Dynamic Resource Allocation<a class="headerlink" href="#the-basics-of-dynamic-resource-allocation" title="Permalink to this headline">¶</a></h2>
+<p>Spark provides a mechanism to dynamically adjust the application resources based on the workload, which means that an application may give resources back to the cluster if they are no longer used and request them again later when there is demand.
+This feature is handy if multiple applications share resources on YARN, Kubernetes, and other platforms.</p>
+<p>For Kyuubi engines,
+which are typical Spark applications,
+the dynamic allocation allows Spark to dynamically scale the cluster resources allocated to them based on the workloads.
+When dynamic allocation is enabled,
+and an engine has a backlog of pending tasks,
+it can request executors via <code class="docutils literal notranslate"><span class="pre">ExecutorAllocationManager</span></code>.
+When the engine has executors that become idle, the executors are released,
+and the occupied resources are given back to the cluster manager.
+Then other engines or other applications run in the same queue could acquire the resources.</p>
+</div>
+<div class="section" id="how-to-enable-dynamic-resource-allocation">
+<h2><span class="section-number">1.2. </span>How to Enable Dynamic Resource Allocation<a class="headerlink" href="#how-to-enable-dynamic-resource-allocation" title="Permalink to this headline">¶</a></h2>
+<p>The prerequisite for enabling this feature is for downstream stages to have proper access to shuffle data, even if the executors that generated the data are recycled.</p>
+<p>Spark provides two implementations for shuffle data tracking. If either is enabled, we can use the  DRA feature properly.</p>
+<div class="section" id="dynamic-resource-allocation-w-external-shuffle-service">
+<h3>Dynamic Resource Allocation w/ External Shuffle Service<a class="headerlink" href="#dynamic-resource-allocation-w-external-shuffle-service" title="Permalink to this headline">¶</a></h3>
+<p>Having an external shuffle service (ESS) makes sure that all the data is stored outside of executors.
+This prerequisite was needed as Spark needed to ensure that the executors’ removal does not remove shuffle data.
+When deploying Kyuubi with a cluster manager that provides ESS, enable DRA for all the engines with the configurations below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spark.shuffle.service.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<p>Another thing to be sure of is that <code class="docutils literal notranslate"><span class="pre">spark.shuffle.service.port</span></code> should be configured to point to the port on which the ESS is running.</p>
+</div>
+<div class="section" id="dynamic-allocation-w-o-external-shuffle-service">
+<h3>Dynamic Allocation w/o External Shuffle Service<a class="headerlink" href="#dynamic-allocation-w-o-external-shuffle-service" title="Permalink to this headline">¶</a></h3>
+<p>Implementations of the ESS feature are cluster manager dependent. Yarn, for instance, where the ESS needs to be deployed cluster-widely and is actually running in the Yarn’s <code class="docutils literal notranslate"><span class="pre">NodeManager</span></code> component. Nevertheless, if run Kyuubi’s engines on Kubernetes, the ESS is not an option yet.
+Since Spark 3.0, the DRA can run without ESS. The relative feature called <code class="docutils literal notranslate"><span class="pre">Shuffle</span> <span class="pre">Tracking</span></code> was introduced by <a class="reference external" href="https://issues.apache.org/jira/browse/SPARK-27963">SPARK-27963</a>.</p>
+<p>When deploying Kyuubi with a cluster manager that without ESS or the ESS is not attractive, enable DRA with <code class="docutils literal notranslate"><span class="pre">Shuffle</span> <span class="pre">Tracking</span></code> instead for all the engines with the configurations below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spark.dynamicAllocation.shuffleTracking.enabled</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">Shuffle</span> <span class="pre">Tracking</span></code> is enabled, <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.shuffleTracking.timeout(default:</span> <span class="pre">infinity)</span></code> controls the timeout for executors that are holding shuffle data. Spark will rely on the shuffles being garbage collected to be able to release executors by default. When the garbage collection is not cleaning up shuffles quickly enough, this timeout forces Spark to delete executors even when they are storing shuffle data.</p>
+</div>
+</div>
+<div class="section" id="sizing-for-engines-w-dynamic-resource-allocation">
+<h2><span class="section-number">1.3. </span>Sizing for engines w/ Dynamic Resource Allocation<a class="headerlink" href="#sizing-for-engines-w-dynamic-resource-allocation" title="Permalink to this headline">¶</a></h2>
+<p>Resources for a single executor, such as CPUs and memory, can be fixed size. So, the range [<code class="docutils literal notranslate"><span class="pre">minExecutors</span></code>, <code class="docutils literal notranslate"><span class="pre">maxExecutors</span></code>] determines how many recourses the engine can take from the cluster manager.</p>
+<p>On the one hand, the  <code class="docutils literal notranslate"><span class="pre">minExecutors</span></code> tells Spark to keep how many executors at least. If it is set too close to 0(default), the engine might complain about a lack of resources if the cluster manager is quite busy and for a long time.
+However, the larger the <code class="docutils literal notranslate"><span class="pre">minExecutors</span></code> goes, the more resources may be wasted during the engine’s idle time.</p>
+<p>On the other hand, the <code class="docutils literal notranslate"><span class="pre">maxExecutors</span></code> determines the upper bound executors of an engine could reach. From the individual engine perspective, this value is the larger, the better, to handle heavier queries. However, we must limit it to a reasonable range in terms of the entire cluster’s resources. Otherwise, a large query may trigger the engine where it runs to consume too many resources from the queue/namespace and occupy them for a considerable time, which could be a bad idea for using the resources efficiently. In this case, we would prefer that such an enormous task be done more slowly in a limited amount of concurrency.</p>
+<p>The following Spark configurations consist of sizing for the DRA.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">dynamicAllocation</span><span class="o">.</span><span class="n">minExecutors</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">dynamicAllocation</span><span class="o">.</span><span class="n">maxExecutors</span><span class="o">=</span><span class="mi">500</span>
+</pre></div>
+</div>
+<p>Additionally, another config called <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.initialExecutors</span></code> can be used to decide how many executors to request during engine bootstrapping or failover.</p>
+<p>Ideally,   the size relationship between them should be as <code class="docutils literal notranslate"><span class="pre">minExecutors</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">initialExecutors</span></code> &lt; <code class="docutils literal notranslate"><span class="pre">maxExecutors</span></code>.</p>
+</div>
+<div class="section" id="resource-allocation-policy">
+<h2><span class="section-number">1.4. </span>Resource Allocation Policy<a class="headerlink" href="#resource-allocation-policy" title="Permalink to this headline">¶</a></h2>
+<p>When the DRA notices that the current resources are insufficient for the current workload, it will request more executors.</p>
+<div align=center><p><img alt="../../_images/dra_task_pending.png" src="../../_images/dra_task_pending.png" /></p>
+</div><p>By default, the dynamic allocation will request enough executors to maximize the parallelism according to the number of tasks to process.</p>
+<div align=center><p><img alt="../../_images/dra_executor_added.png" src="../../_images/dra_executor_added.png" /></p>
+</div><p>While this minimizes the latency of the job, but with small tasks, the default behavior can waste many resources due to executor allocation overhead, as some executors might not even do any work.</p>
+<p>In this case, we can adjust <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.executorAllocationRatio</span></code> a bit lower to reduce the number of executors w.r.t. full parallelism.  For instance, 0.5 will divide the target number of executors by 2.</p>
+<div align=center><p><img alt="../../_images/dra_executor_add_ratio.png" src="../../_images/dra_executor_add_ratio.png" /></p>
+</div><p>After finish one task,  Spark Driver will schedule a new task for the executor with available cores. When pending tasks become fewer and fewer, some executors become idle for no new coming tasks.</p>
+<div align=center><p><img alt="../../_images/dra_task_fin.png" src="../../_images/dra_task_fin.png" /></p>
+</div><p>If one executor reach the maximn timeout, it will be removed.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.executorIdleTimeout</span><span class="o">=</span><span class="s">60s</span>
+<span class="na">spark.dynamicAllocation.cachedExecutorIdleTimeout</span><span class="o">=</span><span class="s">infinity</span>
+</pre></div>
+</div>
+<div align=center><p><img alt="../../_images/dra_executor_removal.png" src="../../_images/dra_executor_removal.png" /></p>
+</div><p>If the DRA finds there have been pending tasks backlogged for more than the timeouts, new executors will be requested, controlled by the following configs.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.schedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span>
+<span class="na">spark.dynamicAllocation.sustainedSchedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="best-practices-for-applying-dra-to-kyuubi">
+<h2><span class="section-number">1.5. </span>Best Practices for Applying DRA to Kyuubi<a class="headerlink" href="#best-practices-for-applying-dra-to-kyuubi" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi is a long-running service to make it easier for end-users to use Spark SQL without having much of Spark’s basic knowledge. It is essential to have a basic configuration for resource management that works for most scenarios on the server-side.</p>
+<div class="section" id="setting-default-configurations">
+<h3>Setting Default Configurations<a class="headerlink" href="#setting-default-configurations" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="settings.html#via-spark-defaults-conf">Configuring by <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code></a> at the engine side is the best way to set up Kyuubi with DRA. All engines will be instantiated with DRA enabled.</p>
+<p>Here is a config setting that we use in our platform when deploying Kyuubi.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="c">##false if perfer shuffle tracking than ESS</span>
+<span class="na">spark.shuffle.service.enabled</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spark.dynamicAllocation.initialExecutors</span><span class="o">=</span><span class="s">10</span>
+<span class="na">spark.dynamicAllocation.minExecutors</span><span class="o">=</span><span class="s">10</span>
+<span class="na">spark.dynamicAllocation.maxExecutors</span><span class="o">=</span><span class="s">500</span>
+<span class="na">spark.dynamicAllocation.executorAllocationRatio</span><span class="o">=</span><span class="s">0.5</span>
+<span class="na">spark.dynamicAllocation.executorIdleTimeout</span><span class="o">=</span><span class="s">60s</span>
+<span class="na">spark.dynamicAllocation.cachedExecutorIdleTimeout</span><span class="o">=</span><span class="s">30min</span>
+<span class="c"># true if perfer shuffle tracking than ESS</span>
+<span class="na">spark.dynamicAllocation.shuffleTracking.enabled</span><span class="o">=</span><span class="s">false</span>
+<span class="na">spark.dynamicAllocation.shuffleTracking.timeout</span><span class="o">=</span><span class="s">30min</span>
+<span class="na">spark.dynamicAllocation.schedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span>
+<span class="na">spark.dynamicAllocation.sustainedSchedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span>
+<span class="na">spark.cleaner.periodicGC.interval</span><span class="o">=</span><span class="s">5min</span>
+</pre></div>
+</div>
+<p>Note that, <code class="docutils literal notranslate"><span class="pre">spark.cleaner.periodicGC.interval=5min</span></code> is useful here when <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.shuffleTracking.enabled</span></code> is enabled, as we can tell Spark to be more active for shuffle data GC.</p>
+</div>
+<div class="section" id="setting-user-default-settings">
+<h3>Setting User Default Settings<a class="headerlink" href="#setting-user-default-settings" title="Permalink to this headline">¶</a></h3>
+<p>On the server-side, the workloads for different users might be different.</p>
+<p>Then we can set different defaults for them via the <a class="reference external" href="../settings.html#user-defaults">User Defaults</a> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code></p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># For a user named kent</span>
+<span class="na">___kent___.spark.dynamicAllocation.maxExecutors</span><span class="o">=</span><span class="s">20</span>
+<span class="c"># For a user named bob</span>
+<span class="na">___bob___.spark.dynamicAllocation.maxExecutors</span><span class="o">=</span><span class="s">600</span>
+</pre></div>
+</div>
+<p>In this case, the user named <code class="docutils literal notranslate"><span class="pre">kent</span></code> can only use 20 executors for his engines, but <code class="docutils literal notranslate"><span class="pre">bob</span></code> can use 600 executors for better performance or handle heavy workloads.</p>
+</div>
+<div class="section" id="dynamically-setting">
+<h3>Dynamically Setting<a class="headerlink" href="#dynamically-setting" title="Permalink to this headline">¶</a></h3>
+<p>All AQE related configurations are static of Spark core and unchangeable by <code class="docutils literal notranslate"><span class="pre">SET</span></code> syntaxes before each SQL query. For example,</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">spark</span><span class="p">.</span><span class="n">dynamicAllocation</span><span class="p">.</span><span class="n">maxExecutors</span><span class="o">=</span><span class="mi">33</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">default</span><span class="p">.</span><span class="n">tableA</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>For the above case, the value - 33 will not affect as Spark does not support change core configurations in runtime.</p>
+<p>Instead, end-users can set them via <a class="reference external" href="../settings.html#via-jdbc-connection-url">JDBC Connection URL</a> for some specific cases.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">1.6. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/job-scheduling.html#dynamic-resource-allocation">Spark Official Online Document: Dynamic Resource Allocation</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/configuration.html#dynamic-allocation">Spark Official Online Document: Dynamic Resource Allocation Configurations</a></p></li>
+<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SPARK-27963">SPARK-27963: Allow dynamic allocation without an external shuffle service</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="aqe.html" class="btn btn-neutral float-right" title="2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="The Engine Configuration Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

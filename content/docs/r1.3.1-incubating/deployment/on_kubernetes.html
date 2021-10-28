@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. Deploy Kyuubi engines on Kubernetes &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Integration with Hive Metastore" href="hive_metastore.html" />
+    <link rel="prev" title="1. Deploy Kyuubi engines on Yarn" href="on_yarn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#basics">Basics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="on_yarn.html">1. Deploy Kyuubi engines on Yarn</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2. Deploy Kyuubi engines on Kubernetes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">2.1. Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurations">2.2. Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hive_metastore.html">3. Integration with Hive Metastore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="high_availability_guide.html">4. Kyuubi High Availability Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#configurations">Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>Deploy Kyuubi engines on Kubernetes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/deployment/on_kubernetes.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="deploy-kyuubi-engines-on-kubernetes">
+<h1><span class="section-number">2. </span>Deploy Kyuubi engines on Kubernetes<a class="headerlink" href="#deploy-kyuubi-engines-on-kubernetes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2><span class="section-number">2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>When you want to run Kyuubi’s Spark SQL engines on Kubernetes, you’d better have cognition upon the following things.</p>
+<ul class="simple">
+<li><p>Read about <a class="reference external" href="http://spark.apache.org/docs/latest/running-on-kubernetes.html">Running Spark On Kubernetes</a></p></li>
+<li><p>An active Kubernetes cluster</p></li>
+<li><p><a class="reference external" href="https://kubernetes.io/docs/reference/kubectl/overview/">Kubectl</a></p></li>
+<li><p>KubeConfig of the target cluster</p></li>
+</ul>
+</div>
+<div class="section" id="configurations">
+<h2><span class="section-number">2.2. </span>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="master">
+<h3><span class="section-number">2.2.1. </span>Master<a class="headerlink" href="#master" title="Permalink to this headline">¶</a></h3>
+<p>Spark on Kubernetes config master by using a special format.</p>
+<p><code class="docutils literal notranslate"><span class="pre">spark.master=k8s://https://&lt;k8s-apiserver-host&gt;:&lt;k8s-apiserver-port&gt;</span></code></p>
+<p>You can use cmd <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code> to get api-server host and port.</p>
+</div>
+<div class="section" id="docker-image">
+<h3><span class="section-number">2.2.2. </span>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this headline">¶</a></h3>
+<p>Spark ships a <code class="docutils literal notranslate"><span class="pre">./bin/docker-image-tool.sh</span></code> script to build and publish the Docker images for running Spark applications on Kubernetes.</p>
+<p>When deploying Kyuubi engines against a Kubernetes cluster, we need to set up the docker images in the Docker registry first.</p>
+<p>Example usage is:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./bin/docker-image-tool.sh -r &lt;repo&gt; -t my-tag build
+./bin/docker-image-tool.sh -r &lt;repo&gt; -t my-tag push
+<span class="c1"># To build docker image with specify openJdk </span>
+./bin/docker-image-tool.sh -r &lt;repo&gt; -t my-tag -b <span class="nv">java_image_tag</span><span class="o">=</span>&lt;openjdk:<span class="si">${</span><span class="nv">java_image_tag</span><span class="si">}</span>&gt; build
+<span class="c1"># To build additional PySpark docker image</span>
+./bin/docker-image-tool.sh -r &lt;repo&gt; -t my-tag -p ./kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
+<span class="c1"># To build additional SparkR docker image</span>
+./bin/docker-image-tool.sh -r &lt;repo&gt; -t my-tag -R ./kubernetes/dockerfiles/spark/bindings/R/Dockerfile build
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-cluster">
+<h3><span class="section-number">2.2.3. </span>Test Cluster<a class="headerlink" href="#test-cluster" title="Permalink to this headline">¶</a></h3>
+<p>You can use the shell code to test your cluster whether it is normal or not.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">$SPARK_HOME</span>/bin/spark-submit <span class="se">\</span>
+ --master k8s://https://&lt;k8s-apiserver-host&gt;:&lt;k8s-apiserver-port&gt; <span class="se">\</span>
+ --class org.apache.spark.examples.SparkPi <span class="se">\</span>
+ --conf spark.executor.instances<span class="o">=</span><span class="m">5</span> <span class="se">\</span>
+ --conf spark.dynamicAllocation.enabled<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+ --conf spark.shuffle.service.enabled<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+ --conf spark.kubernetes.container.image<span class="o">=</span>&lt;spark-image&gt; <span class="se">\</span>
+ local://&lt;path_to_examples.jar&gt;
+</pre></div>
+</div>
+<p>When running shell, you can use cmd <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">describe</span> <span class="pre">pod</span> <span class="pre">&lt;podName&gt;</span></code> to check if the information meets expectations.</p>
+</div>
+<div class="section" id="serviceaccount">
+<h3><span class="section-number">2.2.4. </span>ServiceAccount<a class="headerlink" href="#serviceaccount" title="Permalink to this headline">¶</a></h3>
+<p>When use Client mode to submit application, spark driver use the kubeconfig to access api-service to create and watch executor pods.</p>
+<p>When use Cluster mode to submit application, spark driver pod use serviceAccount to access api-service to create and watch executor pods.</p>
+<p>In both cases, you need to figure out whether you have the permissions under the corresponding namespace. You can use following cmd to create serviceAccount (You need to have the kubeconfig which have the create serviceAccount permission).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># create serviceAccount</span>
+kubectl create serviceaccount spark -n &lt;namespace&gt;
+<span class="c1"># binding role</span>
+kubectl create clusterrolebinding spark-role --clusterrole<span class="o">=</span>edit --serviceaccount<span class="o">=</span>&lt;namespace&gt;:spark --namespace<span class="o">=</span>&lt;namespace&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="volumes">
+<h3><span class="section-number">2.2.5. </span>Volumes<a class="headerlink" href="#volumes" title="Permalink to this headline">¶</a></h3>
+<p>As it known to us all, Kubernetes can use configurations to mount volumes into driver and executor pods.</p>
+<ul class="simple">
+<li><p>hostPath: mounts a file or directory from the host node’s filesystem into a pod.</p></li>
+<li><p>emptyDir: an initially empty volume created when a pod is assigned to a node.</p></li>
+<li><p>nfs: mounts an existing NFS(Network File System) into a pod.</p></li>
+<li><p>persistentVolumeClaim: mounts a PersistentVolume into a pod.</p></li>
+</ul>
+<p>Note: Please
+see <a class="reference external" href="http://spark.apache.org/docs/latest/running-on-kubernetes.html#security">the Security section of this document</a> for security issues related to volume mounts.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">volumes</span><span class="o">.&lt;</span><span class="nb">type</span><span class="o">&gt;.&lt;</span><span class="n">name</span><span class="o">&gt;.</span><span class="n">options</span><span class="o">.</span><span class="n">path</span><span class="o">=&lt;</span><span class="n">dist_path</span><span class="o">&gt;</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">volumes</span><span class="o">.&lt;</span><span class="nb">type</span><span class="o">&gt;.&lt;</span><span class="n">name</span><span class="o">&gt;.</span><span class="n">mount</span><span class="o">.</span><span class="n">path</span><span class="o">=&lt;</span><span class="n">container_path</span><span class="o">&gt;</span>
+
+<span class="n">spark</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">volumes</span><span class="o">.&lt;</span><span class="nb">type</span><span class="o">&gt;.&lt;</span><span class="n">name</span><span class="o">&gt;.</span><span class="n">options</span><span class="o">.</span><span class="n">path</span><span class="o">=&lt;</span><span class="n">dist_path</span><span class="o">&gt;</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">volumes</span><span class="o">.&lt;</span><span class="nb">type</span><span class="o">&gt;.&lt;</span><span class="n">name</span><span class="o">&gt;.</span><span class="n">mount</span><span class="o">.</span><span class="n">path</span><span class="o">=&lt;</span><span class="n">container_path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Read <a class="reference external" href="http://spark.apache.org/docs/latest/running-on-kubernetes.html#using-kubernetes-volumes">Using Kubernetes Volumes</a> for more about volumes.</p>
+</div>
+<div class="section" id="podtemplatefile">
+<h3><span class="section-number">2.2.6. </span>PodTemplateFile<a class="headerlink" href="#podtemplatefile" title="Permalink to this headline">¶</a></h3>
+<p>Kubernetes allows defining pods from template files. Spark users can similarly use template files to define the driver or executor pod configurations that Spark configurations do not support.</p>
+<p>To do so, specify the spark properties <code class="docutils literal notranslate"><span class="pre">spark.kubernetes.driver.podTemplateFile</span></code> and <code class="docutils literal notranslate"><span class="pre">spark.kubernetes.executor.podTemplateFile</span></code> to point to local files accessible to the spark-submit process.</p>
+</div>
+<div class="section" id="other">
+<h3><span class="section-number">2.2.7. </span>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
+<p>You can read Spark’s official documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/running-on-kubernetes.html">Running on Kubernetes</a> for more information.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="hive_metastore.html" class="btn btn-neutral float-right" title="3. Integration with Hive Metastore" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="on_yarn.html" class="btn btn-neutral float-left" title="1. Deploy Kyuubi engines on Yarn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

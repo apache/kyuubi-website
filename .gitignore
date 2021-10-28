@@ -4,5 +4,5 @@ hugo.exe
 .DS_Store
 npm-debug.log
 resources
-content/
+content/*
 !content/docs/

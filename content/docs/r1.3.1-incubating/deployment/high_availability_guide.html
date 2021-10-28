@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>4. Kyuubi High Availability Guide &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Introduction to the Kyuubi Configurations System" href="settings.html" />
+    <link rel="prev" title="3. Integration with Hive Metastore" href="hive_metastore.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#basics">Basics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="on_yarn.html">1. Deploy Kyuubi engines on Yarn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="on_kubernetes.html">2. Deploy Kyuubi engines on Kubernetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hive_metastore.html">3. Integration with Hive Metastore</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4. Kyuubi High Availability Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#load-balance-mode">4.1. Load Balance Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-high-availability">4.2. Configuring High Availability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#configurations">Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+      <li><span class="section-number">4. </span>Kyuubi High Availability Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/deployment/high_availability_guide.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div class="section" id="kyuubi-high-availability-guide">
+<h1><span class="section-number">4. </span>Kyuubi High Availability Guide<a class="headerlink" href="#kyuubi-high-availability-guide" title="Permalink to this headline">¶</a></h1>
+<p>As an enterprise-class ad-hoc SQL query service built on top of <a class="reference external" href="http://spark.apache.org/">Apache Spark</a>, Kyuubi takes high availability(HA) as a major characteristic, aiming to ensure an agreed level of service availability, such as a higher than normal period of uptime.</p>
+<p>Running Kyuubi in HA mode is to use groups of computers or containers that support SQL query service on Kyuubi that can be reliably utilized with a minimum amount of down-time. Kyuubi operates by using <a class="reference external" href="https://zookeeper.apache.org/">Apache ZooKeeper</a> to harness redundant service instances in groups that provide continuous service when one or more components fail.</p>
+<p>Without HA, if a server crashes, Kyuubi will be unavailable until the crashed server is fixed. With HA, this situation will be remedied by hardware/software faults auto detecting, and immediately another Kyuubi service instance will be ready to serve without requiring human intervention.</p>
+<div class="section" id="load-balance-mode">
+<h2><span class="section-number">4.1. </span>Load Balance Mode<a class="headerlink" href="#load-balance-mode" title="Permalink to this headline">¶</a></h2>
+<p>Load balancing aims to optimize all Kyuubi service units usage, maximize throughput, minimize response time, and avoid overload of a single unit. Using multiple Kyuubi service units with load balancing instead of a single unit may increase reliability and availability through redundancy.</p>
+<p><img alt="../_images/ha.png" src="../_images/ha.png" /></p>
+<p>With Hive JDBC Driver, a client can specify service discovery mode in JDBC connection string, i.e. <code class="docutils literal notranslate"><span class="pre">serviceDiscoveryMode=zooKeeper;</span></code> and set <code class="docutils literal notranslate"><span class="pre">zooKeeperNameSpace=kyuubiserver;</span></code>, then it can randomly pick one of the Kyuubi service uris from the specified ZooKeeper address in the <code class="docutils literal notranslate"><span class="pre">/kyuubiserver</span></code> path.</p>
+<p>When we set <code class="docutils literal notranslate"><span class="pre">kyuubi.ha.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>, load balance mode is activated by default. Please make sure that you specify the correct ZooKeeper address via <code class="docutils literal notranslate"><span class="pre">kyuubi.ha.zookeeper.quorum</span></code> and <code class="docutils literal notranslate"><span class="pre">kyuubi.ha.zookeeper.client.port</span></code>.</p>
+</div>
+<div class="section" id="configuring-high-availability">
+<h2><span class="section-number">4.2. </span>Configuring High Availability<a class="headerlink" href="#configuring-high-availability" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to configure high availability. These configurations in the following table can be treat like normal Spark properties by setting them in <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code> file or via <code class="docutils literal notranslate"><span class="pre">--conf</span></code> parameter in server starting scripts.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.acl.enabled</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>false</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Set to true if the zookeeper ensemble is kerberized</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.base.retry<br>.wait</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>1000</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Initial amount of time to wait between retries to the zookeeper ensemble</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.max<br>.retries</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>3</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Max retry times for connecting to the zookeeper ensemble</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.max.retry<br>.wait</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>30000</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Max amount of time to wait between retries for BOUNDED_EXPONENTIAL_BACKOFF policy can reach, or max time until elapsed for UNTIL_ELAPSED policy to connect the zookeeper ensemble</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.retry<br>.policy</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>EXPONENTIAL_BACKOFF</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>The retry policy for connecting to the zookeeper ensemble, all candidates are: <ul><li>ONE_TIME</li><li> N_TIME</li><li> EXPONENTIAL_BACKOFF</li><li> BOUNDED_EXPONENTIAL_BACKOFF</li><li> UNTIL_ELAPSED</li></ul></div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.timeout</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>15000</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>The timeout(ms) of creating the connection to the zookeeper ensemble</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.namespace</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>kyuubi</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>The root directory for the service to deploy its instance uri. Additionally, it will creates a -[username] suffixed root directory for each application</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.quorum</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>The connection string for the zookeeper ensemble</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.session.timeout</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>60000</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>The timeout(ms) of a connected session to be idled</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="settings.html" class="btn btn-neutral float-right" title="1. Introduction to the Kyuubi Configurations System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hive_metastore.html" class="btn btn-neutral float-left" title="3. Integration with Hive Metastore" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

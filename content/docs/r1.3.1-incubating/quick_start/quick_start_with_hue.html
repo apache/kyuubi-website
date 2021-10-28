@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>6. Getting Started with Kyuubi and Cloudera Hue &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deploying Kyuubi" href="../deployment/index.html" />
+    <link rel="prev" title="5. Getting Started With Kyuubi and DataGrip" href="quick_start_with_datagrip.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Quick Start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">1. Getting Started with Kyuubi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_dbeaver.html">2. Getting Started With Kyuubi and DBeaver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_beeline.html">3. Getting Started With Hive Beeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_jdbc.html">4. Getting Started With Hive JDBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_datagrip.html">5. Getting Started With Kyuubi and DataGrip</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Getting Started with Kyuubi and Cloudera Hue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-hue">6.1. What is Hue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparation">6.2. Preparation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-kyuubi-started">6.2.1. Get Kyuubi Started</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-hue-in-docker">6.3. Run Hue in Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">6.3.1. Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-hue-in-docker">6.3.2. Start Hue in Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#for-cdh-6-x-users">6.4. For CDH 6.x Users</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Quick Start</a> &raquo;</li>
+        
+      <li><span class="section-number">6. </span>Getting Started with Kyuubi and Cloudera Hue</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/quick_start/quick_start_with_hue.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="getting-started-with-kyuubi-and-cloudera-hue">
+<h1><span class="section-number">6. </span>Getting Started with Kyuubi and Cloudera Hue<a class="headerlink" href="#getting-started-with-kyuubi-and-cloudera-hue" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-hue">
+<h2><span class="section-number">6.1. </span>What is Hue<a class="headerlink" href="#what-is-hue" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://gethue.com/">Hue</a> is an open source SQL Assistant for Databases &amp; Data Warehouses.</p>
+</div>
+<div class="section" id="preparation">
+<h2><span class="section-number">6.2. </span>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-kyuubi-started">
+<h3><span class="section-number">6.2.1. </span>Get Kyuubi Started<a class="headerlink" href="#get-kyuubi-started" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="quick_start.html"><span class="doc">Get the server Started</span></a> first before your try Hue with Kyuubi.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Welcome to
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="run-hue-in-docker">
+<h2><span class="section-number">6.3. </span>Run Hue in Docker<a class="headerlink" href="#run-hue-in-docker" title="Permalink to this headline">¶</a></h2>
+<p>Here we demo running Kyuubi on macOS and Hue on <a class="reference external" href="https://docs.docker.com/docker-for-mac/">Docker for Mac</a>,
+there are several known limitations of network, and you can find
+<a class="reference external" href="https://docs.docker.com/docker-for-mac/networking/#known-limitations-use-cases-and-workarounds">workarounds from here</a>.</p>
+<div class="section" id="configuration">
+<h3><span class="section-number">6.3.1. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Copy a configuration template from Hue Docker image.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="n">gethue</span><span class="o">/</span><span class="n">hue</span><span class="p">:</span><span class="n">latest</span> <span class="n">cat</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">hue</span><span class="o">/</span><span class="n">desktop</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">hue</span><span class="o">.</span><span class="n">ini</span> <span class="o">&gt;</span> <span class="n">hue</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">hue.ini</span></code></p></li>
+</ol>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[beeswax]</span>
+  <span class="c1"># Kyuubi 1.1.x support thrift version from 1 to 10</span>
+  <span class="na">thrift_version</span><span class="o">=</span><span class="s">7</span>
+  <span class="c1"># change to your username to avoid permissions issue for local test</span>
+  <span class="na">auth_username</span><span class="o">=</span><span class="s">chengpan</span>
+
+<span class="k">[notebook]</span>
+  <span class="k">[[interpreters]]</span>
+    <span class="k">[[[sql]]]</span>
+      <span class="na">name</span><span class="o">=</span><span class="s">SparkSQL</span>
+      <span class="na">interface</span><span class="o">=</span><span class="s">hiveserver2</span>
+      
+<span class="k">[spark]</span>
+  <span class="c1"># Host of the Spark Thrift Server</span>
+  <span class="c1"># For macOS users, use docker.for.mac.host.internal to access host network</span>
+  <span class="na">sql_server_host</span><span class="o">=</span><span class="s">docker.for.mac.host.internal</span>
+
+  <span class="c1"># Port of the Spark Thrift Server</span>
+  <span class="na">sql_server_port</span><span class="o">=</span><span class="s">10009</span>
+  
+<span class="c1"># other configurations</span>
+<span class="na">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-hue-in-docker">
+<h3><span class="section-number">6.3.2. </span>Start Hue in Docker<a class="headerlink" href="#start-hue-in-docker" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -p 8888:8888 -v $PWD/hue.ini:/usr/share/hue/desktop/conf/hue.ini gethue/hue:latest
+</pre></div>
+</div>
+<p>Go http://localhost:8888/ and follow the guide to create an account.</p>
+<p><img alt="../_images/start.png" src="../_images/start.png" /></p>
+<p>Having fun with Hue and Kyuubi!</p>
+<p><img alt="../_images/spark_sql_docker.png" src="../_images/spark_sql_docker.png" /></p>
+</div>
+</div>
+<div class="section" id="for-cdh-6-x-users">
+<h2><span class="section-number">6.4. </span>For CDH 6.x Users<a class="headerlink" href="#for-cdh-6-x-users" title="Permalink to this headline">¶</a></h2>
+<p>If you are using CDH 6.x, there is a trick that CDH 6.x blocks Spark in default, you need to modify the configuration to
+overwrite the <code class="docutils literal notranslate"><span class="pre">desktop.app_blacklist</span></code> to remove this restriction.</p>
+<p>Config Hue in Cloudera Manager.</p>
+<p><img alt="../_images/cloudera_manager.png" src="../_images/cloudera_manager.png" /></p>
+<p>Refer following configuration and tune it to fit your environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">desktop</span><span class="p">]</span>
+ <span class="n">app_blacklist</span><span class="o">=</span><span class="n">zookeeper</span><span class="p">,</span><span class="n">hbase</span><span class="p">,</span><span class="n">impala</span><span class="p">,</span><span class="n">search</span><span class="p">,</span><span class="n">sqoop</span><span class="p">,</span><span class="n">security</span>
+ <span class="n">use_new_editor</span><span class="o">=</span><span class="n">true</span>
+<span class="p">[[</span><span class="n">interpreters</span><span class="p">]]</span>
+<span class="p">[[[</span><span class="n">sparksql</span><span class="p">]]]</span>
+  <span class="n">name</span><span class="o">=</span><span class="n">Spark</span> <span class="n">SQL</span>
+  <span class="n">interface</span><span class="o">=</span><span class="n">hiveserver2</span>
+  <span class="c1"># other interpreters</span>
+  <span class="o">...</span>
+<span class="p">[</span><span class="n">spark</span><span class="p">]</span>
+<span class="n">sql_server_host</span><span class="o">=</span><span class="n">kyuubi</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">host</span>
+<span class="n">sql_server_port</span><span class="o">=</span><span class="mi">10009</span>
+</pre></div>
+</div>
+<p>You need to restart the Hue Service to activate the configuration changes, and then Spark SQL will available in editor list.</p>
+<p><img alt="../_images/editor.png" src="../_images/editor.png" /></p>
+<p>Having fun with Hue and Kyuubi!</p>
+<p><img alt="../_images/spark_sql_cdh6.png" src="../_images/spark_sql_cdh6.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../deployment/index.html" class="btn btn-neutral float-right" title="Deploying Kyuubi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quick_start_with_datagrip.html" class="btn btn-neutral float-left" title="5. Getting Started With Kyuubi and DataGrip" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

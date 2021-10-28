@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Kyuubi Authentication Mechanism &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Kinit Auxiliary Service" href="kinit.html" />
+    <link rel="prev" title="Kyuubi Security Overview" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Security</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Authentication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-kerberos">1.1. Using KERBEROS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kinit.html">2. Kinit Auxiliary Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authorization.html">3. ACL Management Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Kyuubi Security Overview</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Kyuubi Authentication Mechanism</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/security/authentication.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="kyuubi-authentication-mechanism">
+<h1><span class="section-number">1. </span>Kyuubi Authentication Mechanism<a class="headerlink" href="#kyuubi-authentication-mechanism" title="Permalink to this headline">¶</a></h1>
+<p>In a secure cluster, services should be able to identify and authenticate callers.
+As the fact that the user claims does not necessarily mean this is true.</p>
+<p>The authentication process of Kyuubi is used to verify the user identity that a client used to talk to the Kyuubi server.
+Once done, a trusted connection will be set up between the client and server if successful; otherwise, rejected.</p>
+<p><strong>Note</strong> that, this authentication only authenticate whether a user can connect with Kyuubi server or not.
+For other secured services that this user wants to interact with, he/she also needs to pass the authentication process of each service, for instance, Hive Metastore, YARN, HDFS.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code>, specify <code class="docutils literal notranslate"><span class="pre">kyuubi.authentication</span></code> to one of the authentication types listing below.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.authentication</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>NONE</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Client authentication types.<ul> <li>NOSASL: raw transport.</li> <li>NONE: no authentication check.</li> <li>KERBEROS: Kerberos/GSSAPI authentication.</li> <li>LDAP: Lightweight Directory Access Protocol authentication.</li></ul></div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table><table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.authentication</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>NONE</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Client authentication types.<ul> <li>NOSASL: raw transport.</li> <li>NONE: no authentication check.</li> <li>KERBEROS: Kerberos/GSSAPI authentication.</li> <li>LDAP: Lightweight Directory Access Protocol authentication.</li></ul></div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.base.dn</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>LDAP base DN.</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.domain</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>LDAP base DN.</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.url</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>SPACE character separated LDAP connection URL(s).</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.sasl.qop</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>auth</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Sasl QOP enable higher levels of protection for Kyuubi communication with clients.<ul> <li>auth - authentication only (default)</li> <li>auth-int - authentication plus integrity protection</li> <li>auth-conf - authentication plus integrity and confidentiality protection. This is applicable only if Kyuubi is configured to use Kerberos authentication.</li> </ul></div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table><div class="section" id="using-kerberos">
+<h2><span class="section-number">1.1. </span>Using KERBEROS<a class="headerlink" href="#using-kerberos" title="Permalink to this headline">¶</a></h2>
+<p>If you are deploying Kyuubi with a kerberized Hadoop cluster, it is strongly recommended that <code class="docutils literal notranslate"><span class="pre">kyuubi.authentication</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">KERBEROS</span></code> too.</p>
+<p>Kerberos is a network authentication protocol that provides the tools of authentication and strong cryptography over the network.
+The Kerberos protocol uses strong cryptography so that a client or a server can prove its identity to its server or client across an insecure network connection.
+After a client and server have used Kerberos to prove their identity, they can also encrypt all of their communications to assure privacy and data integrity as they go about their business.</p>
+<p>The Kerberos architecture is centered around a trusted authentication service called the key distribution center, or KDC.
+Users and services in a Kerberos environment are referred to as principals;
+each principal shares a secret, such as a password, with the KDC.</p>
+<p>Set following for KERBEROS mode:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.kinit<br>.principal</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Name of the Kerberos principal.</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.kinit.keytab</td>
+<td><div style='width: 80pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>Location of Kyuubi server's keytab.</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table><p>For example,</p>
+<ul class="simple">
+<li><p>Configure with Kyuubi service principal</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kyuubi.authentication<span class="o">=</span>KERBEROS
+kyuubi.kinit.principal<span class="o">=</span>spark/kyuubi.apache.org@KYUUBI.APACHE.ORG
+kyuubi.kinit.keytab<span class="o">=</span>/path/to/kyuuib.keytab
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Start Kyuubi</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./bin/kyuubi start
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Kinit with user principal and connect using beeline</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kinit -kt user.keytab user.principal
+
+$ beeline -u <span class="s2">&quot;jdbc:hive2://localhost:10009/;principal=spark/kyuubi.apache.org@KYUUBI.APACHE.ORG&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="kinit.html" class="btn btn-neutral float-right" title="2. Kinit Auxiliary Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Kyuubi Security Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

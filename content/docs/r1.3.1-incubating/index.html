@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Welcome to Kyuubi’s documentation! &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quick_start/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Welcome to Kyuubi’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <img alt="_images/kyuubi_logo.png" class="align-center" src="_images/kyuubi_logo.png" />
+<div class="section" id="welcome-to-kyuubi-s-documentation">
+<h1>Welcome to Kyuubi’s documentation!<a class="headerlink" href="#welcome-to-kyuubi-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Kyuubi™ is a unified multi-tenant JDBC interface for large-scale data processing and analytics, built on top of <a class="reference external" href="http://spark.apache.org/">Apache Spark™</a>.</p>
+<img alt="_images/kyuubi_layers.png" src="_images/kyuubi_layers.png" />
+<p>In general, the complete ecosystem of Kyuubi falls into the hierarchies shown in the above figure, with each layer loosely coupled to the other.</p>
+<p>For example, you can use Kyuubi, Spark and <a class="reference external" href="https://iceberg.apache.org/">Apache Iceberg</a> to build and manage Data Lake with pure SQL for both data processing e.g. ETL, and analytics e.g. BI.
+All workloads can be done on one platform, using one copy of data, with one SQL interface.</p>
+<p>Kyuubi provides the following features:</p>
+<div class="section" id="multi-tenancy">
+<h2>Multi-tenancy<a class="headerlink" href="#multi-tenancy" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi supports the end-to-end multi-tenancy,
+and this is why we want to create this project despite that the Spark <a class="reference external" href="http://spark.apache.org/docs/latest/sql-distributed-sql-engine.html#running-the-thrift-jdbcodbc-server">Thrift JDBC/ODBC server</a> already exists.</p>
+<ol class="arabic simple">
+<li><p>Supports multi-client concurrency and authentication</p></li>
+<li><p>Supports one Spark application per account(SPA).</p></li>
+<li><p>Supports QUEUE/NAMESPACE Access Control Lists (ACL)</p></li>
+<li><p>Supports metadata &amp; data Access Control Lists</p></li>
+</ol>
+<p>Users who have valid accounts could use all kinds of client tools, e.g.
+Hive Beeline, <a class="reference external" href="https://gethue.com/">HUE</a>, <a class="reference external" href="https://dbeaver.io/">DBeaver</a>,
+<a class="reference external" href="http://squirrel-sql.sourceforge.net/">SQuirreL SQL Client</a>, etc,
+to operate with Kyuubi server concurrently.</p>
+<p>The SPA policy makes sure 1) a user account can only get computing resource with managed ACLs, e.g.
+<a class="reference external" href="https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/FairScheduler.html#Queue_Access_Control_Lists">Queue Access Control Lists</a>,
+from cluster managers, e.g.
+<a class="reference external" href="https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop YARN</a>,
+<a class="reference external" href="https://kubernetes.io/">Kubernetes (K8s)</a> to create the Spark application;
+2) a user account can only access data and metadata from a storage system, e.g.
+<a class="reference external" href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">Apache Hadoop HDFS</a>,
+with permissions.</p>
+</div>
+<div class="section" id="ease-of-use">
+<h2>Ease of Use<a class="headerlink" href="#ease-of-use" title="Permalink to this headline">¶</a></h2>
+<p>You only need to be familiar with Structured Query Language (SQL) and Java Database Connectivity (JDBC) to handle massive data.
+It helps you focus on the design and implementation of your business system.</p>
+</div>
+<div class="section" id="run-anywhere">
+<h2>Run Anywhere<a class="headerlink" href="#run-anywhere" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi can submit Spark applications to all supported cluster managers, including YARN, Mesos, Kubernetes, Standalone, and local.</p>
+<p>The SPA policy also make it possible for you to launch different applications against different cluster managers.</p>
+</div>
+<div class="section" id="high-performance">
+<h2>High Performance<a class="headerlink" href="#high-performance" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi is built on the Apache Spark, a lightning-fast unified analytics engine.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Concurrent execution</strong>: multiple Spark applications work together</p></li>
+<li><p><strong>Quick response</strong>: long-running Spark applications without startup cost</p></li>
+<li><p><strong>Optimal execution plan</strong>: fully supports Spark SQL Catalyst Optimizer,</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="authentication-authorization">
+<h2>Authentication &amp; Authorization<a class="headerlink" href="#authentication-authorization" title="Permalink to this headline">¶</a></h2>
+<p>With strong authentication and fine-grained column/row level authorization,
+Kyuubi keeps your system and data secure.</p>
+</div>
+<div class="section" id="high-availability">
+<h2>High Availability<a class="headerlink" href="#high-availability" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi provides both high availability and load balancing solutions based on Zookeeper.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/quick_start.html">1. Getting Started with Kyuubi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/quick_start_with_dbeaver.html">2. Getting Started With Kyuubi and DBeaver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/quick_start_with_beeline.html">3. Getting Started With Hive Beeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/quick_start_with_jdbc.html">4. Getting Started With Hive JDBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/quick_start_with_datagrip.html">5. Getting Started With Kyuubi and DataGrip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/quick_start_with_hue.html">6. Getting Started with Kyuubi and Cloudera Hue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/index.html">Deploying Kyuubi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment/index.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/index.html#configurations">Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security/index.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security/authentication.html">1. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/kinit.html">2. Kinit Auxiliary Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/authorization.html">3. ACL Management Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client/index.html">Client Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="client/hive_jdbc.html">1. Access Kyuubi with Hive JDBC and ODBC Drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/index.html">Integrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrations/kudu.html">1. Kyuubi On Apache Kudu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="monitor/index.html">Monitoring</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="monitor/metrics.html">1. Kyuubi Server Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitor/logging.html">2. Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitor/trouble_shooting.html">3. Trouble Shooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sql/index.html">SQL References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sql/rules.html">1. Auxiliary SQL extension for Spark SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sql/functions.html">2. Auxiliary SQL Functions for Spark SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/spark_block_cleaner.html">1. Kubernetes Tools Spark Block Cleaner</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview/index.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview/kyuubi_vs_hive.html">Kyuubi v.s. HiveServer2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview/kyuubi_vs_thriftserver.html">Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop_tools/index.html">Develop Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="develop_tools/building.html">1. Building Kyuubi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop_tools/distribution.html">2. Building a Runnable Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop_tools/build_document.html">3. Building Kyuubi Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop_tools/testing.html">4. Running Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop_tools/debugging.html">5. Debugging Kyuubi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="develop_tools/developer.html">6. Developer Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community/index.html">Community</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="community/collaborators.html">1. Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/contributions.html">2. Contribution Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/improvement-proposals.html">3. Kyuubi Project Improvement Proposals (KPIP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/release.html">4. Kyuubi Release Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/badges.html">5. Community </a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="appendix/index.html">Appendixes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix/terminology.html">1. Terminologies</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="quick_start/index.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS) &mdash; Kyuubi 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Develop Tools" href="../develop_tools/index.html" />
+    <link rel="prev" title="Kyuubi v.s. HiveServer2" href="kyuubi_vs_hive.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kyuubi_vs_hive.html">Kyuubi v.s. HiveServer2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introductions">Introductions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#barriers-to-common-spark-job-usage">Barriers to common Spark job usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations-of-spark-thriftserver">Limitations of Spark ThriftServer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#driver-bottleneck">Driver Bottleneck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-isolation-issues">Resource isolation issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-tenancy-limitations">Multi-tenancy limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#high-availability-limitations">High Availability Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#udf-issues">UDF Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#kyuubi-vs-spark-thrift-server">Kyuubi VS Spark Thrift Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#consistent-interfaces">Consistent Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-tenant-architecture">Multi-tenant Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#high-availability-capabilities">High Availability Capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#client-concurrency">Client Concurrency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-stability">Service Stability</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Overview</a> &raquo;</li>
+        
+      <li>Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/overview/kyuubi_vs_thriftserver.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="kyuubi-v-s-spark-thrift-jdbc-odbc-server-sts">
+<h1>Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)<a class="headerlink" href="#kyuubi-v-s-spark-thrift-jdbc-odbc-server-sts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introductions">
+<h2>Introductions<a class="headerlink" href="#introductions" title="Permalink to this headline">¶</a></h2>
+<p>The Apache Spark <a class="reference external" href="http://spark.apache.org/docs/latest/sql-distributed-sql-engine.html">Thrift JDBC/ODBC Server</a> is a Thrift service implemented by the Apache Spark community based on HiveServer2.
+Designed to be seamlessly compatible with HiveServer2, it provides Spark SQL capabilities to end-users in a pure SQL way through a JDBC interface.
+This “out-of-the-box” model minimizes the barriers and costs for users to use Spark.</p>
+<p>Kyuubi and Spark are aligned in this goal.
+On top of that, Kyuubi has made enhancements in multi-tenant support, service availability, service concurrency capability, data security, and other aspects.</p>
+<div class="section" id="barriers-to-common-spark-job-usage">
+<h3>Barriers to common Spark job usage<a class="headerlink" href="#barriers-to-common-spark-job-usage" title="Permalink to this headline">¶</a></h3>
+<p>In this part, the most fundamental one is how we define a <code class="docutils literal notranslate"><span class="pre">Spark</span> <span class="pre">User</span></code>.
+Generally speaking, a Spark user is a guy that calls Spark APIs directly,
+but from Kyuubi and Spark ThriftServer’s perspective,
+the direct API calls occur on the server-side,
+then a Spark user indirectly interacts with Spark’s backend through the more common JDBC specification and protocols.
+With JDBC and SQL, Kyuubi and Spark ThriftServer make users experience the same way that interacts with most of the world’s popular modern DBMSes.</p>
+<p>Using Spark APIs directly is flexible for programmers with a bigdata background but may not be friendly for everyone.</p>
+<div class="section" id="high-barrier">
+<h4>High Barrier<a class="headerlink" href="#high-barrier" title="Permalink to this headline">¶</a></h4>
+<p>Users need a certain programming framework to use Spark through the Scala/Java/Python interfaces provided by Spark.
+Also, users need to have a good background in big data.
+For example, users need to know which platform their application will be submitted to, YARN, Kubernetes, or others.
+They also need to be aware of the resource consumption of their jobs, for example, executor numbers, memory for each executor.
+If they use too many resources, will it affect other critical tasks?
+Otherwise, will the cluster’s resources be idle and wasted?
+It is also hard for users to set up thousands of Spark configurations properly.
+Key features like <a class="reference internal" href="../deployment/spark/dynamic_allocation.html"><span class="doc">Dynamic Resource Allocation</span></a>, Speculation might be hard to benefit all with a one-time setup.
+And new features like <a class="reference internal" href="../deployment/spark/aqe.html"><span class="doc">Adaptive Query Execution</span></a> could come a long way from the first release involved of Spark to finally get applied to end-users.</p>
+</div>
+<div class="section" id="insecurity">
+<h4>Insecurity<a class="headerlink" href="#insecurity" title="Permalink to this headline">¶</a></h4>
+<p>Users can access metadata and data by means of code, and data security cannot be guaranteed.
+All client configurations need to be handed over to the user directly or indirectly.
+These configurations may contain sensitive information and let all the backend services be completely exposed to the users.
+For example, in terms of data security, the <a class="reference external" href="https://submarine.apache.org/docs/userDocs/submarine-security/spark-security/README">Submarine Spark Security Plugin</a> provides SQL Standard ACL Management for Apache Spark SQL with Apache Ranger.
+But in the end, this kind of security feature is at most a “gentleman’s agreement” in front of programmers who can write code to submit jobs via Spark code.</p>
+</div>
+<div class="section" id="compatibility">
+<h4>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h4>
+<p>Client-side compatibility is difficult to guarantee.
+When a user’s Spark job is finally scheduled to run on a cluster, it faces problems such as inconsistencies between the client environment and the cluster environment, conflicts between user job dependencies, Spark dependencies, and Hadoop cluster dependencies.
+When we upgrade the server-side staffs, such as Spark, Hive, and YARN, etc., it is also necessary to upgrade all of the user clients with transitive dependencies as much as possible, which may introduce a lot of unnecessary compatibility testing work, and it is hard to have complete test coverage.</p>
+</div>
+<div class="section" id="bootstrap-latency">
+<h4>Bootstrap latency<a class="headerlink" href="#bootstrap-latency" title="Permalink to this headline">¶</a></h4>
+<p>For long-running Spark applications, the bootstrap time is negligible compared to the total lifecycle, such as Spark Structured Streaming.
+In this case, the task scheduling and computing are fully thread-level with low latency and fast response.
+For short-term ones, the bootstrap time counts, such as the <code class="docutils literal notranslate"><span class="pre">SparkPi</span></code>.
+Relatively speaking, this process is very time-consuming, especially for some second-and minute-level computation tasks.</p>
+<p>Spark ThriftServer is essentially a Spark application in a multi-threaded scenario.
+It pre-starts a distributed SQL engine consisting of a driver and multiple executors at runtime.
+At the SQL parsing layer, the service takes full advantage of the Spark SQL optimizer,
+and at the computation execution layer, since Spark ThriftServer is resident, there is no bootstrap overhead, and when <a class="reference internal" href="../deployment/spark/dynamic_allocation.html"><span class="doc">DRA</span></a> is not enabled, the entire SQL computation process is in pure threaded scheduling model with excellent performance.</p>
+<p><img alt="../_images/sts.png" src="../_images/sts.png" /></p>
+<p>The JDBC connections and operations are handled by the frontend thread pool as various requests.
+And the corresponding methods of the backend are called to bind to the <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> related interface.
+For example, the <code class="docutils literal notranslate"><span class="pre">DriverManager.getConnection</span></code> at the client-side will invoke <code class="docutils literal notranslate"><span class="pre">SparkSession.newSession()</span></code> at the server-side,
+and all queries from the client-side will be submitted to the backend thread pool asynchronously and executed by <code class="docutils literal notranslate"><span class="pre">SparkSession.sql(...)</span></code>.</p>
+<p>First, in this mode, users can interact with Spark ThriftServer through simple SQL language and JDBC interface to implement their own business logic.
+The basic capacity planning of Spark ThriftServer, the consolidation of underlying services, and all the optimizations can all be made on the server-side.
+Some people may think that only using SQL does not meet all the business, that’s true, but the service itself is targeting users that migrating from HiveServer2 for the reason of query speed.
+With UDF/UDAF support, Some complex logic can still be fulfilled, so basically,  Spark ThriftServer is able to deal with most of the big data processing workloads.</p>
+<p>Secondly, all the setups for backend services, such as YARN, HDFS, and Hive Metastore Server(HMS), are completed in Spark ThriftServer, so there is no need to hand over the configuration of the backend services to the end-users.
+This ensures data security to a certain extent.
+On top of that, the server generally has the ability to do authentication/authorization and other assurance to protect data security.</p>
+<p>Finally, the JDBC interface protocol and C/S architecture under the server-side backward compatibility constraints basically ensure that there will be no client-side compatibility obstacles.
+Users only need to choose the appropriate version of the JDBC driver.
+The server-side upgrade will not cause interface incompatibility.
+As for the potential SQL compatibility problem in Spark version upgrade, it also exists when not using Spark ThriftServer, and is more challenging to solve.
+Moreover, in Spark ThriftServer mode, the server-side can do the full amount of SQL collection in advance, and the verification can be done before the upgrade.</p>
+</div>
+</div>
+</div>
+<div class="section" id="limitations-of-spark-thriftserver">
+<h2>Limitations of Spark ThriftServer<a class="headerlink" href="#limitations-of-spark-thriftserver" title="Permalink to this headline">¶</a></h2>
+<p>As we can see from the basic architecture of Spark ThriftServer above, it is essentially a single Spark application, and there are generally significant limitations to responding to thousands of client requests.</p>
+<div class="section" id="driver-bottleneck">
+<h3>Driver Bottleneck<a class="headerlink" href="#driver-bottleneck" title="Permalink to this headline">¶</a></h3>
+<p>The Spark Driver has to both play the role of the scheduler of a Spark application and also the handler of thousands of connections and operations from the client-side.
+In this case,  it is very likely to hit its bottleneck.
+The Hive metastore client on which the Spark analyzer depends for resolving all queries is one and only, so there will be more obvious concurrency issues when accessing the HMS.</p>
+</div>
+<div class="section" id="resource-isolation-issues">
+<h3>Resource isolation issues<a class="headerlink" href="#resource-isolation-issues" title="Permalink to this headline">¶</a></h3>
+<p>Over-sized Spark jobs encroach on too many of Spark ThriftServer resources, causing other jobs to delay or get stuck.</p>
+<p><img alt="../_images/hang.png" src="../_images/hang.png" /></p>
+<p>With Fair Scheduler Pools, Spark ThriftServer has the ability of resource isolation and sharing to a certain extent.
+It will send queries to a high-weight pool to get more executors for execution.
+In essence, resource isolation such as CPU/memory/IO should be something that resource managers like YARN and Kubernetes should do.
+Doing logical isolation at the computing layer is unlikely to work well, and this problem exists in the Apache Impala project as well, for example.
+And it is difficult to avoid the problem of HMS, HDFS  single point access, especially in the scenario of reading and writing dynamic partition tables or handling queries with numerous <code class="docutils literal notranslate"><span class="pre">Union</span></code>s.</p>
+</div>
+<div class="section" id="multi-tenancy-limitations">
+<h3>Multi-tenancy limitations<a class="headerlink" href="#multi-tenancy-limitations" title="Permalink to this headline">¶</a></h3>
+<p>Spark ThriftServer itself should be a multi-tenant-enabled system, i.e., it can accept requests from different clients and users.
+However, from Spark’s design point of view, Spark ThriftServer implemented in a single Spark application cannot fully support multi-tenancy because the entire application has only a globally unique username, including both the driver side, and the executor side.
+So, it has to access all users’ data with a single tenant.</p>
+<p>Spark ThriftServer occupies a single resource queue (YARN Queue / Kubernetes Namespace), making it difficult to control the resource pool’s size available to each tenant in a fine-grained or elastic way from the perspective of resource isolation and sharing.
+No one would like to restart the server and stop it from serving to adjust some pool’s weight or increase the total computing resources.</p>
+</div>
+<div class="section" id="high-availability-limitations">
+<h3>High Availability Limitations<a class="headerlink" href="#high-availability-limitations" title="Permalink to this headline">¶</a></h3>
+<p>The community edition of Spark ThriftServer does not support High Availability (HA).
+It is hard to imagine whether a server-side application without high availability can support the SLA commitment.
+It’s not that difficult to apply an HA implementation to Spark ThriftServer, but tricky.
+For example, there is already a <a class="reference external" href="https://issues.apache.org/jira/browse/SPARK-11100">JIRA ticket: SPARK-11100</a> with a pull request attached, see [SPARK-11100].
+There are generally two ways for the HA implementation of Spark ThriftServer, namely <code class="docutils literal notranslate"><span class="pre">Active/Standby</span></code> and <code class="docutils literal notranslate"><span class="pre">LoadBalancing</span></code>.</p>
+<p>The Active/Standby mode consists of active Spark ThriftServer and several standby servers.
+When the active crashes or hangs, the standby nodes trigger the leader selection to become the new active one to take over.
+The problems here are undeniable:
+There is only one active node runtime, so the concurrency capability is limited.
+When a failover occurs due to hardware and software failure, all current connections and running jobs will fail.
+This kind of failover is expensive for client-side users.
+The clients will retry simultaneously, so it’s hard for the new elected active server to handle the coming flood of client retries.
+It’s very likely to crash again.
+The Standby node causes serious waste of cluster resources, whether Spark dynamic resource allocation is enabled or not.
+A more appropriate approach to solve the server-side single-point problem is to add LoadBalancing support of your own.
+So that when client requests increase, we can expand Spark ThriftServer horizontally. However, this model also has some limitations.
+Each Spark ThriftServer is stateful with transient data or functionalities, such as some global temporary views, UDFs, etc., which cannot be shared between two servers.
+And it’s expensive to expand with computing resources together.</p>
+</div>
+<div class="section" id="udf-issues">
+<h3>UDF Issues<a class="headerlink" href="#udf-issues" title="Permalink to this headline">¶</a></h3>
+<p>For operations like <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">JAR</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TEMPORARY</span> <span class="pre">FUNCTION</span>&#160; <span class="pre">...</span> <span class="pre">USING...</span></code>, classes or jars might conflict in the Spark ThriftServer.
+And there is no such way for deleting when conflicts.
+Besides, since UDFs are loaded directly into the Spark ThriftServer, if they contain some unintentional or malicious logic, such as calling <code class="docutils literal notranslate"><span class="pre">System.exit(-1)</span></code>, which may kill the service directly, or some operations that affect the server behavior globally like Kerberos authentication.</p>
+</div>
+</div>
+<div class="section" id="kyuubi-vs-spark-thrift-server">
+<h2>Kyuubi VS Spark Thrift Server<a class="headerlink" href="#kyuubi-vs-spark-thrift-server" title="Permalink to this headline">¶</a></h2>
+<p>The HiveServer2 is also introduced here for a more comprehensive comparison.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>HiveServer2 <br/>(Hive on Spark)</th>
+<th>Spark ThriftServer</th>
+<th>Kyuubi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interface</strong></td>
+<td>HiveJDBC</td>
+<td>HiveJDBC</td>
+<td>HiveJDBC</td>
+</tr>
+<tr>
+<td><strong>SQL<br/>Syntax</strong></td>
+<td>Hive QL</td>
+<td>Spark SQL</td>
+<td>Spark SQL</td>
+</tr>
+<tr>
+<td><strong>SQL<br/>Optimizer</strong></td>
+<td>Hive Optimizer</td>
+<td>Spark SQL<br/>Catalyst</td>
+<td>Spark SQL<br/>Catalyst</td>
+</tr>
+<tr>
+<td><strong>SQL<br/>Parsing &amp; Planing</strong></td>
+<td>Server Side</td>
+<td>Server Side</td>
+<td>Engine Side</td>
+</tr>
+<tr>
+<td><strong>UDF<br/>Loading</strong></td>
+<td>Server Side</td>
+<td>Server Side</td>
+<td>Engine Side</td>
+</tr>
+<tr>
+<td><strong>Job<br/>Submission</strong></td>
+<td>A query is<br/>split into<br/>multiple<br/>Spark<br/>applications,<br/>called<br/><code>RemoteDriver</code></td>
+<td>within the server</td>
+<td>Using Kyuubi Engines with different<br/> policies for isolation<br/> 1. <code>USER</code> level isolation, where different JDBC connections of the same user share the Engine belonging to the user <br/> 2. <code>CONNECTION</code> level isolation, where one JDBC connection has one Engine, and the same Engine executes all SQL within a connection</td>
+</tr>
+<tr>
+<td><strong>Spark<br/>Compatibility</strong></td>
+<td>Single<br/>version-specific</td>
+<td>Builtin</td>
+<td>Multi-versions</td>
+</tr>
+<tr>
+<td><strong>Catalog<br/>Management</strong></td>
+<td>HMS</td>
+<td>HMS</td>
+<td>HMS</td>
+</tr>
+<tr>
+<td><strong>High<br/>Availability</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Multi<br/>tenancy</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Permission<br/>Control</strong></td>
+<td>SQL Standard,<br/>Fine-Grained</td>
+<td>No</td>
+<td>SQL Standard,<br/>Fine-Grained</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Fair</td>
+<td>Good</td>
+<td>Good</td>
+</tr>
+<tr>
+<td><strong>Client<br/>Concurrency</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Queuing</strong></td>
+<td>for queries</td>
+<td>None</td>
+<td>for Engines</td>
+</tr>
+<tr>
+<td><strong>Resource<br/>Setting</strong></td>
+<td>for queries</td>
+<td>for pools</td>
+<td>for Engines</td>
+</tr>
+<tr>
+<td><strong>Compute<br/>Resource<br/>Management</strong></td>
+<td>YARN</td>
+<td>pools</td>
+<td>YARN, Kubernetes, etc.</td>
+</tr>
+<tr>
+<td><strong>Resource<br/>Occupancy<br/>Time</strong></td>
+<td>within a query</td>
+<td>Permanent</td>
+<td>Using Kyuubi Engine to request and<br/> release resources<br/> 1. For <code>CONNECTION</code> level isolation, an Engine terminates when a JDBC connection disconnects <br/> 2. For other modes, an Engine timeouts after all connections disconnect. <br/> 3. All isolation modes support <a href="../deployment/spark/dynamic_allocation.md">DRA</a><br/></td>
+</tr>
+</tbody>
+</table><div class="section" id="consistent-interfaces">
+<h3>Consistent Interfaces<a class="headerlink" href="#consistent-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>Kyuubi, Spark Thrift Server, and HiveServer2 are identical in terms of interfaces and protocols.
+Therefore, from the user’s point of view, the way of use is unchanged.
+Compared with HiveServer2, the most significant advantage of the first two should be the performance improvement.</p>
+<p>From the perspective of SQL syntax compatibility, Kyuubi and Spark Thrift Server are fully compatible with Spark SQL as they are completely delegated to the Spark SQL Catalyst layer.
+Spark SQL also fully supports Hive QL collections, with only a few enumerable SQL behaviors and syntax differences.</p>
+</div>
+<div class="section" id="multi-tenant-architecture">
+<h3>Multi-tenant Architecture<a class="headerlink" href="#multi-tenant-architecture" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">From</span> <span class="pre">wikipedia</span></code>: The term “software multitenancy” refers to a software architecture in which a single instance of the software runs on a server and serves multiple tenants. Systems designed in such a manner are often called shared (in contrast to dedicated or isolated).</p>
+<p>Kyuubi, Spark ThriftServer, and HiveServer2 have been designed for a typical multi-tenant architecture scenario.</p>
+<p>Firstly, we need to consider how to 1) make safer and more efficient use of these compute resources based on resource isolation and 2) how to give users enough control over their own resources.</p>
+<p>HiveServer2 is supposed to be the most flexible one.
+Each SQL is programmed into several Spark applications for execution, and the resource queue, memory, and others can be set before execution.
+But this approach leads to extremely high Spark bootstrap latency and can not efficiently utilize resources.</p>
+<p>Spark ThriftServer goes in the opposite direction because there is only one Spark application.
+It is impossible to adjust the queue, memory, and other resource-related configs from the user side interface as it is already pre-started.
+Queries can be sent to pre-set <code class="docutils literal notranslate"><span class="pre">Fair</span> <span class="pre">Scheduler</span> <span class="pre">Pools</span></code> for running in isolation.
+The <code class="docutils literal notranslate"><span class="pre">Fair</span> <span class="pre">Scheduler</span> <span class="pre">Pools</span></code> can only provide low isolation within a Spark application and be configured before Spark ThriftServer starts.</p>
+<p>Kyuubi has neutralized these aspects with two other system implementations.
+Kyuubi applies the multi-tenant feature based on the concept of Kyuubi Engines, where an Engine is a Spark application.</p>
+<p>In Kyuubi’s system, the Engines are isolated according to tenants.
+The tenant, a.k.a. user, is unified and end-to-end unique through a JDBC connection.
+Kyuubi server will identify and authenticate the user and then retrieve or create an Engine belonging to this particular user.
+This user will be used as the submitter for Engine, and it must have authority to use the resources from YARN, Kubernetes, or just Local machine, e.t.c.
+Inside an Engine, the Engine’s user, a.k.a. <code class="docutils literal notranslate"><span class="pre">Spark</span> <span class="pre">User</span></code>, will also be the same.
+When an Engine runs queries received from the JDBC connection, the Engine’s user must also have rights to access the data.
+Besides, if it needs access to metadata during this process, then we can also add a fine-grained SQL standard ACL management on the metadata layer now with <a class="reference external" href="https://submarine.apache.org/docs/userDocs/submarine-security/spark-security/README">Submarine Spark Security Plugin</a>.</p>
+<p>The Engines have their lifecycle, which is related to the <code class="docutils literal notranslate"><span class="pre">kyuubi.session.engine.share.level</span></code> specified via client configurations.
+For example, if set to <code class="docutils literal notranslate"><span class="pre">CONNECTION</span></code>, then the corresponding Engine will be created for each JDBC connection and terminates itself when we close the connection.
+For another example, if set to <code class="docutils literal notranslate"><span class="pre">USER</span></code>,  the corresponding Engine is cached and shared with all JDBC connections from the same user, even through different Kyuubi servers in HA mode.
+The Engine will eventually timeout after all the sessions are closed.</p>
+<p>As we need to create Engines, on the one hand, we can configure all the Spark configurations during startup.
+On the other hand, it does bring the Spark application bootstraps overhead here, but overall, it is just a one-time cost.
+All queries or connections of the Engine’s user will share this application.
+The more queries it runs, the lower the bootstraps overhead is.</p>
+</div>
+<div class="section" id="high-availability-capabilities">
+<h3>High Availability Capabilities<a class="headerlink" href="#high-availability-capabilities" title="Permalink to this headline">¶</a></h3>
+<p>The HA issues in Spark ThriftServer have already been covered in the previous section so that we won’t go over them here again. In Kyuubi, we provide HA in the way of <code class="docutils literal notranslate"><span class="pre">LoadBlancing</span></code>.  Kyuubi is lightweight, as it does not create any Engine when it starts.
+It’s cheap to add Kyuubi HA nodes, so horizontal scaling is not overly burdensome.</p>
+</div>
+<div class="section" id="client-concurrency">
+<h3>Client Concurrency<a class="headerlink" href="#client-concurrency" title="Permalink to this headline">¶</a></h3>
+<p>The compilation and optimization for queries in both HiveServer2 and Spark ThriftServer are done on the server-side.
+In contrast, Kyuubi will do these at the Engine-side.
+It is instrumental in reducing the workload of the server and improving client concurrency.
+For task scheduling that belongs to the compute phase also happens at Kyuubi’s Engine side.
+It is not as heavy as the Spark ThriftServer, where there is an intense competition between the client concurrency and the task scheduling.
+In principle, the more executors there are, or the more significant the amount of data processed, the more pressure on the server-side.</p>
+</div>
+<div class="section" id="service-stability">
+<h3>Service Stability<a class="headerlink" href="#service-stability" title="Permalink to this headline">¶</a></h3>
+<p>The intense competition between the client concurrency and the task scheduling increases GC issues and OOM risks of Spark ThriftServer.
+Kyuubi has no problem in this area due to the separation of the server and engines.
+The UDF risks cannot harm the stability of the service either.
+As if a user loads and calls an invalid UDF, which only damages its own Engine and will not affect other users or the Kyuubi server.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi extends the use of Spark ThriftServer in a multi-tenant model based on a unified interface and relies on the concept of multi-tenancy to interact with cluster managers to finally gain the ability of resources sharing/isolation and data security.
+The loosely coupled architecture of Kyuubi Server and Engine greatly improves the concurrency and service stability of the service itself.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../develop_tools/index.html" class="btn btn-neutral float-right" title="Develop Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="kyuubi_vs_hive.html" class="btn btn-neutral float-left" title="Kyuubi v.s. HiveServer2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
