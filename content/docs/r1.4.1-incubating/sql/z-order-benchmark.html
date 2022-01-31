@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>3. Z-order Benchmark &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tools" href="../tools/index.html" />
+    <link rel="prev" title="2. Auxiliary SQL Functions for Spark SQL" href="functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">SQL References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rules.html">1. Auxiliary SQL extension for Spark SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">2. Auxiliary SQL Functions for Spark SQL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Z-order Benchmark</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#benchmark-result">3.1. Benchmark result</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#efficiency-of-z-order-optimize-and-order-by-sort">3.1.1. Efficiency of Z-order Optimize and Order-by Sort</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#z-order-by-benchmark-result">3.1.2. Z-order by benchmark result</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">SQL References</a> &raquo;</li>
+        
+      <li><span class="section-number">3. </span>Z-order Benchmark</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/sql/z-order-benchmark.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - x to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="z-order-benchmark">
+<h1><span class="section-number">3. </span>Z-order Benchmark<a class="headerlink" href="#z-order-benchmark" title="Permalink to this headline">¶</a></h1>
+<p>Z-order is a technique that allows you to map multidimensional data to a single dimension. We did a performance test.</p>
+<p>For this test ,we used aliyun Databricks Delta test case
+https://help.aliyun.com/document_detail/168137.html?spm=a2c4g.11186623.6.563.10d758ccclYtVb.</p>
+<p>Prepare data for the three scenarios:</p>
+<ol class="simple">
+<li><p>10 billion data and 2 hundred files (parquet files): for big file(1G)</p></li>
+<li><p>10 billion data and 1 thousand files (parquet files): for medium file(200m)</p></li>
+<li><p>1 billion data and 10 thousand files (parquet files): for smaller file(200k)</p></li>
+</ol>
+<p>Test env:
+spark-3.1.2
+hadoop-2.7.2
+kyuubi-1.4.0</p>
+<p>Test step:</p>
+<p>Step1: create hive tables.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;drop database if exists </span><span class="si">$</span><span class="n">dbName</span><span class="s"> cascade&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;create database if not exists </span><span class="si">$</span><span class="n">dbName</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;use </span><span class="si">$</span><span class="n">dbName</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;create table </span><span class="si">$</span><span class="n">connRandomParquet</span><span class="s"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;create table </span><span class="si">$</span><span class="n">connOrderbyOnlyIp</span><span class="s"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;create table </span><span class="si">$</span><span class="n">connOrderby</span><span class="s"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;create table </span><span class="si">$</span><span class="n">connZorderOnlyIp</span><span class="s"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;create table </span><span class="si">$</span><span class="n">connZorder</span><span class="s"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="s">s&quot;show tables&quot;</span><span class="p">).</span><span class="n">show</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Step2: prepare data for parquet table with three scenarios,
+we use the following code.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">randomIPv4</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="nc">Random</span><span class="p">)</span> <span class="o">=</span> <span class="nc">Seq</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">4</span><span class="p">)(</span><span class="n">r</span><span class="p">.</span><span class="n">nextInt</span><span class="p">(</span><span class="mi">256</span><span class="p">)).</span><span class="n">mkString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">randomPort</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="nc">Random</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">nextInt</span><span class="p">(</span><span class="mi">65536</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">randomConnRecord</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="nc">Random</span><span class="p">)</span> <span class="o">=</span> <span class="nc">ConnRecord</span><span class="p">(</span>
+  <span class="n">src_ip</span> <span class="o">=</span> <span class="n">randomIPv4</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">src_port</span> <span class="o">=</span> <span class="n">randomPort</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+  <span class="n">dst_ip</span> <span class="o">=</span> <span class="n">randomIPv4</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">dst_port</span> <span class="o">=</span> <span class="n">randomPort</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Step3: do optimize with z-order only ip and do optimize with order by only ip, sort column: src_ip, dst_ip and shuffle partition just as file numbers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">overwrite</span> <span class="n">table</span> <span class="n">conn_order_only_ip</span> <span class="n">select</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span> <span class="kn">from</span> <span class="nn">conn_random_parquet</span> <span class="n">order</span> <span class="n">by</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">;</span>
+<span class="n">OPTIMIZE</span> <span class="n">conn_zorder_only_ip</span> <span class="n">ZORDER</span> <span class="n">BY</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Step4: do optimize with z-order and do optimize with order by, sort column: src_ip, src_port, dst_ip, dst_port and shuffle partition just as file numbers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">overwrite</span> <span class="n">table</span> <span class="n">conn_order</span> <span class="n">select</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span> <span class="kn">from</span> <span class="nn">conn_random_parquet</span> <span class="n">order</span> <span class="n">by</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span><span class="p">;</span>
+<span class="n">OPTIMIZE</span> <span class="n">conn_zorder</span> <span class="n">ZORDER</span> <span class="n">BY</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The complete code is as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./spark-shell
+import org.apache.spark.SparkConf
+import org.apache.spark.sql.SparkSession
+
+<span class="k">case</span> class ConnRecord<span class="o">(</span>src_ip: String, src_port: Int, dst_ip: String, dst_port: Int<span class="o">)</span>
+
+val  <span class="nv">conf</span>  <span class="o">=</span> new SparkConf<span class="o">()</span>.setAppName<span class="o">(</span><span class="s2">&quot;zorder_test&quot;</span><span class="o">)</span>
+val <span class="nv">spark</span> <span class="o">=</span> SparkSession.builder<span class="o">()</span>.config<span class="o">(</span>conf<span class="o">)</span>.enableHiveSupport<span class="o">()</span>.getOrCreate<span class="o">()</span>
+import spark.implicits._
+
+val <span class="nv">sc</span> <span class="o">=</span> spark.sparkContext
+sc.setLogLevel<span class="o">(</span><span class="s2">&quot;WARN&quot;</span><span class="o">)</span>
+//ten billion rows and two hundred files
+val <span class="nv">numRecords</span> <span class="o">=</span> <span class="m">10</span>*1000*1000*1000L
+val <span class="nv">numFiles</span> <span class="o">=</span> <span class="m">200</span>
+
+val <span class="nv">dbName</span> <span class="o">=</span> s<span class="s2">&quot;zorder_test_</span><span class="nv">$numFiles</span><span class="s2">&quot;</span>
+val <span class="nv">baseLocation</span> <span class="o">=</span> s<span class="s2">&quot;hdfs://localhost:9000/zorder_test/</span><span class="nv">$dbName</span><span class="s2">/&quot;</span>
+val <span class="nv">connRandomParquet</span> <span class="o">=</span> <span class="s2">&quot;conn_random_parquet&quot;</span>
+val <span class="nv">connZorderOnlyIp</span> <span class="o">=</span> <span class="s2">&quot;conn_zorder_only_ip&quot;</span>
+val <span class="nv">connZorder</span> <span class="o">=</span> <span class="s2">&quot;conn_zorder&quot;</span>
+spark.conf.set<span class="o">(</span><span class="s2">&quot;spark.sql.shuffle.partitions&quot;</span>, numFiles<span class="o">)</span>
+spark.conf.get<span class="o">(</span><span class="s2">&quot;spark.sql.shuffle.partitions&quot;</span><span class="o">)</span>
+spark.conf.set<span class="o">(</span><span class="s2">&quot;spark.sql.hive.convertMetastoreParquet&quot;</span>,false<span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;drop database if exists </span><span class="nv">$dbName</span><span class="s2"> cascade&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;create database if not exists </span><span class="nv">$dbName</span><span class="s2">&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;use </span><span class="nv">$dbName</span><span class="s2">&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;create table </span><span class="nv">$connRandomParquet</span><span class="s2"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;create table </span><span class="nv">$connOrderbyOnlyIp</span><span class="s2"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;create table </span><span class="nv">$connOrderby</span><span class="s2"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;create table </span><span class="nv">$connZorderOnlyIp</span><span class="s2"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;create table </span><span class="nv">$connZorder</span><span class="s2"> (src_ip string, src_port int, dst_ip string, dst_port int) stored as parquet&quot;</span><span class="o">)</span>
+spark.sql<span class="o">(</span>s<span class="s2">&quot;show tables&quot;</span><span class="o">)</span>.show<span class="o">(</span><span class="nb">false</span><span class="o">)</span>
+
+import scala.util.Random
+// Function <span class="k">for</span> preparing Zorder_Test data
+def randomIPv4<span class="o">(</span>r: Random<span class="o">)</span> <span class="o">=</span> Seq.fill<span class="o">(</span><span class="m">4</span><span class="o">)(</span>r.nextInt<span class="o">(</span><span class="m">256</span><span class="o">))</span>.mkString<span class="o">(</span><span class="s2">&quot;.&quot;</span><span class="o">)</span>
+def randomPort<span class="o">(</span>r: Random<span class="o">)</span> <span class="o">=</span> r.nextInt<span class="o">(</span><span class="m">65536</span><span class="o">)</span>
+
+def randomConnRecord<span class="o">(</span>r: Random<span class="o">)</span> <span class="o">=</span> ConnRecord<span class="o">(</span>
+<span class="nv">src_ip</span> <span class="o">=</span> randomIPv4<span class="o">(</span>r<span class="o">)</span>, <span class="nv">src_port</span> <span class="o">=</span> randomPort<span class="o">(</span>r<span class="o">)</span>,
+<span class="nv">dst_ip</span> <span class="o">=</span> randomIPv4<span class="o">(</span>r<span class="o">)</span>, <span class="nv">dst_port</span> <span class="o">=</span> randomPort<span class="o">(</span>r<span class="o">))</span>
+
+val <span class="nv">df</span> <span class="o">=</span> spark.range<span class="o">(</span><span class="m">0</span>, numFiles, <span class="m">1</span>, numFiles<span class="o">)</span>.mapPartitions <span class="o">{</span> <span class="nv">it</span> <span class="o">=</span>&gt;
+val <span class="nv">partitionID</span> <span class="o">=</span> it.toStream.head
+val <span class="nv">r</span> <span class="o">=</span> new Random<span class="o">(</span><span class="nv">seed</span> <span class="o">=</span> partitionID<span class="o">)</span>
+Iterator.fill<span class="o">((</span>numRecords / numFiles<span class="o">)</span>.toInt<span class="o">)(</span>randomConnRecord<span class="o">(</span>r<span class="o">))</span>
+<span class="o">}</span>
+
+df.write
+.mode<span class="o">(</span><span class="s2">&quot;overwrite&quot;</span><span class="o">)</span>
+.format<span class="o">(</span><span class="s2">&quot;parquet&quot;</span><span class="o">)</span>
+.insertInto<span class="o">(</span>connRandomParquet<span class="o">)</span>
+
+spark.read.table<span class="o">(</span>connRandomParquet<span class="o">)</span>
+.write
+.mode<span class="o">(</span><span class="s2">&quot;overwrite&quot;</span><span class="o">)</span>
+.format<span class="o">(</span><span class="s2">&quot;parquet&quot;</span><span class="o">)</span>
+.insertInto<span class="o">(</span>connZorderOnlyIp<span class="o">)</span>
+
+spark.read.table<span class="o">(</span>connRandomParquet<span class="o">)</span>
+.write
+.mode<span class="o">(</span><span class="s2">&quot;overwrite&quot;</span><span class="o">)</span>
+.format<span class="o">(</span><span class="s2">&quot;parquet&quot;</span><span class="o">)</span>
+.insertInto<span class="o">(</span>connZorder<span class="o">)</span>
+spark.stop<span class="o">()</span>
+</pre></div>
+</div>
+<p>Z-order Optimize statement:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">set</span><span class="w"> </span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">hive</span><span class="p">.</span><span class="n">convertMetastoreParquet</span><span class="o">=</span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">OPTIMIZE</span><span class="w"> </span><span class="n">conn_zorder_only_ip</span><span class="w"> </span><span class="n">ZORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">src_ip</span><span class="p">,</span><span class="w"> </span><span class="n">dst_ip</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">OPTIMIZE</span><span class="w"> </span><span class="n">zorder_test</span><span class="p">.</span><span class="n">conn_zorder</span><span class="w"> </span><span class="n">ZORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">src_ip</span><span class="p">,</span><span class="w"> </span><span class="n">src_port</span><span class="p">,</span><span class="w"> </span><span class="n">dst_ip</span><span class="p">,</span><span class="w"> </span><span class="n">dst_port</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>ORDER BY statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">overwrite</span> <span class="n">table</span> <span class="n">conn_order_only_ip</span> <span class="n">select</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span> <span class="kn">from</span> <span class="nn">conn_random_parquet</span> <span class="n">order</span> <span class="n">by</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">;</span>
+
+<span class="n">INSERT</span> <span class="n">overwrite</span> <span class="n">table</span> <span class="n">conn_order</span> <span class="n">select</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span> <span class="kn">from</span> <span class="nn">conn_random_parquet</span> <span class="n">order</span> <span class="n">by</span> <span class="n">src_ip</span><span class="p">,</span> <span class="n">src_port</span><span class="p">,</span> <span class="n">dst_ip</span><span class="p">,</span> <span class="n">dst_port</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Query statement:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">set</span><span class="w"> </span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">hive</span><span class="p">.</span><span class="n">convertMetastoreParquet</span><span class="o">=</span><span class="k">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">conn_random_parquet</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">src_ip</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;157%&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">dst_ip</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;216.%&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">conn_zorder_only_ip</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">src_ip</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;157%&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">dst_ip</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;216.%&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">conn_zorder</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">src_ip</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;157%&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">dst_ip</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;216.%&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="benchmark-result">
+<h2><span class="section-number">3.1. </span>Benchmark result<a class="headerlink" href="#benchmark-result" title="Permalink to this headline">¶</a></h2>
+<p>We have done two performance tests: one is to compare the efficiency of  Z-order Optimize and Order by Sort,
+and the other is to query based on the optimized Z-order by data and Random data.</p>
+<div class="section" id="efficiency-of-z-order-optimize-and-order-by-sort">
+<h3><span class="section-number">3.1.1. </span>Efficiency of Z-order Optimize and Order-by Sort<a class="headerlink" href="#efficiency-of-z-order-optimize-and-order-by-sort" title="Permalink to this headline">¶</a></h3>
+<p><strong>10 billion data and 1000 files and Query resource: 200 core 600G memory</strong></p>
+<p>Z-order by or order by only ip:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Table</th>
+<th>row count</th>
+<th>optimize  time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conn_order_only_ip</td>
+<td>10,000,000,000</td>
+<td>1591.99 s</td>
+</tr>
+<tr>
+<td>conn_zorder_only_ip</td>
+<td>10,000,000,000</td>
+<td>8371.405 s</td>
+</tr>
+</tbody>
+</table><p>Z-order by or order by all columns:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Table</th>
+<th>row count</th>
+<th>optimize  time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conn_order</td>
+<td>10,000,000,000</td>
+<td>1515.298 s</td>
+</tr>
+<tr>
+<td>conn_zorder</td>
+<td>10,000,000,000</td>
+<td>11057.194 s</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="z-order-by-benchmark-result">
+<h3><span class="section-number">3.1.2. </span>Z-order by benchmark result<a class="headerlink" href="#z-order-by-benchmark-result" title="Permalink to this headline">¶</a></h3>
+<p>By querying the tables before and after optimization, we find that:</p>
+<p><strong>10 billion data and 200 files and Query resource: 200 core 600G memory</strong></p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Table</th>
+<th>Average File Size</th>
+<th>Scan row count</th>
+<th>Average query time</th>
+<th>row count Skipping ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conn_random_parquet</td>
+<td>1.2 G</td>
+<td>10,000,000,000</td>
+<td>27.554 s</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>conn_zorder_only_ip</td>
+<td>890 M</td>
+<td>43,170,600</td>
+<td>2.459 s</td>
+<td>99.568%</td>
+</tr>
+<tr>
+<td>conn_zorder</td>
+<td>890 M</td>
+<td>54,841,302</td>
+<td>3.185 s</td>
+<td>99.451%</td>
+</tr>
+</tbody>
+</table><p><strong>10 billion data and 1000 files and Query resource: 200 core 600G memory</strong></p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Table</th>
+<th>Average File Size</th>
+<th>Scan row count</th>
+<th>Average query time</th>
+<th>row count Skipping ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conn_random_parquet</td>
+<td>234.8 M</td>
+<td>10,000,000,000</td>
+<td>27.031 s</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>conn_zorder_only_ip</td>
+<td>173.9 M</td>
+<td>53,499,068</td>
+<td>3.120 s</td>
+<td>99.465%</td>
+</tr>
+<tr>
+<td>conn_zorder</td>
+<td>174.0 M</td>
+<td>35,910,500</td>
+<td>3.103 s</td>
+<td>99.640%</td>
+</tr>
+</tbody>
+</table><p><strong>1 billion data and 10000 files and Query resource: 10 core 40G memory</strong></p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Table</th>
+<th>Average File Size</th>
+<th>Scan row count</th>
+<th>Average query time</th>
+<th>row count Skipping ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conn_random_parquet</td>
+<td>2.7 M</td>
+<td>1,000,000,000</td>
+<td>76.772 s</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>conn_zorder_only_ip</td>
+<td>2.1 M</td>
+<td>406,572</td>
+<td>3.963 s</td>
+<td>99.959%</td>
+</tr>
+<tr>
+<td>conn_zorder</td>
+<td>2.2 M</td>
+<td>387,942</td>
+<td>3.621s</td>
+<td>99.961%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../tools/index.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="functions.html" class="btn btn-neutral float-left" title="2. Auxiliary SQL Functions for Spark SQL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

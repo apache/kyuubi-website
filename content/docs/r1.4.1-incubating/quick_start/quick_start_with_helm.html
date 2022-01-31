@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. Getting Started With Kyuubi on kubernetes &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Getting Started With Kyuubi and DBeaver" href="quick_start_with_dbeaver.html" />
+    <link rel="prev" title="1. Getting Started with Apache Kyuubi" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Quick Start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html">1. Getting Started with Apache Kyuubi</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Getting Started With Kyuubi on kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-kyuubi-with-helm">2.1. Running kyuubi with helm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-helm-and-install">2.1.1. Get helm and Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-kyuubi-started">2.1.2. Get Kyuubi Started</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_dbeaver.html">3. Getting Started With Kyuubi and DBeaver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_beeline.html">4. Getting Started With Hive Beeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_jdbc.html">5. Getting Started With Hive JDBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_datagrip.html">6. Getting Started With Kyuubi and DataGrip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_hue.html">7. Getting Started with Kyuubi and Cloudera Hue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Quick Start</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>Getting Started With Kyuubi on kubernetes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/quick_start/quick_start_with_helm.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="getting-started-with-kyuubi-on-kubernetes">
+<h1><span class="section-number">2. </span>Getting Started With Kyuubi on kubernetes<a class="headerlink" href="#getting-started-with-kyuubi-on-kubernetes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="running-kyuubi-with-helm">
+<h2><span class="section-number">2.1. </span>Running kyuubi with helm<a class="headerlink" href="#running-kyuubi-with-helm" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://helm.sh/">Helm</a> is the package manager for Kubernetes，it can be used to find, share, and use software built for Kubernetes.</p>
+<div class="section" id="get-helm-and-install">
+<h3><span class="section-number">2.1.1. </span>Get helm and Install<a class="headerlink" href="#get-helm-and-install" title="Permalink to this headline">¶</a></h3>
+<p>Please go to <a class="reference external" href="https://helm.sh/docs/intro/install/">Install Helm</a> page to get and install an appropriate release version for yourself.</p>
+</div>
+<div class="section" id="get-kyuubi-started">
+<h3><span class="section-number">2.1.2. </span>Get Kyuubi Started<a class="headerlink" href="#get-kyuubi-started" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="optional-create-namespace-on-kubernetes">
+<h4>[Optional] Create namespace on kubernetes<a class="headerlink" href="#optional-create-namespace-on-kubernetes" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cretate ns kyuubi
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Get kyuubi started<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm install kyuubi-helm <span class="si">${</span><span class="nv">KYUUBI_HOME</span><span class="si">}</span>/docker/helm -n <span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>It will print variables and the way to get kyuubi expose ip and port.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>NAME: kyuubi-helm
+LAST DEPLOYED: Wed Oct <span class="m">20</span> <span class="m">15</span>:22:47 <span class="m">2021</span>
+NAMESPACE: kyuubi
+STATUS: deployed
+REVISION: <span class="m">1</span>
+TEST SUITE: None
+NOTES:
+Get kyuubi expose URL by running these commands:
+  <span class="nb">export</span> <span class="nv">NODE_PORT</span><span class="o">=</span><span class="k">$(</span>kubectl get --namespace kyuubi -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.ports[0].nodePort}&quot;</span> services kyuubi-helm-nodeport<span class="k">)</span>
+  <span class="nb">export</span> <span class="nv">NODE_IP</span><span class="o">=</span><span class="k">$(</span>kubectl get nodes --namespace kyuubi -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].status.addresses[0].address}&quot;</span><span class="k">)</span>
+  <span class="nb">echo</span> <span class="nv">$NODE_IP</span>:<span class="nv">$NODE_PORT</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-hive-beeline">
+<h4>Using hive beeline<a class="headerlink" href="#using-hive-beeline" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://kyuubi.apache.org/docs/latest/quick_start/quick_start.html#using-hive-beeline">Using Hive Beeline</a> to opening a connection.</p>
+</div>
+<div class="section" id="remove-kyuubi">
+<h4>Remove kyuubi<a class="headerlink" href="#remove-kyuubi" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm uninstall kyuubi-helm -n <span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edit-server-config">
+<h4>Edit server config<a class="headerlink" href="#edit-server-config" title="Permalink to this headline">¶</a></h4>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> under <code class="docutils literal notranslate"><span class="pre">${KYUUBI_HOME}/docker/helm</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kyuubi server numbers</span><span class="w"></span>
+<span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apache/kyuubi</span><span class="w"></span>
+<span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Overrides the image tag whose default is the chart appVersion.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;master-snapshot&quot;</span><span class="w"></span>
+
+<span class="nt">server</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bind</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10009</span><span class="w"></span>
+<span class="w">  </span><span class="nt">conf</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/kyuubi/conf</span><span class="w"></span>
+
+<span class="nt">service</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># The default port limit of kubernetes is 30000-32767</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># to change:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">#   vim kube-apiserver.yaml (usually under path: /etc/kubernetes/manifests/)</span><span class="w"></span>
+<span class="w">  </span><span class="c1">#   add or change line &#39;service-node-port-range=1-32767&#39; under kube-apiserver</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30009</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-server-log">
+<h4>Get server log<a class="headerlink" href="#get-server-log" title="Permalink to this headline">¶</a></h4>
+<p>List all server pods:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl get po -n <span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>The server pods will print:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>NAME                             READY   STATUS    RESTARTS   AGE
+kyuubi-server-585d8944c5-m7j5s   1/1     Running   0          30m
+kyuubi-server-32sdsa1245-2d2sj   1/1     Running   0          30m
+</pre></div>
+</div>
+<p>then, use pod name to get logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl -n <span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span> logs kyuubi-server-585d8944c5-m7j5s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="quick_start_with_dbeaver.html" class="btn btn-neutral float-right" title="3. Getting Started With Kyuubi and DBeaver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="1. Getting Started with Apache Kyuubi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

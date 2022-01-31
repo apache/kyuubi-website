@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>3. Integration with Hive Metastore &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Kyuubi High Availability Guide" href="high_availability_guide.html" />
+    <link rel="prev" title="2. Deploy Kyuubi engines on Kubernetes" href="on_kubernetes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#basics">Basics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="on_yarn.html">1. Deploy Kyuubi engines on Yarn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="on_kubernetes.html">2. Deploy Kyuubi engines on Kubernetes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3. Integration with Hive Metastore</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">3.1. Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-behavior">3.2. Default Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#related-configurations">3.3. Related Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activate-configurations">3.4. Activate Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-compatibility">3.5. Version Compatibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-readings">3.6. Further Readings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="high_availability_guide.html">4. Kyuubi High Availability Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#configurations">Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#engines">Engines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+      <li><span class="section-number">3. </span>Integration with Hive Metastore</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/deployment/hive_metastore.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="integration-with-hive-metastore">
+<h1><span class="section-number">3. </span>Integration with Hive Metastore<a class="headerlink" href="#integration-with-hive-metastore" title="Permalink to this headline">¶</a></h1>
+<p>In this section, you will learn how to configure Kyuubi to interact with Hive Metastore.</p>
+<ul class="simple">
+<li><p>A common Hive metastore server could be set at Kyuubi server side</p></li>
+<li><p>Individual Hive metastore servers could be used for end users to set</p></li>
+</ul>
+<div class="section" id="requirements">
+<h2><span class="section-number">3.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A running Hive metastore server</p>
+<ul>
+<li><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+Metastore+Administration">Hive Metastore Administration</a></p></li>
+<li><p><a class="reference external" href="https://docs.cloudera.com/documentation/enterprise/latest/topics/cdh_ig_hive_metastore_configure.html">Configuring the Hive Metastore for CDH</a></p></li>
+</ul>
+</li>
+<li><p>A Spark binary distribution built with <code class="docutils literal notranslate"><span class="pre">-Phive</span></code> support</p>
+<ul>
+<li><p>Use the built-in one in the Kyuubi distribution</p></li>
+<li><p>Download from <a class="reference external" href="https://spark.apache.org/downloads.html">Spark official website</a></p></li>
+<li><p>Build from Spark source, <a class="reference external" href="http://spark.apache.org/docs/latest/building-spark.html#building-with-hive-and-jdbc-support">Building With Hive and JDBC Support</a></p></li>
+</ul>
+</li>
+<li><p>A copy of Hive client configuration</p></li>
+</ul>
+<p>So the whole thing here is to let Spark applications use this copy of Hive configuration to start a Hive metastore client for their own to talk to the Hive metastore server.</p>
+</div>
+<div class="section" id="default-behavior">
+<h2><span class="section-number">3.2. </span>Default Behavior<a class="headerlink" href="#default-behavior" title="Permalink to this headline">¶</a></h2>
+<p>By default, Kyuubi launches Spark SQL engines pointing to a dummy embedded <a class="reference external" href="https://db.apache.org/derby/">Apache Derby</a>-based metastore for each application,
+and this metadata can only be seen by one user at a time, e.g.</p>
+<div class="highlight-shell script notranslate"><div class="highlight"><pre><span></span>bin/beeline -u &#39;jdbc:hive2://localhost:10009/&#39; -n kentyao
+Connecting to jdbc:hive2://localhost:10009/
+Connected to: Spark SQL (version 1.0.0-SNAPSHOT)
+Driver: Hive JDBC (version 2.3.7)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 2.3.7 by Apache Hive
+0: jdbc:hive2://localhost:10009/&gt; show databases;
+2020-11-16 23:50:50.388 INFO operation.ExecuteStatement:
+           Spark application name: kyuubi_kentyao_spark_2020-11-16T15:50:08.968Z
+                 application ID:  local-1605541809797
+                 application web UI: http://192.168.1.14:60165
+                 master: local[*]
+                 deploy mode: client
+                 version: 3.0.1
+           Start time: 2020-11-16T15:50:09.123Z
+           User: kentyao
+2020-11-16 23:50:50.404 INFO metastore.HiveMetaStore: 2: get_databases: *
+2020-11-16 23:50:50.404 INFO HiveMetaStore.audit: ugi=kentyao	ip=unknown-ip-addr	cmd=get_databases: *
+2020-11-16 23:50:50.423 INFO operation.ExecuteStatement: Processing kentyao&#39;s query[8453e657-c1c4-4391-8406-ab4747a66c45]: RUNNING_STATE -&gt; FINISHED_STATE, statement: show databases, time taken: 0.035 seconds
++------------+
+| namespace  |
++------------+
+| default    |
++------------+
+1 row selected (0.122 seconds)
+0: jdbc:hive2://localhost:10009/&gt; show tables;
+2020-11-16 23:50:52.957 INFO operation.ExecuteStatement:
+           Spark application name: kyuubi_kentyao_spark_2020-11-16T15:50:08.968Z
+                 application ID:  local-1605541809797
+                 application web UI: http://192.168.1.14:60165
+                 master: local[*]
+                 deploy mode: client
+                 version: 3.0.1
+           Start time: 2020-11-16T15:50:09.123Z
+           User: kentyao
+2020-11-16 23:50:52.968 INFO metastore.HiveMetaStore: 2: get_database: default
+2020-11-16 23:50:52.968 INFO HiveMetaStore.audit: ugi=kentyao	ip=unknown-ip-addr	cmd=get_database: default
+2020-11-16 23:50:52.970 INFO metastore.HiveMetaStore: 2: get_database: default
+2020-11-16 23:50:52.970 INFO HiveMetaStore.audit: ugi=kentyao	ip=unknown-ip-addr	cmd=get_database: default
+2020-11-16 23:50:52.972 INFO metastore.HiveMetaStore: 2: get_tables: db=default pat=*
+2020-11-16 23:50:52.972 INFO HiveMetaStore.audit: ugi=kentyao	ip=unknown-ip-addr	cmd=get_tables: db=default pat=*
+2020-11-16 23:50:52.986 INFO operation.ExecuteStatement: Processing kentyao&#39;s query[ff902582-ba29-433b-b70a-c25ead1353a8]: RUNNING_STATE -&gt; FINISHED_STATE, statement: show tables, time taken: 0.03 seconds
++-----------+------------+--------------+
+| database  | tableName  | isTemporary  |
++-----------+------------+--------------+
++-----------+------------+--------------+
+No rows selected (0.04 seconds)
+</pre></div>
+</div>
+<p>Using this mode for experimental purposes only.</p>
+<p>In a real production environment, we always have a communal standalone metadata store,
+to manage the metadata of persistent relational entities, e.g. databases, tables, columns, partitions, for fast access.
+Usually, Hive metastore as the de facto.</p>
+</div>
+<div class="section" id="related-configurations">
+<h2><span class="section-number">3.3. </span>Related Configurations<a class="headerlink" href="#related-configurations" title="Permalink to this headline">¶</a></h2>
+<p>These are the basic needs for a Hive metastore client to communicate with the remote Hive Metastore server.</p>
+<p>Use remote metastore database or server mode depends on the server-side configuration.</p>
+<div class="section" id="remote-metastore-database">
+<h3><span class="section-number">3.3.1. </span>Remote Metastore Database<a class="headerlink" href="#remote-metastore-database" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>javax.jdo.option.ConnectionURL</td>
+<td>jdbc:mysql://&lt;hostname&gt;/&lt;databaseName&gt;?<br>createDatabaseIfNotExist=true</td>
+<td>metadata is stored in a MySQL server</td>
+</tr>
+<tr>
+<td>javax.jdo.option.ConnectionDriverName</td>
+<td>com.mysql.jdbc.Driver</td>
+<td>MySQL JDBC driver class</td>
+</tr>
+<tr>
+<td>javax.jdo.option.ConnectionUserName</td>
+<td>&lt;username&gt;</td>
+<td>user name for connecting to MySQL server</td>
+</tr>
+<tr>
+<td>javax.jdo.option.ConnectionPassword</td>
+<td>&lt;password&gt;</td>
+<td>password for connecting to MySQL server</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="remote-metastore-server">
+<h3><span class="section-number">3.3.2. </span>Remote Metastore Server<a class="headerlink" href="#remote-metastore-server" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hive.metastore.uris</td>
+<td>thrift://&lt;host&gt;:&lt;port&gt;,thrift://&lt;host1&gt;:&lt;port1&gt;</td>
+<td><div style='width: 200pt;word-wrap: break-word;white-space: normal'>host and port for the Thrift metastore server.</div></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="activate-configurations">
+<h2><span class="section-number">3.4. </span>Activate Configurations<a class="headerlink" href="#activate-configurations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="via-kyuubi-defaults-conf">
+<h3><span class="section-number">3.4.1. </span>Via kyuubi-defaults.conf<a class="headerlink" href="#via-kyuubi-defaults-conf" title="Permalink to this headline">¶</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code>, all <em><strong>Hive primitive configurations</strong></em>, e.g. <code class="docutils literal notranslate"><span class="pre">hive.metastore.uris</span></code>,
+and the <strong><em>Spark derivatives</em></strong>, which are prefixed with <code class="docutils literal notranslate"><span class="pre">spark.hive.</span></code> or <code class="docutils literal notranslate"><span class="pre">spark.hadoop.</span></code>, e.g <code class="docutils literal notranslate"><span class="pre">spark.hive.metastore.uris</span></code> or <code class="docutils literal notranslate"><span class="pre">spark.hadoop.hive.metastore.uris</span></code>,
+will be loaded as Hive primitives by the Hive client inside the Spark application.</p>
+<p>Kyuubi will take these configurations as system wide defaults for all applications it launches.</p>
+</div>
+<div class="section" id="via-hive-site-xml">
+<h3><span class="section-number">3.4.2. </span>Via hive-site.xml<a class="headerlink" href="#via-hive-site-xml" title="Permalink to this headline">¶</a></h3>
+<p>Place your copy of <code class="docutils literal notranslate"><span class="pre">hive-site.xml</span></code> into <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf</span></code>,
+every single Spark application will automatically load this config file to its classpath.</p>
+<p>This version of configuration has lower priority than those in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code>.</p>
+</div>
+<div class="section" id="via-jdbc-connection-url">
+<h3><span class="section-number">3.4.3. </span>Via JDBC Connection URL<a class="headerlink" href="#via-jdbc-connection-url" title="Permalink to this headline">¶</a></h3>
+<p>We can pass <em><strong>Hive primitives</strong></em> or <strong><em>Spark derivatives</em></strong> directly in the JDBC connection URL, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/</span><span class="p">;</span><span class="c1">#hive.metastore.uris=thrift://localhost:9083</span>
+</pre></div>
+</div>
+<p>This will override the defaults in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/hive-site.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> for each <em><strong>user account</strong></em>.</p>
+<p>With this feature, end users are possible to visit different Hive metastore server instance.
+Similarly, this works for other services like HDFS, YARN too.</p>
+<p><strong>Limitation:</strong> As most Hive configurations are final and unmodifiable in Spark at runtime,
+this only takes effect during instantiating the Spark applications and will be ignored when reusing an existing application.
+So, keep this in our mind.</p>
+<p><strong>!!!THIS WORKS ONLY ONCE!!!</strong></p>
+<p><strong>!!!THIS WORKS ONLY ONCE!!!</strong></p>
+<p><strong>!!!THIS WORKS ONLY ONCE!!!</strong></p>
+</div>
+<div class="section" id="via-set-syntax">
+<h3><span class="section-number">3.4.4. </span>Via SET syntax<a class="headerlink" href="#via-set-syntax" title="Permalink to this headline">¶</a></h3>
+<p>Most Hive configurations are final and unmodifiable in Spark at runtime, so keep this in our mind.</p>
+<p><strong>!!!THIS WON’T WORK!!!</strong></p>
+<p><strong>!!!THIS WON’T WORK!!!</strong></p>
+<p><strong>!!!THIS WON’T WORK!!!</strong></p>
+</div>
+</div>
+<div class="section" id="version-compatibility">
+<h2><span class="section-number">3.5. </span>Version Compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this headline">¶</a></h2>
+<p>If backward compatibility is guaranteed by Hive versioning,
+we can always use a lower version Hive metastore client to communicate with the higher version Hive metastore server.</p>
+<p>For example, Spark 3.0 was released with a built-in Hive client (2.3.7), so, ideally, the version of server should &gt;= 2.3.x.</p>
+<p>If you do have a legacy Hive metastore server that cannot be easily upgraded, and you may face the issue by default like this,</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>Caused by: org.apache.thrift.TApplicationException: Invalid method name: &#39;get_table_req&#39;
+	at org.apache.thrift.TServiceClient.receiveBase(TServiceClient.java:79)
+	at org.apache.hadoop.hive.metastore.api.ThriftHiveMetastore$Client.recv_get_table_req(ThriftHiveMetastore.java:1567)
+	at org.apache.hadoop.hive.metastore.api.ThriftHiveMetastore$Client.get_table_req(ThriftHiveMetastore.java:1554)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.getTable(HiveMetaStoreClient.java:1350)
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.getTable(SessionHiveMetaStoreClient.java:127)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.invoke(RetryingMetaStoreClient.java:173)
+	at com.sun.proxy.$Proxy37.getTable(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient$SynchronizedHandler.invoke(HiveMetaStoreClient.java:2336)
+	at com.sun.proxy.$Proxy37.getTable(Unknown Source)
+	at org.apache.hadoop.hive.ql.metadata.Hive.getTable(Hive.java:1274)
+	... 93 more
+</pre></div>
+</div>
+<p>To prevent this problem, we can use Spark’s <a class="reference external" href="http://spark.apache.org/docs/latest/sql-data-sources-hive-tables.html#interacting-with-different-versions-of-hive-metastore">Interacting with Different Versions of Hive Metastore</a>.</p>
+</div>
+<div class="section" id="further-readings">
+<h2><span class="section-number">3.6. </span>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Hive Wiki</p>
+<ul>
+<li><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+Metastore+Administration">Hive Metastore Administration</a></p></li>
+</ul>
+</li>
+<li><p>Spark Online Documentation</p>
+<ul>
+<li><p><a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#custom-hadoophive-configuration">Custom Hadoop/Hive Configuration</a></p></li>
+<li><p><a class="reference external" href="http://spark.apache.org/docs/latest/sql-data-sources-hive-tables.html">Hive Tables</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="high_availability_guide.html" class="btn btn-neutral float-right" title="4. Kyuubi High Availability Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="on_kubernetes.html" class="btn btn-neutral float-left" title="2. Deploy Kyuubi engines on Kubernetes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

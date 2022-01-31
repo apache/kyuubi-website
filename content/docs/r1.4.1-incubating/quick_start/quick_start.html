@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Getting Started with Apache Kyuubi &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Getting Started With Kyuubi on kubernetes" href="quick_start_with_helm.html" />
+    <link rel="prev" title="Quick Start" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Quick Start</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Getting Started with Apache Kyuubi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-kyuubi">1.1. Getting Kyuubi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">1.2. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">1.3. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-kyuubi">1.4. Running Kyuubi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-java">1.4.1. Setup JAVA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-spark">1.4.2. Setup Spark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-kyuubi">1.4.3. Starting Kyuubi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-hive-beeline">1.5. Using Hive Beeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opening-a-connection">1.5.1. Opening a Connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execute-statements">1.5.2. Execute Statements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#closing-a-connection">1.5.3. Closing a Connection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stopping-kyuubi">1.6. Stopping Kyuubi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_helm.html">2. Getting Started With Kyuubi on kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_dbeaver.html">3. Getting Started With Kyuubi and DBeaver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_beeline.html">4. Getting Started With Hive Beeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_jdbc.html">5. Getting Started With Hive JDBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_datagrip.html">6. Getting Started With Kyuubi and DataGrip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start_with_hue.html">7. Getting Started with Kyuubi and Cloudera Hue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Quick Start</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Getting Started with Apache Kyuubi</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/quick_start/quick_start.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><script async defer src="https://buttons.github.io/buttons.js"></script><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="getting-started-with-apache-kyuubi">
+<h1><span class="section-number">1. </span>Getting Started with Apache Kyuubi<a class="headerlink" href="#getting-started-with-apache-kyuubi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-kyuubi">
+<h2><span class="section-number">1.1. </span>Getting Kyuubi<a class="headerlink" href="#getting-kyuubi" title="Permalink to this headline">¶</a></h2>
+<p>Currently, Apache Kyuubi maintains all its releases on our official <a class="reference external" href="https://kyuubi.apache.org/releases.html">website</a>.
+You can get the most recent stable release of Apache Kyuubi here:</p>
+<p><a class="github-button" href="https://kyuubi.apache.org/releases.html" data-color-scheme="no-preference: light; light: dark; dark: light;" data-icon="octicon-download" data-size="large" aria-label="Download Kyuubi">Download</a></p>
+</div>
+<div class="section" id="requirements">
+<h2><span class="section-number">1.2. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>These are essential components required for Kyuubi to startup.
+For quick start deployment, the only thing you need is <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code> being correctly set.
+The Kyuubi release package you downloaded or built contains the rest prerequisites inside already.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Components</th>
+<th>Role</th>
+<th>Optional</th>
+<th>Version</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java</td>
+<td>Java<br>Runtime<br>Environment</td>
+<td>Required</td>
+<td>Java 8/11</td>
+<td>Kyuubi is pre-built with Java 8</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>Distributed<br>SQL<br>Engine</td>
+<td>Required</td>
+<td>3.0.0 and above</td>
+<td>By default Kyuubi binary release is delivered without<br> a Spark tarball.</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td>Distributed<br>File<br>System</td>
+<td>Optional</td>
+<td>referenced<br>by<br>Spark</td>
+<td>Hadoop Distributed File System is a <br>part of Hadoop framework, used to<br> store and process the datasets.<br> You can interact with any<br> Spark-compatible versions of HDFS.</td>
+</tr>
+<tr>
+<td>Hive</td>
+<td>Metastore</td>
+<td>Optional</td>
+<td>referenced<br>by<br>Spark</td>
+<td>Hive Metastore for Spark SQL to connect</td>
+</tr>
+<tr>
+<td>Zookeeper</td>
+<td>Service<br>Discovery</td>
+<td>Optional</td>
+<td>Any<br>zookeeper<br>ensemble<br>compatible<br>with<br>curator(2.12.0)</td>
+<td>By default, Kyuubi provides a<br> embedded Zookeeper server inside for<br> non-production use.</td>
+</tr>
+</tbody>
+</table><p>Additionally, if you want to work with other Spark compatible systems or plugins, you only need to take care of them as using them with regular Spark applications.
+For example, you can run Spark SQL engines created by the Kyuubi on any cluster manager, including YARN, Kubernetes, Mesos, e.t.c…
+Or, you can manipulate data from different data sources with the Spark Datasource API, e.g. Delta Lake, Apache Hudi, Apache Iceberg, Apache Kudu and e.t.c…</p>
+</div>
+<div class="section" id="installation">
+<h2><span class="section-number">1.3. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install Kyuubi, you need to unpack the tarball. For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar zxf apache-kyuubi-1.3.1-incubating-bin.tgz
+</pre></div>
+</div>
+<p>This will result in the creation of a subdirectory named <code class="docutils literal notranslate"><span class="pre">apache-kyuubi-1.3.1-incubating-bin</span></code> shown below,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apache-kyuubi-1.3.1-incubating-bin
+├── DISCLAIMER
+├── LICENSE
+├── NOTICE
+├── RELEASE
+├── bin
+├── conf
+<span class="p">|</span>   ├── kyuubi-defaults.conf.template
+│   ├── kyuubi-env.sh.template
+│   └── log4j.properties.template
+├── docker
+│   ├── Dockerfile
+│   ├── kyuubi-configmap.yaml
+│   ├── kyuubi-pod.yaml
+│   └── kyuubi-service.yaml
+├── extension
+│  └── kyuubi-extension-spark-3-1_2.12-1.3.1-incubating.jar
+├── externals
+│  └── engines
+├── jars
+├── licenses
+├── logs
+├── pid
+└── work
+</pre></div>
+</div>
+<p>From top to bottom are:</p>
+<ul class="simple">
+<li><p>DISCLAIMER: the disclaimer made by Apache Kyuubi Community as a project still in ASF Incubator.</p></li>
+<li><p>LICENSE: the <a class="reference external" href="https://www.apache.org/licenses/LICENSE-2.0">APACHE LICENSE, VERSION 2.0</a> we claim to obey.</p></li>
+<li><p>RELEASE: the build information of this package.</p></li>
+<li><p>NOTICE: the notice made by Apache Kyuubi Community about its project and dependencies.</p></li>
+<li><p>bin: the entry of the Kyuubi server with <code class="docutils literal notranslate"><span class="pre">kyuubi</span></code> as the startup script.</p></li>
+<li><p>conf: all the defaults used by Kyuubi Server itself or creating a session with Spark applications.</p></li>
+<li><p>externals</p>
+<ul>
+<li><p>engines: contains all kinds of SQL engines that we support, e.g. Apache Spark, Apache Flink(coming soon).</p></li>
+</ul>
+</li>
+<li><p>licenses: a bunch of licenses included.</p></li>
+<li><p>jars: packages needed by the Kyuubi server.</p></li>
+<li><p>logs: where the logs of the Kyuubi server locates.</p></li>
+<li><p>pid: stores the PID file of the Kyuubi server instance.</p></li>
+<li><p>work: the root of the working directories of all the forked sub-processes, a.k.a. SQL engines.</p></li>
+</ul>
+</div>
+<div class="section" id="running-kyuubi">
+<h2><span class="section-number">1.4. </span>Running Kyuubi<a class="headerlink" href="#running-kyuubi" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned above, for a quick start deployment, then only you need to be sure is that your java runtime environment and <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code> are correct.</p>
+<div class="section" id="setup-java">
+<h3><span class="section-number">1.4.1. </span>Setup JAVA<a class="headerlink" href="#setup-java" title="Permalink to this headline">¶</a></h3>
+<p>You can either set it system-widely, e.g. in the <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java -version
+java version <span class="s2">&quot;1.8.0_251&quot;</span>
+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build <span class="m">1</span>.8.0_251-b08<span class="o">)</span>
+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> <span class="m">64</span>-Bit Server VM <span class="o">(</span>build <span class="m">25</span>.251-b08, mixed mode<span class="o">)</span>
+</pre></div>
+</div>
+<p>Or, <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">JAVA_HOME=/path/to/java</span></code> in the local os session.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home
+java -version
+java version <span class="s2">&quot;11.0.5&quot;</span> <span class="m">2019</span>-10-15 LTS
+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="m">18</span>.9 <span class="o">(</span>build <span class="m">11</span>.0.5+10-LTS<span class="o">)</span>
+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> <span class="m">64</span>-Bit Server VM <span class="m">18</span>.9 <span class="o">(</span>build <span class="m">11</span>.0.5+10-LTS, mixed mode<span class="o">)</span>
+</pre></div>
+</div>
+<p>The recommended place to set <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> is <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code>, as the ways above are too flaky.
+The <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code> will take others’ precedence.</p>
+</div>
+<div class="section" id="setup-spark">
+<h3><span class="section-number">1.4.2. </span>Setup Spark<a class="headerlink" href="#setup-spark" title="Permalink to this headline">¶</a></h3>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, you can also set <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code> in different ways. However, we recommend setting it in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code> too.</p>
+<p>For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SPARK_HOME</span><span class="o">=</span>~/Downloads/spark-3.2.0-bin-hadoop3.2
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-kyuubi">
+<h3><span class="section-number">1.4.3. </span>Starting Kyuubi<a class="headerlink" href="#starting-kyuubi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/kyuubi start
+</pre></div>
+</div>
+<p>It will print all essential environment variables on the screen during the server starts, and you may check whether they are expected.</p>
+<div class="highlight-log notranslate"><div class="highlight"><pre><span></span>Starting Kyuubi Server from /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+Warn: Not find kyuubi environment file /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/conf/kyuubi-env.sh, using default ones...
+JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home
+KYUUBI_HOME: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+KYUUBI_CONF_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/conf
+KYUUBI_LOG_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/logs
+KYUUBI_PID_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/pid
+KYUUBI_WORK_DIR_ROOT: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/work
+SPARK_HOME: /Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2
+SPARK_CONF_DIR: /Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2/conf
+HADOOP_CONF_DIR:
+Starting org.apache.kyuubi.server.KyuubiServer, logging to /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/logs/kyuubi-kentyao-org.apache.kyuubi.server.KyuubiServer-hulk.local.out
+Welcome to
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+</pre></div>
+</div>
+<p>If all goes well, this will result in the creation of the Kyuubi server instance with a <code class="docutils literal notranslate"><span class="pre">PID</span></code> stored in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/pid/kyuubi-&lt;username&gt;-org.apache.kyuubi.server.KyuubiServer.pid</span></code></p>
+<p>Then, you can get the JDBC connection URL at the end of the log file, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ThriftFrontendService</span><span class="p">:</span> <span class="n">Starting</span> <span class="ow">and</span> <span class="n">exposing</span> <span class="n">JDBC</span> <span class="n">connection</span> <span class="n">at</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>If something goes wrong, you shall be able to find some clues in the log file too.</p>
+<p>Alternatively, it can run in the foreground, with the logs and other output written to stdout/stderr.
+Both streams should be captured if using a supervision system like <code class="docutils literal notranslate"><span class="pre">supervisord</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/kyuubi run
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-hive-beeline">
+<h2><span class="section-number">1.5. </span>Using Hive Beeline<a class="headerlink" href="#using-hive-beeline" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi server is compatible with Apache Hive beeline, so you can use <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/bin/beeline</span></code> for testing.</p>
+<div class="section" id="opening-a-connection">
+<h3><span class="section-number">1.5.1. </span>Opening a Connection<a class="headerlink" href="#opening-a-connection" title="Permalink to this headline">¶</a></h3>
+<p>The command below will tell the Kyuubi server to create a session with itself.</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span>bin<span class="o">/</span>beeline <span class="o">-</span>u <span class="s">&#39;jdbc:hive2://localhost:10009/&#39;</span>
+<span class="nv">Connecting</span> to jdbc<span class="o">:</span>hive2<span class="o">://</span>localhost<span class="o">:</span><span class="m">10009</span><span class="o">/</span>
+<span class="nv">Connected</span> to<span class="o">:</span> <span class="nv">Spark</span> <span class="nv">SQL</span> (version <span class="m">1.0</span>.<span class="m">2</span>)
+<span class="nv">Driver</span><span class="o">:</span> <span class="nv">Hive</span> <span class="nv">JDBC</span> (version <span class="m">2.3</span>.<span class="m">7</span>)
+<span class="nv">Transaction</span> isolation<span class="o">:</span> <span class="nv">TRANSACTION_REPEATABLE_READ</span>
+<span class="nv">Beeline</span> version <span class="m">2.3</span>.<span class="m">7</span> by <span class="nv">Apache</span> <span class="nv">Hive</span>
+<span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span>localhost<span class="o">:</span><span class="m">10009</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>In this case, the session will create for the user named ‘anonymous’.</p>
+<p>Kyuubi will create a Spark SQL engine application using <code class="docutils literal notranslate"><span class="pre">kyuubi-spark-sql-engine_2.12-&lt;version&gt;.jar</span></code>.
+It will cost awhile for the application to be ready before fully establishing the session.
+Otherwise, an existing application will be reused, and the time cost here is negligible.</p>
+<p>Similarly, you can create a session for another user(or principal, subject, and maybe something else you defined), e.g. named <code class="docutils literal notranslate"><span class="pre">kentyao</span></code>,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/beeline -u <span class="s1">&#39;jdbc:hive2://localhost:10009/&#39;</span> -n kentyao
+</pre></div>
+</div>
+<p>The formerly created Spark application for user ‘anonymous’ will not be reused in this case, while a brand new application will be submitted for user ‘kentyao’ instead.</p>
+<p>Then, you can see 3 processes running in your local environment, including one <code class="docutils literal notranslate"><span class="pre">KyuubiServer</span></code> instance and 2 <code class="docutils literal notranslate"><span class="pre">SparkSubmit</span></code> instances as the SQL engines.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">75730</span> <span class="n">Jps</span>
+<span class="mi">70843</span> <span class="n">KyuubiServer</span>
+<span class="mi">72566</span> <span class="n">SparkSubmit</span>
+<span class="mi">75356</span> <span class="n">SparkSubmit</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execute-statements">
+<h3><span class="section-number">1.5.2. </span>Execute Statements<a class="headerlink" href="#execute-statements" title="Permalink to this headline">¶</a></h3>
+<p>If the beeline session is successfully connected, then you can run any query supported by Spark SQL now. For example,</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span><span class="m">10.242</span>.<span class="m">189.214</span><span class="o">:</span><span class="m">2181</span><span class="o">/&gt;</span> select timestamp <span class="s">&#39;2018-11-17&#39;</span><span class="o">;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.509</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[1f619182-20ad-4733-995b-a5e43b80d998]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.547</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[1f619182-20ad-4733-995b-a5e43b80d998]: PENDING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.540</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.541</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: PENDING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.543</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span>
+           <span class="nv">Spark</span> application name<span class="o">:</span> kyuubi_USER_kent_7ad055d0<span class="o">-</span><span class="m">3</span>eca<span class="o">-</span><span class="m">4</span>b78<span class="o">-</span><span class="m">87e8</span><span class="o">-</span><span class="m">94</span>b22f3bade9
+                 application <span class="nv">ID</span><span class="o">:</span> local<span class="o">-</span><span class="m">1635400506190</span>
+                 application web <span class="nv">UI</span><span class="o">:</span> http<span class="o">://</span><span class="m">10.242</span>.<span class="m">189.214</span><span class="o">:</span><span class="m">56774</span>
+                 master<span class="o">:</span> local[<span class="o">*</span>]
+                 deploy mode<span class="o">:</span> client
+                 version<span class="o">:</span> <span class="m">3.2</span>.<span class="m">0</span>
+           <span class="nv">Start</span> time<span class="o">:</span> <span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span><span class="nv">T13</span><span class="o">:</span><span class="m">55</span><span class="o">:</span><span class="m">05.528</span>
+           <span class="nv">User</span><span class="o">:</span> kent
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.604</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: RUNNING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.627</span> <span class="nv">INFO</span> codegen.<span class="nv">CodeGenerator</span><span class="o">:</span> <span class="nv">Code</span> generated in <span class="m">6.696179</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.635</span> <span class="nv">INFO</span> spark.<span class="nv">SparkContext</span><span class="o">:</span> <span class="nv">Starting</span> job<span class="o">:</span> collect at <span class="nv">ExecuteStatement</span>.scala<span class="o">:</span><span class="m">97</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.639</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Query</span> [a46ca504<span class="o">-</span>fe3a<span class="o">-</span><span class="m">4</span>dfb<span class="o">-</span>be1e<span class="o">-</span><span class="m">19770</span>af8ac4c]<span class="o">:</span> <span class="nv">Job</span> <span class="m">3</span> started with <span class="m">1</span> stages, <span class="m">1</span> active jobs running
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.639</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Query</span> [a46ca504<span class="o">-</span>fe3a<span class="o">-</span><span class="m">4</span>dfb<span class="o">-</span>be1e<span class="o">-</span><span class="m">19770</span>af8ac4c]<span class="o">:</span> <span class="nv">Stage</span> <span class="m">3</span> started with <span class="m">1</span> tasks, <span class="m">1</span> active stages running
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.651</span> <span class="nv">INFO</span> scheduler.<span class="nv">DAGScheduler</span><span class="o">:</span> <span class="nv">Job</span> <span class="m">3</span> finished<span class="o">:</span> collect at <span class="nv">ExecuteStatement</span>.scala<span class="o">:</span><span class="m">97</span>, took <span class="m">0.016234</span> s
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.653</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Finished</span> stage<span class="o">:</span> <span class="nv">Stage</span>(<span class="m">3</span>, <span class="m">0</span>)<span class="o">;</span> <span class="nv">Name</span><span class="o">:</span> <span class="s">&#39;collect at ExecuteStatement.scala:97&#39;</span><span class="o">;</span> <span class="nv">Status</span><span class="o">:</span> succeeded<span class="o">;</span> numTasks<span class="o">:</span> <span class="m">1</span><span class="o">;</span> <span class="nv">Took</span><span class="o">:</span> <span class="m">13</span> msec
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.663</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> task runtime<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">8.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">8.000000</span>, min<span class="o">:</span> <span class="m">8.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.664</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.664</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.665</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> shuffle bytes written<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.665</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.665</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.666</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> fetch wait time<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.666</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.666</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.667</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> remote bytes read<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.667</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.667</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.668</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> task result size<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">1402.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">1402.000000</span>, min<span class="o">:</span> <span class="m">1402.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.668</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.669</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.669</span> <span class="nv">INFO</span> codegen.<span class="nv">CodeGenerator</span><span class="o">:</span> <span class="nv">Code</span> generated in <span class="m">8.815996</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.672</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> executor (non<span class="o">-</span>fetch) time pct<span class="o">:</span> (count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">12.500000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">12.500000</span>, min<span class="o">:</span> <span class="m">12.500000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.672</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.672</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">13</span> <span class="c">%	13 %	13 %	13 %	13 %	13 %	13 %	13 %	13 %</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.673</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> fetch wait time pct<span class="o">:</span> (count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.673</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.673</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	 <span class="m">0</span> <span class="c">%	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> other time pct<span class="o">:</span> (count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">87.500000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">87.500000</span>, min<span class="o">:</span> <span class="m">87.500000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">88</span> <span class="c">%	88 %	88 %	88 %	88 %	88 %	88 %	88 %	88 %</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Query</span> [a46ca504<span class="o">-</span>fe3a<span class="o">-</span><span class="m">4</span>dfb<span class="o">-</span>be1e<span class="o">-</span><span class="m">19770</span>af8ac4c]<span class="o">:</span> <span class="nv">Job</span> <span class="m">3</span> succeeded, <span class="m">0</span> active jobs running
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.744</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;, time taken: 0.202 seconds</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.784</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Query</span>[<span class="m">1</span>f619182<span class="o">-</span><span class="m">20</span>ad<span class="o">-</span><span class="m">4733</span><span class="o">-</span><span class="m">995</span>b<span class="o">-</span>a5e43b80d998] in <span class="nv">FINISHED_STATE</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.784</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[1f619182-20ad-4733-995b-a5e43b80d998]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;, time taken: 0.237 seconds</span>
+<span class="o">+----------------------------------+</span>
+| <span class="nv">TIMESTAMP</span> <span class="s">&#39;2018-11-17 00:00:00&#39;</span>  |
+<span class="o">+----------------------------------+</span>
+| <span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span> <span class="m">00</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00.0</span>            |
+<span class="o">+----------------------------------+</span>
+<span class="m">1</span> row selected (<span class="m">0.404</span> seconds)
+</pre></div>
+</div>
+<p>As shown in the above case, you can retrieve all the operation logs, the result schema, and the result to your client-side in the beeline console.</p>
+<p>Additionally, some useful information about the background Spark SQL application associated with this connection is also printed in the operation log.
+For example, you can get the Spark web UI from the log for debugging or tuning.</p>
+<p><img alt="../_images/spark_jobs_page.png" src="../_images/spark_jobs_page.png" /></p>
+</div>
+<div class="section" id="closing-a-connection">
+<h3><span class="section-number">1.5.3. </span>Closing a Connection<a class="headerlink" href="#closing-a-connection" title="Permalink to this headline">¶</a></h3>
+<p>Close the session between beeline and Kyuubi server by executing <code class="docutils literal notranslate"><span class="pre">!quit</span></code>, for example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>: jdbc:hive2://localhost:10009/&gt; !quit
+Closing: <span class="m">0</span>: jdbc:hive2://localhost:10009/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="stopping-kyuubi">
+<h2><span class="section-number">1.6. </span>Stopping Kyuubi<a class="headerlink" href="#stopping-kyuubi" title="Permalink to this headline">¶</a></h2>
+<p>Stop Kyuubi by running the following in the <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/kyuubi stop
+</pre></div>
+</div>
+<p>And then, you will see the KyuubiServer waving goodbye to you.</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span>Stopping org.apache.kyuubi.server.KyuubiServer
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+Bye!
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">KyuubiServer</span></code> instance will be stopped immediately while the SQL engine’s application will still be alive for a while.</p>
+<p>If you start Kyuubi again before the SQL engine application terminates itself, it will reconnect to the newly created <code class="docutils literal notranslate"><span class="pre">KyuubiServer</span></code> instance.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="quick_start_with_helm.html" class="btn btn-neutral float-right" title="2. Getting Started With Kyuubi on kubernetes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

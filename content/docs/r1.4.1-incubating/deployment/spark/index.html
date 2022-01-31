@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. The Engine Configuration Guide &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi" href="dynamic_allocation.html" />
+    <link rel="prev" title="1. Introduction to the Kyuubi Configurations System" href="../settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#basics">Basics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#configurations">Configurations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../settings.html">1. Introduction to the Kyuubi Configurations System</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2. The Engine Configuration Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dynamic_allocation.html">2.1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aqe.html">2.2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#engines">Engines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>The Engine Configuration Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/deployment/spark/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <img alt="../../_images/kyuubi_logo.png" class="align-center" src="../../_images/kyuubi_logo.png" />
+<div class="section" id="the-engine-configuration-guide">
+<h1><span class="section-number">2. </span>The Engine Configuration Guide<a class="headerlink" href="#the-engine-configuration-guide" title="Permalink to this headline">¶</a></h1>
+<p>Kyuubi aims to bring Spark to end-users who need not qualify with Spark or something else related to the big data area.
+End-users can write SQL queries through JDBC against Kyuubi and nothing more.
+The Kyuubi server-side or the corresponding engines could do most of the optimization.
+On the other hand, we don’t wholly restrict end-users to special handling of specific cases to benefit from the following documentations.
+Even if you don’t use Kyuubi, as a simple Spark user, I’m sure you’ll find the next articles instructive.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_allocation.html">2.1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_allocation.html#the-basics-of-dynamic-resource-allocation">2.1.1. The Basics of Dynamic Resource Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_allocation.html#how-to-enable-dynamic-resource-allocation">2.1.2. How to Enable Dynamic Resource Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_allocation.html#sizing-for-engines-w-dynamic-resource-allocation">2.1.3. Sizing for engines w/ Dynamic Resource Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_allocation.html#resource-allocation-policy">2.1.4. Resource Allocation Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_allocation.html#best-practices-for-applying-dra-to-kyuubi">2.1.5. Best Practices for Applying DRA to Kyuubi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_allocation.html#references">2.1.6. References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aqe.html">2.2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aqe.html#the-basics-of-aqe">2.2.1. The Basics of AQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqe.html#best-practices-for-applying-aqe-to-kyuubi">2.2.2. Best Practices for Applying AQE to Kyuubi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqe.html#spark-known-issues">2.2.3. Spark Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqe.html#references">2.2.4. References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dynamic_allocation.html" class="btn btn-neutral float-right" title="2.1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../settings.html" class="btn btn-neutral float-left" title="1. Introduction to the Kyuubi Configurations System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

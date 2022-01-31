@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Kubernetes Tools Spark Block Cleaner &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview" href="../overview/index.html" />
+    <link rel="prev" title="Tools" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Kubernetes Tools Spark Block Cleaner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">1.1. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scenes">1.2. Scenes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#principle">1.3. Principle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">1.4. Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-block-cleaner-docker-image">1.4.1. Build Block Cleaner Docker Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modify-spark-block-cleaner-yml">1.4.2. Modify spark-block-cleaner.yml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-daemonset">1.4.3. Start daemonSet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#related-parameters">1.5. Related parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tools</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Kubernetes Tools Spark Block Cleaner</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tools/spark_block_cleaner.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="kubernetes-tools-spark-block-cleaner">
+<h1><span class="section-number">1. </span>Kubernetes Tools Spark Block Cleaner<a class="headerlink" href="#kubernetes-tools-spark-block-cleaner" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2><span class="section-number">1.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>You’d better have cognition upon the following things when you want to use spark-block-cleaner.</p>
+<ul class="simple">
+<li><p>Read this article</p></li>
+<li><p>An active Kubernetes cluster</p></li>
+<li><p><a class="reference external" href="https://kubernetes.io/docs/reference/kubectl/overview/">Kubectl</a></p></li>
+<li><p><a class="reference external" href="https://www.docker.com/">Docker</a></p></li>
+</ul>
+</div>
+<div class="section" id="scenes">
+<h2><span class="section-number">1.2. </span>Scenes<a class="headerlink" href="#scenes" title="Permalink to this headline">¶</a></h2>
+<p>When you’re using Spark On Kubernetes with Client mode and don’t use <code class="docutils literal notranslate"><span class="pre">emptyDir</span></code> for Spark <code class="docutils literal notranslate"><span class="pre">local-dir</span></code> type, you may face the same scenario that executor pods deleted without clean all the Block files. It may cause disk overflow.</p>
+<p>Therefore, we chose to use Spark Block Cleaner to clear the block files accumulated by Spark.</p>
+</div>
+<div class="section" id="principle">
+<h2><span class="section-number">1.3. </span>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
+<p>When deploying Spark Block Cleaner, we will configure volumes for the destination folder. Spark Block Cleaner will perceive the folder by the parameter <code class="docutils literal notranslate"><span class="pre">CACHE_DIRS</span></code>.</p>
+<p>Spark Block Cleaner will clear the perceived folder in a fixed loop(which can be configured by <code class="docutils literal notranslate"><span class="pre">SCHEDULE_INTERVAL</span></code>). And Spark Block Cleaner will select folder start with <code class="docutils literal notranslate"><span class="pre">blockmgr</span></code> and <code class="docutils literal notranslate"><span class="pre">spark</span></code> for deletion using the logic Spark uses to create those folders.</p>
+<p>Before deleting those files, Spark Block Cleaner will determine whether it is a recently modified file(depending on whether the file has not been acted on within the specified time which configured by <code class="docutils literal notranslate"><span class="pre">FILE_EXPIRED_TIME</span></code>). Only delete files those beyond that time interval.</p>
+<p>And Spark Block Cleaner will check the disk utilization after clean, if the remaining space is less than the specified value(control by <code class="docutils literal notranslate"><span class="pre">FREE_SPACE_THRESHOLD</span></code>), will trigger deep clean(which file expired time control by <code class="docutils literal notranslate"><span class="pre">DEEP_CLEAN_FILE_EXPIRED_TIME</span></code>).</p>
+</div>
+<div class="section" id="usage">
+<h2><span class="section-number">1.4. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Before you start using Spark Block Cleaner, you should build its docker images.</p>
+<div class="section" id="build-block-cleaner-docker-image">
+<h3><span class="section-number">1.4.1. </span>Build Block Cleaner Docker Image<a class="headerlink" href="#build-block-cleaner-docker-image" title="Permalink to this headline">¶</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">KYUUBI_HOME</span></code> directory, you can use the following cmd to build docker image.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker build ./tools/spark-block-cleaner/kubernetes/docker
+</pre></div>
+</div>
+</div>
+<div class="section" id="modify-spark-block-cleaner-yml">
+<h3><span class="section-number">1.4.2. </span>Modify spark-block-cleaner.yml<a class="headerlink" href="#modify-spark-block-cleaner-yml" title="Permalink to this headline">¶</a></h3>
+<p>You need to modify the <code class="docutils literal notranslate"><span class="pre">${KYUUBI_HOME}/tools/spark-block-cleaner/kubernetes/spark-block-cleaner.yml</span></code> to fit your current environment.</p>
+<p>In Kyuubi tools, we recommend using <code class="docutils literal notranslate"><span class="pre">DaemonSet</span></code> to start, and we offer default yaml file in daemonSet way.</p>
+<p>Base file structure:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">kind</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">metadata</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">spec</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">select</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">template</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">metadata</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">spce</span><span class="w"></span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">containers</span><span class="w"></span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- image</span><span class="w"></span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- volumeMounts</span><span class="w"></span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- env</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can use affect the performance of Spark Block Cleaner through configure parameters in containers env part of <code class="docutils literal notranslate"><span class="pre">spark-block-cleaner.yml</span></code>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CACHE_DIRS</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/data1,/data/data2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FILE_EXPIRED_TIME</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">604800</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEEP_CLEAN_FILE_EXPIRED_TIME</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">432000</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FREE_SPACE_THRESHOLD</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SCHEDULE_INTERVAL</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The most important thing, configure volumeMounts and volumes corresponding to Spark local-dirs.</p>
+<p>For example, Spark use /spark/shuffle1 as local-dir, you can configure like:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">block-files-dir-1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/spark/shuffle1</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">block-files-dir-1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/data1</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CACHE_DIRS</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/data1</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-daemonset">
+<h3><span class="section-number">1.4.3. </span>Start daemonSet<a class="headerlink" href="#start-daemonset" title="Permalink to this headline">¶</a></h3>
+<p>After you finishing modifying the above, you can use the following command <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">${KYUUBI_HOME}/tools/spark-block-cleaner/kubernetes/spark-block-cleaner.yml</span></code> to start daemonSet.</p>
+</div>
+</div>
+<div class="section" id="related-parameters">
+<h2><span class="section-number">1.5. </span>Related parameters<a class="headerlink" href="#related-parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>unit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CACHE_DIRS</td>
+<td>/data/data1,/data/data2</td>
+<td></td>
+<td>The target dirs in container path which will clean block files.</td>
+</tr>
+<tr>
+<td>FILE_EXPIRED_TIME</td>
+<td>604800</td>
+<td>seconds</td>
+<td>Cleaner will clean the block files which current time - last modified time more than the fileExpiredTime.</td>
+</tr>
+<tr>
+<td>DEEP_CLEAN_FILE_EXPIRED_TIME</td>
+<td>432000</td>
+<td>seconds</td>
+<td>Deep clean will clean the block files which current time - last modified time more than the deepCleanFileExpiredTime.</td>
+</tr>
+<tr>
+<td>FREE_SPACE_THRESHOLD</td>
+<td>60</td>
+<td>%</td>
+<td>After first clean, if free Space low than threshold trigger deep clean.</td>
+</tr>
+<tr>
+<td>SCHEDULE_INTERVAL</td>
+<td>3600</td>
+<td>seconds</td>
+<td>Cleaner sleep between cleaning.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../overview/index.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
