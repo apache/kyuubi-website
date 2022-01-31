@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>4. Kyuubi Release Guide &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Community" href="badges.html" />
+    <link rel="prev" title="3. Kyuubi Project Improvement Proposals (KPIP)" href="improvement-proposals.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Community</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="collaborators.html">1. Collaborators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributions.html">2. Contribution Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="improvement-proposals.html">3. Kyuubi Project Improvement Proposals (KPIP)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Kyuubi Release Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.1. Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">4.1.1. Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#decide-to-release">4.2. Decide to release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#checklist-to-proceed-to-the-next-step">4.2.1. Checklist to proceed to the next step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-for-the-release">4.3. Prepare for the release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#one-time-setup-instructions">4.3.1. One-time setup instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-branch-iff-for-major-release">4.4. Cut branch iff for major release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-a-release-candidate">4.5. Build a release candidate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vote-on-the-release-candidate">4.6. Vote on the release candidate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finalize-the-release">4.7. Finalize the Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#promote-the-release">4.8. Promote the release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update-website">4.8.1. Update Website</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-announcement">4.8.2. Create an Announcement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="badges.html">5. Community </a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Community</a> &raquo;</li>
+        
+      <li><span class="section-number">4. </span>Kyuubi Release Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/community/release.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div class="section" id="kyuubi-release-guide">
+<h1><span class="section-number">4. </span>Kyuubi Release Guide<a class="headerlink" href="#kyuubi-release-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Apache Kyuubi (Incubating) project periodically declares and publishes releases. A release is one or more packages
+of the project artifact(s) that are approved for general public distribution and use. They may come with various
+degrees of caveat regarding their perceived quality and potential for change, such as “alpha”, “beta”, “incubating”,
+“stable”, etc.</p>
+<p>The Kyuubi community treats releases with great importance. They are a public face of the project and most users
+interact with the project only through the releases. Releases are signed off by the entire Kyuubi community in a
+public vote.</p>
+<p>Each release is executed by a Release Manager, who is selected among the Kyuubi committers. This document describes
+the process that the Release Manager follows to perform a release. Any changes to this process should be discussed
+and adopted on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;kyuubi&#46;apache&#46;org">dev mailing list</a>.</p>
+<p>Please remember that publishing software has legal consequences. This guide complements the foundation-wide
+<a class="reference external" href="https://www.apache.org/dev/release.html">Product Release Policy</a> and
+<a class="reference external" href="https://www.apache.org/dev/release-distribution">Release Distribution Policy</a>.</p>
+<div class="section" id="overview">
+<h3><span class="section-number">4.1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>The release process consists of several steps:</p>
+<ol class="simple">
+<li><p>Decide to release</p></li>
+<li><p>Prepare for the release</p></li>
+<li><p>Cut branch off for <strong>major</strong> release</p></li>
+<li><p>Build a release candidate</p></li>
+<li><p>Vote on the release candidate</p></li>
+<li><p>If necessary, fix any issues and go back to step 3.</p></li>
+<li><p>Finalize the release</p></li>
+<li><p>Promote the release</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="decide-to-release">
+<h2><span class="section-number">4.2. </span>Decide to release<a class="headerlink" href="#decide-to-release" title="Permalink to this headline">¶</a></h2>
+<p>Deciding to release and selecting a Release Manager is the first step of the release process. This is a consensus-based
+decision of the entire community.</p>
+<p>Anybody can propose a release on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;kyuubi&#46;apache&#46;org">dev mailing list</a>, giving a solid argument and
+nominating a committer as the Release Manager (including themselves). There’s no formal process, no vote requirements,
+and no timing requirements. Any objections should be resolved by consensus before starting the release.</p>
+<p>In general, the community prefers to have a rotating set of 1-2 Release Managers. Keeping a small core set of managers
+allows enough people to build expertise in this area and improve processes over time, without Release Managers needing
+to re-learn the processes for each release. That said, if you are a committer interested in serving the community in
+this way, please reach out to the community on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;kyuubi&#46;apache&#46;org">dev mailing list</a>.</p>
+<div class="section" id="checklist-to-proceed-to-the-next-step">
+<h3><span class="section-number">4.2.1. </span>Checklist to proceed to the next step<a class="headerlink" href="#checklist-to-proceed-to-the-next-step" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Community agrees to release</p></li>
+<li><p>Community selects a Release Manager</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="prepare-for-the-release">
+<h2><span class="section-number">4.3. </span>Prepare for the release<a class="headerlink" href="#prepare-for-the-release" title="Permalink to this headline">¶</a></h2>
+<p>Before your first release, you should perform one-time configuration steps. This will set up your security keys for
+signing the release and access to various release repositories.</p>
+<div class="section" id="one-time-setup-instructions">
+<h3><span class="section-number">4.3.1. </span>One-time setup instructions<a class="headerlink" href="#one-time-setup-instructions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="asf-authentication">
+<h4><span class="section-number">4.3.1.1. </span>ASF authentication<a class="headerlink" href="#asf-authentication" title="Permalink to this headline">¶</a></h4>
+<p>The environments <code class="docutils literal notranslate"><span class="pre">ASF_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ASF_PASSWORD</span></code> have been used in several places and several times in the release
+process, you can either one-time set up them in <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code>, or export them in terminal every time.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASF_USERNAME</span><span class="o">=</span>&lt;your apache username&gt;
+<span class="nb">export</span> <span class="nv">ASF_PASSWORD</span><span class="o">=</span>&lt;your apache password&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="java-home">
+<h4><span class="section-number">4.3.1.2. </span>Java Home<a class="headerlink" href="#java-home" title="Permalink to this headline">¶</a></h4>
+<p>An available environment variable <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, you can do <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$JAVA_HOME</span></code> to check it.
+Note that, the Java version should be 8.</p>
+</div>
+<div class="section" id="subversion">
+<h4><span class="section-number">4.3.1.3. </span>Subversion<a class="headerlink" href="#subversion" title="Permalink to this headline">¶</a></h4>
+<p>Besides on <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">svn</span></code> is also required for Apache release, please refer to
+https://www.apache.org/dev/version-control.html#https-svn for details.</p>
+</div>
+<div class="section" id="gpg-key">
+<h4><span class="section-number">4.3.1.4. </span>GPG Key<a class="headerlink" href="#gpg-key" title="Permalink to this headline">¶</a></h4>
+<p>You need to have a GPG key to sign the release artifacts. Please be aware of the ASF-wide
+<a class="reference external" href="https://www.apache.org/dev/release-signing.html">release signing guidelines</a>. If you don’t have a GPG key associated
+with your Apache account, please create one according to the guidelines.</p>
+<p>Determine your Apache GPG Key and Key ID, as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gpg --list-keys --keyid-format SHORT
+</pre></div>
+</div>
+<p>This will list your GPG keys. One of these should reflect your Apache account, for example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pub   rsa4096 <span class="m">2021</span>-08-30 <span class="o">[</span>SC<span class="o">]</span>
+      8FC8075E1FDC303276C676EE8001952629BCC75D
+uid           <span class="o">[</span>ultimate<span class="o">]</span> Cheng Pan &lt;chengpan@apache.org&gt;
+sub   rsa4096 <span class="m">2021</span>-08-30 <span class="o">[</span>E<span class="o">]</span>
+</pre></div>
+</div>
+<p>Here, the key ID is the 8-digit hex string in the pub line: <code class="docutils literal notranslate"><span class="pre">29BCC75D</span></code>.</p>
+<p>To export the PGP public key, using:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gpg --armor --export 29BCC75D
+</pre></div>
+</div>
+<p>If you have more than one gpg key, you can specify the default key as the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;default-key &lt;key-fpr&gt;&#39;</span> <span class="o">&gt;</span> <span class="o">~/.</span><span class="n">gnupg</span><span class="o">/</span><span class="n">gpg</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>The last step is to update the KEYS file with your code signing key
+https://www.apache.org/dev/openpgp.html#export-public-key</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>svn checkout --depth<span class="o">=</span>files <span class="s2">&quot;https://dist.apache.org/repos/dist/dev/incubator/kyuubi&quot;</span> work/svn-kyuubi
+<span class="o">(</span>gpg --list-sigs <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ASF_USERNAME</span><span class="si">}</span><span class="s2">@apache.org&quot;</span> <span class="o">&amp;&amp;</span> gpg --export --armor <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ASF_USERNAME</span><span class="si">}</span><span class="s2">@apache.org&quot;</span><span class="o">)</span> &gt;&gt; KEYS
+svn commit --username <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ASF_USERNAME</span><span class="si">}</span><span class="s2">&quot;</span> --password <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ASF_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span> --message <span class="s2">&quot;Update KEYS&quot;</span> work/svn-kyuubi
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cut-branch-iff-for-major-release">
+<h2><span class="section-number">4.4. </span>Cut branch iff for major release<a class="headerlink" href="#cut-branch-iff-for-major-release" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi use version pattern <code class="docutils literal notranslate"><span class="pre">{MAJOR_VERSION}.{MINOR_VERSION}.{PATCH_VERSION}[-{OPTIONAL_SUFFIX}]</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">1.3.0-incubating</span></code>.
+<strong>Major Release</strong> means <code class="docutils literal notranslate"><span class="pre">MAJOR_VERSION</span></code> or <code class="docutils literal notranslate"><span class="pre">MINOR_VERSION</span></code> changed, and <strong>Patch Release</strong> means <code class="docutils literal notranslate"><span class="pre">PATCH_VERSION</span></code> changed.</p>
+<p>The main step towards preparing a major release is to create a release branch. This is done via standard Git branching
+mechanism and should be announced to the community once the branch is created.</p>
+<p>The release branch pattern is <code class="docutils literal notranslate"><span class="pre">branch-{MAJOR_VERSION}.{MINOR_VERSION}</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">branch-1.3</span></code>.</p>
+<p>After cutting release branch, don’t forget bump version in <code class="docutils literal notranslate"><span class="pre">master</span></code> branch.</p>
+</div>
+<div class="section" id="build-a-release-candidate">
+<h2><span class="section-number">4.5. </span>Build a release candidate<a class="headerlink" href="#build-a-release-candidate" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Set environment variables.</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RELEASE_VERSION</span><span class="o">=</span>&lt;release version, e.g. <span class="m">1</span>.3.0-incubating&gt;
+<span class="nb">export</span> <span class="nv">RELEASE_RC_NO</span><span class="o">=</span>&lt;RC number, e.g. <span class="m">0</span>&gt;
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Bump version.</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>build/mvn versions:set -DgenerateBackupPoms<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+  -DnewVersion<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RELEASE_VERSION</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+  -Pspark-3.1,spark-block-cleaner
+
+git commit -am <span class="s2">&quot;[RELEASE] Bump </span><span class="si">${</span><span class="nv">RELEASE_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Create a git tag for the release candidate.</p></li>
+</ol>
+<p>The tag pattern is <code class="docutils literal notranslate"><span class="pre">v${RELEASE_VERSION}-rc${RELEASE_RC_NO}</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">v1.3.0-incubating-rc0</span></code></p>
+<ol class="simple">
+<li><p>Package the release binaries &amp; sources, and upload them to the Apache staging SVN repo. Publish jars to the Apache
+staging Maven repo.</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>build/release/release.sh publish
+</pre></div>
+</div>
+</div>
+<div class="section" id="vote-on-the-release-candidate">
+<h2><span class="section-number">4.6. </span>Vote on the release candidate<a class="headerlink" href="#vote-on-the-release-candidate" title="Permalink to this headline">¶</a></h2>
+<p>The release voting takes place on the Apache Kyuubi (Incubating) developers list (the (P)PMC is voting).</p>
+<ul class="simple">
+<li><p>If possible, attach a draft of the release notes with the email.</p></li>
+<li><p>Recommend represent voting closing time in UTC format.</p></li>
+<li><p>Make sure the email is in text format and the links are correct</p></li>
+</ul>
+<p>Once the vote is done, you should also send out a summary email with the totals, with a subject that looks
+something like <strong>[VOTE][RESULT] ….</strong></p>
+</div>
+<div class="section" id="finalize-the-release">
+<h2><span class="section-number">4.7. </span>Finalize the Release<a class="headerlink" href="#finalize-the-release" title="Permalink to this headline">¶</a></h2>
+<p><strong>Be Careful!</strong></p>
+<p><strong>THIS STEP IS IRREVERSIBLE so make sure you selected the correct staging repository.</strong>
+<strong>Once you move the artifacts into the release folder, they cannot be removed.</strong></p>
+<p>After the vote passes, to upload the binaries to Apache mirrors, you move the binaries from dev directory (this should
+be where they are voted) to release directory. This “moving” is the only way you can add stuff to the actual release
+directory. (Note: only (P)PMC members can move to release directory)</p>
+<p>Move the sub-directory in “dev” to the corresponding directory in “release”. If you’ve added your signing key to the
+KEYS file, also update the release copy.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>build/release/release.sh finalize
+</pre></div>
+</div>
+<p>Verify that the resources are present in https://www.apache.org/dist/incubator/kyuubi/. It may take a while for them
+to be visible. This will be mirrored throughout the Apache network.</p>
+<p>For Maven Central Repository, you can Release from the <a class="reference external" href="https://repository.apache.org/">Apache Nexus Repository Manager</a>.
+Log in, open Staging Repositories, find the one voted on, select and click Release and confirm. If successful, it should
+show up under https://repository.apache.org/content/repositories/releases/org/apache/kyuubi/ and the same under
+https://repository.apache.org/content/groups/maven-staging-group/org/apache/kyuubi/ (look for the correct release version).
+After some time this will be sync’d to <a class="reference external" href="https://search.maven.org/">Maven Central</a> automatically.</p>
+</div>
+<div class="section" id="promote-the-release">
+<h2><span class="section-number">4.8. </span>Promote the release<a class="headerlink" href="#promote-the-release" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="update-website">
+<h3><span class="section-number">4.8.1. </span>Update Website<a class="headerlink" href="#update-website" title="Permalink to this headline">¶</a></h3>
+<p>Fork and clone <a class="reference external" href="https://github.com/apache/incubator-kyuubi-website">Apache Kyuubi website</a></p>
+<ol class="simple">
+<li><p>Add a new markdown file in <code class="docutils literal notranslate"><span class="pre">src/news/</span></code></p></li>
+<li><p>Add a new markdown file in <code class="docutils literal notranslate"><span class="pre">src/release/</span></code></p></li>
+<li><p>Follow <a class="reference internal" href="../develop_tools/build_document.html"><span class="doc">Build Document</span></a> to build documents, then copy <code class="docutils literal notranslate"><span class="pre">apache/incubator-kyuubi</span></code>’s
+folder <code class="docutils literal notranslate"><span class="pre">docs/_build/html</span></code> to <code class="docutils literal notranslate"><span class="pre">apache/incubator-kyuubi-website</span></code>’s folder <code class="docutils literal notranslate"><span class="pre">content/docs/r{RELEASE_VERSION}</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="create-an-announcement">
+<h3><span class="section-number">4.8.2. </span>Create an Announcement<a class="headerlink" href="#create-an-announcement" title="Permalink to this headline">¶</a></h3>
+<p>Once everything is working, create an announcement on the website and then send an e-mail to the mailing list.
+The mailing list includes: <code class="docutils literal notranslate"><span class="pre">announce&#64;apache.org</span></code>, <code class="docutils literal notranslate"><span class="pre">dev&#64;kyuubi.apache.org</span></code>, <code class="docutils literal notranslate"><span class="pre">user&#64;spark.apache.org</span></code>.</p>
+<p>Enjoy an adult beverage of your choice, and congratulations on making a Kyuubi release.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="badges.html" class="btn btn-neutral float-right" title="5. Community" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="improvement-proposals.html" class="btn btn-neutral float-left" title="3. Kyuubi Project Improvement Proposals (KPIP)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

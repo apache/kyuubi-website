@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Monitoring Kyuubi - Logging System &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Monitoring Kyuubi - Server Metrics" href="metrics.html" />
+    <link rel="prev" title="Monitoring" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Monitoring</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Monitoring Kyuubi - Logging System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logs-of-kyuubi-server">1.1. Logs of Kyuubi Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-server-logging">1.1.1. Configuring Server Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#logs-of-spark-sql-engine">1.2. Logs of Spark SQL Engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-engine-logging">1.2.1. Configuring Engine Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#where-to-find-the-engine-log">1.2.2. Where to Find the Engine Log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#operation-logs">1.3. Operation Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-readings">1.4. Further Readings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">2. Monitoring Kyuubi - Server Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble_shooting.html">3. Trouble Shooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Monitoring</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Monitoring Kyuubi - Logging System</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/monitor/logging.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="monitoring-kyuubi-logging-system">
+<h1><span class="section-number">1. </span>Monitoring Kyuubi - Logging System<a class="headerlink" href="#monitoring-kyuubi-logging-system" title="Permalink to this headline">¶</a></h1>
+<p>Kyuubi uses <a class="reference external" href="https://logging.apache.org/">Apache Log4j</a> for logging.</p>
+<p>In general, there are mainly three components in the Kyuubi architecture that will produce component-oriented logs to help you trace breadcrumbs for SQL workloads against Kyuubi.</p>
+<ul class="simple">
+<li><p>Logs of Kyuubi Server</p></li>
+<li><p>Logs of Kyuubi Engines</p></li>
+<li><p>Operation logs</p></li>
+</ul>
+<p>In addition, a Kyuubi deployment for production usually relies on some other external systems.
+For example, both Kyuubi servers and engines will use <a class="reference external" href="https://zookeeper.apache.org/">Apache Zookeeper</a> for service discovery.
+The instructions for external system loggings will not be included in this article.</p>
+<div class="section" id="logs-of-kyuubi-server">
+<h2><span class="section-number">1.1. </span>Logs of Kyuubi Server<a class="headerlink" href="#logs-of-kyuubi-server" title="Permalink to this headline">¶</a></h2>
+<p>Logs of Kyuubi Server show us the activities of the server instance including how start/stop, how does it response client requests, etc.</p>
+<div class="section" id="configuring-server-logging">
+<h3><span class="section-number">1.1.1. </span>Configuring Server Logging<a class="headerlink" href="#configuring-server-logging" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="basic-configurations">
+<h4>Basic Configurations<a class="headerlink" href="#basic-configurations" title="Permalink to this headline">¶</a></h4>
+<p>You can configure it by adding a <code class="docutils literal notranslate"><span class="pre">log4j.properties</span></code> file in the <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf</span></code> directory.
+One way to start is to make a copy of the existing <code class="docutils literal notranslate"><span class="pre">log4j.properties.template</span></code> located there.</p>
+<p>For example,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd $KYUUBI_HOME</span>
+cp conf/log4j.properties.template conf/log4j.properties
+</pre></div>
+</div>
+<p>With or without the above step, by default the server logging will redirect the logs to a file named <code class="docutils literal notranslate"><span class="pre">kyuubi-${env:USER}-org.apache.kyuubi.server.KyuubiServer-${env:HOSTNAME}.out</span></code> under the directory of <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/logs</span></code>.</p>
+<p>For example, you can easily find where the server log goes when staring a Kyuubi server from the console output.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>/Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2
+$ <span class="nb">cd</span> ~/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+$ bin/kyuubi start
+</pre></div>
+</div>
+<div class="highlight-log notranslate"><div class="highlight"><pre><span></span>Starting Kyuubi Server from /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+Warn: Not find kyuubi environment file /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/conf/kyuubi-env.sh, using default ones...
+JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home
+KYUUBI_HOME: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+KYUUBI_CONF_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/conf
+KYUUBI_LOG_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/logs
+KYUUBI_PID_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/pid
+KYUUBI_WORK_DIR_ROOT: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/work
+SPARK_HOME: /Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2
+SPARK_CONF_DIR: /Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2/conf
+HADOOP_CONF_DIR:
+Starting org.apache.kyuubi.server.KyuubiServer, logging to /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/logs/kyuubi-kentyao-org.apache.kyuubi.server.KyuubiServer-hulk.local.out
+Welcome to
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+</pre></div>
+</div>
+</div>
+<div class="section" id="kyuubi-log-dir">
+<h4>KYUUBI_LOG_DIR<a class="headerlink" href="#kyuubi-log-dir" title="Permalink to this headline">¶</a></h4>
+<p>You may also notice that there is an environment variable called <code class="docutils literal notranslate"><span class="pre">KYUUBI_LOG_DIR</span></code> in the above example.</p>
+<p><code class="docutils literal notranslate"><span class="pre">KYUUBI_LOG_DIR</span></code> determines which folder we want to put our server log files.</p>
+<p>For example, the below command will locate the log files to <code class="docutils literal notranslate"><span class="pre">/Users/kentyao/tmp</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mkdir /Users/kentyao/tmp
+$ <span class="nv">KYUUBI_LOG_DIR</span><span class="o">=</span>/Users/kentyao/tmp bin/kyuubi start
+</pre></div>
+</div>
+<div class="highlight-log notranslate"><div class="highlight"><pre><span></span>Starting org.apache.kyuubi.server.KyuubiServer, logging to /Users/kentyao/tmp/kyuubi-kentyao-org.apache.kyuubi.server.KyuubiServer-hulk.local.out
+</pre></div>
+</div>
+</div>
+<div class="section" id="kyuubi-max-log-files">
+<h4>KYUUBI_MAX_LOG_FILES<a class="headerlink" href="#kyuubi-max-log-files" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">KYUUBI_MAX_LOG_FILES</span></code> controls how many log files will be remained after a Kyuubi server reboots.</p>
+</div>
+<div class="section" id="custom-log4j-settings">
+<h4>Custom Log4j Settings<a class="headerlink" href="#custom-log4j-settings" title="Permalink to this headline">¶</a></h4>
+<p>Taking control of <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/log4j.properties</span></code> will also give us the ability of customizing server logging as we want.</p>
+<p>For example, we can disable the console appender and enable the file appender like,</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">log4j.rootCategory</span><span class="o">=</span><span class="s">INFO, FA</span><span class="w"></span>
+<span class="na">log4j.appender.FA</span><span class="o">=</span><span class="s">org.apache.log4j.FileAppender</span><span class="w"></span>
+<span class="na">log4j.appender.FA.append</span><span class="o">=</span><span class="s">false</span><span class="w"></span>
+<span class="na">log4j.appender.FA.file</span><span class="o">=</span><span class="s">log/dummy.log</span><span class="w"></span>
+<span class="na">log4j.appender.FA.layout</span><span class="o">=</span><span class="s">org.apache.log4j.PatternLayout</span><span class="w"></span>
+<span class="na">log4j.appender.FA.layout.ConversionPattern</span><span class="o">=</span><span class="s">%d{HH:mm:ss.SSS} %t %p %c{2}: %m%n</span><span class="w"></span>
+<span class="na">log4j.appender.FA.Threshold</span><span class="o">=</span><span class="s">DEBUG</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Then everything goes to <code class="docutils literal notranslate"><span class="pre">log/dummy.log</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="logs-of-spark-sql-engine">
+<h2><span class="section-number">1.2. </span>Logs of Spark SQL Engine<a class="headerlink" href="#logs-of-spark-sql-engine" title="Permalink to this headline">¶</a></h2>
+<p>Spark SQL Engine is one type of Kyuubi Engines and also a typical Spark application.
+Thus, its logs mainly contain the logs of a Spark Driver.
+Meanwhile, it also includes how all the services of an engine start/stop, how does it response the incoming calls from Kyuubi servers, etc.</p>
+<p>In general, when an exception occurs, we are able to find more information and clues in the engine’s logs.</p>
+<div class="section" id="configuring-engine-logging">
+<h3><span class="section-number">1.2.1. </span>Configuring Engine Logging<a class="headerlink" href="#configuring-engine-logging" title="Permalink to this headline">¶</a></h3>
+<p>Please refer to Apache Spark online documentation -<a class="reference external" href="https://spark.apache.org/docs/latest/configuration.html#configuring-logging">Configuring Logging</a> for instructions.</p>
+</div>
+<div class="section" id="where-to-find-the-engine-log">
+<h3><span class="section-number">1.2.2. </span>Where to Find the Engine Log<a class="headerlink" href="#where-to-find-the-engine-log" title="Permalink to this headline">¶</a></h3>
+<p>The engine logs locate differently based on the deploy mode and the cluster manager.
+When using local backend or <code class="docutils literal notranslate"><span class="pre">client</span></code> deploy mode for other cluster managers, such as YARN, you can find the whole engine log in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_WORK_DIR_ROOT/${session</span> <span class="pre">username}/kyuubi-spark-sql-engine.log.${num}</span></code>.
+Different session users have different folders to group all live and historical engine logs.
+Each engine will have one and only engine log.
+When using <code class="docutils literal notranslate"><span class="pre">cluster</span></code> deploy mode, the local engine logs only contain very little information, the main parts of engine logs are on the remote driver side, e.g. for YARN cluster, they are in ApplicationMasters’ log.</p>
+</div>
+</div>
+<div class="section" id="operation-logs">
+<h2><span class="section-number">1.3. </span>Operation Logs<a class="headerlink" href="#operation-logs" title="Permalink to this headline">¶</a></h2>
+<p>Operation log will show how SQL queries are executed, such as query planning, execution, and statistic reports.</p>
+<p>Operation logs can reveal directly to end-users how their queries are being executed on the server/engine-side, including some process-oriented information, and why their queries are slow or in error.</p>
+<p>For example, when you, as an end-user, use <code class="docutils literal notranslate"><span class="pre">beeline</span></code> to connect a Kyuubi server and execute query like below.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bin/beeline -u <span class="s1">&#39;jdbc:hive2://10.242.189.214:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=kyuubi&#39;</span> -n kent -e <span class="s1">&#39;select * from src;&#39;</span>
+</pre></div>
+</div>
+<p>You will both get the final results and the corresponding operation logs telling you the journey of the query.</p>
+<div class="highlight-log notranslate"><div class="highlight"><pre><span></span>0: jdbc:hive2://10.242.189.214:2181/&gt; select * from src;
+2021-10-27 17:00:19.399 INFO operation.ExecuteStatement: Processing kent&#39;s query[fb5f57d2-2b50-4a46-961b-3a5c6a2d2597]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select * from src
+2021-10-27 17:00:19.401 INFO operation.ExecuteStatement: Processing kent&#39;s query[fb5f57d2-2b50-4a46-961b-3a5c6a2d2597]: PENDING_STATE -&gt; RUNNING_STATE, statement: select * from src
+2021-10-27 17:00:19.400 INFO operation.ExecuteStatement: Processing kent&#39;s query[26e169a2-6c06-450a-b758-e577ac673d70]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select * from src
+2021-10-27 17:00:19.401 INFO operation.ExecuteStatement: Processing kent&#39;s query[26e169a2-6c06-450a-b758-e577ac673d70]: PENDING_STATE -&gt; RUNNING_STATE, statement: select * from src
+2021-10-27 17:00:19.402 INFO operation.ExecuteStatement:
+           Spark application name: kyuubi_USER_kent_6d4b5e53-ddd2-420c-b04f-326fb2b17e18
+                 application ID: local-1635318669122
+                 application web UI: http://10.242.189.214:50250
+                 master: local[*]
+                 deploy mode: client
+                 version: 3.2.0
+           Start time: 2021-10-27T15:11:08.416
+           User: kent
+2021-10-27 17:00:19.408 INFO metastore.HiveMetaStore: 6: get_database: default
+2021-10-27 17:00:19.408 INFO HiveMetaStore.audit: ugi=kent	ip=unknown-ip-addr	cmd=get_database: default
+2021-10-27 17:00:19.424 WARN conf.HiveConf: HiveConf of name hive.internal.ss.authz.settings.applied.marker does not exist
+2021-10-27 17:00:19.424 WARN conf.HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+2021-10-27 17:00:19.424 WARN conf.HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+2021-10-27 17:00:19.424 INFO metastore.HiveMetaStore: 6: Opening raw store with implementation class:org.apache.hadoop.hive.metastore.ObjectStore
+2021-10-27 17:00:19.425 INFO metastore.ObjectStore: ObjectStore, initialize called
+2021-10-27 17:00:19.430 INFO metastore.MetaStoreDirectSql: Using direct SQL, underlying DB is DERBY
+2021-10-27 17:00:19.431 INFO metastore.ObjectStore: Initialized ObjectStore
+2021-10-27 17:00:19.434 INFO metastore.HiveMetaStore: 6: get_table : db=default tbl=src
+2021-10-27 17:00:19.434 INFO HiveMetaStore.audit: ugi=kent	ip=unknown-ip-addr	cmd=get_table : db=default tbl=src
+2021-10-27 17:00:19.449 INFO metastore.HiveMetaStore: 6: get_table : db=default tbl=src
+2021-10-27 17:00:19.450 INFO HiveMetaStore.audit: ugi=kent	ip=unknown-ip-addr	cmd=get_table : db=default tbl=src
+2021-10-27 17:00:19.510 INFO operation.ExecuteStatement: Processing kent&#39;s query[26e169a2-6c06-450a-b758-e577ac673d70]: RUNNING_STATE -&gt; RUNNING_STATE, statement: select * from src
+2021-10-27 17:00:19.544 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 343.6 KiB, free 408.6 MiB)
+2021-10-27 17:00:19.558 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 33.5 KiB, free 408.5 MiB)
+2021-10-27 17:00:19.559 INFO spark.SparkContext: Created broadcast 5 from
+2021-10-27 17:00:19.600 INFO mapred.FileInputFormat: Total input files to process : 1
+2021-10-27 17:00:19.627 INFO spark.SparkContext: Starting job: collect at ExecuteStatement.scala:97
+2021-10-27 17:00:19.629 INFO kyuubi.SQLOperationListener: Query [26e169a2-6c06-450a-b758-e577ac673d70]: Job 5 started with 1 stages, 1 active jobs running
+2021-10-27 17:00:19.631 INFO kyuubi.SQLOperationListener: Query [26e169a2-6c06-450a-b758-e577ac673d70]: Stage 5 started with 1 tasks, 1 active stages running
+2021-10-27 17:00:19.713 INFO kyuubi.SQLOperationListener: Finished stage: Stage(5, 0); Name: &#39;collect at ExecuteStatement.scala:97&#39;; Status: succeeded; numTasks: 1; Took: 83 msec
+2021-10-27 17:00:19.713 INFO scheduler.DAGScheduler: Job 5 finished: collect at ExecuteStatement.scala:97, took 0.085454 s
+2021-10-27 17:00:19.713 INFO scheduler.StatsReportListener: task runtime:(count: 1, mean: 78.000000, stdev: 0.000000, max: 78.000000, min: 78.000000)
+2021-10-27 17:00:19.713 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.713 INFO scheduler.StatsReportListener: 	78.0 ms	78.0 ms	78.0 ms	78.0 ms	78.0 ms	78.0 ms	78.0 ms	78.0 ms	78.0 ms
+2021-10-27 17:00:19.714 INFO scheduler.StatsReportListener: shuffle bytes written:(count: 1, mean: 0.000000, stdev: 0.000000, max: 0.000000, min: 0.000000)
+2021-10-27 17:00:19.714 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.714 INFO scheduler.StatsReportListener: 	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B
+2021-10-27 17:00:19.714 INFO scheduler.StatsReportListener: fetch wait time:(count: 1, mean: 0.000000, stdev: 0.000000, max: 0.000000, min: 0.000000)
+2021-10-27 17:00:19.714 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.714 INFO scheduler.StatsReportListener: 	0.0 ms	0.0 ms	0.0 ms	0.0 ms	0.0 ms	0.0 ms	0.0 ms	0.0 ms	0.0 ms
+2021-10-27 17:00:19.715 INFO scheduler.StatsReportListener: remote bytes read:(count: 1, mean: 0.000000, stdev: 0.000000, max: 0.000000, min: 0.000000)
+2021-10-27 17:00:19.715 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.715 INFO scheduler.StatsReportListener: 	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B	0.0 B
+2021-10-27 17:00:19.715 INFO scheduler.StatsReportListener: task result size:(count: 1, mean: 1471.000000, stdev: 0.000000, max: 1471.000000, min: 1471.000000)
+2021-10-27 17:00:19.715 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.715 INFO scheduler.StatsReportListener: 	1471.0 B	1471.0 B	1471.0 B	1471.0 B	1471.0 B	1471.0 B	1471.0 B	1471.0 B	1471.0 B
+2021-10-27 17:00:19.717 INFO scheduler.StatsReportListener: executor (non-fetch) time pct: (count: 1, mean: 61.538462, stdev: 0.000000, max: 61.538462, min: 61.538462)
+2021-10-27 17:00:19.717 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.717 INFO scheduler.StatsReportListener: 	62 %	62 %	62 %	62 %	62 %	62 %	62 %	62 %	62 %
+2021-10-27 17:00:19.718 INFO scheduler.StatsReportListener: fetch wait time pct: (count: 1, mean: 0.000000, stdev: 0.000000, max: 0.000000, min: 0.000000)
+2021-10-27 17:00:19.718 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.718 INFO scheduler.StatsReportListener: 	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %
+2021-10-27 17:00:19.718 INFO scheduler.StatsReportListener: other time pct: (count: 1, mean: 38.461538, stdev: 0.000000, max: 38.461538, min: 38.461538)
+2021-10-27 17:00:19.718 INFO scheduler.StatsReportListener: 	0%	5%	10%	25%	50%	75%	90%	95%	100%
+2021-10-27 17:00:19.718 INFO scheduler.StatsReportListener: 	38 %	38 %	38 %	38 %	38 %	38 %	38 %	38 %	38 %
+2021-10-27 17:00:19.719 INFO kyuubi.SQLOperationListener: Query [26e169a2-6c06-450a-b758-e577ac673d70]: Job 5 succeeded, 0 active jobs running
+2021-10-27 17:00:19.728 INFO codegen.CodeGenerator: Code generated in 12.277091 ms
+2021-10-27 17:00:19.729 INFO operation.ExecuteStatement: Processing kent&#39;s query[26e169a2-6c06-450a-b758-e577ac673d70]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select * from src, time taken: 0.328 seconds
+2021-10-27 17:00:19.731 INFO operation.ExecuteStatement: Query[fb5f57d2-2b50-4a46-961b-3a5c6a2d2597] in FINISHED_STATE
+2021-10-27 17:00:19.731 INFO operation.ExecuteStatement: Processing kent&#39;s query[fb5f57d2-2b50-4a46-961b-3a5c6a2d2597]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select * from src, time taken: 0.33 seconds
++-------------------------------------------------+--------------------+
+|                    version()                    | DATE &#39;2021-10-27&#39;  |
++-------------------------------------------------+--------------------+
+| 3.2.0 5d45a415f3a29898d92380380cfd82bfc7f579ea  | 2021-10-27         |
++-------------------------------------------------+--------------------+
+1 row selected (0.341 seconds)
+</pre></div>
+</div>
+</div>
+<div class="section" id="further-readings">
+<h2><span class="section-number">1.4. </span>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="events.html"><span class="doc">Monitoring Kyuubi - Events System</span></a></p></li>
+<li><p><a class="reference internal" href="metrics.html"><span class="doc">Monitoring Kyuubi - Server Metrics</span></a></p></li>
+<li><p><a class="reference internal" href="trouble_shooting.html"><span class="doc">Trouble Shooting</span></a></p></li>
+<li><p>Spark Online Documentation</p>
+<ul>
+<li><p><a class="reference external" href="http://spark.apache.org/docs/latest/monitoring.html">Monitoring and Instrumentation</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="metrics.html" class="btn btn-neutral float-right" title="2. Monitoring Kyuubi - Server Metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Monitoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

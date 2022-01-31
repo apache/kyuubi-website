@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Kyuubi On Apache Kudu &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monitoring" href="../monitor/index.html" />
+    <link rel="prev" title="Integrations" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Kyuubi On Apache Kudu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-apache-kudu">1.1. What is Apache Kudu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-kyuubi-on-kudu">1.2. Why Kyuubi on Kudu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kudu-integration-with-apache-spark">1.3. Kudu Integration with Apache Spark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kudu-integration-with-kyuubi">1.4. Kudu Integration with Kyuubi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-kudu-spark-dependency">Install Kudu Spark Dependency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-kyuubi">Start Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-beeline-or-other-client-you-prefer">Start Beeline Or Other Client You Prefer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-kudu-table-as-spark-temporary-view">Register Kudu table as Spark Temporary view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#query-kudu-table">Query Kudu Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#join-kudu-table-with-hive-table">Join Kudu table with Hive table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insert-to-kudu-table">Insert to Kudu table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#references">1.5. References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Integrations</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Kyuubi On Apache Kudu</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/integrations/kudu.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div class="section" id="kyuubi-on-apache-kudu">
+<h1><span class="section-number">1. </span>Kyuubi On Apache Kudu<a class="headerlink" href="#kyuubi-on-apache-kudu" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-apache-kudu">
+<h2><span class="section-number">1.1. </span>What is Apache Kudu<a class="headerlink" href="#what-is-apache-kudu" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A new addition to the open source Apache Hadoop ecosystem, Apache Kudu completes Hadoop’s storage layer to enable fast analytics on fast data.</p>
+</div></blockquote>
+<p>When you are reading this documentation, we suppose that you are not necessary to be familiar with <a class="reference external" href="https://kudu.apache.org/">Apache Kudu</a>. But at least, you have one running Kudu cluster which is able to be connected for you. And it is even better for you to understand what Apache Kudu is capable with.</p>
+<p>Anything missing on this page about Apache Kudu background knowledge, you can refer to its official website.</p>
+</div>
+<div class="section" id="why-kyuubi-on-kudu">
+<h2><span class="section-number">1.2. </span>Why Kyuubi on Kudu<a class="headerlink" href="#why-kyuubi-on-kudu" title="Permalink to this headline">¶</a></h2>
+<p>Basically, Kyuubi can take place of HiveServer2 as a multi tenant ad-hoc SQL on Hadoop solution, with the advantages of speed and power coming from Spark SQL. You can run SQL queries towards both data source and Hive tables whose data is secured only with computing resources you are authorized.</p>
+<blockquote>
+<div><p>Spark SQL supports operating on a variety of data sources through the DataFrame interface. A DataFrame can be operated on using relational transformations and can also be used to create a temporary view. Registering a DataFrame as a temporary view allows you to run SQL queries over its data. This section describes the general methods for loading and saving data using the Spark Data Sources and then goes into specific options that are available for the built-in data sources.</p>
+</div></blockquote>
+<p>In Kyuubi, we can register Kudu tables and other data source tables as Spark temporary views to enable federated union queries across Hive, Kudu, and other data sources.</p>
+</div>
+<div class="section" id="kudu-integration-with-apache-spark">
+<h2><span class="section-number">1.3. </span>Kudu Integration with Apache Spark<a class="headerlink" href="#kudu-integration-with-apache-spark" title="Permalink to this headline">¶</a></h2>
+<p>Before integrating Kyuubi with Kudu, we strongly suggest that you integrate and test Spark with Kudu first. You may find the guide from Kudu’s online documentation – <a class="reference external" href="https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark">Kudu Integration with Spark</a></p>
+</div>
+<div class="section" id="kudu-integration-with-kyuubi">
+<h2><span class="section-number">1.4. </span>Kudu Integration with Kyuubi<a class="headerlink" href="#kudu-integration-with-kyuubi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-kudu-spark-dependency">
+<h3>Install Kudu Spark Dependency<a class="headerlink" href="#install-kudu-spark-dependency" title="Permalink to this headline">¶</a></h3>
+<p>Confirm your Kudu cluster version and download the corresponding kudu spark dependency library, such as <a class="reference external" href="https://repo1.maven.org/maven2/org/apache/kudu/kudu-spark3_2.12/1.14.0/kudu-spark3_2.12-1.14.0.jar">org.apache.kudu:kudu-spark3_2.12-1.14.0</a> to <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME</span></code>/jars.</p>
+</div>
+<div class="section" id="start-kyuubi">
+<h3>Start Kyuubi<a class="headerlink" href="#start-kyuubi" title="Permalink to this headline">¶</a></h3>
+<p>Now, you can start Kyuubi server with this kudu embedded Spark distribution.</p>
+</div>
+<div class="section" id="start-beeline-or-other-client-you-prefer">
+<h3>Start Beeline Or Other Client You Prefer<a class="headerlink" href="#start-beeline-or-other-client-you-prefer" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bin/beeline -u <span class="s1">&#39;jdbc:hive2://&lt;host&gt;:&lt;port&gt;/;principal=&lt;if kerberized&gt;;#spark.yarn.queue=kyuubi_test&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-kudu-table-as-spark-temporary-view">
+<h3>Register Kudu table as Spark Temporary view<a class="headerlink" href="#register-kudu-table-as-spark-temporary-view" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TEMPORARY</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">kudutest</span><span class="w"></span>
+<span class="k">USING</span><span class="w"> </span><span class="n">kudu</span><span class="w"></span>
+<span class="k">options</span><span class="w"> </span><span class="p">(</span><span class="w"> </span>
+<span class="w">  </span><span class="n">kudu</span><span class="p">.</span><span class="n">master</span><span class="w"> </span><span class="ss">&quot;ip1:port1,ip2:port2,...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">kudu</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="ss">&quot;kudu::test.testtbl&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;show tables&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">1104328</span><span class="n">b</span><span class="o">-</span><span class="mi">515</span><span class="k">c</span><span class="o">-</span><span class="mi">4</span><span class="n">f8b</span><span class="o">-</span><span class="mi">8</span><span class="n">a68</span><span class="o">-</span><span class="mi">1</span><span class="n">c0b202bc9ed</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">1104328</span><span class="n">b</span><span class="o">-</span><span class="mi">515</span><span class="k">c</span><span class="o">-</span><span class="mi">4</span><span class="n">f8b</span><span class="o">-</span><span class="mi">8</span><span class="n">a68</span><span class="o">-</span><span class="mi">1</span><span class="n">c0b202bc9ed</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------+-----------------------------+--------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="k">database</span><span class="w">  </span><span class="o">|</span><span class="w">          </span><span class="n">tableName</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="n">isTemporary</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------+-----------------------------+--------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">kyuubi</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">hive_tbl</span><span class="w">                    </span><span class="o">|</span><span class="w"> </span><span class="k">false</span><span class="w">        </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">kudutest</span><span class="w">                    </span><span class="o">|</span><span class="w"> </span><span class="k">true</span><span class="w">         </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------+-----------------------------+--------------+--+</span>
+<span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">29</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="query-kudu-table">
+<h3>Query Kudu Table<a class="headerlink" href="#query-kudu-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">kudutest</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;select * from kudutest&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">ac3e8553</span><span class="o">-</span><span class="mi">0</span><span class="n">d79</span><span class="o">-</span><span class="mi">4</span><span class="n">c57</span><span class="o">-</span><span class="n">add1</span><span class="o">-</span><span class="mi">7</span><span class="n">d3ffe34ba16</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">ac3e8553</span><span class="o">-</span><span class="mi">0</span><span class="n">d79</span><span class="o">-</span><span class="mi">4</span><span class="n">c57</span><span class="o">-</span><span class="n">add1</span><span class="o">-</span><span class="mi">7</span><span class="n">d3ffe34ba16</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">userid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sharesetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">notifysetting</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+--+</span>
+<span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">083</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="join-kudu-table-with-hive-table">
+<h3>Join Kudu table with Hive table<a class="headerlink" href="#join-kudu-table-with-hive-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">userid</span><span class="o">=</span><span class="n">t2</span><span class="p">.</span><span class="n">userid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;select t1.*, t2.* from hive_tbl t1 join kudutest t2 on t1.userid=t2.userid+1&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">6982</span><span class="n">fa5c</span><span class="o">-</span><span class="mi">29</span><span class="n">fa</span><span class="o">-</span><span class="mi">49</span><span class="n">be</span><span class="o">-</span><span class="n">a5bf</span><span class="o">-</span><span class="mi">54</span><span class="n">c935bbad18</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="o">&lt;</span><span class="n">omitted</span><span class="w"> </span><span class="n">lines</span><span class="p">....</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">6982</span><span class="n">fa5c</span><span class="o">-</span><span class="mi">29</span><span class="n">fa</span><span class="o">-</span><span class="mi">49</span><span class="n">be</span><span class="o">-</span><span class="n">a5bf</span><span class="o">-</span><span class="mi">54</span><span class="n">c935bbad18</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">userid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sharesetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">notifysetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">userid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sharesetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">notifysetting</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+---------+---------------+----------------+--+</span>
+<span class="mi">3</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">63</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="insert-to-kudu-table">
+<h3>Insert to Kudu table<a class="headerlink" href="#insert-to-kudu-table" title="Permalink to this headline">¶</a></h3>
+<p>You should notice that only <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> is supported by Kudu, <code class="docutils literal notranslate"><span class="pre">OVERWRITE</span></code> data is not supported</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;insert overwrite table kudutest select *  from hive_tbl&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">1</span><span class="n">afdb791</span><span class="o">-</span><span class="mi">1</span><span class="n">aa7</span><span class="o">-</span><span class="mi">4</span><span class="n">ceb</span><span class="o">-</span><span class="mi">8</span><span class="n">ba8</span><span class="o">-</span><span class="n">ff53c17615d1</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"></span>
+<span class="n">Error</span><span class="w"> </span><span class="n">executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bdms_hzyaoqin</span><span class="p">,</span><span class="w"></span>
+<span class="k">insert</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="w"></span>
+<span class="k">Current</span><span class="w"> </span><span class="k">operation</span><span class="w"> </span><span class="k">state</span><span class="w"> </span><span class="n">RUNNING</span><span class="p">,</span><span class="w"></span>
+<span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">UnsupportedOperationException</span><span class="p">:</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">yet</span><span class="w"> </span><span class="n">supported</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kudu</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="n">kudu</span><span class="p">.</span><span class="n">KuduRelation</span><span class="p">.</span><span class="k">insert</span><span class="p">(</span><span class="n">DefaultSource</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">424</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">datasources</span><span class="p">.</span><span class="n">InsertIntoDataSourceCommand</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">InsertIntoDataSourceCommand</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">command</span><span class="p">.</span><span class="n">ExecutedCommandExec</span><span class="p">.</span><span class="n">sideEffectResult$lzycompute</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">command</span><span class="p">.</span><span class="n">ExecutedCommandExec</span><span class="p">.</span><span class="n">sideEffectResult</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">68</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">command</span><span class="p">.</span><span class="n">ExecutedCommandExec</span><span class="p">.</span><span class="n">executeCollect</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$$anonfun$6</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">190</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$$anonfun$6</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">190</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$$anonfun$52</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3259</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">SQLExecution$</span><span class="p">.</span><span class="n">withNewExecutionId</span><span class="p">(</span><span class="n">SQLExecution</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">77</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset</span><span class="p">.</span><span class="n">withAction</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3258</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset</span><span class="p">.</span><span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">190</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$</span><span class="p">.</span><span class="n">ofRows</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">75</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">SparkSQLUtils$</span><span class="p">.</span><span class="n">toDataFrame</span><span class="p">(</span><span class="n">SparkSQLUtils</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementInClientMode</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">ExecuteStatementInClientMode</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">152</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementOperation$$anon$1$$anon$2</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ExecuteStatementOperation</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">74</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementOperation$$anon$1$$anon$2</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ExecuteStatementOperation</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="k">security</span><span class="p">.</span><span class="n">AccessController</span><span class="p">.</span><span class="n">doPrivileged</span><span class="p">(</span><span class="n">Native</span><span class="w"> </span><span class="k">Method</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">javax</span><span class="p">.</span><span class="k">security</span><span class="p">.</span><span class="n">auth</span><span class="p">.</span><span class="n">Subject</span><span class="p">.</span><span class="n">doAs</span><span class="p">(</span><span class="n">Subject</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">422</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">hadoop</span><span class="p">.</span><span class="k">security</span><span class="p">.</span><span class="n">UserGroupInformation</span><span class="p">.</span><span class="n">doAs</span><span class="p">(</span><span class="n">UserGroupInformation</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">1698</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementOperation$$anon$1</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ExecuteStatementOperation</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">Executors$RunnableAdapter</span><span class="p">.</span><span class="k">call</span><span class="p">(</span><span class="n">Executors</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">511</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">FutureTask</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">FutureTask</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">266</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">runWorker</span><span class="p">(</span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">1142</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">ThreadPoolExecutor$Worker</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">617</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">745</span><span class="p">)</span><span class="w"></span>
+
+
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">1</span><span class="n">afdb791</span><span class="o">-</span><span class="mi">1</span><span class="n">aa7</span><span class="o">-</span><span class="mi">4</span><span class="n">ceb</span><span class="o">-</span><span class="mi">8</span><span class="n">ba8</span><span class="o">-</span><span class="n">ff53c17615d1</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">26</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;insert into table kudutest select *  from hive_tbl&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">f7460400</span><span class="o">-</span><span class="mi">0564</span><span class="o">-</span><span class="mi">4</span><span class="n">f98</span><span class="o">-</span><span class="mi">93</span><span class="n">b6</span><span class="o">-</span><span class="n">ad76e579e7af</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">26</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="o">&lt;</span><span class="n">omitted</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">ResultStage</span><span class="w"> </span><span class="mi">36</span><span class="w"> </span><span class="p">(</span><span class="n">foreachPartition</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">KuduContext</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">332</span><span class="p">)</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">322</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="mi">36</span><span class="w"> </span><span class="n">finished</span><span class="p">:</span><span class="w"> </span><span class="n">foreachPartition</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">KuduContext</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">332</span><span class="p">,</span><span class="w"> </span><span class="n">took</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">324586</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KuduContext</span><span class="p">:</span><span class="w"> </span><span class="n">completed</span><span class="w"> </span><span class="n">upsert</span><span class="w"> </span><span class="n">ops</span><span class="p">:</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="n">histogram</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">.</span><span class="mi">333333333333336</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="mi">66</span><span class="p">.</span><span class="mi">66666666666667</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="n">ms</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">f7460400</span><span class="o">-</span><span class="mi">0564</span><span class="o">-</span><span class="mi">4</span><span class="n">f98</span><span class="o">-</span><span class="mi">93</span><span class="n">b6</span><span class="o">-</span><span class="n">ad76e579e7af</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="k">Result</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+--+</span>
+<span class="o">+</span><span class="c1">---------+--+</span>
+<span class="k">No</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">611</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">1.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://kudu.apache.org/">https://kudu.apache.org/</a>
+<a class="reference external" href="https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark">https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark</a>
+<a class="reference external" href="https://github.com/apache/incubator-kyuubi">https://github.com/apache/incubator-kyuubi</a>
+<a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources.html">https://spark.apache.org/docs/latest/sql-data-sources.html</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../monitor/index.html" class="btn btn-neutral float-right" title="Monitoring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

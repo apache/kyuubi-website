@@ -1,0 +1,1592 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Introduction to the Kyuubi Configurations System &mdash; Kyuubi 1.4.1-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. The Engine Configuration Guide" href="spark/index.html" />
+    <link rel="prev" title="4. Kyuubi High Availability Guide" href="high_availability_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#basics">Basics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#configurations">Configurations</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1. Introduction to the Kyuubi Configurations System</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#environments">1.1. Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kyuubi-configurations">1.2. Kyuubi Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spark-configurations">1.3. Spark Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logging">1.4. Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-configurations">1.5. Other Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-defaults">1.6. User Defaults</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spark/index.html">2. The Engine Configuration Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#engines">Engines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Introduction to the Kyuubi Configurations System</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/deployment/settings.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><!-- DO NOT MODIFY THIS FILE DIRECTLY, IT IS AUTO GENERATED BY [org.apache.kyuubi.config.AllKyuubiConfiguration] --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="introduction-to-the-kyuubi-configurations-system">
+<h1><span class="section-number">1. </span>Introduction to the Kyuubi Configurations System<a class="headerlink" href="#introduction-to-the-kyuubi-configurations-system" title="Permalink to this headline">¶</a></h1>
+<p>Kyuubi provides several ways to configure the system and corresponding engines.</p>
+<div class="section" id="environments">
+<h2><span class="section-number">1.1. </span>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
+<p>You can configure the environment variables in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code>, e.g, <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, then this java runtime will be used both for Kyuubi server instance and the applications it launches. You can also change the variable in the subprocess’s env configuration file, e.g.<code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/spark-env.sh</span></code> to use more specific ENV for SQL engine applications.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="c1"># contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="c1"># this work for additional information regarding copyright ownership.</span>
+<span class="c1"># The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="c1"># (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="c1"># the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># - JAVA_HOME               Java runtime to use. By default use &quot;java&quot; from PATH.</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># - KYUUBI_CONF_DIR         Directory containing the Kyuubi configurations to use.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/conf)</span>
+<span class="c1"># - KYUUBI_LOG_DIR          Directory for Kyuubi server-side logs.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/logs)</span>
+<span class="c1"># - KYUUBI_PID_DIR          Directory stores the Kyuubi instance pid file.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/pid)</span>
+<span class="c1"># - KYUUBI_MAX_LOG_FILES    Maximum number of Kyuubi server logs can rotate to.</span>
+<span class="c1">#                           (Default: 5)</span>
+<span class="c1"># - KYUUBI_JAVA_OPTS        JVM options for the Kyuubi server itself in the form &quot;-Dx=y&quot;.</span>
+<span class="c1">#                           (Default: none).</span>
+<span class="c1"># - KYUUBI_CTL_JAVA_OPTS    JVM options for the Kyuubi ctl itself in the form &quot;-Dx=y&quot;.</span>
+<span class="c1">#                           (Default: none).</span>
+<span class="c1"># - KYUUBI_BEELINE_OPTS     JVM options for the Kyuubi BeeLine in the form &quot;-Dx=Y&quot;.</span>
+<span class="c1">#                           (Default: none)</span>
+<span class="c1"># - KYUUBI_NICENESS         The scheduling priority for Kyuubi server.</span>
+<span class="c1">#                           (Default: 0)</span>
+<span class="c1"># - KYUUBI_WORK_DIR_ROOT    Root directory for launching sql engine applications.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/work)</span>
+<span class="c1"># - HADOOP_CONF_DIR         Directory containing the Hadoop / YARN configuration to use.</span>
+<span class="c1">#</span>
+<span class="c1"># - SPARK_HOME              Spark distribution which you would like to use in Kyuubi.</span>
+<span class="c1"># - SPARK_CONF_DIR          Optional directory where the Spark configuration lives.</span>
+<span class="c1">#                           (Default: $SPARK_HOME/conf)</span>
+<span class="c1">#</span>
+
+
+<span class="c1">## Examples ##</span>
+
+<span class="c1"># export JAVA_HOME=/usr/jdk64/jdk1.8.0_152</span>
+<span class="c1"># export SPARK_HOME=/opt/spark</span>
+<span class="c1"># export HADOOP_CONF_DIR=/usr/ndp/current/mapreduce_client/conf</span>
+<span class="c1"># export KYUUBI_JAVA_OPTS=&quot;-Xmx10g -XX:+UnlockDiagnosticVMOptions -XX:ParGCCardsPerStrideChunk=4096 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly -XX:+CMSClassUnloadingEnabled -XX:+CMSParallelRemarkEnabled -XX:+UseCondCardMark -XX:MaxDirectMemorySize=1024m  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./logs -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -Xloggc:./logs/kyuubi-server-gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=5M -XX:NewRatio=3 -XX:MetaspaceSize=512m&quot;</span>
+<span class="c1"># export KYUUBI_BEELINE_OPTS=&quot;-Xmx2g -XX:+UnlockDiagnosticVMOptions -XX:ParGCCardsPerStrideChunk=4096 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly -XX:+CMSClassUnloadingEnabled -XX:+CMSParallelRemarkEnabled -XX:+UseCondCardMark&quot;</span>
+</pre></div>
+</div>
+<p>For the environment variables that only needed to be transferred into engine side, you can set it with a Kyuubi configuration item formatted <code class="docutils literal notranslate"><span class="pre">kyuubi.engineEnv.VAR_NAME</span></code>. For example, with <code class="docutils literal notranslate"><span class="pre">kyuubi.engineEnv.SPARK_DRIVER_MEMORY=4g</span></code>, the environment variable <code class="docutils literal notranslate"><span class="pre">SPARK_DRIVER_MEMORY</span></code> with value <code class="docutils literal notranslate"><span class="pre">4g</span></code> would be transferred into engine side. With <code class="docutils literal notranslate"><span class="pre">kyuubi.engineEnv.SPARK_CONF_DIR=/apache/confs/spark/conf</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">SPARK_CONF_DIR</span></code> in engine side is set to <code class="docutils literal notranslate"><span class="pre">/apache/confs/spark/conf</span></code>.</p>
+</div>
+<div class="section" id="kyuubi-configurations">
+<h2><span class="section-number">1.2. </span>Kyuubi Configurations<a class="headerlink" href="#kyuubi-configurations" title="Permalink to this headline">¶</a></h2>
+<p>You can configure the Kyuubi properties in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="c1"># contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="c1"># this work for additional information regarding copyright ownership.</span>
+<span class="c1"># The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="c1"># (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="c1"># the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+
+<span class="c1">## Kyuubi Configurations</span>
+
+<span class="c1">#</span>
+<span class="c1"># kyuubi.authentication           NONE</span>
+<span class="c1"># kyuubi.frontend.bind.host       localhost</span>
+<span class="c1"># kyuubi.frontend.bind.port       10009</span>
+<span class="c1">#</span>
+
+<span class="c1"># Details in https://kyuubi.apache.org/docs/latest/deployment/settings.html</span>
+</pre></div>
+</div>
+<div class="section" id="authentication">
+<h3><span class="section-number">1.2.1. </span>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.authentication</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>NONE</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of client authentication types.<ul> <li>NOSASL: raw transport.</li> <li>NONE: no authentication check.</li> <li>KERBEROS: Kerberos/GSSAPI authentication.</li> <li>CUSTOM: User-defined authentication.</li> <li>LDAP: Lightweight Directory Access Protocol authentication.</li></ul> Note that: For KERBEROS, it is SASL/GSSAPI mechanism, and for NONE, CUSTOM and LDAP, they are all SASL/PLAIN mechanism. If only NOSASL is specified, the authentication will be NOSASL. For SASL authentication, KERBEROS and PLAIN auth type are supported at the same time, and only the first specified PLAIN auth type is valid.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.custom.class</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>User-defined authentication implementation of org.apache.kyuubi.service.authentication.PasswdAuthenticationProvider</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.base.dn</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>LDAP base DN.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.domain</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>LDAP domain.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.guidKey</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>uid</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>LDAP attribute name whose values are unique in this LDAP server.For example:uid or cn.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.ldap.url</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>SPACE character separated LDAP connection URL(s).</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.authentication<br>.sasl.qop</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>auth</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Sasl QOP enable higher levels of protection for Kyuubi communication with clients.<ul> <li>auth - authentication only (default)</li> <li>auth-int - authentication plus integrity protection</li> <li>auth-conf - authentication plus integrity and confidentiality protection. This is applicable only if Kyuubi is configured to use Kerberos authentication.</li> </ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="backend">
+<h3><span class="section-number">1.2.2. </span>Backend<a class="headerlink" href="#backend" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.backend.engine<br>.exec.pool.keepalive<br>.time</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Time(ms) that an idle async thread of the operation execution thread pool will wait for a new task to arrive before terminating in SQL engine applications</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.engine<br>.exec.pool.shutdown<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT10S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout(ms) for the operation execution thread pool to terminate in SQL engine applications</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.engine<br>.exec.pool.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>100</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Number of threads in the operation execution thread pool of SQL engine applications</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.engine<br>.exec.pool.wait.queue<br>.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>100</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Size of the wait queue for the operation execution thread pool in SQL engine applications</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.server<br>.event.json.log.path</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>file:///tmp/kyuubi/events</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The location of server events go for the builtin JSON logger</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.server<br>.event.loggers</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of server history loggers, where session/operation etc events go.<ul> <li>JSON: the events will be written to the location of kyuubi.backend.server.event.json.log.path</li> <li>JDBC: to be done</li> <li>CUSTOM: to be done.</li></ul></div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.server<br>.exec.pool.keepalive<br>.time</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Time(ms) that an idle async thread of the operation execution thread pool will wait for a new task to arrive before terminating in Kyuubi server</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.server<br>.exec.pool.shutdown<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT10S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout(ms) for the operation execution thread pool to terminate in Kyuubi server</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.server<br>.exec.pool.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>100</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Number of threads in the operation execution thread pool of Kyuubi server</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.backend.server<br>.exec.pool.wait.queue<br>.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>100</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Size of the wait queue for the operation execution thread pool of Kyuubi server</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="credentials">
+<h3><span class="section-number">1.2.3. </span>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.credentials<br>.hadoopfs.enabled</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>true</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Whether to renew Hadoop filesystem delegation tokens</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.credentials<br>.hadoopfs.uris</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Extra Hadoop filesystem URIs for which to request delegation tokens. The filesystem that hosts fs.defaultFS does not need to be listed here.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.credentials<br>.hive.enabled</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>true</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Whether to renew Hive metastore delegation token</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.credentials<br>.renewal.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How often Kyuubi renews one user's delegation tokens</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.credentials<br>.renewal.retry.wait</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How long to wait before retrying to fetch new credentials after a failure.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="delegation">
+<h3><span class="section-number">1.2.4. </span>Delegation<a class="headerlink" href="#delegation" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.delegation.key<br>.update.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT24H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>unused yet</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.delegation<br>.token.gc.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>unused yet</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.delegation<br>.token.max.lifetime</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT168H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>unused yet</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.delegation<br>.token.renew.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT168H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>unused yet</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="engine">
+<h3><span class="section-number">1.2.5. </span>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.engine<br>.connection.url.use<br>.hostname</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>true</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>When true, engine register with hostname to zookeeper. When spark run on k8s with cluster mode, set to false to ensure that server can connect to engine</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine<br>.deregister.exception<br>.classes</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of exception classes. If there is any exception thrown, whose class matches the specified classes, the engine would deregister itself.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine<br>.deregister.exception<br>.messages</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of exception messages. If there is any exception thrown, whose message or stacktrace matches the specified message list, the engine would deregister itself.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine<br>.deregister.exception<br>.ttl</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT30M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Time to live(TTL) for exceptions pattern specified in kyuubi.engine.deregister.exception.classes and kyuubi.engine.deregister.exception.messages to deregister engines. Once the total error count hits the kyuubi.engine.deregister.job.max.failures within the TTL, an engine will deregister itself and wait for self-terminated. Otherwise, we suppose that the engine has recovered from temporary failures.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine<br>.deregister.job.max<br>.failures</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>4</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Number of failures of job before deregistering the engine.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.event<br>.json.log.path</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>file:///tmp/kyuubi/events</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The location of all the engine events go for the builtin JSON logger.<ul><li>Local Path: start with 'file://'</li><li>HDFS Path: start with 'hdfs://'</li></ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.event<br>.loggers</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>SPARK</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of engine history loggers, where engine/session/operation etc events go. We use spark logger by default.<ul> <li>SPARK: the events will be written to the spark listener bus.</li> <li>JSON: the events will be written to the location of kyuubi.engine.event.json.log.path</li> <li>JDBC: to be done</li> <li>CUSTOM: to be done.</li></ul></div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine<br>.initialize.sql</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>SHOW DATABASES</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>SemiColon-separated list of SQL statements to be initialized in the newly created engine before queries. i.e. use <code>SHOW DATABASES</code> to eagerly active HiveClient. This configuration can not be used in JDBC url due to the limitation of Beeline/JDBC driver.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine<br>.operation.log.dir<br>.root</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>engine_operation_logs</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Root directory for query operation log at engine-side.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.pool<br>.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>-1</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The size of engine pool. Note that, if the size is less than 1, the engine pool will not be enabled; otherwise, the size of the engine pool will be min(this, kyuubi.engine.pool.size.threshold).</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.pool<br>.size.threshold</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>9</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>This parameter is introduced as a server-side parameter, and controls the upper limit of the engine pool.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.session<br>.initialize.sql</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>SemiColon-separated list of SQL statements to be initialized in the newly created engine session before queries. This configuration can not be used in JDBC url due to the limitation of Beeline/JDBC driver.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.share<br>.level</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>USER</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Engines will be shared in different levels, available configs are: <ul> <li>CONNECTION: engine will not be shared but only used by the current client connection</li> <li>USER: engine will be shared by all sessions created by a unique username, see also kyuubi.engine.share.level.subdomain</li> <li>GROUP: engine will be shared by all sessions created by all users belong to the same primary group name. The engine will be launched by the group name as the effective username, so here the group name is kind of special user who is able to visit the compute resources/data of a team. It follows the <a href="https://reurl.cc/xE61Y5">Hadoop GroupsMapping</a> to map user to a primary group. If the primary group is not found, it fallback to the USER level. <li>SERVER: the App will be shared by Kyuubi servers</li></ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.share<br>.level.sub.domain</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) - Using kyuubi.engine.share.level.subdomain instead</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.share<br>.level.subdomain</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Allow end-users to create a subdomain for the share level of an engine. A subdomain is a case-insensitive string values that must be a valid zookeeper sub path. For example, for <code>USER</code> share level, an end-user can share a certain engine within a subdomain, not for all of its clients. End-users are free to create multiple engines in the <code>USER</code> share level. When disable engine pool, use 'default' if absent.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.single<br>.spark.session</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>false</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>When set to true, this engine is running in a single session mode. All the JDBC/ODBC connections share the temporary views, function registries, SQL configuration and the current database.</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.type</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>SPARK_SQL</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Specify the detailed engine that supported by the Kyuubi. The engine type bindings to SESSION scope. This configuration is experimental. Currently, available configs are: <ul> <li>SPARK_SQL: specify this engine type will launch a Spark engine which can provide all the capacity of the Apache Spark. Note, it's a default engine type.</li> <li>FLINK_SQL: specify this engine type will launch a Flink engine which can provide all the capacity of the Apache Flink.</li></ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.ui<br>.retainedSessions</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>200</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The number of SQL client sessions kept in the Kyuubi Query Engine web UI.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.ui<br>.retainedStatements</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>200</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The number of statements kept in the Kyuubi Query Engine web UI.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.engine.ui.stop<br>.enabled</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>true</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>When true, allows Kyuubi engine to be killed from the Spark Web UI.</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.3.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="frontend">
+<h3><span class="section-number">1.2.6. </span>Frontend<a class="headerlink" href="#frontend" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.frontend<br>.backoff.slot.length</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT0.1S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Time to back off during login to the thrift frontend service.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.bind<br>.host</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Hostname or IP of the machine on which to run the thrift frontend service via binary protocol.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.bind<br>.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>10009</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Port of the machine on which to run the thrift frontend service via binary protocol.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.login<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT20S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Timeout for Thrift clients during login to the thrift frontend service.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.max<br>.message.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>104857600</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Maximum message size in bytes a Kyuubi server will accept.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.max<br>.worker.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>999</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Maximum number of threads in the of frontend worker thread pool for the thrift frontend service</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.min<br>.worker.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>9</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Minimum number of threads in the of frontend worker thread pool for the thrift frontend service</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql<br>.bind.host</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Hostname or IP of the machine on which to run the MySQL frontend service.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql<br>.bind.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>3309</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Port of the machine on which to run the MySQL frontend service.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql<br>.max.worker.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>999</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Maximum number of threads in the command execution thread pool for the MySQL frontend service</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql<br>.min.worker.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>9</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Minimum number of threads in the command execution thread pool for the MySQL frontend service</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql<br>.netty.worker.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Number of thread in the netty worker event loop of MySQL frontend service. Use min(cpu_cores, 8) in default.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql<br>.worker.keepalive.time</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Time(ms) that an idle async thread of the command execution thread pool will wait for a new task to arrive before terminating in MySQL frontend service</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.protocols</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>THRIFT_BINARY</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list for all frontend protocols <ul> <li>THRIFT_BINARY - HiveServer2 compatible thrift binary protocol.</li> <li>REST - Kyuubi defined REST API(experimental).</li>  <li>MYSQL - MySQL compatible text protocol(experimental).</li> </ul></div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.rest<br>.bind.host</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Hostname or IP of the machine on which to run the REST frontend service.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend.rest<br>.bind.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>10099</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Port of the machine on which to run the REST frontend service.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.backoff.slot<br>.length</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT0.1S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Time to back off during login to the thrift frontend service.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.binary.bind<br>.host</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Hostname or IP of the machine on which to run the thrift frontend service via binary protocol.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.binary.bind<br>.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>10009</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Port of the machine on which to run the thrift frontend service via binary protocol.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.login.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT20S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout for Thrift clients during login to the thrift frontend service.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.max.message<br>.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>104857600</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Maximum message size in bytes a Kyuubi server will accept.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.max.worker<br>.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>999</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Maximum number of threads in the of frontend worker thread pool for the thrift frontend service</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.min.worker<br>.threads</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>9</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Minimum number of threads in the of frontend worker thread pool for the thrift frontend service</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.thrift.worker<br>.keepalive.time</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Keep-alive time (in milliseconds) for an idle worker thread</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.frontend<br>.worker.keepalive.time</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) Keep-alive time (in milliseconds) for an idle worker thread</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="ha">
+<h3><span class="section-number">1.2.7. </span>Ha<a class="headerlink" href="#ha" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.acl.enabled</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>false</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Set to true if the zookeeper ensemble is kerberized</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.auth.digest</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The digest auth string is used for zookeeper authentication, like: username:password.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.2</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.auth.keytab</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Location of Kyuubi server's keytab is used for zookeeper authentication.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.2</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.auth.principal</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Name of the Kerberos principal is used for zookeeper authentication.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.2</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.auth.type</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>NONE</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The type of zookeeper authentication, all candidates are <ul><li>NONE</li><li> KERBEROS</li><li> DIGEST</li></ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.2</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.base.retry<br>.wait</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>1000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Initial amount of time to wait between retries to the zookeeper ensemble</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.max<br>.retries</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>3</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Max retry times for connecting to the zookeeper ensemble</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.max.retry<br>.wait</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>30000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Max amount of time to wait between retries for BOUNDED_EXPONENTIAL_BACKOFF policy can reach, or max time until elapsed for UNTIL_ELAPSED policy to connect the zookeeper ensemble</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.retry<br>.policy</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>EXPONENTIAL_BACKOFF</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The retry policy for connecting to the zookeeper ensemble, all candidates are: <ul><li>ONE_TIME</li><li> N_TIME</li><li> EXPONENTIAL_BACKOFF</li><li> BOUNDED_EXPONENTIAL_BACKOFF</li><li> UNTIL_ELAPSED</li></ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.connection.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>15000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The timeout(ms) of creating the connection to the zookeeper ensemble</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.engine.auth.type</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>NONE</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The type of zookeeper authentication for engine, all candidates are <ul><li>NONE</li><li> KERBEROS</li><li> DIGEST</li></ul></div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.3.2</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.namespace</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>kyuubi</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The root directory for the service to deploy its instance uri. Additionally, it will creates a -[username] suffixed root directory for each application</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.node.creation.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT2M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout for creating zookeeper node</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.publish.configs</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>false</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>When set to true, publish Kerberos configs to Zookeeper.Note that the Hive driver needs to be greater than 1.3 or 2.0 or apply HIVE-11581 patch.</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.quorum</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The connection string for the zookeeper ensemble</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper<br>.session.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>60000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The timeout(ms) of a connected session to be idled</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="kinit">
+<h3><span class="section-number">1.2.8. </span>Kinit<a class="headerlink" href="#kinit" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.kinit.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How often will Kyuubi server run <code>kinit -kt [keytab] [principal]</code> to renew the local Kerberos credentials cache</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.kinit.keytab</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Location of Kyuubi server's keytab.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.kinit.max<br>.attempts</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>10</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How many times will <code>kinit</code> process retry</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.kinit<br>.principal</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Name of the Kerberos principal.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="metrics">
+<h3><span class="section-number">1.2.9. </span>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.metrics<br>.console.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT5S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How often should report metrics to console</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics<br>.enabled</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>true</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Set to true to enable kyuubi metrics system</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics.json<br>.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT5S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How often should report metrics to json file</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics.json<br>.location</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>metrics</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Where the json metrics file located</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics<br>.prometheus.path</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>/metrics</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>URI context path of prometheus metrics HTTP server</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics<br>.prometheus.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>10019</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Prometheus metrics HTTP server port</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics<br>.reporters</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>JSON</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list for all metrics reporters<ul> <li>CONSOLE - ConsoleReporter which outputs measurements to CONSOLE periodically.</li> <li>JMX - JmxReporter which listens for new metrics and exposes them as MBeans.</li>  <li>JSON - JsonReporter which outputs measurements to json file periodically.</li> <li>PROMETHEUS - PrometheusReporter which exposes metrics in prometheus format.</li> <li>SLF4J - Slf4jReporter which outputs measurements to system log periodically.</li></ul></div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.metrics.slf4j<br>.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT5S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>How often should report metrics to SLF4J logger</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="operation">
+<h3><span class="section-number">1.2.10. </span>Operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.operation.idle<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT3H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Operation will be closed when it's not accessed for this duration of time</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation<br>.interrupt.on.cancel</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>true</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>When true, all running tasks will be interrupted if one cancels a query. When false, all running tasks will remain until finished.</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation.log<br>.dir.root</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>server_operation_logs</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Root directory for query operation log at server-side.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation.plan<br>.only.mode</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>NONE</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Whether to perform the statement in a PARSE, ANALYZE, OPTIMIZE only way without executing the query. When it is NONE, the statement will be fully executed</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation<br>.query.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout for query executions at server-side, take affect with client-side timeout(<code>java.sql.Statement.setQueryTimeout</code>) together, a running query will be cancelled automatically if timeout. It's off by default, which means only client-side take fully control whether the query should timeout or not. If set, client-side timeout capped at this point. To cancel the queries right away without waiting task to finish, consider enabling kyuubi.operation.interrupt.on.cancel together.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation<br>.scheduler.pool</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The scheduler pool of job. Note that, this config should be used after change Spark config spark.scheduler.mode=FAIR.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.1.1</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation<br>.status.polling.max<br>.attempts</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>5</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Max attempts for long polling asynchronous running sql query's status on raw transport failures, e.g. TTransportException</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.operation<br>.status.polling<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT5S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout(ms) for long polling asynchronous running sql query's status</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="session">
+<h3><span class="section-number">1.2.11. </span>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.session.check<br>.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT5M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The check interval for session timeout.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.conf<br>.ignore.list</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of ignored keys. If the client connection contains any of them, the key and the corresponding value will be removed silently during engine bootstrap and connection setup. Note that this rule is for server-side protection defined via administrators to prevent some essential configs from tampering but will not forbid users to set dynamic configurations via SET syntax.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.conf<br>.restrict.list</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'></div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A comma separated list of restricted keys. If the client connection contains any of them, the connection will be rejected explicitly during engine bootstrap and connection setup. Note that this rule is for server-side protection defined via administrators to prevent some essential configs from tampering but will not forbid users to set dynamic configurations via SET syntax.</div></td>
+<td><div style='width: 30pt'>seq</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.check.interval</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT5M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The check interval for engine timeout</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.idle.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT30M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>engine timeout, the engine will self-terminate when it's not accessed for this duration</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.initialize.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT3M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>Timeout for starting the background engine, e.g. SparkSQLEngine.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.launch.async</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>false</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>When opening kyuubi session, whether to launch backend engine asynchronously. When true, the Kyuubi server will set up the connection with the client without delay as the backend engine will be created asynchronously.</div></td>
+<td><div style='width: 30pt'>boolean</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.log.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT24H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>If we use Spark as the engine then the session submit log is the console output of spark-submit. We will retain the session submit log until over the config value.</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.1.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.login.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT15S</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The timeout of creating the connection to remote sql query engine</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.request.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT1M</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The timeout of awaiting response after sending request to remote sql query engine</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.share.level</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>USER</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated) - Using kyuubi.engine.share.level instead</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.spark.main.resource</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The package used to create Spark SQL engine remote application. If it is undefined, Kyuubi will use the default</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.startup.error.max<br>.size</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>8192</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>During engine bootstrapping, if error occurs, using this config to limit the length error message(characters).</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.1.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.engine<br>.startup.maxLogLines</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>10</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The maximum number of engine log lines when errors occur during engine startup phase. Note that this max lines is for client-side to help track engine startup issue.</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.idle<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT6H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>session idle timeout, it will be closed when it's not accessed for this duration</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session.name</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>A human readable name of session and we use empty string by default. This name will be recorded in event. Note that, we only apply this value from session conf.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.4.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.session<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>PT6H</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>(deprecated)session timeout, it will be closed when it's not accessed for this duration</div></td>
+<td><div style='width: 30pt'>duration</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="zookeeper">
+<h3><span class="section-number">1.2.12. </span>Zookeeper<a class="headerlink" href="#zookeeper" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.client.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>2181</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>clientPort for the embedded zookeeper server to listen for client connections, a client here could be Kyuubi server, engine and JDBC client</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.client.port<br>.address</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>&lt;undefined&gt;</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>clientPortAddress for the embedded zookeeper server to</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.data.dir</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>embedded_zookeeper</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>dataDir for the embedded zookeeper server where stores the in-memory database snapshots and, unless specified otherwise, the transaction log of updates to the database.</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.data.log.dir</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>embedded_zookeeper</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>dataLogDir for the embedded zookeeper server where writes the transaction log .</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.directory</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>embedded_zookeeper</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The temporary directory for the embedded zookeeper server</div></td>
+<td><div style='width: 30pt'>string</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.max.client<br>.connections</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>120</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>maxClientCnxns for the embedded zookeeper server to limits the number of concurrent connections of a single client identified by IP address</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.max.session<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>60000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>maxSessionTimeout in milliseconds for the embedded zookeeper server will allow the client to negotiate. Defaults to 20 times the tickTime</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.min.session<br>.timeout</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>6000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>minSessionTimeout in milliseconds for the embedded zookeeper server will allow the client to negotiate. Defaults to 2 times the tickTime</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.port</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>2181</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>The port of the embedded zookeeper server</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.0.0</div></td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper<br>.embedded.tick.time</td>
+<td><div style='width: 65pt;word-wrap: break-word;white-space: normal'>3000</div></td>
+<td><div style='width: 170pt;word-wrap: break-word;white-space: normal'>tickTime in milliseconds for the embedded zookeeper server</div></td>
+<td><div style='width: 30pt'>int</div></td>
+<td><div style='width: 20pt'>1.2.0</div></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="spark-configurations">
+<h2><span class="section-number">1.3. </span>Spark Configurations<a class="headerlink" href="#spark-configurations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="via-spark-defaults-conf">
+<h3><span class="section-number">1.3.1. </span>Via spark-defaults.conf<a class="headerlink" href="#via-spark-defaults-conf" title="Permalink to this headline">¶</a></h3>
+<p>Setting them in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/spark-defaults.conf</span></code> supplies with default values for SQL engine application. Available properties can be found at Spark official online documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html">Spark Configurations</a></p>
+</div>
+<div class="section" id="via-kyuubi-defaults-conf">
+<h3><span class="section-number">1.3.2. </span>Via kyuubi-defaults.conf<a class="headerlink" href="#via-kyuubi-defaults-conf" title="Permalink to this headline">¶</a></h3>
+<p>Setting them in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> supplies with default values for SQL engine application too. These properties will override all settings in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/spark-defaults.conf</span></code></p>
+</div>
+<div class="section" id="via-jdbc-connection-url">
+<h3><span class="section-number">1.3.3. </span>Via JDBC Connection URL<a class="headerlink" href="#via-jdbc-connection-url" title="Permalink to this headline">¶</a></h3>
+<p>Setting them in the JDBC Connection URL supplies session-specific for each SQL engine. For example: <code class="docutils literal notranslate"><span class="pre">jdbc:hive2://localhost:10009/default;#spark.sql.shuffle.partitions=2;spark.executor.memory=5g</span></code></p>
+<ul class="simple">
+<li><p><strong>Runtime SQL Configuration</strong></p>
+<ul>
+<li><p>For <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#runtime-sql-configuration">Runtime SQL Configurations</a>, they will take affect every time</p></li>
+</ul>
+</li>
+<li><p><strong>Static SQL and Spark Core Configuration</strong></p>
+<ul>
+<li><p>For <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#static-sql-configuration">Static SQL Configurations</a> and other spark core configs, e.g. <code class="docutils literal notranslate"><span class="pre">spark.executor.memory</span></code>, they will take affect if there is no existing SQL engine application. Otherwise, they will just be ignored</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="via-set-syntax">
+<h3><span class="section-number">1.3.4. </span>Via SET Syntax<a class="headerlink" href="#via-set-syntax" title="Permalink to this headline">¶</a></h3>
+<p>Please refer to the Spark official online documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/sql-ref-syntax-aux-conf-mgmt-set.html">SET Command</a></p>
+</div>
+</div>
+<div class="section" id="logging">
+<h2><span class="section-number">1.4. </span>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>Kyuubi uses <a class="reference external" href="https://logging.apache.org/log4j/2.x/">log4j</a> for logging. You can configure it using <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/log4j.properties</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="c1"># contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="c1"># this work for additional information regarding copyright ownership.</span>
+<span class="c1"># The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="c1"># (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="c1"># the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+
+<span class="c1"># Set everything to be logged to the console</span>
+log4j.rootCategory<span class="o">=</span>INFO, console
+log4j.appender.console<span class="o">=</span>org.apache.log4j.ConsoleAppender
+log4j.appender.console.target<span class="o">=</span>System.err
+log4j.appender.console.layout<span class="o">=</span>org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern<span class="o">=</span>%d<span class="o">{</span>yyyy-MM-dd HH:mm:ss.SSS<span class="o">}</span> %p %c<span class="o">{</span><span class="m">2</span><span class="o">}</span>: %m%n
+
+<span class="c1"># Set the default kyuubi-ctl log level to WARN. When running the kyuubi-ctl, the</span>
+<span class="c1"># log level for this class is used to overwrite the root logger&#39;s log level.</span>
+log4j.logger.org.apache.kyuubi.ctl.ServiceControlCli<span class="o">=</span>ERROR
+
+<span class="c1"># Analysis MySQLFrontend protocol traffic</span>
+<span class="c1"># log4j.logger.org.apache.kyuubi.server.mysql.codec=TRACE</span>
+
+<span class="c1"># Kyuubi BeeLine</span>
+log4j.logger.org.apache.hive.beeline.KyuubiBeeLine<span class="o">=</span>ERROR
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-configurations">
+<h2><span class="section-number">1.5. </span>Other Configurations<a class="headerlink" href="#other-configurations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hadoop-configurations">
+<h3><span class="section-number">1.5.1. </span>Hadoop Configurations<a class="headerlink" href="#hadoop-configurations" title="Permalink to this headline">¶</a></h3>
+<p>Specifying <code class="docutils literal notranslate"><span class="pre">HADOOP_CONF_DIR</span></code> to the directory contains hadoop configuration files or treating them as Spark properties with a <code class="docutils literal notranslate"><span class="pre">spark.hadoop.</span></code> prefix. Please refer to the Spark official online documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#inheriting-hadoop-cluster-configuration">Inheriting Hadoop Cluster Configuration</a>. Also, please refer to the <a class="reference external" href="http://hadoop.apache.org">Apache Hadoop</a>’s online documentation for an overview on how to configure Hadoop.</p>
+</div>
+<div class="section" id="hive-configurations">
+<h3><span class="section-number">1.5.2. </span>Hive Configurations<a class="headerlink" href="#hive-configurations" title="Permalink to this headline">¶</a></h3>
+<p>These configurations are used for SQL engine application to talk to Hive MetaStore and could be configured in a <code class="docutils literal notranslate"><span class="pre">hive-site.xml</span></code>. Placed it in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf</span></code> directory, or treating them as Spark properties with a <code class="docutils literal notranslate"><span class="pre">spark.hadoop.</span></code> prefix.</p>
+</div>
+</div>
+<div class="section" id="user-defaults">
+<h2><span class="section-number">1.6. </span>User Defaults<a class="headerlink" href="#user-defaults" title="Permalink to this headline">¶</a></h2>
+<p>In Kyuubi, we can configure user default settings to meet separate needs. These user defaults override system defaults, but will be overridden by those from <a class="reference external" href="#via-jdbc-connection-url">JDBC Connection URL</a> or <a class="reference external" href="#via-set-syntax">Set Command</a> if could be. They will take effect when creating the SQL engine application ONLY.
+User default settings are in the form of <code class="docutils literal notranslate"><span class="pre">___{username}___.{config</span> <span class="pre">key}</span></code>. There are three continuous underscores(<code class="docutils literal notranslate"><span class="pre">_</span></code>) at both sides of the <code class="docutils literal notranslate"><span class="pre">username</span></code> and a dot(<code class="docutils literal notranslate"><span class="pre">.</span></code>) that separates the config key and the prefix. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For system defaults</span>
+spark.master<span class="o">=</span><span class="nb">local</span>
+spark.sql.adaptive.enabled<span class="o">=</span><span class="nb">true</span>
+<span class="c1"># For a user named kent</span>
+___kent___.spark.master<span class="o">=</span>yarn
+___kent___.spark.sql.adaptive.enabled<span class="o">=</span><span class="nb">false</span>
+<span class="c1"># For a user named bob</span>
+___bob___.spark.master<span class="o">=</span>spark://master:7077
+___bob___.spark.executor.memory<span class="o">=</span>8g
+</pre></div>
+</div>
+<p>In the above case, if there are related configurations from <a class="reference external" href="#via-jdbc-connection-url">JDBC Connection URL</a>, <code class="docutils literal notranslate"><span class="pre">kent</span></code> will run his SQL engine application on YARN and prefer the Spark AQE to be off, while <code class="docutils literal notranslate"><span class="pre">bob</span></code> will activate his SQL engine application on a Spark standalone cluster with 8g heap memory for each executor and obey the Spark AQE behavior of Kyuubi system default. On the other hand, for those users who do not have custom configurations will use system defaults.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="spark/index.html" class="btn btn-neutral float-right" title="2. The Engine Configuration Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="high_availability_guide.html" class="btn btn-neutral float-left" title="4. Kyuubi High Availability Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
