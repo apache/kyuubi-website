@@ -66,4 +66,4 @@ The docs are not generated as part of the website.
 
 They are built separately for each release of Kyuubi from the Kyuubi source repository and then copied to the website under the ```content/docs``` directory.
 
-The sub-dir name should like ```r<version>``` such as ```r0.0.1```, please also update soft links ```latest``` and ```stable```.
+The sub-dir name should like ```r<version>``` such as ```r0.0.1```, please also update soft links ```latest```.
