@@ -39,12 +39,6 @@ publishDir = "content"
    weight = 1
 
 [[menu.main]]
-   name = "Stable"
-   parent = "documentation"
-   url = "docs/stable/index.html"
-   weight = 2
-
-[[menu.main]]
    name = "Community"
    identifier = "community"
    weight = 3
