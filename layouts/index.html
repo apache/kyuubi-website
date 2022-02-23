@@ -27,12 +27,19 @@
       </div>
     </div>
 
+
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
+
         <div class="col-md-4">
-          <h2>Latest news</h2>
-            <div class="col-md-12">
+
+          <div class="col-md-12">
+            <p><a class="acevent" data-format="wide" data-mode="light" data-width="320"></a></p>
+          </div>
+
+          <div class="col-md-12">
+            <h2>Latest news</h2>
             {{range first 5 (where (where .Site.Pages "Section" "in" (slice "news")) ".Name" "not in" (slice "News" "Releases")) }}
             <div class="panel panel-default">
                <div class="panel-heading clearfix"><a class="pull-left" href={{.RelPermalink}}>{{.Title}}</a> <small class="pull-right">{{dateFormat "2006 Jan 2 " .Date}}</small></div>
@@ -41,10 +48,14 @@
                </div>
               </div>
             {{end}}
+          </div>
+
+          <div class="col-md-12">
+            <h2>Archives</h2>
             <p><a class="next" href="/release.html">Release archive &rarr;</a></p>
             <p><a class="next" href="/news.html">News archive &rarr;</a></p>
           </div>
-       </div>
+        </div>
       <div class="col-md-8">
           {{range where .Site.Pages "Title" "Kyuubi Usage"}}
           <h2>{{.Title}}</h2>
