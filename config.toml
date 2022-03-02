@@ -44,14 +44,25 @@ publishDir = "content"
    weight = 3
 
 [[menu.main]]
+   name = "Code of Conduct"
+   url = "https://www.apache.org/foundation/policies/conduct"
+   parent = "community"
+
+[[menu.main]]
    name = "Development"
    identifier = "development"
    weight = 4
 
 [[menu.main]]
+   name = "Github"
+   identifier = "github"
+   url = "https://github.com/apache/incubator-kyuubi"
+   weight = 5
+
+[[menu.main]]
    name = "ASF"
    identifier = "asf"
-   weight = 5
+   weight = 6
 
 [[menu.main]]
    name = "Foundation"
