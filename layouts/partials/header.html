@@ -29,7 +29,9 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ "css/index.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/kyuubi.css" | relURL }}">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,19 +41,69 @@
   </head>
 
   <body>
+    <div id="nav_mask" class='nav_mask'style="display: none;"></div>
+    <nav id="header" class="header">
+      <a href="{{ "/" | relURL }}"> 
+        <img class="navbar_logo" src="{{ "kyuubi_logo_hd.png" | relURL}}">
+      </a>
+      {{ partial "navbar.html" .}}
+      <a class="shareImgContainer" href="https://www.apache.org/">
+        Apache Software Foundation 
+        <span class="shareImg"></span>
+        <img class="disappear" src="{{ "share.png" | relURL}}"/>
+        <img class="disappear" src="{{ "activeShare.png" | relURL}}"/>
+      </a>
+    </nav>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <img class="navbar-logo" src="{{ "favicon.ico" | relURL}}">
-          <a class="navbar-brand" href="{{ "/" | relURL }}"> Apache Kyuubi</a>
-        </div>
+    <nav id="header_mobile" class="header_mobile">
+      <a href="{{ "/" | relURL }}"> 
+        <img class="navbar_logo" src="{{ "kyuubi_logo_hd.png" | relURL}}">
+      </a>
+      <div class="phoneBtn" id="phoneBtn">
+          <span></span>
+          <span></span>
+          <span class="headerClose"></span>
+      </div>
+      <div class="mobileNavContainer">
         {{ partial "navbar.html" .}}
+        <a class="shareImgContainer" href="https://www.apache.org/">
+          Apache Software Foundation 
+          <span class="shareImg"></span>
+          <img class="disappear" src="{{ "share.png" | relURL}}"/>
+          <img class="disappear" src="{{ "activeShare.png" | relURL}}"/>
+        </a>
       </div>
     </nav>
+    <script>
+      // mobile headerBtn Click
+      var phoneBtn = document.getElementById('phoneBtn')
+      var mask = document.getElementById('nav_mask')
+      phoneBtn.addEventListener('click', function (e) {
+        var isOpen = mask.style.display !== 'none'
+        phoneBtn.className = isOpen ? 'phoneBtn' : 'phoneBtn closeBtn'
+        mask.style.display = isOpen ? 'none' :' block'
+      })
+
+      mask.addEventListener('click', function (e) {
+        phoneBtn.className = 'phoneBtn' 
+        mask.style.display = 'none' 
+      })
+
+      // header_mobile
+      var header_mobile=document.getElementById('header_mobile')
+      header_mobile.addEventListener('click',function(e){
+        var className=e.target.className
+        if(className==="navLink navLinkWithChild"){
+          var navItem = e.target.parentNode
+          var isOpen = navItem.className!=='navItem'
+          navItem.className = isOpen ? 'navItem' : 'navItem openNavItem'
+        }
+      })
+
+      // listen page scrollX
+      var header = document.getElementById('header')
+      window.onscroll = function () {
+        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        header.style.left = -scrollLeft + 'px'
+      }
+    </script>
