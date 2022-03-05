@@ -14,7 +14,9 @@
 <footer class="footer">
   <div class="footerBox">
     <div class="footerItem">
-      <img class="footerImg" src="{{ "footer1.png" | relURL}}"/>
+      <a href="https://www.apachecon.com/">
+        <img class="footerImg" src="{{ "footer1.png" | relURL}}"/>
+      </a>
       <p>
         The Official Global Conference Series of The Apache Software Foundation, connecting open source technology enthusiasts from 
         around the world to share the latest technology developments and practices.
@@ -37,7 +39,7 @@
       <div class="footerCopyRightContent">
         <span>{{ replace .Site.Copyright "{year}" now.Year }}</span>
         <span class="footerP2">The Apache Software Foundation</span>
-        <a href="/privacy_policy.html">Privacy policy</a>
+        <a class="fgooterPrivacy" href="/privacy_policy.html">Privacy policy</a>
       </div>
     </div>
   </div>

@@ -2,18 +2,18 @@
   "keyFeatures": [
     {
       "img": "homePageImg/kf1.png",
-      "title": "Multi-tenancy",
-      "desc": "Kyuubi supports the end-to-end multi-tenancy, and this is why we want to create this project despite that the Spark Thrift JDBC/ODBC server already exists."
+      "title": "Multi tenancy",
+      "desc": "Kyuubi provides end-to-end multi-tenancy for resource acquiring and data/metadata access with a unified authentication/authorization layer."
     },
     {
       "img": "homePageImg/kf2.png",
       "title": "High Availability",
-      "desc": "Kyuubi provides both high availability and load balancing solutions based on Zookeeper.​"
+      "desc": "Kyuubi supports a load balancing on ZooKeeper, which provides an enterprise-grade high availability, as well as an unlimited high client concurrency."
     },
     {
       "img": "homePageImg/kf3.png",
-      "title": "Multiple workload support",
-      "desc": "All workloads can be done on one platform, using one copy of data, with one SQL interface."
+      "title": "Multiple Workloads",
+      "desc": "Kyuubi can easily support multiple disparate workloads with one single platform, one copy of data, and one SQL interface."
     }
   ],
   "ecosystem": [

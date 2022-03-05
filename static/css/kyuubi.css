@@ -43,6 +43,7 @@ body {
   width: 100%;
   z-index: 1;
   min-width: 1250px;
+  border-bottom: 1px solid rgb(229, 229, 229);
 }
 
 .header_mobile {
@@ -137,12 +138,19 @@ body {
   border-color: transparent transparent #E7161A transparent;
 }
 
+.childNavContainer {
+  overflow: hidden;
+  position: absolute;
+  transform: translateX(-45px);
+  padding: 20px;
+  padding-top: 0;
+  top: 68px;
+}
+
 .childNav {
   padding: 20px 32px 12px;
-  position: absolute;
   background: #FFFFFF;
   box-shadow: 0px 6px 16px 2px rgba(0, 0, 0, 0.15);
-  transform: translateX(-25px);
 }
 
 .childNavLink {
@@ -167,11 +175,11 @@ body {
   color: #E7161A;
 }
 
-.navItem .childNav {
+.navItem .childNavContainer {
   display: none;
 }
 
-.navItem:hover .childNav {
+.navItem:hover .childNavContainer {
   display: block;
 }
 
@@ -230,6 +238,13 @@ body {
 .footerP2 {
   padding-right: 10px;
   display: inline-block;
+}
+.fgooterPrivacy{
+  color: rgb(86, 164, 221);
+}
+.fgooterPrivacy:hover{
+  color: rgb(177, 222, 255);
+  /* text-decoration: none; */
 }
 
 @media screen and (max-width:1450px) {
@@ -468,7 +483,7 @@ h6 {
     color: rgba(51, 51, 51, .7);
   }
 
-  .navItem:hover .childNav {
+  .navItem:hover .childNavContainer {
     display: none;
   }
 
@@ -480,13 +495,16 @@ h6 {
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1), 0px -0.5px 0px rgba(0, 0, 0, 0.1);
   }
 
-  .mobileNavContainer .openNavItem .childNav {
+  .mobileNavContainer .openNavItem .childNavContainer {
     display: block;
   }
 
   .mobileNavContainer .openNavItem .navLink {
     text-decoration: none;
     color: #E7161A;
+    box-sizing: content-box;
+    height: 25px;
+    padding-top: 11px;
   }
 
   .mobileNavContainer .openNavItem .navAngle {
@@ -513,13 +531,19 @@ h6 {
     padding-left: 18px;
   }
 
+  .childNavContainer {
+    padding: 0;
+    position: static;
+    transform: none;
+  }
+
   .childNav {
     padding: 0;
     position: relative;
     transform: none;
     background-color: white;
     box-shadow: none;
-    display: none;
+    /* display: none; */
   }
 
   .childNavLink {
@@ -529,7 +553,7 @@ h6 {
     line-height: 28px;
     color: rgba(102, 102, 102, .7);
     margin: 0px;
-    height: 28px;
+    height: 32px;
     padding-left: 18px;
     box-shadow: 0px -0.5px 0px rgba(0, 0, 0, 0.1);
   }

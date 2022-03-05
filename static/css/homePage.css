@@ -140,7 +140,7 @@ body {
 }
 
 .useCaseListContainer {
-  padding: 0 36px;
+  padding: 0;
 }
 
 .useCaseItem {
@@ -211,7 +211,7 @@ body {
   background: linear-gradient(104.6deg, #FF4549 4%, #E7161A 69.37%);
   border-radius: 4px;
   font-size: 30px;
-  line-height: 42px;
+  line-height: 52px;
   text-align: center;
   color: #FFFFFF;
   margin-bottom: 16px;
@@ -247,7 +247,7 @@ body {
 }
 
 .communityItem:hover {
-  box-shadow: 0px 6px 20px 1px rgba(221, 221, 221, 0.5);
+  box-shadow: 0px 6px 20px 1px rgba(221, 221, 221, 0.7);
   text-decoration: none;
 
 }
@@ -263,11 +263,25 @@ body {
   font-size: 24px;
   line-height: 34px;
   color: #333333;
-  margin-bottom: 8px;
   transition: all 0.3s;
 }
 
-.communityLine {
+.communityItemTitle::after{
+  display: block;
+  height: 1px;
+  width: 0;
+  background-color: #E7161A;
+  /* position: absolute; */
+  transition: all 0.3s;
+  /* left: 50%; */
+  /* margin-left: -62px; */
+  /* bottom: 48px; */
+  margin-top: 8px;
+
+  content: '';
+}
+
+/* .communityLine {
   display: block;
   height: 1px;
   width: 0;
@@ -277,10 +291,10 @@ body {
   left: 50%;
   margin-left: -62px;
   bottom: 48px;
-}
+} */
 
-.communityItem:hover .communityLine {
-  width: 123px;
+.communityItem:hover .communityItemTitle::after {
+  width: 100%;
 }
 
 .communityItem:hover .communityItemTitle {
@@ -480,13 +494,15 @@ body {
     position: absolute;
     content: '';
     height: 1px;
-    width: 10px;
+    /* width: 10px; */
+    width: 7px;
     background-color: white;
   }
 
   .ecoItemBtn:before {
     transform: rotate(45deg);
-    left: -7px;
+    /* left: -7px; */
+    left: -5px;
   }
 
   .ecoItemBtn:after {
@@ -502,7 +518,8 @@ body {
   .closeEcosItem .ecoItemBtn:before,
   .closeEcosItem .ecoItemBtn::after {
     transform: rotate(0deg);
-    left: 0;
+    left: -4px;
+    width: 10px;
   }
   .closeEcosItem+div{
     height: 0;
@@ -554,6 +571,7 @@ body {
     border-radius: 4px;
     position: relative;
     margin-bottom: 24px;
+    box-shadow: 0px 6px 20px 1px rgba(221, 221, 221, 0.7);
   }
 
   .communityItem:last-child {
@@ -575,6 +593,16 @@ body {
 
   .communityItemTitle::after {
     content: " >";
+    display: inline;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    /* position: absolute; */
+    transition: all 0.3s;
+    /* left: 50%; */
+    /* margin-left: -62px; */
+    /* bottom: 48px; */
+    margin-top: 0;
   }
 
   .communityLine {
