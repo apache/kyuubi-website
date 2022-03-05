@@ -6,3 +6,4 @@ npm-debug.log
 resources
 content/*
 !content/docs/
+.hugo_build.lock

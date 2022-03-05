@@ -44,39 +44,55 @@ publishDir = "content"
    weight = 3
 
 [[menu.main]]
+   name = "Code of Conduct"
+   url = "https://www.apache.org/foundation/policies/conduct"
+   parent = "community"
+
+[[menu.main]]
    name = "Development"
    identifier = "development"
    weight = 4
 
 [[menu.main]]
-   name = "Help"
-   identifier = "help"
+   name = "Github"
+   identifier = "github"
+   url = "https://github.com/apache/incubator-kyuubi"
    weight = 5
 
 [[menu.main]]
-   name = "Apache Licenses"
+   name = "ASF"
+   identifier = "asf"
+   weight = 6
+
+[[menu.main]]
+   name = "Foundation"
+   url = "https://www.apache.org/"
+   parent = "asf"
+
+[[menu.main]]
+   name = "License"
    url = "https://www.apache.org/licenses/"
-   parent = "help"
+   parent = "asf"
 
 [[menu.main]]
    name = "Events"
-   url = "https://apachecon.com/?ref=www.apache.org"
-   parent = "help"
+   url = "https://www.apache.org/events/current-event"
+   parent = "asf"
 
 [[menu.main]]
    name = "Security"
    url = "https://www.apache.org/security/"
-   parent = "help"
+   parent = "asf"
 
 [[menu.main]]
    name = "Sponsorship"
    url = "https://www.apache.org/foundation/sponsorship.html"
-   parent = "help"
+   parent = "asf"
 
 [[menu.main]]
    name = "Thanks"
    url = "https://www.apache.org/foundation/thanks.html"
-   parent = "help"
+   parent = "asf"
 
 
 # Configure the English version of the website.
