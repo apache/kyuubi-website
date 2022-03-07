@@ -187,7 +187,7 @@ body {
 .footer {
   min-width: 1250px;
   height: 489px;
-  background: #383838;
+  background: rgb(26, 26, 26);
   padding: 88px 0;
   font-size: 14px;
   line-height: 20px;
@@ -197,6 +197,10 @@ body {
 .footerBox {
   width: 1400px;
   margin: 0 auto;
+}
+
+.footerMobileImg {
+  display: none;
 }
 
 .footerItem {
@@ -239,10 +243,12 @@ body {
   padding-right: 10px;
   display: inline-block;
 }
-.fgooterPrivacy{
+
+.fgooterPrivacy {
   color: rgb(86, 164, 221);
 }
-.fgooterPrivacy:hover{
+
+.fgooterPrivacy:hover {
   color: rgb(177, 222, 255);
   /* text-decoration: none; */
 }
@@ -576,7 +582,6 @@ h6 {
   .footer {
     min-width: 0;
     height: auto;
-    background: #302D2D;
     padding: 44px 30px;
     font-size: 12px;
     line-height: 19px;
@@ -610,6 +615,12 @@ h6 {
   }
 
   .footerBlock {
+    display: none;
+  }
+  .footerMobileImg {
+    display: block;
+  }
+  .footerPcImg {
     display: none;
   }
 
