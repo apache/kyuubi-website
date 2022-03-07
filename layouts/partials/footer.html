@@ -11,31 +11,43 @@
  See the License for the specific language governing permissions and
  limitations under the License. See accompanying LICENSE file.
 -->
-<div class="container">
-<footer class="footer container">
-  <div class="col-md-8">
-    <p>
-      Apache Kyuubi is an effort undergoing Incubation at The Apache Software Foundation (ASF), sponsored by the Incubator.
-      Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, 
-      communications, and decision making process have stabilized in a manner consistent with other successful ASF projects.
-      While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate
-      that the project has yet to be fully endorsed by the ASF.
-    </p>
-    <p>
-      Apache, the Apache Feather logo, and the Apache Incubator project logo are trademarks of The Apache Software Foundation.
-    </p>
-    <p>{{ replace .Site.Copyright "{year}" now.Year }}</p>
-    <p><a href="/privacy_policy.html">Privacy policy</a></p>
-  </div>
-  <div class="col-md-4">
-    <img class="img-responsive" src="{{ "incubator_feather_egg_logo.png" | relURL}}"/>
+<footer class="footer">
+  <div class="footerBox">
+    <div class="footerItem">
+      <a class="acevent" data-class="footerPcImg" data-format="wide" data-mode="dark" data-width="310"></a>
+      <a class="acevent" data-class="footerMobileImg" data-format="wide" data-mode="dark" data-width="114"></a>
+      <p>
+        The Official Global Conference Series of The Apache Software Foundation, connecting open source technology enthusiasts from 
+        around the world to share the latest technology developments and practices.
+      </p>
+    </div>
+    <div class="footerItem">
+      <img class="footerImg" src="{{ "incubator_feather_egg_gray_logo.png" | relURL}}"/>
+      <p>
+        <span class="footerSep"> Apache Kyuubi is an effort undergoing Incubation at The Apache Software Foundation (ASF), sponsored by the Incubator. 
+        Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, 
+        communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. 
+        While incubation status is not necessarily a reflection of the completeness or stability of the code, 
+        it does indicate that the project has yet to be fully endorsed by the ASF.
+        </span>
+        Apache, the Apache Feather logo, and the Apache Incubator project logo are trademarks of The Apache Software Foundation.
+      </p>
+    </div>
+    <div class="footerCopyRight">
+      <div class="footerBlock"></div>
+      <div class="footerCopyRightContent">
+        <span>{{ replace .Site.Copyright "{year}" now.Year }}</span>
+        <span class="footerP2">The Apache Software Foundation</span>
+        <a class="fgooterPrivacy" href="/privacy_policy.html">Privacy policy</a>
+      </div>
+    </div>
   </div>
 </footer>
-</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="https://www.apachecon.com/event-images/snippet.js"></script>
+    <script src="/js/vendor/jquery-1.12.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
