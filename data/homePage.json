@@ -2,7 +2,7 @@
   "keyFeatures": [
     {
       "img": "homePageImg/kf1.png",
-      "title": "Multi tenancy",
+      "title": "Multi Tenancy",
       "desc": "Kyuubi provides end-to-end multi-tenancy for resource acquiring and data/metadata access with a unified authentication/authorization layer."
     },
     {
@@ -66,17 +66,17 @@
   "community": [
     {
       "img": "homePageImg/community1.png",
-      "title": "Mailing list",
+      "title": "Mailing List",
       "href": "https://kyuubi.apache.org/mailing_lists.html"
     },
     {
       "img": "homePageImg/community2.png",
-      "title": "Source code",
+      "title": "Source Code",
       "href": "https://github.com/apache/incubator-kyuubi"
     },
     {
       "img": "homePageImg/community3.png",
-      "title": "How to contribute",
+      "title": "How to Contribute",
       "href": "https://kyuubi.apache.org/contributing.html"
     }
   ]
