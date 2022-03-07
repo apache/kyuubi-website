@@ -8,7 +8,7 @@
     {
       "img": "homePageImg/kf2.png",
       "title": "High Availability",
-      "desc": "Kyuubi supports a load balancing on ZooKeeper, which provides an enterprise-grade high availability, as well as an unlimited high client concurrency."
+      "desc": "Kyuubi supports load balancing via ZooKeeper, which provides an enterprise-grade high availability, as well as an unlimited high client concurrency."
     },
     {
       "img": "homePageImg/kf3.png",
