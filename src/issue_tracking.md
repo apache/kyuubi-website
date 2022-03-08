@@ -19,6 +19,8 @@ menu:
   limitations under the License. See accompanying LICENSE file.
 -->
 
+<img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
+
 The Kyuubi community uses [Github Issues](https://github.com/apache/incubator-kyuubi/issues) to track various ideas, work, bugs, etc.
 The Github issues tracker integrated with our development [repository](https://github.com/apache/incubator-kyuubi) makes it easier to organize work, focus on essential tasks, and keep plans up to date simultaneously.
 
