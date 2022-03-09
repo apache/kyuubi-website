@@ -42,7 +42,7 @@ you must commit code with your commit privilege to the codebase; it
 means you are committed to the Kyuubi project and are productively
 contributing to our community's success.
 
-## Committer Requirements:
+## Committer requirements:
 
 There are no strict rules for becoming a committer or PPMC member.
 Candidates for new committers are typically people that are active
