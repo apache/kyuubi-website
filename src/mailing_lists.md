@@ -2,7 +2,7 @@
 title: Kyuubi Mailing Lists
 menu:
    main:
-      name: "Mailing Lists"
+      name: "Join the Mailing Lists"
       parent: "community"
 ---
 <!---
