@@ -22,7 +22,10 @@ github:
     squash: true
     merge: false
     rebase: false
-notifications: ~
+notifications:
+  commits: commits@kyuubi.apache.org
+  issues: notifications@kyuubi.apache.org
+  pullrequests: notifications@kyuubi.apache.org
 staging:
   profile: ~
   whoami:  asf-site
