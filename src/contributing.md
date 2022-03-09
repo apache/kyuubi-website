@@ -91,6 +91,18 @@ introductionto setting up the development environment and making your first cont
 # 7. Go to 'https://github.com/apache/incubator-kyuubi' and click the 'new pull request' button
 ```
 
+About the pull request, it is highly recommended providing a clear descriptions for a better code review process.
+Writing good pull request descriptions is a great way to help reviewers know what to expect when reviewing code.
+As developers, our responsibility is to fix issues or implement new features and clearly communicate the development work to reviewers.
+A developer can convey proposed code changes and their purposes either through detailed PR descriptions.
+They're also a great way to help track things that should be done for every change, such as testing, adding unit tests, and updating documentation in the git log.
+
+Descriptions shall clearly answer:
+
+Q1.
+Q3.
+Q3
+
 ## After
 
 It may take some time to wait other developer to review. Feel free to ping any committer who has worked on the similar area.
