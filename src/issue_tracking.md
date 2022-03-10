@@ -3,7 +3,8 @@ title: Issue Tracker
 menu:
    main:
       name: "Issue Tracker"
-      parent: "community"
+      parent: "development"
+      weight: 1
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

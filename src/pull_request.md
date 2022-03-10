@@ -1,9 +1,10 @@
 ---
-title: Contributing
+title: Guide for Pull Requests
 menu:
-    main:
-        name: "Pull Request"
-        parent: "community"
+  main:
+    name: "Pull Request"
+    parent: "development"
+    weight: 3
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +20,14 @@ menu:
   limitations under the License. See accompanying LICENSE file.
 -->
 
-# Review pull requests
+## Review pull requests
 
 Kyuubi encourage to help review pull requests of other developers which makes code more robust.
 The review guide can see [Google’s Engineering Practices documentation](https://google.github.io/eng-practices/review/).
 
-# Submit your pull requests
+## Submit your pull requests
 
-## Before
+### Before
 
 Before proceeding, it's better to search the issues and pull requests history first. Likely, the problem or request has been discussed.
 
@@ -64,7 +65,7 @@ A developer can convey proposed code changes and their purposes either through d
 They're also a great way to help track things that should be done for every change, such as testing, adding unit tests, and updating documentation in the git log.
 See [Pull Request Template](https://github.com/apache/incubator-kyuubi/blob/master/.github/PULL_REQUEST_TEMPLATE).
 
-## After
+### After
 
 It may take some time to wait other developer to review. Feel free to ping any committer who has worked on the similar area.
 In general, You can find out the right people to review your code through git commit history.

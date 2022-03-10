@@ -47,6 +47,7 @@ publishDir = "content"
    name = "Code of Conduct"
    url = "https://www.apache.org/foundation/policies/conduct"
    parent = "community"
+   weight = 1
 
 [[menu.main]]
    name = "Development"
