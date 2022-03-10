@@ -23,20 +23,20 @@ menu:
 
 This guideline is based on [apache newcommitter](https://community.apache.org/newcommitter.html#new-committer-process)
 
-- [The process of new Committer](#the-process-of-new-committer)
-    - [Call a vote in mailing `private@kyuubi.apache.org`](#call-a-vote-in-mailing-privatekyuubiapacheorg)
-    - [Close the vote](#close-the-vote)
-    - [If the result is positive, invite the new committer](#if-the-result-is-positive-invite-the-new-committer)
-    - [If accept, then: Accept the committer](#if-accept-then-accept-the-committer)
-    - [Wait until we see that receipt of CLA is recorded](#wait-until-we-see-that-receipt-of-cla-is-recorded)
-    - [Request creation of the committer account](#request-creation-of-the-committer-account)
-    - [Notify the committer of completion](#notify-the-committer-of-completion)
-- [Template](#template)
-    - [Committer Vote Template](#committer-vote-template)
-    - [Close Vote Template](#close-vote-template)
-    - [Committer Invite Template](#committer-invite-template)
-    - [Committer Accept Template](#committer-accept-template)
-    - [Committer Done Template](#committer-done-template)
+- [The process of new Committer](new_committer_process#the-process-of-new-committer)
+    - [Call a vote in mailing `private@kyuubi.apache.org`](new_committer_process#call-a-vote-in-mailing-privatekyuubiapacheorg)
+    - [Close the vote](new_committer_process#close-the-vote)
+    - [If the result is positive, invite the new committer](new_committer_process#if-the-result-is-positive-invite-the-new-committer)
+    - [If accept, then: Accept the committer](new_committer_process#if-accept-then-accept-the-committer)
+    - [Wait until we see that receipt of CLA is recorded](new_committer_process#wait-until-we-see-that-receipt-of-cla-is-recorded)
+    - [Request creation of the committer account](new_committer_process#request-creation-of-the-committer-account)
+    - [Notify the committer of completion](new_committer_process#notify-the-committer-of-completion)
+- [Template](new_committer_process#template)
+    - [Committer Vote Template](new_committer_process#committer-vote-template)
+    - [Close Vote Template](new_committer_process#close-vote-template)
+    - [Committer Invite Template](new_committer_process#committer-invite-template)
+    - [Committer Accept Template](new_committer_process#committer-accept-template)
+    - [Committer Done Template](new_committer_process#committer-done-template)
 
 ## The process of new Committer
 
@@ -101,7 +101,7 @@ See voting [guidelines](https://community.apache.org/newcommitter.html)
 
 ### Close Vote Template
 
-```test
+```text
 To: private@kyuubi.apache.org
 Subject: [RESULT] [VOTE] New committer: ${NEW_COMMITTER_NAME}
 ```
