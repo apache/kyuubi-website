@@ -79,3 +79,4 @@ of the main website or Kyuubi's GitHub repositories.
 - Be active, courteous, and respectful for pull requests reviewing
 - Be involved in the design road map discussions with a professional
   and diplomatic approach even if there is a disagreement
+- Promoting the project by writing articles or holding events
