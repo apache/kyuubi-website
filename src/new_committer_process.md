@@ -1,5 +1,5 @@
 ---
-title: New Committer Process at Kyuubi
+title: New Committer Process
 menu:
   main:
     name: "New Committer Process"
@@ -23,18 +23,53 @@ menu:
 
 This guideline is based on [apache newcommitter](https://community.apache.org/newcommitter.html#new-committer-process)
 
+- [The process of new Committer](#the-process-of-new-committer)
+    - [Call a vote in mailing `private@kyuubi.apache.org`](#call-a-vote-in-mailing-privatekyuubiapacheorg)
+    - [Close the vote](#close-the-vote)
+    - [If the result is positive, invite the new committer](#if-the-result-is-positive-invite-the-new-committer)
+    - [If accept, then: Accept the committer](#if-accept-then-accept-the-committer)
+    - [Wait until we see that receipt of CLA is recorded](#wait-until-we-see-that-receipt-of-cla-is-recorded)
+    - [Request creation of the committer account](#request-creation-of-the-committer-account)
+    - [Notify the committer of completion](#notify-the-committer-of-completion)
+- [Template](#template)
+    - [Committer Vote Template](#committer-vote-template)
+    - [Close Vote Template](#close-vote-template)
+    - [Committer Invite Template](#committer-invite-template)
+    - [Committer Accept Template](#committer-accept-template)
+    - [Committer Done Template](#committer-done-template)
+
 ## The process of new Committer
 
-1. Call a vote in mailing `private@kyuubi.apache.org`, see **Committer Vote Template**
-2. Close the vote, see **Close Vote Template**
-3. If the result is positive, invite the new committer, see **Committer Invite Template**
-4. If accept, then: Accept the committer see **Committer Accept Template**
-5. Wait until we see that receipt of CLA is recorded
-6. Request creation of the committer account, see **Committer Account Creation**
-   - Wait until root says it is done
-   - PMC Chair enables svn and other access
-   - Add committer to the appropriate groups in JIRA and CWiki
-7. Notify the committer of completion, see **Committer Done Template**
+### Call a vote in mailing `private@kyuubi.apache.org`
+
+see **Committer Vote Template**
+
+### Close the vote
+
+see **Close Vote Template**
+
+### If the result is positive, invite the new committer
+
+see **Committer Invite Template**
+
+### If accept, then: Accept the committer
+
+see **Committer Accept Template**
+
+### Wait until we see that receipt of CLA is recorded
+
+### Request creation of the committer account
+
+see **Committer Account Creation**
+
+- Wait until root says it is done
+- PMC Chair enables svn and other access
+- Add committer to the appropriate groups in JIRA and CWiki
+
+### Notify the committer of completion
+
+see **Committer Done Template**
+
 
 ## Template
 
