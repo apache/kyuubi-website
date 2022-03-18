@@ -90,4 +90,4 @@ All discussions of a KBIP should take place in a public forum, preferably the di
 
 ### Implementing a KBIP
 
-Implementation should take place via the [contribution guidelines](contributing.html). Changes that require KBIPs typically also require design documents to be written and reviewed.
+Implementation should take place via the [contribution guidelines](issue_tracking.html). Changes that require KBIPs typically also require design documents to be written and reviewed.
