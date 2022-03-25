@@ -2,7 +2,7 @@
 title: 'New committers: Dongdong Hong & Vino Yang'
 date: 2021-12-25
 linked: true
-description: We are happy to announce [Dongdong Hong](https://github.com/hddong) & [Vino Yang(yanghua)](https://github.com/yanghua) becomes our committers.
+description: We are happy to announce Dongdong Hong & Vino Yang(yanghua) becomes new Kyuubi committers.
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
