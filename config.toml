@@ -13,7 +13,7 @@
 #
 baseurl = "https://kyuubi.apache.org"
 title = "Apache Kyuubi"
-copyright = "Copyright © 2021-{year}"
+copyright = "Copyright © 2021-{year} The Apache Software Foundation"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 uglyurls = true
@@ -44,10 +44,16 @@ publishDir = "content"
    weight = 3
 
 [[menu.main]]
+   name = "Latest News"
+   url = "news/index.html"
+   parent = "community"
+   weight = 1
+
+[[menu.main]]
    name = "Code of Conduct"
    url = "https://www.apache.org/foundation/policies/conduct"
    parent = "community"
-   weight = 1
+   weight = 2
 
 [[menu.main]]
    name = "Development"
