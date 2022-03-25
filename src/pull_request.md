@@ -68,7 +68,8 @@ See [Pull Request Template](https://github.com/apache/incubator-kyuubi/blob/mast
 ### After
 
 It may take some time to wait other developer to review. Feel free to ping any committer who has worked on the similar area.
-In general, You can find out the right people to review your code through git commit history.
+In general, you can find out the right people to review your code through git commit history.
 
-One more thing, Kyuubi leverage github action to cover unit test and integration test, so please make sure your pull request's
-tests are green. It will Speed up the merging :).
+One more thing, Kyuubi leverages [Github Actions](https://github.com/apache/incubator-kyuubi/actions) to cover unit 
+test and integration test on Linux AMD64 and [TravisCI](https://app.travis-ci.com/github/apache/incubator-kyuubi) 
+on Linux ARM64, so please make sure your pull request's tests are green. It will Speed up the merging :).
