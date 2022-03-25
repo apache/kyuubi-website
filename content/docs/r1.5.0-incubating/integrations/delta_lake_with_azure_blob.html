@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>3. Kyuubi On Delta Lake With Microsoft Azure Blob Storage &mdash; Kyuubi 1.5.0-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monitoring" href="../monitor/index.html" />
+    <link rel="prev" title="2. Kyuubi On Delta Lake" href="delta_lake.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kudu.html">1. Kyuubi On Apache Kudu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delta_lake.html">2. Kyuubi On Delta Lake</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Kyuubi On Delta Lake With Microsoft Azure Blob Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-azure-registration-and-configuration">3.1. Microsoft Azure Registration And Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#register-a-microsoft-azure-account-and-log-in">Register A Microsoft Azure Account And Log In</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-microsoft-azure-storage-container">Create Microsoft Azure Storage Container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-microsoft-azure-access-key">Get Microsoft Azure Access Key</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-spark">3.2. Deploy Spark</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download-spark-package">Download Spark Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-spark">Config Spark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copy-dependencies-to-spark">Copy Dependencies To Spark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-spark">Start Spark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-the-connectivity-of-spark-and-delta-lake">Test The connectivity Of Spark And Delta Lake</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-kyuubi">3.3. Deploy Kyuubi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-kyuubi">Install Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-kyuubi">Config Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-kyuubi">Start Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-the-connectivity-of-kyuubi-and-delta-lake">Test The Connectivity Of Kyuubi And Delta Lake</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-delta-lake-data-by-using-kyuubi-examples">3.4. Dealing Delta Lake Data By Using Kyuubi Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">3.5. References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Integrations</a> &raquo;</li>
+        
+      <li><span class="section-number">3. </span>Kyuubi On Delta Lake With Microsoft Azure Blob Storage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/integrations/delta_lake_with_azure_blob.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div class="section" id="kyuubi-on-delta-lake-with-microsoft-azure-blob-storage">
+<h1><span class="section-number">3. </span>Kyuubi On Delta Lake With Microsoft Azure Blob Storage<a class="headerlink" href="#kyuubi-on-delta-lake-with-microsoft-azure-blob-storage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="microsoft-azure-registration-and-configuration">
+<h2><span class="section-number">3.1. </span>Microsoft Azure Registration And Configuration<a class="headerlink" href="#microsoft-azure-registration-and-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="register-a-microsoft-azure-account-and-log-in">
+<h3>Register A Microsoft Azure Account And Log In<a class="headerlink" href="#register-a-microsoft-azure-account-and-log-in" title="Permalink to this headline">¶</a></h3>
+<p>Regarding the Microsoft Azure account, please contact your organization or register an account as an individual. For details, please refer to the <a class="reference external" href="https://azure.microsoft.com/en-gb/">Microsoft Azure official website</a>.</p>
+</div>
+<div class="section" id="create-microsoft-azure-storage-container">
+<h3>Create Microsoft Azure Storage Container<a class="headerlink" href="#create-microsoft-azure-storage-container" title="Permalink to this headline">¶</a></h3>
+<p>After logging in with your Microsoft Azure account, please follow the steps below to create a data storage container:
+<img alt="../_images/azure_create_new_container.png" src="../_images/azure_create_new_container.png" /></p>
+</div>
+<div class="section" id="get-microsoft-azure-access-key">
+<h3>Get Microsoft Azure Access Key<a class="headerlink" href="#get-microsoft-azure-access-key" title="Permalink to this headline">¶</a></h3>
+<p><img alt="../_images/azure_create_azure_access_key.png" src="../_images/azure_create_azure_access_key.png" /></p>
+</div>
+</div>
+<div class="section" id="deploy-spark">
+<h2><span class="section-number">3.2. </span>Deploy Spark<a class="headerlink" href="#deploy-spark" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="download-spark-package">
+<h3>Download Spark Package<a class="headerlink" href="#download-spark-package" title="Permalink to this headline">¶</a></h3>
+<p>Download spark package that matches your environment from <a class="reference external" href="https://spark.apache.org/downloads.html">spark official website</a>. And then unpackage:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tar -xzvf spark-3.2.0-bin-hadoop3.2.tgz
+</pre></div>
+</div>
+</div>
+<div class="section" id="config-spark">
+<h3>Config Spark<a class="headerlink" href="#config-spark" title="Permalink to this headline">¶</a></h3>
+<p>Enter the ./spark/conf directory and execute:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp spark-defaults.conf.tmp spark-defaults.conf
+</pre></div>
+</div>
+<p>Add following configuration to spark-defaults.conf, please refer to your own local configuration for specific personalized configuration:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>spark.master                     spark://&lt;YOUR_HOST&gt;:7077 
+spark.sql.extensions             io.delta.sql.DeltaSparkSessionExtension
+spark.sql.catalog.spark_catalog  org.apache.spark.sql.delta.catalog.DeltaCatalog
+</pre></div>
+</div>
+<p>Create a new file named core-site.xml under ./spark/conf directory, and add following configuration:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.AbstractFileSystem.wasb.Impl<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>org.apache.hadoop.fs.azure.Wasb<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+ <span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>fs.azure.account.key.YOUR_AZURE_ACCOUNT.blob.core.windows.net<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>YOUR_AZURE_ACCOUNT_ACCESS_KEY<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+ <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.azure.block.blob.with.compaction.dir<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>/hbase/WALs,/tmp/myblobfiles<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+ <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.azure<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>org.apache.hadoop.fs.azure.NativeAzureFileSystem<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.azure.enable.append.support<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy-dependencies-to-spark">
+<h3>Copy Dependencies To Spark<a class="headerlink" href="#copy-dependencies-to-spark" title="Permalink to this headline">¶</a></h3>
+<p>Copy jar packages required by delta lake and microsoft azure to ./spark/jars directory:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget https://repo1.maven.org/maven2/io/delta/delta-core_2.12/1.0.0/delta-core_2.12-1.0.0.jar -O ./spark/jars/delta-core_2.12-1.0.0.jar
+
+wget https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/8.6.6/azure-storage-8.6.6.jar -O ./spark/jars/azure-storage-8.6.6.jar
+
+wget https://repo1.maven.org/maven2/com/azure/azure-storage-blob/12.14.2/azure-storage-blob-12.14.2.jar -O ./spark/jars/azure-storage-blob-12.14.2.jar
+
+wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/3.1.1/hadoop-azure-3.1.1.jar -O ./spark/jars/hadoop-azure-3.1.1.jar
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-spark">
+<h3>Start Spark<a class="headerlink" href="#start-spark" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./spark/sbin/start-master.sh -h &lt;YOUR_HOST&gt; -p <span class="m">7077</span> --webui-port <span class="m">9090</span>
+
+./spark/sbin/start-worker.sh spark://&lt;YOUR_HOST&gt;:7077
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-the-connectivity-of-spark-and-delta-lake">
+<h3>Test The connectivity Of Spark And Delta Lake<a class="headerlink" href="#test-the-connectivity-of-spark-and-delta-lake" title="Permalink to this headline">¶</a></h3>
+<p>Start spark shell:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/usr/apache/current/spark/bin&gt; ./spark-shell
+Using Spark<span class="s1">&#39;s default log4j profile: org/apache/spark/log4j-defaults.properties</span>
+<span class="s1">Setting default log level to &quot;WARN&quot;.</span>
+<span class="s1">To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).</span>
+<span class="s1">Spark context Web UI available at http://HOST:4040</span>
+<span class="s1">Spark context available as &#39;</span>sc<span class="s1">&#39; (master = spark://HOST:7077, app id = app-20211126172803-0003).</span>
+<span class="s1">Spark session available as &#39;</span>spark<span class="s1">&#39;.</span>
+<span class="s1">Welcome to</span>
+<span class="s1">      ____              __</span>
+<span class="s1">     / __/__  ___ _____/ /__</span>
+<span class="s1">    _\ \/ _ \/ _ `/ __/  &#39;</span>_/
+   /___/ .__/<span class="se">\_</span>,_/_/ /_/<span class="se">\_\ </span>  version <span class="m">3</span>.1.2
+      /_/
+
+Using Scala version <span class="m">2</span>.12.10 <span class="o">(</span>OpenJDK <span class="m">64</span>-Bit Server VM, Java <span class="m">1</span>.8.0_302<span class="o">)</span>
+Type <span class="k">in</span> expressions to have them evaluated.
+Type :help <span class="k">for</span> more information.
+
+scala&gt;
+</pre></div>
+</div>
+<p>Generate a piece of random data and push them to delta lake:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scala&gt; val <span class="nv">data</span> <span class="o">=</span> spark.range<span class="o">(</span><span class="m">1000</span>, <span class="m">2000</span><span class="o">)</span>
+scala&gt; data.write.format<span class="o">(</span><span class="s2">&quot;delta&quot;</span><span class="o">)</span>.mode<span class="o">(</span><span class="s2">&quot;overwrite&quot;</span><span class="o">)</span>.save<span class="o">(</span><span class="s2">&quot;wasbs://&lt;YOUR_CONTAINER_NAME&gt;@&lt;YOUR_AZURE_ACCOUNT&gt;.blob.core.windows.net/&lt;YOUR_TABLE_NAME&gt;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>After this, you can check your data on azure web UI. For example, my container name is 1000 and table name is alexDemo20211127:
+<img alt="../_images/azure_spark_connection_test_storage.png" src="../_images/azure_spark_connection_test_storage.png" /></p>
+<p>You can also check data by reading back the data from delta lake:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scala&gt; val <span class="nv">df</span><span class="o">=</span>spark.read.format<span class="o">(</span><span class="s2">&quot;delta&quot;</span><span class="o">)</span>.load<span class="o">(</span><span class="s2">&quot;wasbs://&lt;YOUR_CONTAINER_NAME&gt;@&lt;YOUR_AZURE_ACCOUNT&gt;.blob.core.windows.net/&lt;YOUR_TABLE_NAME&gt;&quot;</span><span class="o">)</span>
+scala&gt; df.show<span class="o">()</span>
++----+
+<span class="p">|</span>  id<span class="p">|</span>
++----+
+<span class="p">|</span><span class="m">1000</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1001</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1002</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1003</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1004</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1005</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1006</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1007</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1008</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1009</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1010</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1011</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1012</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1013</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1014</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1015</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1016</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1017</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1018</span><span class="p">|</span>
+<span class="p">|</span><span class="m">1019</span><span class="p">|</span>
++----+
+only showing top <span class="m">20</span> rows
+</pre></div>
+</div>
+<p>If there is no problem with the above, it proves that spark has been built with delta lake.</p>
+</div>
+</div>
+<div class="section" id="deploy-kyuubi">
+<h2><span class="section-number">3.3. </span>Deploy Kyuubi<a class="headerlink" href="#deploy-kyuubi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-kyuubi">
+<h3>Install Kyuubi<a class="headerlink" href="#install-kyuubi" title="Permalink to this headline">¶</a></h3>
+<p>1.Download the latest version of <a class="reference external" href="https://kyuubi.apache.org/releases.html">kyuubi</a>.</p>
+<p>2.Unpackage</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tar -xzvf  apache-kyuubi-1.3.1-incubating-bin.tgz
+</pre></div>
+</div>
+</div>
+<div class="section" id="config-kyuubi">
+<h3>Config Kyuubi<a class="headerlink" href="#config-kyuubi" title="Permalink to this headline">¶</a></h3>
+<p>Enter the ./kyuubi/conf directory</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp kyuubi-defaults.conf.template kyuubi-defaults.conf
+vim kyuubi-defaults.conf
+</pre></div>
+</div>
+<p>Add the following content:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>spark.master                    spark://&lt;YOUR_HOST&gt;:7077
+kyuubi.authentication           NONE
+kyuubi.frontend.bind.host       &lt;YOUR_HOST&gt;
+kyuubi.frontend.bind.port       10009
+# If you use your own zk cluster, you need to configure your zk host port.
+# kyuubi.ha.zookeeper.quorum    &lt;YOUR_HOST&gt;:2181 
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-kyuubi">
+<h3>Start Kyuubi<a class="headerlink" href="#start-kyuubi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/usr/apache/current/kyuubi/bin&gt; kyuubi start
+Starting Kyuubi Server from /usr/apache/current/kyuubi
+Warn: Not find kyuubi environment file /usr/apache/current/kyuubi/conf/kyuubi-env.sh, using default ones...
+JAVA_HOME: /usr/lib64/jvm/java
+KYUUBI_HOME: /usr/apache/current/kyuubi
+KYUUBI_CONF_DIR: /usr/apache/current/kyuubi/conf
+KYUUBI_LOG_DIR: /usr/apache/current/kyuubi/logs
+KYUUBI_PID_DIR: /usr/apache/current/kyuubi/pid
+KYUUBI_WORK_DIR_ROOT: /usr/apache/current/kyuubi/work
+SPARK_HOME: /usr/apache/current/spark
+SPARK_CONF_DIR: /usr/apache/current/spark/conf
+HADOOP_CONF_DIR:
+Starting org.apache.kyuubi.server.KyuubiServer, logging to /usr/apache/current/kyuubi/logs/kyuubi-hadoop-org.apache.kyuubi.server.KyuubiServer-host.out
+Welcome to
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+</pre></div>
+</div>
+<p>Check kyuubi log, in order to check kyuubi start status and find the jdbc connection url:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.227 INFO server.KyuubiServer: Service<span class="o">[</span>KyuubiServer<span class="o">]</span> is initialized.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.229 INFO service.KinitAuxiliaryService: Service<span class="o">[</span>KinitAuxiliaryService<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.230 INFO metrics.JsonReporterService: Service<span class="o">[</span>JsonReporterService<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.230 INFO metrics.MetricsSystem: Service<span class="o">[</span>MetricsSystem<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.234 INFO zookeeper.ClientCnxn: Socket connection established to host/*.*.*.*:2181, initiating session
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.234 INFO operation.KyuubiOperationManager: Service<span class="o">[</span>KyuubiOperationManager<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.234 INFO session.KyuubiSessionManager: Service<span class="o">[</span>KyuubiSessionManager<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.234 INFO server.KyuubiBackendService: Service<span class="o">[</span>KyuubiBackendService<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.235 INFO service.ThriftFrontendService: Service<span class="o">[</span>ThriftFrontendService<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.235 INFO service.ThriftFrontendService: Starting and exposing JDBC connection at: jdbc:hive2://HOST:10009/
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.239 INFO zookeeper.ClientCnxn: Session establishment <span class="nb">complete</span> on server host/*.*.*.*:2181, <span class="nv">sessionid</span> <span class="o">=</span> 0x100046ec0ca01b5, negotiated <span class="nv">timeout</span> <span class="o">=</span> <span class="m">40000</span>
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.245 INFO state.ConnectionStateManager: State change: CONNECTED
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.247 INFO client.KyuubiServiceDiscovery: Zookeeper client connection state changed to: CONNECTED
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.265 INFO client.ServiceDiscovery: Created a /kyuubi/serviceUri<span class="o">=</span>host:10009<span class="p">;</span><span class="nv">version</span><span class="o">=</span><span class="m">1</span>.3.1-incubating<span class="p">;</span><span class="nv">sequence</span><span class="o">=</span><span class="m">0000000037</span> on ZooKeeper <span class="k">for</span> KyuubiServer uri: host:10009
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.266 INFO client.KyuubiServiceDiscovery: Service<span class="o">[</span>KyuubiServiceDiscovery<span class="o">]</span> is started.
+<span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.267 INFO server.KyuubiServer: Service<span class="o">[</span>KyuubiServer<span class="o">]</span> is started.
+</pre></div>
+</div>
+<p>You can get the jdbc connection url by the log:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="m">2021</span>-11-26 <span class="m">17</span>:49:50.235 INFO service.ThriftFrontendService: Starting and exposing JDBC connection at: jdbc:hive2://HOST:10009/
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-the-connectivity-of-kyuubi-and-delta-lake">
+<h3>Test The Connectivity Of Kyuubi And Delta Lake<a class="headerlink" href="#test-the-connectivity-of-kyuubi-and-delta-lake" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/usr/apache/current/spark/bin&gt; ./beeline -u <span class="s1">&#39;jdbc:hive2://&lt;YOUR_HOST&gt;:10009/&#39;</span>
+log4j:WARN No appenders could be found <span class="k">for</span> logger <span class="o">(</span>org.apache.hadoop.util.Shell<span class="o">)</span>.
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig <span class="k">for</span> more info.
+Connecting to jdbc:hive2://HOST:10009/
+Connected to: Spark SQL <span class="o">(</span>version <span class="m">1</span>.3.1-incubating<span class="o">)</span>
+Driver: Hive JDBC <span class="o">(</span>version <span class="m">2</span>.3.7<span class="o">)</span>
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version <span class="m">2</span>.3.7 by Apache Hive
+<span class="m">0</span>: jdbc:hive2://YOUR_HOST&gt;
+</pre></div>
+</div>
+<p>At the same time, you can also check whether the engine is running on the spark UI:
+<img alt="../_images/kyuubi_start_status_spark_UI.png" src="../_images/kyuubi_start_status_spark_UI.png" /></p>
+<p>When the engine started, it will expose a thrift endpoint and register itself into ZooKeeper, Kyuubi server can get the connection info from ZooKeeper and establish the connection to the engine.
+So, you can check the registration details in zookeeper path ’/kyuubi_USER/anonymous‘.</p>
+</div>
+</div>
+<div class="section" id="dealing-delta-lake-data-by-using-kyuubi-examples">
+<h2><span class="section-number">3.4. </span>Dealing Delta Lake Data By Using Kyuubi Examples<a class="headerlink" href="#dealing-delta-lake-data-by-using-kyuubi-examples" title="Permalink to this headline">¶</a></h2>
+<p>Operate delta-lake data through SQL:<br />1.Create Table</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Create or replace table with path</span>
+<span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">TABLE</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">wasbs</span><span class="p">:</span><span class="o">//</span><span class="mi">1000</span><span class="o">@</span><span class="n">azure_account</span><span class="p">.</span><span class="nb">blob</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">windows</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">alexDemo20211129</span><span class="o">`</span> <span class="p">(</span>
+  <span class="nb">date</span> <span class="nb">DATE</span><span class="p">,</span>
+  <span class="n">eventId</span> <span class="n">STRING</span><span class="p">,</span>
+  <span class="n">eventType</span> <span class="n">STRING</span><span class="p">,</span>
+  <span class="k">data</span> <span class="n">STRING</span><span class="p">)</span>
+<span class="k">USING</span> <span class="n">DELTA</span>
+<span class="n">PARTITIONED</span> <span class="k">BY</span> <span class="p">(</span><span class="nb">date</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>2.Insert Data<br />Append Mode:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">wasbs</span><span class="p">:</span><span class="o">//</span><span class="mi">1000</span><span class="o">@</span><span class="n">azure_account</span><span class="p">.</span><span class="nb">blob</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">windows</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">alexDemo20211129</span><span class="o">`</span> <span class="p">(</span>
+    <span class="nb">date</span><span class="p">,</span>
+    <span class="n">eventId</span><span class="p">,</span>
+    <span class="n">eventType</span><span class="p">,</span>
+    <span class="k">data</span><span class="p">)</span>
+<span class="k">VALUES</span> 
+    <span class="p">(</span><span class="n">now</span><span class="p">(),</span><span class="s1">&#39;001&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">now</span><span class="p">(),</span><span class="s1">&#39;002&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">now</span><span class="p">(),</span><span class="s1">&#39;003&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>+-------------+----------+------------+---------------+
+<span class="p">|</span>    date     <span class="p">|</span> eventId  <span class="p">|</span> eventType  <span class="p">|</span>     data      <span class="p">|</span>
++-------------+----------+------------+---------------+
+<span class="p">|</span> <span class="m">2021</span>-11-29  <span class="p">|</span> <span class="m">001</span>      <span class="p">|</span> <span class="nb">test</span>       <span class="p">|</span> Hello World!  <span class="p">|</span>
+<span class="p">|</span> <span class="m">2021</span>-11-29  <span class="p">|</span> <span class="m">003</span>      <span class="p">|</span> <span class="nb">test</span>       <span class="p">|</span> Hello World!  <span class="p">|</span>
+<span class="p">|</span> <span class="m">2021</span>-11-29  <span class="p">|</span> <span class="m">002</span>      <span class="p">|</span> <span class="nb">test</span>       <span class="p">|</span> Hello World!  <span class="p">|</span>
++-------------+----------+------------+---------------+
+</pre></div>
+</div>
+<p>Overwrite Mode:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="n">OVERWRITE</span> <span class="k">TABLE</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">wasbs</span><span class="p">:</span><span class="o">//</span><span class="mi">1000</span><span class="o">@</span><span class="n">azure_account</span><span class="p">.</span><span class="nb">blob</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">windows</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">alexDemo20211129</span><span class="o">`</span><span class="p">(</span>
+    <span class="nb">date</span><span class="p">,</span>
+    <span class="n">eventId</span><span class="p">,</span>
+    <span class="n">eventType</span><span class="p">,</span>
+    <span class="k">data</span><span class="p">)</span>
+<span class="k">VALUES</span> 
+<span class="p">(</span><span class="n">now</span><span class="p">(),</span><span class="s1">&#39;001&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;hello kyuubi&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="n">now</span><span class="p">(),</span><span class="s1">&#39;002&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;hello kyuubi&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>+-------------+----------+------------+---------------+
+<span class="p">|</span>    date     <span class="p">|</span> eventId  <span class="p">|</span> eventType  <span class="p">|</span>     data      <span class="p">|</span>
++-------------+----------+------------+---------------+
+<span class="p">|</span> <span class="m">2021</span>-11-29  <span class="p">|</span> <span class="m">002</span>      <span class="p">|</span> <span class="nb">test</span>       <span class="p">|</span> hello kyuubi  <span class="p">|</span>
+<span class="p">|</span> <span class="m">2021</span>-11-29  <span class="p">|</span> <span class="m">001</span>      <span class="p">|</span> <span class="nb">test</span>       <span class="p">|</span> hello kyuubi  <span class="p">|</span>
++-------------+----------+------------+---------------+
+</pre></div>
+</div>
+<p>Delete Table Data:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">delete</span> <span class="k">from</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">wasbs</span><span class="p">:</span><span class="o">//</span><span class="mi">1000</span><span class="o">@</span><span class="n">azure_account</span><span class="p">.</span><span class="nb">blob</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">windows</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">alexDemo20211129</span><span class="o">`</span> <span class="k">where</span> <span class="n">eventId</span> <span class="o">=</span> <span class="mi">002</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>+-------------+----------+------------+---------------+
+<span class="p">|</span>    date     <span class="p">|</span> eventId  <span class="p">|</span> eventType  <span class="p">|</span>     data      <span class="p">|</span>
++-------------+----------+------------+---------------+
+<span class="p">|</span> <span class="m">2021</span>-11-29  <span class="p">|</span> <span class="m">001</span>      <span class="p">|</span> <span class="nb">test</span>       <span class="p">|</span> hello kyuubi  <span class="p">|</span>
++-------------+----------+------------+---------------+
+</pre></div>
+</div>
+<p>Update table data:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">wasbs</span><span class="p">:</span><span class="o">//</span><span class="mi">1000</span><span class="o">@</span><span class="n">azure_account</span><span class="p">.</span><span class="nb">blob</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">windows</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">alexDemo20211129</span><span class="o">`</span>
+<span class="k">SET</span> <span class="k">data</span> <span class="o">=</span> <span class="s1">&#39;This is a test for update data.&#39;</span>
+<span class="k">WHERE</span> <span class="n">eventId</span> <span class="o">=</span> <span class="mi">001</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-------------+----------+------------+----------------------------------+
+|    date     | eventId  | eventType  |               data               |
++-------------+----------+------------+----------------------------------+
+| 2021-11-29  | 001      | test       | This is a test for update data.  |
++-------------+----------+------------+----------------------------------+
+</pre></div>
+</div>
+<p>Select table data:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">delta</span><span class="p">.</span><span class="o">`</span><span class="n">wasbs</span><span class="p">:</span><span class="o">//</span><span class="mi">1000</span><span class="o">@</span><span class="n">azure_account</span><span class="p">.</span><span class="nb">blob</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">windows</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">alexDemo20211129</span><span class="o">`</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+-------------+----------+------------+----------------------------------+
+|    date     | eventId  | eventType  |               data               |
++-------------+----------+------------+----------------------------------+
+| 2021-11-29  | 001      | test       | This is a test for update data.  |
++-------------+----------+------------+----------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">3.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://delta.io/">https://delta.io/</a></p></li>
+<li><p><a class="reference external" href="https://docs.delta.io/latest/delta-batch.html#-ddlcreatetable">https://docs.delta.io/latest/delta-batch.html#-ddlcreatetable</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/">https://spark.apache.org/docs/latest/</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/databricks/delta/quick-start">https://docs.microsoft.com/en-us/azure/databricks/delta/quick-start</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../monitor/index.html" class="btn btn-neutral float-right" title="Monitoring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="delta_lake.html" class="btn btn-neutral float-left" title="2. Kyuubi On Delta Lake" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
