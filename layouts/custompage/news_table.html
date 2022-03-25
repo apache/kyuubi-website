@@ -30,7 +30,7 @@
     <tr>
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
       <td class="center aligned">{{.Title }}</td>
-      <td class="center aligned">{{.Content}}</td>
+      <td class="center aligned">{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Content }}{{ end }}</td>
       <td class="center aligned"><a href="/news/{{.File.BaseFileName }}.html">see more</a></td>
     </tr>
     {{end}}
