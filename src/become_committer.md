@@ -2,8 +2,9 @@
 title: Become A Committer of Apache Kyuubi
 menu:
   main:
-    name: "Become A Committer"
-    parent: "community"
+      name: "Become A Committer"
+      parent: "community"
+      weight: 2
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

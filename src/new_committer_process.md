@@ -1,9 +1,10 @@
 ---
 title: New Committer Process
 menu:
-  main:
-    name: "New Committer Process"
-    parent: "community"
+    main:
+        name: "New Committer Process"
+        parent: "community"
+        weight: 3 
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

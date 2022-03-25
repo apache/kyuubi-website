@@ -1,7 +1,12 @@
 ---
-title: Apache Kyuubi(Incubating) 1.5.0-incubating released
-date: 2022-03-25
-linked: true
+title: "Latest News"
+layout: news_table
+type: custompage
+menu:
+    main:
+        name: "Latest News"
+        parent: "community"
+        weight: 4
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,4 +22,6 @@ linked: true
   limitations under the License. See accompanying LICENSE file.
 -->
 
-We are happy to announce the availability of [Apache Kyuubi(Incubating) 1.5.0-incubating](/release/1.5.0-incubating.html)! Visit the [release notes](/release/1.5.0-incubating.html) to read about the new features, or [download](/releases.html) the released today.
+## License
+
+_The software licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)._
