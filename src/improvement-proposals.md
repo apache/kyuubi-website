@@ -3,7 +3,7 @@ title: Kyuubi Project Improvement Proposals (KPIP)
 menu:
     main:
         name: "Improvement Proposals (KPIP)"
-        parent: "community"
+        parent: "development"
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
