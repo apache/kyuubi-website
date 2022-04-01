@@ -1,6 +1,6 @@
 ---
 title: 'New committers: Nicholas Jiang & Fu Chen'
-date: 2022-03-27
+date: 2022-03-29
 linked: true
 description: We are happy to announce Nicholas Jiang & Fu Chen becomes new Kyuubi committers.
 ---
