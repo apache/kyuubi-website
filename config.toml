@@ -166,3 +166,7 @@ publishDir = "content"
     endLevel = 3
     ordered = false
     startLevel = 2
+
+[minify]
+  [minify.tdewolff.html]
+    keepQuotes = true
