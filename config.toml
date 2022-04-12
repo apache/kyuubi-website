@@ -39,6 +39,12 @@ publishDir = "content"
    weight = 1
 
 [[menu.main]]
+   name = "Master"
+   parent = "documentation"
+   url = "https://kyuubi.readthedocs.io/en/latest/index.html"
+   weight = 1
+
+[[menu.main]]
    name = "Community"
    identifier = "community"
    weight = 3
