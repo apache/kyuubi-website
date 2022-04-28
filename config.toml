@@ -95,10 +95,23 @@ publishDir = "content"
    url = "https://www.apache.org/foundation/thanks.html"
    parent = "asf"
 
+[[menu.main]]
+  name = "Language"
+  identifier = "language"
+  weight = 7
+
+[[menu.main]]
+  parent = "language"
+
 
 # Configure the English version of the website.
 [languages.en]
+  name = "English"
   languageCode = "en-us"
+
+[languages.zh]
+  name = "中文"
+  languageCode = "zh-cn"
 
 [markup]
   defaultMarkdownHandler = 'goldmark'

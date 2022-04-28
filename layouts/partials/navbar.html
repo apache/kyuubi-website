@@ -22,9 +22,16 @@
     </a>
     <div class="childNavContainer">
       <ul class="childNav">
+        {{ if ne .Name "Language" }}
         {{ range .Children }}
         <li><a class="childNavLink" href="{{.URL }}">{{.Name}}</a></li>
         {{end}}
+        {{ else }}
+        {{ range $.Site.Home.Translations }}
+        <li><a class="childNavLink" href="{{ .Permalink }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ .Lang | upper }}&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        {{ end }}
+        {{ end }}
+
         {{if eq .Name "Documentation"}}
         <li role="separator" class="dividerLine"></li>
         {{range (where (where $currentPage.Site.Pages "Section" "release") ".Params.linked" true)}}
