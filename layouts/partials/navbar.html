@@ -22,17 +22,17 @@
     </a>
     <div class="childNavContainer">
       <ul class="childNav">
-        {{ if ne .Name "Language" }}
+        {{ if and (ne .Name "Language")  (ne .Name "语言") }}
         {{ range .Children }}
         <li><a class="childNavLink" href="{{.URL }}">{{.Name}}</a></li>
         {{end}}
         {{ else }}
-        {{ range $.Site.Home.Translations }}
-        <li><a class="childNavLink" href="{{ .Permalink }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ .Lang | upper }}&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        {{ range $currentPage.Translations }}
+        <li><a class="childNavLink" href="{{ .Permalink }}">{{ i18n .Lang }}</a></li>
         {{ end }}
         {{ end }}
 
-        {{if eq .Name "Documentation"}}
+        {{if or (eq .Name "Documentation")  (eq .Name "文档") }}
         <li role="separator" class="dividerLine"></li>
         {{range (where (where $currentPage.Site.Pages "Section" "release") ".Params.linked" true)}}
         <li><a class="childNavLink" href="docs/r{{.File.BaseFileName}}/">{{.File.BaseFileName}}</a></li>
