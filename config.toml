@@ -40,6 +40,12 @@ defaultContentLanguage = 'en'
    weight = 1
 
 [[menu.main]]
+   name = "Master(unreleased)"
+   parent = "documentation"
+   url = "https://kyuubi.readthedocs.io/en/latest/index.html"
+   weight = 10
+
+[[menu.main]]
    name = "Community"
    identifier = "community"
    weight = 3
@@ -264,3 +270,9 @@ weight = 5
     endLevel = 3
     ordered = false
     startLevel = 2
+
+
+# Configure minify.
+[minify]
+  [minify.tdewolff.html]
+    keepQuotes = true

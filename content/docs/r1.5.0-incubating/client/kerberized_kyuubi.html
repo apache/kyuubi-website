@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. Access Kerberized Kyuubi with Beeline &amp; BI Tools &mdash; Kyuubi 1.5.0-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrations" href="../integrations/index.html" />
+    <link rel="prev" title="1. Access Kyuubi with Hive JDBC and ODBC Drivers" href="hive_jdbc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Client Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hive_jdbc.html">1. Access Kyuubi with Hive JDBC and ODBC Drivers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Access Kerberized Kyuubi with Beeline &amp; BI Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instructions">2.1. Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-kerberos-client">2.2. Install Kerberos Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-kerberos-client">2.3. Configure Kerberos Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-kerberos-tgt">2.4. Get Kerberos TGT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-kerberos-client-configuration-file-to-jvm-search-path">2.5. Add Kerberos Client Configuration File to JVM Search Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-kerberos-ticket-cache-to-jvm-search-path">2.6. Add Kerberos Ticket Cache to JVM Search Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ensure-core-site-xml-exists-in-classpath">2.7. Ensure core-site.xml Exists in Classpath</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beeline">Beeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bi-tools">BI Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-with-jdbc-url">2.8. Connect with JDBC URL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Client Documentation</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>Access Kerberized Kyuubi with Beeline &amp; BI Tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/client/kerberized_kyuubi.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../_images/kyuubi_logo.png" src="../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="access-kerberized-kyuubi-with-beeline-bi-tools">
+<h1><span class="section-number">2. </span>Access Kerberized Kyuubi with Beeline &amp; BI Tools<a class="headerlink" href="#access-kerberized-kyuubi-with-beeline-bi-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="instructions">
+<h2><span class="section-number">2.1. </span>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<p>When Kyuubi is secured by Kerberos, the authentication procedure becomes a little complicated.</p>
+<p><img alt="../_images/kyuubi_kerberos_authentication.png" src="../_images/kyuubi_kerberos_authentication.png" /></p>
+<p>The graph above shows a simplified kerberos authentication procedure:</p>
+<ol class="simple">
+<li><p>Kerberos client sends user principal and secret key to KDC. Secret key can be a password or a keytab file.</p></li>
+<li><p>KDC returns a <code class="docutils literal notranslate"><span class="pre">ticket-granting</span> <span class="pre">ticket</span></code>(TGT).</p></li>
+<li><p>Kerberos client stores TGT into a ticket cache.</p></li>
+<li><p>JDBC client, such as beeline and BI tools, reads TGT from the ticket cache.</p></li>
+<li><p>JDBC client sends TGT and server principal to KDC.</p></li>
+<li><p>KDC returns a <code class="docutils literal notranslate"><span class="pre">client-to-server</span> <span class="pre">ticket</span></code>.</p></li>
+<li><p>JDBC client sends <code class="docutils literal notranslate"><span class="pre">client-to-server</span> <span class="pre">ticket</span></code> to Kyuubi server to prove its identity.</p></li>
+</ol>
+<p>In the rest part of this page, we will describe steps needed to pass through this authentication.</p>
+</div>
+<div class="section" id="install-kerberos-client">
+<h2><span class="section-number">2.2. </span>Install Kerberos Client<a class="headerlink" href="#install-kerberos-client" title="Permalink to this headline">¶</a></h2>
+<p>Usually, Kerberos client is installed as default. You can validate it using klist tool.</p>
+<p>Linux command and output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ klist -V
+Kerberos <span class="m">5</span> version <span class="m">1</span>.15.1
+</pre></div>
+</div>
+<p>MacOS command and output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ klist --version
+klist <span class="o">(</span>Heimdal <span class="m">1</span>.5.1apple1<span class="o">)</span>
+Copyright <span class="m">1995</span>-2011 Kungliga Tekniska Högskolan
+Send bug-reports to heimdal-bugs@h5l.org
+</pre></div>
+</div>
+<p>Windows command and output:</p>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>&gt; klist -V
+Kerberos for Windows
+</pre></div>
+</div>
+<p>If the client is not installed, you should install it ahead based on the OS platform.<br />We recommend you to install the MIT Kerberos Distribution as all commands in this guide is based on it.</p>
+</div>
+<div class="section" id="configure-kerberos-client">
+<h2><span class="section-number">2.3. </span>Configure Kerberos Client<a class="headerlink" href="#configure-kerberos-client" title="Permalink to this headline">¶</a></h2>
+<p>Kerberos client needs a configuration file for tuning up the creation of Kerberos ticket cache.
+Following is the configuration file’s default location on different OS:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>OS</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>/etc/krb5.conf</td>
+</tr>
+<tr>
+<td>MacOS</td>
+<td>/etc/krb5.conf</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>%ProgramData%\MIT\Kerberos5\krb5.ini</td>
+</tr>
+</tbody>
+</table><p>You can use <code class="docutils literal notranslate"><span class="pre">KRB5_CONFIG</span></code> environment variable to overwrite the default location.</p>
+<p>The configuration file should be configured to point to the same KDC as Kyuubi points to.</p>
+</div>
+<div class="section" id="get-kerberos-tgt">
+<h2><span class="section-number">2.4. </span>Get Kerberos TGT<a class="headerlink" href="#get-kerberos-tgt" title="Permalink to this headline">¶</a></h2>
+<p>Execute <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command to get TGT from KDC.</p>
+<p>Suppose user principal is <code class="docutils literal notranslate"><span class="pre">kyuubi_user&#64;KYUUBI.APACHE.ORG</span></code> and user keytab file name is <code class="docutils literal notranslate"><span class="pre">kyuubi_user.keytab</span></code>,
+the command should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kinit -kt kyuubi_user.keytab kyuubi_user@KYUUBI.APACHE.ORG
+
+(Command is identical on different OS platform)
+</pre></div>
+</div>
+<p>You may also execute <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command with principal and password to get TGT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kinit kyuubi_user@KYUUBI.APACHE.ORG
+Password for kyuubi_user@KYUUBI.APACHE.ORG: password 
+
+(Command is identical on different OS platform)
+</pre></div>
+</div>
+<p>If the command executes successfully, TGT will be store in ticket cache.<br />Use <code class="docutils literal notranslate"><span class="pre">klist</span></code> command to print TGT info in ticket cache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ klist
+
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: kyuubi_user@KYUUBI.APACHE.ORG
+
+Valid starting       Expires              Service principal
+2021-12-13T18:44:58  2021-12-14T04:44:58  krbtgt/KYUUBI.APACHE.ORG@KYUUBI.APACHE.ORG
+    renew until 2021-12-14T18:44:57
+    
+(Command is identical on different OS platform. Ticket cache location may be different.)
+</pre></div>
+</div>
+<p>Ticket cache may have different storage type on different OS platform.</p>
+<p>For example,</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>OS</th>
+<th>Default Ticket Cache Type and Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>FILE:/tmp/krb5cc_%{uid}</td>
+</tr>
+<tr>
+<td>MacOS</td>
+<td>KCM:%{uid}:%{gid}</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>API:krb5cc</td>
+</tr>
+</tbody>
+</table><p>You can find your ticket cache type and location in the <code class="docutils literal notranslate"><span class="pre">Ticket</span> <span class="pre">cache</span></code> part of <code class="docutils literal notranslate"><span class="pre">klist</span></code> output.</p>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p>Ensure your ticket cache type is <code class="docutils literal notranslate"><span class="pre">FILE</span></code> as JVM can only read ticket cache stored as file.</p></li>
+<li><p>Do not store TGT into default ticket cache if you are running Kyuubi and execute <code class="docutils literal notranslate"><span class="pre">kinit</span></code> on the same
+host with the same OS user. The default ticket cache is already used by Kyuubi server.</p></li>
+</ul>
+<p>Either because the default ticket cache is not a file, or because it is used by Kyuubi server, you
+should store ticket cache in another file location.<br />This can be achieved by specifying a file location with <code class="docutils literal notranslate"><span class="pre">-c</span></code> argument in <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command.</p>
+<p>For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kinit -c /tmp/krb5cc_beeline -kt kyuubi_user.keytab kyuubi_user@KYUUBI.APACHE.ORG
+
+(Command is identical on different OS platform)
+</pre></div>
+</div>
+<p>To check the ticket cache, specify the file location with <code class="docutils literal notranslate"><span class="pre">-c</span></code> argument in <code class="docutils literal notranslate"><span class="pre">klist</span></code> command.</p>
+<p>For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ klist -c /tmp/krb5cc_beeline
+
+(Command is identical on different OS platform)
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-kerberos-client-configuration-file-to-jvm-search-path">
+<h2><span class="section-number">2.5. </span>Add Kerberos Client Configuration File to JVM Search Path<a class="headerlink" href="#add-kerberos-client-configuration-file-to-jvm-search-path" title="Permalink to this headline">¶</a></h2>
+<p>The JVM, which JDBC client is running on, also needs to read the Kerberos client configuration file.
+However, JVM uses different default locations from Kerberos client, and does not honour <code class="docutils literal notranslate"><span class="pre">KRB5_CONFIG</span></code>
+environment variable.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>OS</th>
+<th>JVM Search Paths</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>System scope: <code>/etc/krb5.conf</code></td>
+</tr>
+<tr>
+<td>MacOS</td>
+<td>User scope: <code>$HOME/Library/Preferences/edu.mit.Kerberos</code><br/>System scope: <code>/etc/krb5.conf</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>User scoep: <code>%USERPROFILE%\krb5.ini</code><br/>System scope: <code>%windir%\krb5.ini</code></td>
+</tr>
+</tbody>
+</table><p>You can use JVM system property, <code class="docutils literal notranslate"><span class="pre">java.security.krb5.conf</span></code>, to overwrite the default location.</p>
+</div>
+<div class="section" id="add-kerberos-ticket-cache-to-jvm-search-path">
+<h2><span class="section-number">2.6. </span>Add Kerberos Ticket Cache to JVM Search Path<a class="headerlink" href="#add-kerberos-ticket-cache-to-jvm-search-path" title="Permalink to this headline">¶</a></h2>
+<p>JVM determines the ticket cache location in the following order:</p>
+<ol class="simple">
+<li><p>Path specified by <code class="docutils literal notranslate"><span class="pre">KRB5CCNAME</span></code> environment variable. Path must start with <code class="docutils literal notranslate"><span class="pre">FILE:</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/tmp/krb5cc_%{uid}</span></code> on Unix-like OS, e.g. Linux, MacOS</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${user.home}/krb5cc_${user.name}</span></code> if <code class="docutils literal notranslate"><span class="pre">${user.name}</span></code> is not null</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${user.home}/krb5cc</span></code> if <code class="docutils literal notranslate"><span class="pre">${user.name}</span></code> is null</p></li>
+</ol>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${user.home}</span></code> and <code class="docutils literal notranslate"><span class="pre">${user.name}</span></code> are JVM system properties.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${user.home}</span></code> should be replaced with <code class="docutils literal notranslate"><span class="pre">${user.dir}</span></code> if <code class="docutils literal notranslate"><span class="pre">${user.home}</span></code> is null.</p></li>
+</ul>
+<p>Ensure your ticket cache is stored as a file and put it in one of the above locations.</p>
+</div>
+<div class="section" id="ensure-core-site-xml-exists-in-classpath">
+<h2><span class="section-number">2.7. </span>Ensure core-site.xml Exists in Classpath<a class="headerlink" href="#ensure-core-site-xml-exists-in-classpath" title="Permalink to this headline">¶</a></h2>
+<p>Like hadoop clients, <code class="docutils literal notranslate"><span class="pre">hadoop.security.authentication</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">KERBEROS</span></code> in <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code>
+to let Hive JDBC driver use Kerberos authentication. <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code> should be placed under beeline’s
+classpath or BI tools’ classpath.</p>
+<div class="section" id="beeline">
+<h3>Beeline<a class="headerlink" href="#beeline" title="Permalink to this headline">¶</a></h3>
+<p>Here are the usual locations where <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code> should exist for different beeline distributions:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Client</th>
+<th>Location</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hive beeline</td>
+<td><code>$HADOOP_HOME/etc/hadoop</code></td>
+<td>Hive resolves <code>$HADOOP_HOME</code> and use <code>$HADOOP_HOME/bin/hadoop</code> command to launch beeline. <code>$HADOOP_HOME/etc/hadoop</code> is in <code>hadoop</code> command's classpath.</td>
+</tr>
+<tr>
+<td>Spark beeline</td>
+<td><code>$HADOOP_CONF_DIR</code></td>
+<td>In <code>$SPARK_HOME/conf/spark-env.sh</code>, <code>$HADOOP_CONF_DIR</code> often be set to the directory containing hadoop client configuration files.</td>
+</tr>
+<tr>
+<td>Kyuubi beeline</td>
+<td><code>$HADOOP_CONF_DIR</code></td>
+<td>In <code>$KYUUBI_HOME/conf/kyuubi-env.sh</code>, <code>$HADOOP_CONF_DIR</code> often be set to the directory containing hadoop client configuration files.</td>
+</tr>
+</tbody>
+</table><p>If <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code> is not found in above locations, create one with the following content:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>hadoop.security.authentication<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>kerberos<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bi-tools">
+<h3>BI Tools<a class="headerlink" href="#bi-tools" title="Permalink to this headline">¶</a></h3>
+<p>As to BI tools, ways to add <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code> varies.<br />Take DBeaver as an example. We can add files to DBeaver’s classpath through its <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">libraries</span></code> preference.<br />As <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">libraries</span></code> only accepts jar files, you should package <code class="docutils literal notranslate"><span class="pre">core-site.xml</span></code> into a jar file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jar -c -f core-site.jar core-site.xml
+
+<span class="o">(</span>Command is identical on different OS platform<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="connect-with-jdbc-url">
+<h2><span class="section-number">2.8. </span>Connect with JDBC URL<a class="headerlink" href="#connect-with-jdbc-url" title="Permalink to this headline">¶</a></h2>
+<p>The last step is to connect to Kyuubi with the right JDBC URL.<br />The JDBC URL should be in format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">kyuubi_server_a</span> <span class="n">ddress</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">kyuubi_server_port</span><span class="o">&gt;/&lt;</span><span class="n">db</span><span class="o">&gt;</span><span class="p">;</span><span class="n">principal</span><span class="o">=&lt;</span><span class="n">kyuubi_server_principal</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kyuubi_server_principal</span></code> is the value of <code class="docutils literal notranslate"><span class="pre">kyuubi.kinit.principal</span></code> set in <code class="docutils literal notranslate"><span class="pre">kyuubi-defaults.conf</span></code>.</p></li>
+<li><p>As a command line argument, JDBC URL should be quoted to avoid being split into 2 commands by “;”.</p></li>
+<li><p>As to DBeaver, <code class="docutils literal notranslate"><span class="pre">&lt;db&gt;;principal=&lt;kyuubi_server_principal&gt;</span></code> should be set as the <code class="docutils literal notranslate"><span class="pre">Database/Schema</span></code> argument.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../integrations/index.html" class="btn btn-neutral float-right" title="Integrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hive_jdbc.html" class="btn btn-neutral float-left" title="1. Access Kyuubi with Hive JDBC and ODBC Drivers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

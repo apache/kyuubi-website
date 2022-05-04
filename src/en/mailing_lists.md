@@ -4,6 +4,7 @@ menu:
    main:
       name: "Join the Mailing Lists"
       parent: "community"
+      weight: 1
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

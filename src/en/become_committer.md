@@ -1,9 +1,10 @@
 ---
-title: Become A Committer of Apache Kyuubi
+title: Current committers
 menu:
   main:
-    name: "Become A Committer"
-    parent: "community"
+      name: "Become A Committer"
+      parent: "community"
+      weight: 2
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +21,57 @@ menu:
 -->
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
+
+<table border=0>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Akira Ajisaka</td>
+    </tr>
+    <tr>
+      <td>Cheng Pan</td>
+    </tr>
+    <tr>
+      <td>Dongdong Hong</td>
+    </tr>
+    <tr>
+      <td>Duo Zhang</td>
+    </tr>
+    <tr>
+      <td>Fei Wang</td>
+    </tr>
+    <tr>
+      <td>Fu Chen</td>
+    </tr>
+    <tr>
+      <td>Hongxiang Jiang</td>
+    </tr>
+    <tr>
+      <td>Jeff Zhang</td>
+    </tr>
+    <tr>
+      <td>Kent Yao</td>
+    </tr>
+    <tr>
+      <td>Nicholas Jiang</td>
+    </tr>
+    <tr>
+      <td>Vino Yang</td>
+    </tr>
+    <tr>
+      <td>Willem Ning Jiang</td>
+    </tr>
+    <tr>
+      <td>Xiduo You</td>
+    </tr>
+  </tbody>
+</table>
+
+## Become A Committer of Apache Kyuubi
 
 Anyone being supportive of the community and working in any of the
 CoPDoC areas can become an Apache Kyuubi committer. The CoPDoC is an
