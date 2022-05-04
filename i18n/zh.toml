@@ -12,11 +12,89 @@
 # limitations under the License. See accompanying LICENSE file.
 #
 
+# index page
 [serverless-sql-on-lakehouse]
   other = "数据湖上的 Serverless SQL"
 
 [kyuubi-introduce]
-  other = "Apache Kyuubi (Incubating), 一个分布式和多租户网关，用于在 Lakehouse 上提供无服务器 SQL"
+  other = "Apache Kyuubi (Incubating), 一个分布式和多租户网关，用于在 Lakehouse 上提供 Serverless SQL"
+
+[getting-started]
+  other = "快速开始"
+
+## keyFeaturesk
+[key-features]
+  other = "主要特性"
+
+[multi-tenancy]
+  other = "多租户"
+
+[multi-tenancy-desc]
+  other = "Kyuubi 通过统一的身份验证授权层为资源获取和数据元数据访问提供端到端的多租户支持。"
+
+[high-availability]
+  other = "高可用"
+
+[high-availability-desc]
+  other = "Kyuubi 通过 ZooKeeper 支持负载均衡，它提供了企业级的高可用性，以及无限的客户端高并发。"
+
+[multiple-workloads]
+  other = "多个工作负载"
+
+[multiple-workloads-desc]
+  other = "Kyuubi 可以通过一个平台、一个数据副本和一个 SQL 接口轻松支持多个不同的工作负载。"
+
+## ecosystem
+[ecosystem]
+  other = "生态系统"
+
+[kyuubi-ecosystem]
+  other = "下图显示了我们对 Kyuubi 生态系统的愿景。其中一部分已经实现，一部分正在开发中，还有一部分没有你的帮助是不可能实现的。"
+
+[access-from-anywhere]
+  other = "从任何地方访问"
+
+[deploy-at-any-scale]
+  other = "以任何规模部署"
+
+[connect-to-any-data]
+  other = "连接到任何数据"
+
+## useCases
+[use-cases]
+  other = "用例"
+
+[interactive-analytics]
+  other = "交互式分析"
+
+[interactive-analytics-desc]
+  other = "Kyuubi 是一个先进的企业级快速分析平台，用于对大数据进行交互式可视化分析，支持常见的计算框架，即 Apache Spark、Apache Flink、Trino 等。使用 JDBC/ODBC，用户可以直接通过 SQL 或通过 BI 工具生成来访问 kyuubi 并高效地运行查询。 Kyuubi 在用户级别缓存后台引擎实例，以更好的实现计算资源共享和快速响应，它们能并行处理大量数据的查询并快速返回结果。"
+
+[batch-processing]
+  other = "批量处理"
+
+[batch-processing-desc]
+  other = "Kyuubi 提供了一个 SQL 接口用于常见的批处理，通常是大型提取、转换、加载 (ETL) 过程。 Kyuubi 及其引擎都是存储独立的，支持众多的数据源，并且 Kyuubi 在连接级别隔离了后台引擎实例，以便实现更好的计算资源隔离和稳定性。"
+
+[data-lake-lakehouses]
+  other = "数据湖和 Lakehouses"
+
+[data-lake-lakehouses-desc]
+  other = "Kyuubi 支持同时查询所有传统数据仓库，如 Apache Hive/HDFS，或现代的 Lakehouse，如 Apache Iceberg、Apache Hudi 和 Delta Lake。 Kyuubi 还提供多目录元数据 API，可在用户面前呈现所有数据的大致轮廓，并帮助用户更快地进行创新。使用 ANSI 标准 SQL 语法在单个入口中查询不同数据源的能力极大地简化了数据洞察，同时提供身份验证和授权以确保所有数据的安全。"
+
+## community
+[join-the-community]
+  other = "加入社区"
+
+[mailing-list]
+  other = "邮件列表"
+
+[source-code]
+  other = "源代码"
+
+[how-to-contribute]
+  other = "如何贡献"
+
 
 [en]
   other = "English"
