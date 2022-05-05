@@ -53,7 +53,7 @@ Kyuubi 鼓励帮助审查其他开发人员的PR，这可以使得代码更加�
      git commit -am "${提交信息}"
 # 7. 将你的分支推送到你的存储库
      git push origin ${分支名称}
-# 8. Go to 'https://github.com/apache/incubator-kyuubi' and click the 'new pull request' button
+# 8. 访问 'https://github.com/apache/incubator-kyuubi' 然后点击 'new pull request' 
 ```
 
 为更好进行代码审查，强烈建议提供清晰的描述。
