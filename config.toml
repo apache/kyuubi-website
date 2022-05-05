@@ -65,7 +65,7 @@ defaultContentLanguage = 'en'
   name = "Github"
   identifier = "github"
   url = "https://github.com/apache/incubator-kyuubi"
-   weight = 5
+  weight = 5
 
 [[menu.main]]
   name = "ASF"
@@ -200,12 +200,10 @@ defaultContentLanguage = 'en'
 
 # Configure the English version of the website.
 [languages.en]
-  name = "English"
   languageCode = "en-us"
   contentDir = 'src/en'
 
 [languages.zh]
-  name = "中文"
   languageCode = "zh-cn"
   contentDir = 'src/zh'
 
