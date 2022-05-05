@@ -22,7 +22,7 @@
     </a>
     <div class="childNavContainer">
       <ul class="childNav">
-        {{ if and (ne .Name "Language")  (ne .Name "语言") }}
+        {{ if ne .Name "Language" }}
         {{ range .Children }}
         <li><a class="childNavLink" href="{{.URL }}">{{.Name}}</a></li>
         {{end}}

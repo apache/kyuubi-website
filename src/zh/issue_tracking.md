@@ -22,48 +22,50 @@ menu:
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
-The Kyuubi community uses [Github Issues](https://github.com/apache/incubator-kyuubi/issues) to track various ideas, work, bugs, etc.
-The Github issues tracker integrated with our development [repository](https://github.com/apache/incubator-kyuubi) makes it easier to organize work, focus on essential tasks, and keep plans up to date simultaneously.
+Kyuubi 社区使用 [Github Issues](https://github.com/apache/incubator-kyuubi/issues) 来跟踪各种想法、工作、bug等。
+与我们的 [存储库](https://github.com/apache/incubator-kyuubi) 集成的 Github Issues 可以更轻松地组织工作、专注于基本任务并同时更新计划。
 
-Although everyone can create an issue that might include any content as long as you have a Github account and we do not make any mandatory restrictions on the functionality of this section, all communication is subject to the ASF [Code of Conduct](https://www.apache.org/foundation/policies/conduct).
-If you observe behavior that violates those rules, please follow the [ASF reporting guidelines](https://www.apache.org/foundation/policies/conduct#reporting-guidelines).
+尽管只要有 Github 帐户，就可以创建创建包含任何内容的问题，并且我们不对本部分的功能进行任何强制限制，但所有交流均需遵守 ASF [行为准则](https://www.apache.org/foundation/policies/conduct)。
+如果你发现有违反这些规则的行为，可参照 [ASF 报告指南](https://www.apache.org/foundation/policies/conduct#reporting-guidelines) 处理。
 
-## How to Use Github Issues
+## 如何使用 Github Issues
 
-This section does not include any specific function of Github issues itself which can be quickly learned from the docs of Github.
+本节不包含 Github 问题本身的任何特定功能，你可以从 Github 的文档中快速学习。
 
 ### First Good Issue
 
-An issue with the label `good first issue` is an excellent way for first-time contributors to start with Kyuubi.
-You can get a complete list [here](https://github.com/apache/incubator-kyuubi/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+带有 `good first issue` 标签的问题，是首次贡献者开始贡献 Kyuubi 的绝佳方式。
+点击 [这里](https://github.com/apache/incubator-kyuubi/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) 你将获得完整的列表。
 
-### Report Bug
+### 报告 Bug
 
-It doesn't really matter whether what you are reporting is a bug or not. Just feel free to share the problem you have encountered with the community.
-For best practices, if it is indeed a bug, please try to provide the reproducible steps.
-It’s beneficial if the bug report has a description of how the bug was introduced, by which commit or version, so that reviewers can easily understand the bug.
+你报告的内容是否是一个bug并不重要。请随时与社区分享你遇到的问题。
 
-Try our [bug issue template form](https://github.com/apache/incubator-kyuubi/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBug%5D+) and fill as much information as you can provide.
+对于最佳实践，如果确实是错误的，请尝试提供可重现的步骤。
 
-### Submit Ideas or Feature Requests
+如果错误的报告中有关于如何引入错误、提交或版本等详细的描述那再好不过了，因为这对审查者理解错误非常有帮助。
 
-As a volunteer-driven project, ideas are always welcome ;)
+使用我们的 [Bug问题模板](https://github.com/apache/incubator-kyuubi/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBug%5D+) 并填写尽可能多的信息。
 
-Try our [feature template form](https://github.com/apache/incubator-kyuubi/issues/new?assignees=&labels=feature&template=feature-request.yml&title=%5BFEATURE%5D+) and make your proposal clear for others to understand.
+### 提交想法或功能请求
 
-- Explain in detail how it would work.
-- Keep the scope as narrow as possible to make it easier to implement.
+作为一个志愿者驱动的项目，想法总是受欢迎的 ;)
 
-For large features or major changes to the codebase, you may need to create a [Kyuubi Project Improvement Proposal](https://kyuubi.apache.org/improvement-proposals.html).
+使用 [feature模板](https://github.com/apache/incubator-kyuubi/issues/new?assignees=&labels=feature&template=feature-request.yml&title=%5BFEATURE%5D+) 让你的建议清晰易懂：
 
-### Fix Bugs
+- 详细解释它是如何工作的
+- 尽可能缩小范围以使得它更易于实施
 
-Issues tagged with `bug` are open to whoever wants to fix them.
+对于大型的功能或是代码库的重大更改，你可能需要创建一个 [Kyuubi Project Improvement Proposal](https://kyuubi.apache.org/improvement-proposals.html).
 
-### Implement Features
+### Bug 修复
 
-Issues tagged with `feature` are open to whoever wants to implement them.
+对于标记为 `bug` 的问题，对任何想要修复它的人都是开放的。
 
-### Ask Questions
+### 实现功能
 
-For general questions, please use [Mailing Lists](https://kyuubi.apache.org/mailing_lists.html) first, from where you get much more attention.
+对于标记为 `feature` 的问题，对任何想要实现它的人都是开放的。
+
+### 提问
+
+一般的问题，请先使用[Mailing Lists](https:kyuubi.apache.orgmailing_lists.html)，在那里你的问题会得到更多的关注。

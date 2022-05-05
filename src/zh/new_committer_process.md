@@ -21,65 +21,49 @@ menu:
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
-This guideline is based on [apache newcommitter](https://community.apache.org/newcommitter.html#new-committer-process)
+本指南基于 [apache newcommitter](https://community.apache.org/newcommitter.html#new-committer-process)
 
-- [The process of new Committer](new_committer_process#the-process-of-new-committer)
-    - [Call a vote in mailing `private@kyuubi.apache.org`](new_committer_process#call-a-vote-in-mailing-privatekyuubiapacheorg)
-    - [Close the vote](new_committer_process#close-the-vote)
-    - [If the result is positive, invite the new committer](new_committer_process#if-the-result-is-positive-invite-the-new-committer)
-    - [If accept, then: Accept the committer](new_committer_process#if-accept-then-accept-the-committer)
-    - [Wait until we see that receipt of CLA is recorded](new_committer_process#wait-until-we-see-that-receipt-of-cla-is-recorded)
-    - [Request creation of the committer account](new_committer_process#request-creation-of-the-committer-account)
-    - [Notify the committer of completion](new_committer_process#notify-the-committer-of-completion)
-- [Template](new_committer_process#template)
-    - [Committer Vote Template](new_committer_process#committer-vote-template)
-    - [Close Vote Template](new_committer_process#close-vote-template)
-    - [Committer Invite Template](new_committer_process#committer-invite-template)
-    - [Committer Accept Template](new_committer_process#committer-accept-template)
-    - [Committer Done Template](new_committer_process#committer-done-template)
+## 新晋 Committer 的流程
 
-## The process of new Committer
+### 在 `private@kyuubi.apache.org` 中发起投票
 
-### Call a vote in mailing `private@kyuubi.apache.org`
+见下文 **Committer 投票模板**
 
-see **Committer Vote Template**
+### 关闭投票
 
-### Close the vote
+见下文 **关闭投票模板**
 
-see **Close Vote Template**
+### 如果结果是肯定的，则邀请成为 Committer
 
-### If the result is positive, invite the new committer
+见下文 **Committer 邀请模板**
 
-see **Committer Invite Template**
+### 如果接受，然后: 接受成为 Committer
 
-### If accept, then: Accept the committer
+见下文 **Committer 接受模板**
 
-see **Committer Accept Template**
+### 等到我们看到记录了 CLA 的收据
 
-### Wait until we see that receipt of CLA is recorded
+### 请求创建 Committer 帐户
 
-### Request creation of the committer account
+见下文 **Committer 帐户创建**
 
-see **Committer Account Creation**
+- 等待 root 说完成
+- PMC 主席启用 svn 和其他访问权限
+- 将 Committer 添加到 JIRA 和 CWiki 中的相应组
 
-- Wait until root says it is done
-- PMC Chair enables svn and other access
-- Add committer to the appropriate groups in JIRA and CWiki
+### 通知 Committer 完成
 
-### Notify the committer of completion
+见下文 **Committer 完成模板**
 
-see **Committer Done Template**
+## 模板
 
-
-## Template
-
-Note that, there are three placeholder in template should be replaced before using
+请注意，模板中的三个占位符在使用前应替换
 
 - NEW_COMMITTER_NAME
 - NEW_COMMITTER_EMAIL
 - NEW_COMMITTER_APACHE_NAME
 
-### Committer Vote Template
+### Committer 投票模板
 
 ```text
 To: private@kyuubi.apache.org
@@ -95,11 +79,11 @@ ${Work list}[1]
 [1] https://github.com/apache/incubator-kyuubi/commits?author=${NEW_COMMITTER_NAME}
 ```
 
-Note that, Voting ends one week from today, i.e. [midnight UTC on YYYY-MM-DD](https://www.timeanddate.com/counters/customcounter.html?year=YYYY&month=MM&day=DD)
-See voting [guidelines](https://community.apache.org/newcommitter.html)
+请注意，投票从今天开始一周结束，即[midnight UTC on YYYY-MM-DD](https://www.timeanddate.com/counters/customcounter.html?year=YYYY&month=MM&day=DD)
+见投票 [指南](https://community.apache.org/newcommitter.html)
 
 
-### Close Vote Template
+### 关闭投票模板
 
 ```text
 To: private@kyuubi.apache.org
@@ -119,7 +103,7 @@ Binding Votes:
 The vote is ***successful/not successful***
 ```
 
-### Committer Invite Template
+### Committer 邀请模板
 
 ```text
 To: ${NEW_COMMITTER_EMAIL}
@@ -173,7 +157,7 @@ receive a follow-up message with the next steps for
 establishing you as a committer.
 ```
 
-### Committer Accept Template
+### Committer 接受模板
 
 ```text
 To: ${NEW_COMMITTER_EMAIL}
@@ -222,7 +206,7 @@ Yours,
 The Apache Kyuubi PPMC
 ```
 
-### Committer Done Template
+### Committer 完成模板
 
 ```text
 To: private@kyuubi.apache.org, ${NEW_COMMITTER_EMAIL}

@@ -1,9 +1,7 @@
 ---
-title: Kyuubi 版本控制
-menu:
-   main:
-      name: "版本控制"
-      parent: "development"
+title: Kyuubi 进入 Apache 孵化器
+date: 2021-06-21
+linked: true
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,10 +17,5 @@ menu:
   limitations under the License. See accompanying LICENSE file.
 -->
 
-## Overview
+Kyuubi 正式进入 Apache 孵化器, 详见 [incubation status](https://incubator.apache.org/projects/kyuubi).
 
-Kyuubi 源代码位于 Apache git 存储库中，可从此处获得：
-https://gitbox.apache.org/repos/asf?p=incubator-kyuubi.git
-
-更改也反映到 github 存储库：
-https://github.com/apache/incubator-kyuubi

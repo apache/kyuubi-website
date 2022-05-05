@@ -14,32 +14,36 @@
 {{partial "header.html" .}}
 <div class="ui container">
 
-  <h1>Download Apache Kyuubi (Incubating)</h1>
+  <h1>{{ i18n "download-kyuubi" }}</h1>
   <div class="ui segment">
-    <div class="ui tiny teal ribbon label">Instructions</div>
+    <div class="ui tiny teal ribbon label">{{ i18n "instructions" }}</div>
     <p></p>
-    <p>Please choose a Kyuubi version to download from the blowing tables, the latest release is recommended.</p>
-    <p>Please verify the release with corresponding hashes(sha512), signatures and <a href="https://downloads.apache.org/incubator/kyuubi/KEYS">project release KEYS</a>.</p>
+    <p>{{ i18n "chose-kyuubi-version-to-download" }}</p>
+    <p>{{ i18n "please-verify-release" }} <a href="https://downloads.apache.org/incubator/kyuubi/KEYS">{{ i18n "project-release-keys" }}</a>.</p>
     <p></p>
-    <p>The instructions for checking hashes(sha512) and signatures is indicated on <a href="https://www.apache.org/dyn/closer.cgi#verify">Verify Instructions</a> page.</p>
+    <p>{{ i18n "check-hashes-and-signatures" }} <a href="https://www.apache.org/dyn/closer.cgi#verify">{{ i18n "verify-instructions" }}</a> {{i18n "page"}}.</p>
   </div>
 
 
-  <h2>The latest release</h2>
+  <h2>{{ i18n "the-latest-release" }}</h2>
   <table class="ui selectable celled table">
     <thead>
     <tr>
-      <th class="center aligned">Version</th>
-      <th class="center aligned">Date</th>
-      <th class="center aligned">Source</th>
-      <th class="center aligned">Binary</th>
-      <th class="center aligned">Release notes</th>
+      <th class="center aligned">{{ i18n "version" }}</th>
+      <th class="center aligned">{{ i18n "date" }}</th>
+      <th class="center aligned">{{ i18n "source" }}</th>
+      <th class="center aligned">{{ i18n "binary" }}</th>
+      <th class="center aligned">{{ i18n "release-notes" }}</th>
     </tr>
     </thead>
     {{range first 1 (where (where .Site.Pages "Section" "release") ".Params.linked" true) }}
     <tr>
       <td class="center aligned">{{.File.BaseFileName }}</td>
+      {{ if eq .Site.Language.Lang "zh"}}
+      <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
+      {{ else }}
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
+      {{ end }}
       <td class="center aligned">
         <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz">source</a>
         (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">sha512</a>,
@@ -51,34 +55,38 @@
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>)
       </td>
       <td class="center aligned">
-        <a href="/release/{{.File.BaseFileName }}.html">release notes</a>
+        <a href="/release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
       </td>
     </tr>
     {{end}}
   </table>
 
 
-  <h2>All archived releases </h2>
+  <h2>{{ i18n "all-archived-releases"}} </h2>
 
   <div class="ui segment">
     <div class="ui tiny teal ribbon label">Note</div>
     <p></p>
-    <p>Previous releases of Kyuubi may be affected by security issues, please consider use the latest one.</p>
+    <p>{{ i18n "consider-use-the-latest-kyuubi" }}</p>
   </div>
   <table class="ui selectable celled table">
     <thead>
     <tr>
-      <th class="center aligned">Version</th>
-      <th class="center aligned">Date</th>
-      <th class="center aligned">Source</th>
-      <th class="center aligned">Binary</th>
-      <th class="center aligned">Release notes</th>
+      <th class="center aligned">{{ i18n "version" }}</th>
+      <th class="center aligned">{{ i18n "date" }}</th>
+      <th class="center aligned">{{ i18n "source" }}</th>
+      <th class="center aligned">{{ i18n "binary" }}</th>
+      <th class="center aligned">{{ i18n "release-notes" }}</th>
     </tr>
     </thead>
     {{range (where (where .Site.Pages "Section" "release") ".Params.linked" true) }}
     <tr>
       <td class="center aligned">{{.File.BaseFileName }}</td>
+      {{ if eq .Site.Language.Lang "zh"}}
+      <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
+      {{ else }}
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
+      {{ end }}
       <td class="center aligned">
         <a href="https://www.apache.org/dyn/closer.lua/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz">source</a>
         (<a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-source.tgz.sha512">sha512</a>,
@@ -90,7 +98,7 @@
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>)
       </td>
       <td class="center aligned">
-        <a href="/release/{{.File.BaseFileName }}.html">release notes</a>
+        <a href="/release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
       </td>
     </tr>
     {{end}}

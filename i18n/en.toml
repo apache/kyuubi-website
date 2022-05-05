@@ -89,11 +89,84 @@
 [mailing-list]
   other = "Mailing List"
 
+[mailing-list-href]
+  other = "https://kyuubi.apache.org/mailing_lists.html"
+
 [source-code]
   other = "Source Code"
+[source-code-href]
+  other = "https://github.com/apache/incubator-kyuubi"
 
 [how-to-contribute]
   other = "How to Contribute"
+
+[how-to-contribute-href]
+  other = "https://kyuubi.apache.org/issue_tracking.html"
+
+# release page
+[download-kyuubi]
+  other = "Download Apache Kyuubi (Incubating)"
+
+[instructions]
+  other = "Instructions"
+
+[chose-kyuubi-version-to-download]
+  other = "Please choose a Kyuubi version to download from the blowing tables, the latest release is recommended."
+
+[please-verify-release]
+  other = "Please verify the release with corresponding hashes(sha512), signatures and"
+
+[project-release-keys]
+  other = "project release KEYS"
+
+[check-hashes-and-signatures]
+  other = "The instructions for checking hashes(sha512) and signatures is indicated on"
+
+[verify-instructions]
+  other = "Verify Instructions"
+
+[page]
+  other = "page"
+
+[the-latest-release]
+  other = "The latest release"
+
+[version]
+  other = "Version"
+
+[date]
+  other = "Date"
+
+[source]
+  other = "Source"
+
+[binary]
+  other = "Binary"
+
+[release-notes]
+  other = "Release notes"
+
+[all-archived-releases]
+  other = "All archived releases"
+
+[consider-use-the-latest-kyuubi]
+  other = "Previous releases of Kyuubi may be affected by security issues, please consider use the latest one."
+
+# news table
+[latest-news]
+  other = "Latest news"
+
+[title]
+  other = "Title"
+
+[brief]
+  other = "Brief"
+
+[link]
+  other = "Link"
+
+[see-more]
+  other = "see more"
 
 # language
 [en]

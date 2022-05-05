@@ -21,30 +21,28 @@ menu:
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
-The Kyuubi developer mailing list is the preferred means for all your questions when using Kyuubi, which pushes your doubts out to the entire community.
-This is the best way to keep up-to-date with the community.
+Kyuubi 开发者邮件列表是你在使用 Kyuubi 时解决所有问题的首选方式，它将你的疑问推送至整个社区。这是与社区保持同步的最佳方式。
 
-Before you post anything to the mailing lists, be sure that you already **subscribe** to them.
-The currently available lists are listed in the below table.
+在你向邮件列表发布任何内容之前，请确保你已经**订阅**了它们。下表列出了当前可用的邮件列表。
 
-| List Name              | Address                         | Subscribe                                                     | Unsubscribe                                                       | Archive                                                                       | Usages                                                                                                                         |
-|------------------------|---------------------------------|---------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Developer List**     | dev@kyuubi.apache.org           | [subscribe](mailto:dev-subscribe@kyuubi.apache.org)           | [unsubscribe](mailto:dev-unsubscribe@kyuubi.apache.org)           | [archive](https://lists.apache.org/list.html?dev@kyuubi.apache.org)           | <ul><li>Use this list for your Kyuubi questions</li><li>Used by Kyuubi contributors to discuss development of Kyuubi</li></ul> |
-| **Commits List**       | commits@kyuubi.apache.org       | [subscribe](mailto:commits-subscribe@kyuubi.apache.org)       | [unsubscribe](mailto:commits-unsubscribe@kyuubi.apache.org)       | [archive](https://lists.apache.org/list.html?commits@kyuubi.apache.org)       | <ul><li>Notifications on changes to the Kyuubi codebase</li></ul>                                                              |
-| **Notifications List** | notifications@kyuubi.apache.org | [subscribe](mailto:notifications-subscribe@kyuubi.apache.org) | [unsubscribe](mailto:notifications-unsubscribe@kyuubi.apache.org) | [archive](https://lists.apache.org/list.html?notifications@kyuubi.apache.org) | <ul><li>Sync discussions happen on Github Issues and Pull requests</li></ul>                                                   |
+| 名称        | 地址                              | 订阅                                                            | 取消订阅                                                              | Archive                                                                       | 用途                                                                        |
+|-----------|---------------------------------|---------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **开发者列表** | dev@kyuubi.apache.org           | [subscribe](mailto:dev-subscribe@kyuubi.apache.org)           | [unsubscribe](mailto:dev-unsubscribe@kyuubi.apache.org)           | [archive](https://lists.apache.org/list.html?dev@kyuubi.apache.org)           | <ul><li>使用此列表解决你的 Kyuubi 问题</li><li>由 Kyuubi 贡献者用来讨论 Kyuubi 的开发</li></ul> |
+| **提交列表**  | commits@kyuubi.apache.org       | [subscribe](mailto:commits-subscribe@kyuubi.apache.org)       | [unsubscribe](mailto:commits-unsubscribe@kyuubi.apache.org)       | [archive](https://lists.apache.org/list.html?commits@kyuubi.apache.org)       | <ul><li>Kyuubi 代码库变更通知</li></ul>                                          |
+| **通知列表**  | notifications@kyuubi.apache.org | [subscribe](mailto:notifications-subscribe@kyuubi.apache.org) | [unsubscribe](mailto:notifications-unsubscribe@kyuubi.apache.org) | [archive](https://lists.apache.org/list.html?notifications@kyuubi.apache.org) | <ul><li>同步讨论发生在 Github 上的问题和 PR </li></ul>                                |
 
-## Steps for Subscription
+## 订阅步骤
 
-Sending a subscription email is also very simple. The steps are as follows:
+发送订阅电子邮件也很简单。步骤如下：
 
-1. **Subscribe**: Click the **subscribe** button in the above table, and it redirects to your mail client. The subject and content are arbitrary.
-   After that, you will receive a confirmation email from dev-help@kyuubi.apache.org (if not received, please confirm whether the email is automatically classified as SPAM, promotion email, subscription email, etc.).
-2. **Confirm**: Reply directly to the confirmation email, or click on the link in the email to reply quickly. The subject and content are arbitrary.
-3. **Welcome**: After completing the above steps, you will receive a welcome email with the subject WELCOME to dev@kyuubi.apache.org, and you have successfully subscribed to the Apache Kyuubi mailing list.
+1. **订阅**: 点击上表中 **subscribe** 的按钮，它会重定向到你的邮件客户端。发送邮件的主题和内容是任意的。
+   之后，你会收到一封来自 dev-help@kyuubi.apache.org 的确认邮件（如果没有收到，请确认邮件是否被自动归类为垃圾邮件、促销邮件、订阅邮件等）。
+2. **确认**: 直接回复确认邮件，或点击邮件中的链接快速回复。主题和内容是任意的。
+3. **欢迎**: 完成上述步骤后，你将收到一封邮件，主题为 WELCOME to dev@kyuubi.apache.org，这样就成功订阅了 Apache Kyuubi 邮件列表。
 
-## Post Plain Text Mails
+## 发送纯文本邮件
 
-When posting to the mailing lists, please use plain text emails.
-**Do not use HTML emails**.
-HTML emails are more likely to be targeted as spam mails and rejected.
-It may get malformed through different mail clients and not easily readable by others.
+发送邮件时，请使用纯文本电子邮件。
+**不要使用 HTML 电子邮件**。
+HTML 电子邮件很有可能被识别成垃圾邮件并被拒绝接收。
+它可能会在不同的邮件客户端出现格式错误，并且不容易被其他人阅读。

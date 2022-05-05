@@ -114,7 +114,7 @@
       </div>
       <div class="listContainer">
         {{range .Site.Data.homePage.community}}
-          <a class="communityItem" href="{{.href}}">
+          <a class="communityItem" href="{{i18n .href}}">
             <img class="communityItemImg" src="{{.img | relURL}}" >
             <p class="communityItemTitle">{{i18n .title}}</p>
             <span class="communityLine"></span>

@@ -1,9 +1,12 @@
 ---
-title: Kyuubi 版本控制
+title: "最新消息"
+layout: news_table
+type: custompage
 menu:
-   main:
-      name: "版本控制"
-      parent: "development"
+    main:
+        name: "最新消息"
+        parent: "community"
+        weight: 4
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,10 +22,6 @@ menu:
   limitations under the License. See accompanying LICENSE file.
 -->
 
-## Overview
+## License
 
-Kyuubi 源代码位于 Apache git 存储库中，可从此处获得：
-https://gitbox.apache.org/repos/asf?p=incubator-kyuubi.git
-
-更改也反映到 github 存储库：
-https://github.com/apache/incubator-kyuubi
+_The software licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)._

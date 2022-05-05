@@ -69,17 +69,17 @@
     {
       "img": "homePageImg/community1.png",
       "title": "mailing-list",
-      "href": "https://kyuubi.apache.org/mailing_lists.html"
+      "href": "mailing-list-href"
     },
     {
       "img": "homePageImg/community2.png",
       "title": "source-code",
-      "href": "https://github.com/apache/incubator-kyuubi"
+      "href": "source-code-href"
     },
     {
       "img": "homePageImg/community3.png",
       "title": "how-to-contribute",
-      "href": "https://kyuubi.apache.org/issue_tracking.html"
+      "href": "how-to-contribute-href"
     }
   ]
 }

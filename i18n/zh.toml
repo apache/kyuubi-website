@@ -17,7 +17,7 @@
   other = "数据湖上的 Serverless SQL"
 
 [kyuubi-introduce]
-  other = "Apache Kyuubi (Incubating), 一个分布式和多租户网关，用于在 Lakehouse 上提供 Serverless SQL"
+  other = "Apache Kyuubi (Incubating)，一个分布式和多租户网关，用于在 Lakehouse 上提供 Serverless SQL。"
 
 [getting-started]
   other = "快速开始"
@@ -30,13 +30,13 @@
   other = "多租户"
 
 [multi-tenancy-desc]
-  other = "Kyuubi 通过统一的身份验证授权层为资源获取和数据元数据访问提供端到端的多租户支持。"
+  other = "Kyuubi 通过统一的身份验证授权层为资源获取和数据 / 元数据访问提供端到端的多租户支持。"
 
 [high-availability]
   other = "高可用"
 
 [high-availability-desc]
-  other = "Kyuubi 通过 ZooKeeper 支持负载均衡，它提供了企业级的高可用性，以及无限的客户端高并发。"
+  other = "Kyuubi 通过 ZooKeeper 提供负载均衡，它提供了企业级的高可用性，以及无限的客户端高并发。"
 
 [multiple-workloads]
   other = "多个工作负载"
@@ -49,7 +49,7 @@
   other = "生态系统"
 
 [kyuubi-ecosystem]
-  other = "下图显示了我们对 Kyuubi 生态系统的愿景。其中一部分已经实现，一部分正在开发中，还有一部分没有你的帮助是不可能实现的。"
+  other = "下图展示了我们对 Kyuubi 生态系统的愿景。其中的一部分已经实现了，一部分正在开发中，还有一部分没有你的帮助是不可能实现的。"
 
 [access-from-anywhere]
   other = "从任何地方访问"
@@ -68,7 +68,7 @@
   other = "交互式分析"
 
 [interactive-analytics-desc]
-  other = "Kyuubi 是一个先进的企业级快速分析平台，用于对大数据进行交互式可视化分析，支持常见的计算框架，即 Apache Spark、Apache Flink、Trino 等。使用 JDBC/ODBC，用户可以直接通过 SQL 或通过 BI 工具生成来访问 kyuubi 并高效地运行查询。 Kyuubi 在用户级别缓存后台引擎实例，以更好的实现计算资源共享和快速响应，它们能并行处理大量数据的查询并快速返回结果。"
+  other = "Kyuubi 是一个先进的企业级快速分析平台，用于对大数据进行交互式可视化分析，支持常见的计算框架，即 Apache Spark、Apache Flink、Trino 等。使用 JDBC/ODBC，用户可以直接通过 SQL 或通过 BI 工具来访问 kyuubi 并高效地运行查询。 Kyuubi 在用户级别缓存后台引擎实例，以更好的实现计算资源共享和快速响应，它们能并行处理大量数据的查询并快速返回结果。"
 
 [batch-processing]
   other = "批量处理"
@@ -89,12 +89,82 @@
 [mailing-list]
   other = "邮件列表"
 
+[mailing-list-href]
+  other = "https://kyuubi.apache.org/zh/mailing_lists.html"
+
 [source-code]
   other = "源代码"
 
 [how-to-contribute]
   other = "如何贡献"
 
+[how-to-contribute-href]
+  other = "https://kyuubi.apache.org/zh/issue_tracking.html"
+
+# release page
+[download-kyuubi]
+  other = "下载 Apache Kyuubi (Incubating)"
+
+[instructions]
+  other = "Instructions"
+
+[chose-kyuubi-version-to-download]
+  other = "请从下表中选择 Kyuubi 版本下载，推荐最新版本。"
+
+[please-verify-release]
+  other = "验证下载版本，请使用相应的哈希（sha512）、签名和"
+
+[project-release-keys]
+  other = "项目发布KEYS"
+
+[check-hashes-and-signatures]
+  other = "检查哈希（sha512）和签名的说明显示在"
+
+[verify-instructions]
+  other = "验证说明"
+
+[page]
+  other = "页面"
+
+[the-latest-release]
+  other = "最新版本"
+
+[version]
+  other = "版本"
+
+[date]
+  other = "日期"
+
+[source]
+  other = "源码"
+
+[binary]
+  other = "二进制包"
+
+[release-notes]
+  other = "发行说明"
+
+[all-archived-releases]
+  other = "所有存档的版本"
+
+[consider-use-the-latest-kyuubi]
+  other = "以前版本的 Kyuubi 可能会受到安全问题的影响，请考虑使用最新版本。"
+
+# news table
+[latest-news]
+  other = "最新消息"
+
+[title]
+  other = "标题"
+
+[brief]
+  other = "摘要"
+
+[link]
+  other = "链接"
+
+[see-more]
+  other = "查看更多"
 
 [en]
   other = "English"

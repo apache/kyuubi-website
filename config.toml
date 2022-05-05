@@ -34,73 +34,73 @@ defaultContentLanguage = 'en'
   weight = 2
 
 [[menu.main]]
-   name = "Latest"
-   parent = "documentation"
-   url = "docs/latest/index.html"
-   weight = 1
+  name = "Latest"
+  parent = "documentation"
+  url = "docs/latest/index.html"
+  weight = 1
 
 [[menu.main]]
-   name = "Master(unreleased)"
-   parent = "documentation"
-   url = "https://kyuubi.readthedocs.io/en/latest/index.html"
-   weight = 10
+  name = "Master(unreleased)"
+  parent = "documentation"
+  url = "https://kyuubi.readthedocs.io/en/latest/index.html"
+  weight = 10
 
 [[menu.main]]
-   name = "Community"
-   identifier = "community"
-   weight = 3
+  name = "Community"
+  identifier = "community"
+  weight = 3
 
 [[menu.main]]
-   name = "Code of Conduct"
-   url = "https://www.apache.org/foundation/policies/conduct"
-   parent = "community"
-   weight = 1
+  name = "Code of Conduct"
+  url = "https://www.apache.org/foundation/policies/conduct"
+  parent = "community"
+  weight = 1
 
 [[menu.main]]
-   name = "Development"
-   identifier = "development"
-   weight = 4
+  name = "Development"
+  identifier = "development"
+  weight = 4
 
 [[menu.main]]
-   name = "Github"
-   identifier = "github"
-   url = "https://github.com/apache/incubator-kyuubi"
+  name = "Github"
+  identifier = "github"
+  url = "https://github.com/apache/incubator-kyuubi"
    weight = 5
 
 [[menu.main]]
-   name = "ASF"
-   identifier = "asf"
-   weight = 6
+  name = "ASF"
+  identifier = "asf"
+  weight = 6
 
 [[menu.main]]
-   name = "Foundation"
-   url = "https://www.apache.org/"
-   parent = "asf"
+  name = "Foundation"
+  url = "https://www.apache.org/"
+  parent = "asf"
 
 [[menu.main]]
-   name = "License"
-   url = "https://www.apache.org/licenses/"
-   parent = "asf"
+  name = "License"
+  url = "https://www.apache.org/licenses/"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Events"
-   url = "https://www.apache.org/events/current-event"
-   parent = "asf"
+  name = "Events"
+  url = "https://www.apache.org/events/current-event"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Security"
-   url = "https://www.apache.org/security/"
-   parent = "asf"
+  name = "Security"
+  url = "https://www.apache.org/security/"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Sponsorship"
-   url = "https://www.apache.org/foundation/sponsorship.html"
-   parent = "asf"
+  name = "Sponsorship"
+  url = "https://www.apache.org/foundation/sponsorship.html"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Thanks"
-   url = "https://www.apache.org/foundation/thanks.html"
-   parent = "asf"
+  name = "Thanks"
+  url = "https://www.apache.org/foundation/thanks.html"
+  parent = "asf"
 
 [[menu.main]]
   name = "Language"
@@ -116,7 +116,6 @@ defaultContentLanguage = 'en'
   url = "zh/releases.html"
   weight = 1
 
-
 [[languages.zh.menu.main]]
   name = "文档"
   identifier = "documentation"
@@ -126,7 +125,13 @@ defaultContentLanguage = 'en'
   name = "最新"
   parent = "documentation"
   url = "docs/latest/index.html"
-weight = 1
+  weight = 1
+
+[[languages.zh.menu.main]]
+  name = "Master(unreleased)"
+  parent = "documentation"
+  url = "https://kyuubi.readthedocs.io/en/latest/index.html"
+  weight = 10
 
 [[languages.zh.menu.main]]
   name = "社区"
@@ -137,7 +142,7 @@ weight = 1
   name = "行为守则"
   url = "https://www.apache.org/foundation/policies/conduct"
   parent = "community"
-weight = 1
+  weight = 1
 
 [[languages.zh.menu.main]]
   name = "发展"
@@ -148,7 +153,7 @@ weight = 1
   name = "Github"
   identifier = "github"
   url = "https://github.com/apache/incubator-kyuubi"
-weight = 5
+  weight = 5
 
 [[languages.zh.menu.main]]
   name = "ASF"
@@ -186,7 +191,7 @@ weight = 5
   parent = "asf"
 
 [[languages.zh.menu.main]]
-  name = "语言"
+  name = "Language"
   identifier = "language"
   weight = 7
 

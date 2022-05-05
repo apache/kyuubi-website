@@ -19,51 +19,51 @@ menu:
   limitations under the License. See accompanying LICENSE file.
 -->
 
-## Building Kyuubi
+## 构建 Kyuubi
 
-### Building Kyuubi with Apache Maven
+### 使用 Apache Maven 构建 Kyuubi
 
-**Kyuubi** is built based on [Apache Maven](http://maven.apache.org),
+**Kyuubi** 是基于 [Apache Maven](http://maven.apache.org) 构建的，使用命令：
 
 ```
 ./build/mvn clean package -DskipTests
 ```
 
-This results in the creation of all sub-modules of Kyuubi project without running any unit test.
+这会构建 Kyuubi 项目的所有子模块而无需运行任何单元测试。
 
-If you want to test it manually, you can start Kyuubi directly from the Kyuubi project root by running
+如果要手动测试，可以直接在 Kyuubi 项目的根目录下运行 Kyuubi 启动：
 
 ```
 bin/kyuubi start
 ```
 
-### Building a Submodule Individually
+### 单独构建子模块
 
-For instance, you can build the Kyuubi Common module using:
+例如，构建 Kyuubi Common 模块，可以使用命令:
 
 ```
 build/mvn clean package -pl :kyuubi-common -DskipTests
 ```
 
-### Building Submodules Individually
+### 单独构建多个子模块
 
-For instance, you can build the Kyuubi Common module using:
+例如，使用构建 Kyuubi Common、Kyuubi Ha 模块，可以使用命令:
 
 ```
 build/mvn clean package -pl :kyuubi-common,:kyuubi-ha -DskipTests
 ```
 
-### Skipping Some modules
+### 跳过一些模块
 
-For instance, you can build the Kyuubi modules without Kyuubi Codecov and Assembly modules using:
+例如，构建没有 Kyuubi Codecov 和 Assembly 模块，可以使用命令:
 
 ```
  mvn clean install -pl '!:kyuubi-codecov,!:kyuubi-assembly' -DskipTests
 ```
 
-### Building Kyuubi against Different Apache Spark versions
+### 针对不同的 Apache Spark 版本构建 Kyuubi
 
-Since v1.1.0, Kyuubi support building with different Spark profiles,
+从 v1.1.0 开始，Kyuubi 可以支持使用不同的 Spark 配置文件构建：
 
 Profile | Default  | Since
 --- | --- | --- 
@@ -71,31 +71,26 @@ Profile | Default  | Since
 -Pspark-3.1 | No | 1.1.0
 
 
-### Defining the Apache Mirror for Spark
+### 配置 Apache Spark 的镜像
 
-By default, we use `https://archive.apache.org/dist/spark/` to download the built-in Spark release package,
-but if you find it hard to reach, or the downloading speed is too slow, you can define the `spark.archive.mirror`
-property to a suitable Apache mirror site. For instance,
+我们默认使用 `https://archive.apache.org/dist/spark/` 下载内置 Spark 发布包，
+但是如果发现下载速度很慢或者无法下载，可以使用配置 `spark.archive.mirror` 配置到合适的镜像地址从而加速下载。 例如：
 
 ```
 build/mvn clean package -Dspark.archive.mirror=https://mirrors.bfsu.edu.cn/apache/spark/spark-3.0.1
 ```
 
-Visit [Apache Mirrors](http://www.apache.org/mirrors/) and choose a mirror based on your region.
-
-Specifically for developers in China mainland, you can use the pre-defined profile named `mirror-cn` which use
-`mirrors.bfsu.edu.cn` to speed up Spark Binary downloading. For instance,
-
+专门针对中国大陆的开发者，可以使用名为 `mirror-cn` 的预定义配置，该配置文件使用 `mirrors.bfsu.edu.cn` 来加速 Spark 二进制文件的下载。例如，
 ```
 build/mvn clean package -Pmirror-cn
 ```
 
-## Building a Runnable Distribution
+## 构建可运行的发行版
 
-To create a Kyuubi distribution like those distributed by [Kyuubi Release Page](https://github.com/apache/incubaotr-kyuubi/releases),
-and that is laid out so as to be runnable, use `./build/dist` in the project root directory.
+创建一个 Kyuubi 发行版，就像 [Kyuubi Release Page](https://github.com/apache/incubator-kyuubi/releases)
+中展示的一样，在项目根目录中使用 `./build/dist` 构建。
 
-For more information on usage, run `./build/dist --help`
+有关使用的更多信息，请运行 `./build/dist --help`
 
 ```logtalk
 ./build/dist - Tool for making binary distributions of Kyuubi Server
@@ -109,133 +104,131 @@ tgz:            -  whether to make a whole bundled package
 spark-provided: -  whether to make a package without Spark binary
 ```
 
-For instance,
+例如：
 
 ```
 ./build/dist --name custom-name --tgz
 ```
 
-This results a Kyuubi distribution named `kyuubi-{version}-bin-custom-name.tar.gz` for you.
+这会为你构建一个 Kyuubi 的发行版的包名为 `kyuubi-{version}-bin-custom-name.tar.gz`。
 
-If you are planing to deploy Kyuubi where `spark` is provided, in other word, it's not required to bundle spark binary, use
+如果你想部署 Kyuubi 地方在已经有了 `Spark`，换句话说，你不需要内置捆绑下载的 `Spark`，则可以使用命令：
 
 ```
 ./build/dist --tgz --spark-provided
 ```
 
-Then you will get a Kyuubi distribution without spark binary named `kyuubi-{version}-bin-without-spark.tar.gz`.
+然后你会得到一个没有 Spark 二进制包 Kyuubi 发行版 `kyuubi-{version}-bin-without-spark.tar.gz`。
 
-## Building Kyuubi Documentation
+## 构建 Kyuubi 文档
 
-Follow the steps below and learn how to build the Kyuubi documentation as the one you are watching now.
+按照以下步骤，学习如何构建 Kyuubi 文档。
 
-### Install & Activate `virtualenv`
+### 安装和激活 `virtualenv`
 
-Firstly, install `virtualenv`, this is optional but recommended as it is useful to create an independent environment to resolve dependency issues for building the documentation.
+首先，安装 `virtualenv`，这是可选的，但还是建议创建一个独立的环境来解决构建文档的依赖问题。
 
 ```
 pip install virtualenv
 ```
 
-Switch to the `docs` root directory.
+切换到根目录下的 `docs`：
 
 ```
 cd $KTUUBI_HOME/docs
 ```
 
-Create a virtual environment named 'kyuubi' or anything you like using `virtualenv` if it's not existing.
+创建一个名为`kyuubi`的虚拟环境，或者你也可以使用别的名字，只是不要和当前目录的文件夹冲突：
 
 ```
 virtualenv kyuubi
 ```
 
-Activate it,
+激活它，
 
 ```
  source ./kyuubi/bin/activate
 ```
 
-### Install all dependencies
+### 安装所有依赖项
 
-Install all dependencies enumerated in the `requirements.txt`
+安装所有的依赖项 `requirements.txt`
 
 ```
 pip install -r requirements.txt
 ```
 
-### Create Documentation
+### 构建文档
 
 ```
 make html
 ```
 
-If the build process succeed, the HTML pages are in `_build/html`.
+如果构建过程成功，则 HTML 页面位于 `_build/html`。
 
-### View Locally
+### 本地查看
 
-Open the `_build/html/index.html` file in your favorite web browser.
+使用你喜欢的浏览器打开它 `_build/html/index.html`。
 
-## Running Tests
+## 运行测试
 
-**Kyuubi** can be tested based on [Apache Maven](http://maven.apache.org) and the ScalaTest Maven Plugin,
-please refer to the [ScalaTest documentation](http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin),
+**Kyuubi** 可以基于 [Apache Maven](http://maven.apache.org) 和 ScalaTest Maven Plugin 进行测试，
+请参考 [ScalaTest documentation](http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin)。
 
-### Running Tests Fully
+### 完全运行测试
 
-The following is an example of a command to run all the tests:
+以下是运行所有测试的命令示例：
 
 ```
 ./build/mvn clean test
 ```
 
-### Running Tests for a Module
+### 为模块运行测试
 
 ```
 ./build/mvn clean test -pl :kyuubi-common
 ```
 
-### Running Tests for a Single Test
+### 为单个测试运行测试
 
-When developing locally, it’s convenient to run one single test, or a couple of tests, rather than all.
+在本地开发时，运行一个测试或几个测试而不是全部测试很方便。
 
-With Maven, you can use the -DwildcardSuites flag to run individual Scala tests:
+使用 Maven，可以使用 -DwildcardSuites 标志来运行单个 Scala 测试：
 
 ```
 ./build/mvn test -Dtest=none -DwildcardSuites=org.apache.kyuubi.service.FrontendServiceSuite
 ```
 
-If you want to make a single test that need integrate with kyuubi-spark-sql-engine module, please build the package for kyuubi-spark-sql-engine module at first.
+如果你想做一个需要与 kyuubi-spark-sql-engine 模块集成的单个测试，请先构建 kyuubi-spark-sql-engine 模块的包。
 
-You can leverage the ready-made tool for creating a binary distribution.
+可以利用现成的工具来构建二进制发行版。
 
 ```
 ./build/dist
 ```
 
-## Debugging Kyuubi
+## 调试 Kyuubi
 
-You can use the [Java Debug Wire Protocol](https://docs.oracle.com/javase/8/docs/technotes/guides/jpda/conninv.html#Plugin) to debug Kyuubi
-with your favorite IDE tool, e.g. Intellij IDEA.
+你可以使用 [Java Debug Wire Protocol](https://docs.oracle.com/javase/8/docs/technotes/guides/jpda/conninv.html#Plugin) 来调试 Kyuubi，可以使用你最喜欢的 IDE 工具，例如Intellij IDEA
 
-### Debugging Server
+### 远程调试
 
-We can configure the JDWP agent in `KYUUBI_JAVA_OPTS` for debugging.
+我们可以在 `KYUUBI_JAVA_OPTS` 中配置 JDWP 代理进行调试。
 
-
-For example,
+例如，
 ```
 KYUUBI_JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 \
 bin/kyuubi start
 ```
 
-In the IDE, you set the corresponding parameters(host&port) in debug configurations, for example,
+在 IDE 调试配置中设置相应的参数（主机和端口），例如，
 <div align=center>
 
 ![](../imgs/idea_debug.png)
 
 </div>
 
-### Debugging Apps
+### 调试应用
 
 - Spark Driver
 
@@ -248,32 +241,30 @@ spark.driver.extraJavaOptions   -agentlib:jdwp=transport=dt_socket,server=y,susp
 spark.executor.extraJavaOptions   -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
 ```
 
-## Developer Tools
+## 开发者工具
 
-### Update Project Version
+### 更新项目版本
 
 ```
-
 build/mvn versions:set -DgenerateBackupPoms=false
 ```
 
-### Update Document Version
+### 更新文档版本
 
-Whenever Project version updates, please also update the document version at `docs/conf.py` to target the upcoming release.
+每当项目版本更新时，请同时更新 `docsconf.py` 中的文档版本以针对即将发布的版本。
 
-For example,
+例如：
 
 ```
 release = '1.2.0'
 ```
 
-### Update Dependency List
+### 更新依赖列表
 
-Kyuubi uses the `dev/dependencyList` file to indicates what upstream dependencies will actually go to the server-side classpath.
+Kyuubi 使用 `dev/dependencyList` 文件指示哪些上游依赖项会实际上进入服务器端的类路径。
 
-For Pull requests, a linter for dependency check will be automatically executed in GitHub Actions.
+对于 PR，用于依赖检查的 linter 将在 GitHub Actions 中自动执行。
 
+所以你可以先本地运行 `build/dependency.sh` 来检测潜在的依赖变化。
 
-You can run `build/dependency.sh` locally first to detect the potential dependency change first.
-
-If the changes look expected, run `build/dependency.sh --replace` to update `dev/dependencyList` in your Pull request.
+如果更改看起来符合预期，请运行 `build/dependency.sh --replace` 在你的 PR 中去更新 `dev/dependencyList`。
