@@ -35,7 +35,7 @@
       {{ end }}
       <td class="center aligned">{{.Title }}</td>
       <td class="center aligned">{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Content }}{{ end }}</td>
-      {{ if eq .Site.Language.Lang "zh"}}
+      {{ if ne .Site.Language.Lang "en"}}
       <td class="center aligned"><a href="{{.Site.Language.Lang}}/news/{{ .File.BaseFileName }}.html">{{ i18n "see-more" }}</a></td>
       {{ else }}
       <td class="center aligned"><a href="/news/{{ .File.BaseFileName }}.html">{{ i18n "see-more" }}</a></td>
