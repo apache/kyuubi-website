@@ -36,10 +36,14 @@
       <th class="center aligned">{{ i18n "release-notes" }}</th>
     </tr>
     </thead>
+    {{ $langVar := "" }}
+    {{ if ne .Site.Language.Lang "en" }}
+    {{ $langVar = .Site.Language.Lang }}
+    {{ end }}
     {{range first 1 (where (where .Site.Pages "Section" "release") ".Params.linked" true) }}
     <tr>
       <td class="center aligned">{{.File.BaseFileName }}</td>
-      {{ if eq .Site.Language.Lang "zh"}}
+      {{ if eq $langVar "zh"}}
       <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
       {{ else }}
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
@@ -55,7 +59,7 @@
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>)
       </td>
       <td class="center aligned">
-        <a href="/release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
+        <a href="{{ $langVar }}/release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
       </td>
     </tr>
     {{end}}
@@ -82,7 +86,7 @@
     {{range (where (where .Site.Pages "Section" "release") ".Params.linked" true) }}
     <tr>
       <td class="center aligned">{{.File.BaseFileName }}</td>
-      {{ if eq .Site.Language.Lang "zh"}}
+      {{ if eq $langVar "zh"}}
       <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
       {{ else }}
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
@@ -98,7 +102,7 @@
         <a href="https://downloads.apache.org/incubator/kyuubi/kyuubi-{{.File.BaseFileName}}/apache-kyuubi-{{.File.BaseFileName}}-bin.tgz.asc">signature</a>)
       </td>
       <td class="center aligned">
-        <a href="/release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
+        <a href="{{ $langVar }}/release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
       </td>
     </tr>
     {{end}}

@@ -142,7 +142,7 @@
   other = "二进制包"
 
 [release-notes]
-  other = "发行说明"
+  other = "发布记录"
 
 [all-archived-releases]
   other = "所有存档的版本"
