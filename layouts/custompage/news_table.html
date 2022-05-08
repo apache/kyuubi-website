@@ -15,23 +15,31 @@
 {{partial "header.html" .}}
 <div class="ui container">
 
-  <h2>Latest news</h2>
+  <h2>{{ i18n "latest-news" }}</h2>
 
   <table class="ui selectable celled table">
     <thead>
     <tr>
-      <th class="center aligned">Date</th>
-      <th class="center aligned">Title</th>
-      <th class="center aligned">Brief</th>
-      <th class="center aligned">Link</th>
+      <th class="center aligned">{{ i18n "date" }}</th>
+      <th class="center aligned">{{ i18n "title" }}</th>
+      <th class="center aligned">{{ i18n "brief" }}</th>
+      <th class="center aligned">{{ i18n "link" }}</th>
     </tr>
     </thead>
+    {{ $langVar := "" }}
+    {{ if ne .Site.Language.Lang "en" }}
+    {{ $langVar = .Site.Language.Lang }}
+    {{ end }}
     {{range (where (where .Site.Pages "Section" "in" (slice "news")) ".Name" "not in" (slice "News" "Releases")) }}
     <tr>
+      {{ if eq $langVar "zh"}}
+      <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
+      {{ else }}
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
+      {{ end }}
       <td class="center aligned">{{.Title }}</td>
       <td class="center aligned">{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Content }}{{ end }}</td>
-      <td class="center aligned"><a href="/news/{{.File.BaseFileName }}.html">see more</a></td>
+      <td class="center aligned"><a href="{{ $langVar }}/news/{{ .File.BaseFileName }}.html">{{ i18n "see-more" }}</a></td>
     </tr>
     {{end}}
   </table>

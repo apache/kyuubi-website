@@ -21,12 +21,12 @@
     <div class="contentBlock">
       <img class="bannerBg" src="{{ "homePageImg/indexBanner.png" | relURL}}" />
       <div class="bannerContent">
-        <p class="bannerTitle">Serverless SQL on Lakehouse</p>
+        <p class="bannerTitle">{{ i18n "serverless-sql-on-lakehouse" }} </p>
         <p class="bannerDesc">
-          Apache Kyuubi (Incubating), a distributed and multi-tenant gateway to provide serverless SQL on lakehouses.
+          {{ i18n "kyuubi-introduce" }}
         </p>
         <div class="bannerBtnContainer">
-          <a class="bannerBtn" href="https://kyuubi.apache.org/docs/latest/quick_start">Getting started »</a>
+          <a class="bannerBtn" href="https://kyuubi.apache.org/docs/latest/quick_start">{{ i18n "getting-started" }} »</a>
           <a class="bannerBtn" href="https://github.com/apache/incubator-kyuubi">GitHub »</a>
         </div>
       </div>
@@ -52,15 +52,15 @@
   <div>
     <div class="contentBlock">
       <div class="blockTitle">
-        <span>Key Features</span>
+        <span>{{ i18n "key-features"}}</span>
         <div class="blockTitleLine"></div>
       </div>
       <div class="listContainer">
         {{range .Site.Data.homePage.keyFeatures}}
           <div class="kfItem">
             <img class="kfItemImg" src="{{.img | relURL}}" >
-            <p class="itemTitle">{{.title}}</p>
-            <p class="itemDesc">{{.desc}}</p>
+            <p class="itemTitle">{{ i18n .title}}</p>
+            <p class="itemDesc">{{ i18n .desc}}</p>
           </div>
         {{end}}
       </div>
@@ -69,15 +69,15 @@
   <div>
     <div class="contentBlock">
       <div class="blockTitle">
-        <span>Ecosystem</span>
+        <span>{{ i18n "ecosystem"}}</span>
         <div class="blockTitleLine"></div>
-        <div class="blockTitleDesc">The figure below shows our vision for the Kyuubi Ecosystem. Some of them have been realized, some in development, and others would not be possible without your help.</div>
+        <div class="blockTitleDesc">{{ i18n "kyuubi-ecosystem" }}</div>
       </div>
       <div id="ecos" class="listContainer">
         {{range .Site.Data.homePage.ecosystem}}
           <div class="ecoItem">
             <div class="ecoItemTitle">
-              <span>{{.title}}</span>
+              <span>{{ i18n .title}}</span>
               <span class="ecoItemBtn"></span>
             </div>
             <div class="ecoItemBody">
@@ -93,14 +93,14 @@
   <div>
     <div class="contentBlock">
       <div class="blockTitle">
-        <span>Use Cases</span>
+        <span>{{ i18n "use-cases"}}</span>
         <div class="blockTitleLine"></div>
       </div>
       <div class="useCaseListContainer">
         {{range .Site.Data.homePage.useCases}}
           <div class="useCaseItem">
-            <p class="useCaseItemTitle">{{.title}}</p>
-            <p class="useCaseItemDesc">{{.desc}}</p>
+            <p class="useCaseItemTitle">{{ i18n .title}}</p>
+            <p class="useCaseItemDesc">{{ i18n .desc}}</p>
           </div>
         {{end}}
       </div>
@@ -109,14 +109,14 @@
   <div>
     <div class="contentBlock">
       <div class="blockTitle">
-        <span>Join the Community</span>
+        <span>{{ i18n "join-the-community"}}</span>
         <div class="blockTitleLine"></div>
       </div>
       <div class="listContainer">
         {{range .Site.Data.homePage.community}}
-          <a class="communityItem" href="{{.href}}">
+          <a class="communityItem" href="{{i18n .href}}">
             <img class="communityItemImg" src="{{.img | relURL}}" >
-            <p class="communityItemTitle">{{.title}}</p>
+            <p class="communityItemTitle">{{i18n .title}}</p>
             <span class="communityLine"></span>
           </a>
         {{end}}
