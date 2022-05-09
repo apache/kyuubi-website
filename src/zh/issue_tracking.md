@@ -23,9 +23,9 @@ menu:
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
 Kyuubi 社区使用 [Github Issues](https://github.com/apache/incubator-kyuubi/issues) 来跟踪各种想法、工作、bug等。
-与我们的 [存储库](https://github.com/apache/incubator-kyuubi) 集成的 Github Issues 可以更轻松地组织工作、专注于基本任务并同时更新计划。
+与我们的 [代码库](https://github.com/apache/incubator-kyuubi) 集成的 Github Issues 可以更轻松地组织工作, 专注于基本任务并同时更新计划。
 
-尽管只要有 Github 帐户，就可以创建创建包含任何内容的问题，并且我们不对本部分的功能进行任何强制限制，但所有交流均需遵守 ASF [行为准则](https://www.apache.org/foundation/policies/conduct)。
+尽管只要有 Github 帐户，就可以创建包含任何内容的问题，并且我们不对本部分的功能进行任何强制限制，但所有交流均需遵守 ASF [行为准则](https://www.apache.org/foundation/policies/conduct)。
 如果你发现有违反这些规则的行为，可参照 [ASF 报告指南](https://www.apache.org/foundation/policies/conduct#reporting-guidelines) 处理。
 
 ## 如何使用 Github Issues
@@ -49,7 +49,7 @@ Kyuubi 社区使用 [Github Issues](https://github.com/apache/incubator-kyuubi/i
 
 ### 提交想法或功能请求
 
-作为一个志愿者驱动的项目，想法总是受欢迎的 ;)
+作为一个志愿者驱动的项目，想法总是受欢迎的 :)
 
 使用 [feature模板](https://github.com/apache/incubator-kyuubi/issues/new?assignees=&labels=feature&template=feature-request.yml&title=%5BFEATURE%5D+) 让你的建议清晰易懂：
 
