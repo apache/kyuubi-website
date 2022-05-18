@@ -68,6 +68,9 @@ menu:
     <tr>
       <td>Xiduo You</td>
     </tr>
+    <tr>
+      <td>Zhen Wang</td>
+    </tr>
   </tbody>
 </table>
 
