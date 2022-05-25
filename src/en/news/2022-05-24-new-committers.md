@@ -1,5 +1,5 @@
 ---
-title: 'New committers: Zhen Wang'
+title: 'New committer: Zhen Wang'
 date: 2022-05-24
 linked: true
 description: We are happy to announce Zhen Wang becomes a new Kyuubi committer.
