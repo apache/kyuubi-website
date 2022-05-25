@@ -1,6 +1,6 @@
 ---
 title: 'New committers: Zhen Wang'
-date: 2022-03-29
+date: 2022-05-24
 linked: true
 description: We are happy to announce Zhen Wang becomes a new Kyuubi committer.
 ---
