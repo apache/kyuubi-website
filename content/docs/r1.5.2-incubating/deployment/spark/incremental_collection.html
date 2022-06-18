@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>5.3. Solution for Big Result Sets &mdash; Kyuubi 1.5.2-incubating documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Kyuubi Security Overview" href="../../security/index.html" />
+    <link rel="prev" title="5.2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi" href="aqe.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Kyuubi
+          
+
+          
+            
+            <img src="../../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Usage Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/index.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Deploying Kyuubi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#configurations">Configurations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#engines">Engines</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../engine_on_yarn.html">1. Deploy Kyuubi engines on Yarn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../engine_on_kubernetes.html">2. Deploy Kyuubi engines on Kubernetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../engine_share_level.html">3. The Share Level Of Kyuubi Engines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../engine_lifecycle.html">4. The TTL Of Kyuubi Engines</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">5. The Spark SQL Engine Configuration Guide</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dynamic_allocation.html">5.1. How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aqe.html">5.2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">5.3. Solution for Big Result Sets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">Client Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monitor/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sql/index.html">SQL References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Kyuubi Insider</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../develop_tools/index.html">Develop Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/index.html">Appendixes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Kyuubi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Deploying Kyuubi</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">5. </span>The Spark SQL Engine Configuration Guide</a> &raquo;</li>
+        
+      <li><span class="section-number">5.3. </span>Solution for Big Result Sets</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/deployment/spark/incremental_collection.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><div align=center><p><img alt="../../_images/kyuubi_logo.png" src="../../_images/kyuubi_logo.png" /></p>
+</div><div class="section" id="solution-for-big-result-sets">
+<h1><span class="section-number">5.3. </span>Solution for Big Result Sets<a class="headerlink" href="#solution-for-big-result-sets" title="Permalink to this headline">¶</a></h1>
+<p>Typically, when a user submits a SELECT query to Spark SQL engine, the Driver calls <code class="docutils literal notranslate"><span class="pre">collect</span></code> to trigger calculation and
+collect the entire data set of all tasks(a.k.a. partitions of an RDD), after all partitions data arrived, then the
+client pulls the result set from the Driver through the Kyuubi Server in small batch.</p>
+<p>Therefore, the bottleneck is the Spark Driver for a query with a big result set. To avoid OOM, Spark has a configuration
+<code class="docutils literal notranslate"><span class="pre">spark.driver.maxResultSize</span></code> which default is <code class="docutils literal notranslate"><span class="pre">1g</span></code>, you should enlarge it as well as <code class="docutils literal notranslate"><span class="pre">spark.driver.memory</span></code> if your
+query has result set in several GB. But what if the result set size is dozens GB or event hundreds GB? It would be best
+if you have incremental collection mode.</p>
+<div class="section" id="incremental-collection">
+<h2><span class="section-number">5.3.1. </span>Incremental collection<a class="headerlink" href="#incremental-collection" title="Permalink to this headline">¶</a></h2>
+<p>Since v1.4.0-incubating, Kyuubi supports incremental collection mode, it is a solution for big result sets. This feature
+is disabled in default, you can turn on it by setting the configuration <code class="docutils literal notranslate"><span class="pre">kyuubi.operation.incremental.collect</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>The incremental collection changes the gather method from <code class="docutils literal notranslate"><span class="pre">collect</span></code> to <code class="docutils literal notranslate"><span class="pre">toLocalIterator</span></code>. <code class="docutils literal notranslate"><span class="pre">toLocalIterator</span></code> is a Spark
+action that sequentially submits Jobs to retrieve partitions. As each partition is retrieved, the client through pulls
+the result set from the Driver through the Kyuubi Server streamingly. It reduces the Driver memory significantly from
+the size of the complete result set to the maximum partition.</p>
+<p>The incremental collection is not the silver bullet, you should turn it on carefully, because it can significantly hurt
+performance. And even in incremental collection mode, when multiple queries execute concurrently, each query still requires
+one partition of data in Driver memory. Therefore, it is still important to control the number of concurrent queries to
+avoid OOM.</p>
+</div>
+<div class="section" id="use-in-single-connections">
+<h2><span class="section-number">5.3.2. </span>Use in single connections<a class="headerlink" href="#use-in-single-connections" title="Permalink to this headline">¶</a></h2>
+<p>As above explains, the incremental collection mode is not suitable for common query sense, you can enable incremental
+collection mode for specific queries by using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beeline</span> <span class="o">-</span><span class="n">u</span> <span class="s1">&#39;jdbc:hive2://kyuubi:10009/?spark.driver.maxResultSize=8g;spark.driver.memory=12g#kyuubi.engine.share.level=CONNECTION;kyuubi.operation.incremental.collect=true&#39;</span> \
+    <span class="o">--</span><span class="n">incremental</span><span class="o">=</span><span class="n">true</span> \
+    <span class="o">-</span><span class="n">f</span> <span class="n">big_result_query</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--incremental=true</span></code> is required for beeline client, otherwise, the entire result sets is fetched and buffered before
+being displayed, which may cause client side OOM.</p>
+</div>
+<div class="section" id="change-incremental-collection-mode-in-session">
+<h2><span class="section-number">5.3.3. </span>Change incremental collection mode in session<a class="headerlink" href="#change-incremental-collection-mode-in-session" title="Permalink to this headline">¶</a></h2>
+<p>The configuration <code class="docutils literal notranslate"><span class="pre">kyuubi.operation.incremental.collect</span></code> can also be changed using <code class="docutils literal notranslate"><span class="pre">SET</span></code> in session.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~</span> <span class="n">beeline</span> <span class="o">-</span><span class="n">u</span> <span class="s1">&#39;jdbc:hive2://localhost:10009&#39;</span>
+<span class="n">Connected</span> <span class="n">to</span><span class="p">:</span> <span class="n">Apache</span> <span class="n">Kyuubi</span> <span class="p">(</span><span class="n">Incubating</span><span class="p">)</span> <span class="p">(</span><span class="n">version</span> <span class="mf">1.5.0</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="p">)</span>
+
+<span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="nb">set</span> <span class="n">kyuubi</span><span class="o">.</span><span class="n">operation</span><span class="o">.</span><span class="n">incremental</span><span class="o">.</span><span class="n">collect</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="o">+---------------------------------------+--------+</span>
+<span class="o">|</span>                  <span class="n">key</span>                  <span class="o">|</span> <span class="n">value</span>  <span class="o">|</span>
+<span class="o">+---------------------------------------+--------+</span>
+<span class="o">|</span> <span class="n">kyuubi</span><span class="o">.</span><span class="n">operation</span><span class="o">.</span><span class="n">incremental</span><span class="o">.</span><span class="n">collect</span>  <span class="o">|</span> <span class="n">true</span>   <span class="o">|</span>
+<span class="o">+---------------------------------------+--------+</span>
+<span class="mi">1</span> <span class="n">row</span> <span class="n">selected</span> <span class="p">(</span><span class="mf">0.039</span> <span class="n">seconds</span><span class="p">)</span>
+
+<span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="n">select</span> <span class="o">/*+</span> <span class="n">REPARTITION</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*/</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="o">+-----+</span>
+<span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span>
+<span class="o">+-----+</span>
+<span class="o">|</span> <span class="mi">2</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">6</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">7</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">5</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">4</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">8</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">9</span>   <span class="o">|</span>
+<span class="o">+-----+</span>
+<span class="mi">10</span> <span class="n">rows</span> <span class="n">selected</span> <span class="p">(</span><span class="mf">1.929</span> <span class="n">seconds</span><span class="p">)</span>
+
+<span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="nb">set</span> <span class="n">kyuubi</span><span class="o">.</span><span class="n">operation</span><span class="o">.</span><span class="n">incremental</span><span class="o">.</span><span class="n">collect</span><span class="o">=</span><span class="n">false</span><span class="p">;</span>
+<span class="o">+---------------------------------------+--------+</span>
+<span class="o">|</span>                  <span class="n">key</span>                  <span class="o">|</span> <span class="n">value</span>  <span class="o">|</span>
+<span class="o">+---------------------------------------+--------+</span>
+<span class="o">|</span> <span class="n">kyuubi</span><span class="o">.</span><span class="n">operation</span><span class="o">.</span><span class="n">incremental</span><span class="o">.</span><span class="n">collect</span>  <span class="o">|</span> <span class="n">false</span>   <span class="o">|</span>
+<span class="o">+---------------------------------------+--------+</span>
+<span class="mi">1</span> <span class="n">row</span> <span class="n">selected</span> <span class="p">(</span><span class="mf">0.027</span> <span class="n">seconds</span><span class="p">)</span>
+
+<span class="mi">0</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span> <span class="n">select</span> <span class="o">/*+</span> <span class="n">REPARTITION</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*/</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="o">+-----+</span>
+<span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span>
+<span class="o">+-----+</span>
+<span class="o">|</span> <span class="mi">2</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">6</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">7</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">5</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">4</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">8</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">9</span>   <span class="o">|</span>
+<span class="o">+-----+</span>
+<span class="mi">10</span> <span class="n">rows</span> <span class="n">selected</span> <span class="p">(</span><span class="mf">0.128</span> <span class="n">seconds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From the Spark UI, we can see that in incremental collection mode, the query produces 5 jobs (in red square), and in
+normal mode, only produces 1 job (in blue square).</p>
+<p><img alt="../../_images/incremental_collection.png" src="../../_images/incremental_collection.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../security/index.html" class="btn btn-neutral float-right" title="Kyuubi Security Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="aqe.html" class="btn btn-neutral float-left" title="5.2. How To Use Spark Adaptive Query Execution (AQE) in Kyuubi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
