@@ -60,6 +60,9 @@ menu:
       <td>Nicholas Jiang</td>
     </tr>
     <tr>
+      <td>Shaoyun Chen</td>
+    </tr>
+    <tr>
       <td>Vino Yang</td>
     </tr>
     <tr>
