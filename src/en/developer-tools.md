@@ -65,10 +65,12 @@ For instance, you can build the Kyuubi modules without Kyuubi Codecov and Assemb
 
 Since v1.1.0, Kyuubi support building with different Spark profiles,
 
-Profile | Default  | Since
---- | --- | --- 
--Pspark-3.0 | Yes | 1.0.0
--Pspark-3.1 | No | 1.1.0
+Profile     | Default  | Since
+----------- | -------- | --- 
+-Pspark-3.0 | No       | 1.0.0
+-Pspark-3.1 | No       | 1.1.0
+-Pspark-3.2 | Yes      | 1.4.0
+-Pspark-3.3 | No       | 1.6.0
 
 
 ### Defining the Apache Mirror for Spark
@@ -78,12 +80,12 @@ but if you find it hard to reach, or the downloading speed is too slow, you can 
 property to a suitable Apache mirror site. For instance,
 
 ```
-build/mvn clean package -Dspark.archive.mirror=https://mirrors.bfsu.edu.cn/apache/spark/spark-3.0.1
+build/mvn clean package -Dspark.archive.mirror=https://mirrors.bfsu.edu.cn/apache/spark/spark-3.2.1
 ```
 
 Visit [Apache Mirrors](http://www.apache.org/mirrors/) and choose a mirror based on your region.
 
-Specifically for developers in China mainland, you can use the pre-defined profile named `mirror-cn` which use
+Specifically for developers in China mainland, you can use the pre-defined profile named `mirror-cdn` which use
 `mirrors.bfsu.edu.cn` to speed up Spark Binary downloading. For instance,
 
 ```
@@ -98,15 +100,19 @@ and that is laid out so as to be runnable, use `./build/dist` in the project roo
 For more information on usage, run `./build/dist --help`
 
 ```logtalk
-./build/dist - Tool for making binary distributions of Kyuubi Server
+./build/dist - Tool for making binary distributions of Kyuubi
 
 Usage:
-+--------------------------------------------------------------------------------------+
-| ./build/dist [--name <custom_name>] [--tgz] [--spark-provided] <maven build options> |
-+--------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------+
+| ./build/dist [--name <custom_name>] [--tgz] [--flink-provided] [--spark-provided] [--hive-provided]  |
+|              [--mvn <maven_executable>] <maven build options>                                        |
++------------------------------------------------------------------------------------------------------+
 name:           -  custom binary name, using project version if undefined
 tgz:            -  whether to make a whole bundled package
+flink-provided: -  whether to make a package without Flink binary
 spark-provided: -  whether to make a package without Spark binary
+hive-provided:  -  whether to make a package without Hive binary
+mvn:            -  external maven executable location
 ```
 
 For instance,
@@ -123,7 +129,7 @@ If you are planing to deploy Kyuubi where `spark` is provided, in other word, it
 ./build/dist --tgz --spark-provided
 ```
 
-Then you will get a Kyuubi distribution without spark binary named `kyuubi-{version}-bin-without-spark.tar.gz`.
+Then you will get a Kyuubi distribution without spark binary named `kyuubi-{version}-bin.tar.gz`.
 
 ## Building Kyuubi Documentation
 
@@ -201,7 +207,7 @@ When developing locally, it’s convenient to run one single test, or a couple o
 With Maven, you can use the -DwildcardSuites flag to run individual Scala tests:
 
 ```
-./build/mvn test -Dtest=none -DwildcardSuites=org.apache.kyuubi.service.FrontendServiceSuite
+./build/mvn install `test -Dtest=none -DwildcardSuites=org.apache.kyuubi.service.FrontendServiceSuite
 ```
 
 If you want to make a single test that need integrate with kyuubi-spark-sql-engine module, please build the package for kyuubi-spark-sql-engine module at first.
