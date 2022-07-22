@@ -57,6 +57,9 @@ menu:
       <td>Kent Yao</td>
     </tr>
     <tr>
+      <td>Min Zhao</td>
+    </tr>
+    <tr>
       <td>Nicholas Jiang</td>
     </tr>
     <tr>
