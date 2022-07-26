@@ -1,0 +1,49 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. See accompanying LICENSE file.
+-->
+
+{{partial "header.html" .}}
+<div class="ui container">
+
+  <h2>{{ i18n "latest-news" }}</h2>
+
+  <table class="ui selectable celled table">
+    <thead>
+    <tr>
+      <th class="center aligned">{{ i18n "date" }}</th>
+      <th class="center aligned">{{ i18n "title" }}</th>
+      <th class="center aligned">{{ i18n "brief" }}</th>
+      <th class="center aligned">{{ i18n "link" }}</th>
+    </tr>
+    </thead>
+    {{ $langVar := "" }}
+    {{ if ne .Site.Language.Lang "en" }}
+    {{ $langVar = .Site.Language.Lang }}
+    {{ end }}
+    {{range (where (where .Site.Pages "Section" "in" (slice "news")) ".Name" "not in" (slice "News" "Releases")) }}
+    <tr>
+      {{ if eq $langVar "zh"}}
+      <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
+      {{ else }}
+      <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
+      {{ end }}
+      <td class="center aligned">{{.Title }}</td>
+      <td class="center aligned">{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Content }}{{ end }}</td>
+      <td class="center aligned"><a href="{{ $langVar }}/news/{{ .File.BaseFileName }}.html">{{ i18n "see-more" }}</a></td>
+    </tr>
+    {{end}}
+  </table>
+  {{.Content}}
+</div>
+{{partial "footer.html" .}}
+

@@ -20,6 +20,7 @@ uglyurls = true
 googleAnalytics = "UA-7453027-1"
 contentDir = "src"
 publishDir = "content"
+defaultContentLanguage = 'en'
 
 [[menu.main]]
   name = "Download"
@@ -33,71 +34,248 @@ publishDir = "content"
   weight = 2
 
 [[menu.main]]
-   name = "Latest"
-   parent = "documentation"
-   url = "docs/latest/index.html"
-   weight = 1
+  name = "Latest"
+  parent = "documentation"
+  url = "docs/latest/index.html"
+  weight = 1
 
 [[menu.main]]
-   name = "Community"
-   identifier = "community"
-   weight = 3
+  name = "Master(unreleased)"
+  parent = "documentation"
+  url = "https://kyuubi.readthedocs.io/en/latest/index.html"
+  weight = 10
 
 [[menu.main]]
-   name = "Code of Conduct"
-   url = "https://www.apache.org/foundation/policies/conduct"
-   parent = "community"
+  name = "Community"
+  identifier = "community"
+  weight = 3
 
 [[menu.main]]
-   name = "Development"
-   identifier = "development"
-   weight = 4
+  name = "Code of Conduct"
+  url = "https://www.apache.org/foundation/policies/conduct"
+  parent = "community"
+  weight = 1
 
 [[menu.main]]
-   name = "Github"
-   identifier = "github"
-   url = "https://github.com/apache/incubator-kyuubi"
-   weight = 5
+  name = "Development"
+  identifier = "development"
+  weight = 4
 
 [[menu.main]]
-   name = "ASF"
-   identifier = "asf"
-   weight = 6
+  name = "Github"
+  identifier = "github"
+  url = "https://github.com/apache/incubator-kyuubi"
+  weight = 5
 
 [[menu.main]]
-   name = "Foundation"
-   url = "https://www.apache.org/"
-   parent = "asf"
+  name = "ASF"
+  identifier = "asf"
+  weight = 6
 
 [[menu.main]]
-   name = "License"
-   url = "https://www.apache.org/licenses/"
-   parent = "asf"
+  name = "Foundation"
+  url = "https://www.apache.org/"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Events"
-   url = "https://www.apache.org/events/current-event"
-   parent = "asf"
+  name = "License"
+  url = "https://www.apache.org/licenses/"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Security"
-   url = "https://www.apache.org/security/"
-   parent = "asf"
+  name = "Events"
+  url = "https://www.apache.org/events/current-event"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Sponsorship"
-   url = "https://www.apache.org/foundation/sponsorship.html"
-   parent = "asf"
+  name = "Security"
+  url = "https://www.apache.org/security/"
+  parent = "asf"
 
 [[menu.main]]
-   name = "Thanks"
-   url = "https://www.apache.org/foundation/thanks.html"
-   parent = "asf"
+  name = "Sponsorship"
+  url = "https://www.apache.org/foundation/sponsorship.html"
+  parent = "asf"
 
+[[menu.main]]
+  name = "Thanks"
+  url = "https://www.apache.org/foundation/thanks.html"
+  parent = "asf"
+
+[[menu.main]]
+  name = "Language"
+  identifier = "language"
+  weight = 7
+
+[[menu.main]]
+  parent = "language"
+
+# chinese menu
+[[languages.zh.menu.main]]
+  name = "下载"
+  url = "zh/releases.html"
+  weight = 1
+
+[[languages.zh.menu.main]]
+  name = "文档"
+  identifier = "documentation"
+  weight = 2
+
+[[languages.zh.menu.main]]
+  name = "最新"
+  parent = "documentation"
+  url = "docs/latest/index.html"
+  weight = 1
+
+[[languages.zh.menu.main]]
+  name = "Master(unreleased)"
+  parent = "documentation"
+  url = "https://kyuubi.readthedocs.io/en/latest/index.html"
+  weight = 10
+
+[[languages.zh.menu.main]]
+  name = "社区"
+  identifier = "community"
+  weight = 3
+
+[[languages.zh.menu.main]]
+  name = "行为守则"
+  url = "https://www.apache.org/foundation/policies/conduct"
+  parent = "community"
+  weight = 1
+
+[[languages.zh.menu.main]]
+  name = "发展"
+  identifier = "development"
+  weight = 4
+
+[[languages.zh.menu.main]]
+  name = "Github"
+  identifier = "github"
+  url = "https://github.com/apache/incubator-kyuubi"
+  weight = 5
+
+[[languages.zh.menu.main]]
+  name = "ASF"
+  identifier = "asf"
+  weight = 6
+
+[[languages.zh.menu.main]]
+  name = "基金会"
+  url = "https://www.apache.org/"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "License"
+  url = "https://www.apache.org/licenses/"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "活动"
+  url = "https://www.apache.org/events/current-event"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "安全"
+  url = "https://www.apache.org/security/"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "赞助"
+  url = "https://www.apache.org/foundation/sponsorship.html"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "感谢"
+  url = "https://www.apache.org/foundation/thanks.html"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "Language"
+  identifier = "language"
+  weight = 7
+
+[[languages.zh.menu.main]]
+  parent = "language"
 
 # Configure the English version of the website.
 [languages.en]
   languageCode = "en-us"
+  contentDir = 'src/en'
 
-[markup.goldmark.renderer]
-unsafe= true
+[languages.zh]
+  languageCode = "zh-cn"
+  contentDir = 'src/zh'
+
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [markup.asciidocExt]
+    backend = 'html5'
+    extensions = []
+    failureLevel = 'fatal'
+    noHeaderOrFooter = true
+    preserveTOC = false
+    safeMode = 'unsafe'
+    sectionNumbers = false
+    trace = false
+    verbose = false
+    workingFolderCurrent = false
+    [markup.asciidocExt.attributes]
+  [markup.blackFriday]
+    angledQuotes = false
+    footnoteAnchorPrefix = ''
+    footnoteReturnLinkContents = ''
+    fractions = true
+    hrefTargetBlank = false
+    latexDashes = true
+    nofollowLinks = false
+    noreferrerLinks = false
+    plainIDAnchors = true
+    skipHTML = false
+    smartDashes = true
+    smartypants = true
+    smartypantsQuotesNBSP = false
+    taskLists = true
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+      goldmark-emoji = true
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = 'github'
+      [markup.goldmark.parser.attribute]
+        block = false
+        title = true
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xhtml = false
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'monokai'
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+
+# Configure minify.
+[minify]
+  [minify.tdewolff.html]
+    keepQuotes = true
