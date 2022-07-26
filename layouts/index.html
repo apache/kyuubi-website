@@ -106,19 +106,40 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="community">
     <div class="contentBlock">
       <div class="blockTitle">
         <span>{{ i18n "join-the-community"}}</span>
         <div class="blockTitleLine"></div>
       </div>
-      <div class="listContainer">
+      <div class="communityListContainer">
         {{range .Site.Data.homePage.community}}
+          {{if i18n .href}} 
           <a class="communityItem" href="{{i18n .href}}">
             <img class="communityItemImg" src="{{.img | relURL}}" >
             <p class="communityItemTitle">{{i18n .title}}</p>
             <span class="communityLine"></span>
-          </a>
+          </a> 
+          {{else}} 
+          <span class="communityItem">
+            <img class="communityItemImg" src="{{.img | relURL}}" >
+            <p class="communityItemTitleWithOutLink">{{i18n .title}}</p>
+            <span class="communityLine"></span>
+          </span> 
+          {{end}}
+        {{end}}
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="contentBlock">
+      <div class="blockTitle">
+        <span>{{ i18n "powered-by-kyuubi"}}</span>
+        <div class="blockTitleLine"></div>
+      </div>
+      <div class="poweredListContainer">
+        {{range .Site.Data.homePage.powered}}
+          <img src="{{. | relURL}}" />
         {{end}}
       </div>
     </div>

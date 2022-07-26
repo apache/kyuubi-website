@@ -20,49 +20,49 @@
     {
       "title": "access-from-anywhere",
       "list": [
-        "homePageImg/ecosA1.png",
-        "homePageImg/ecosA2.png",
-        "homePageImg/ecosA3.png",
-        "homePageImg/ecosA4.png",
-        "homePageImg/ecosA5.png",
-        "homePageImg/ecosA6.png"
+        "homePageImg/ecoA1.png",
+        "homePageImg/ecoA2.png",
+        "homePageImg/ecoA3.png",
+        "homePageImg/ecoA4.png",
+        "homePageImg/ecoA5.png",
+        "homePageImg/ecoA6.png"
       ]
     },
     {
       "title": "deploy-at-any-scale",
       "list": [
-        "homePageImg/ecosB4.png",
-        "homePageImg/ecosB3.png",
-        "homePageImg/ecosB5.png",
-        "homePageImg/ecosB1.png",
-        "homePageImg/ecosB6.png",
-        "homePageImg/ecosB2.png"
+        "homePageImg/ecoB1.png",
+        "homePageImg/ecoB2.png",
+        "homePageImg/ecoB3.png",
+        "homePageImg/ecoB4.png",
+        "homePageImg/ecoB5.png",
+        "homePageImg/ecoB6.png"
       ]
     },
     {
       "title": "connect-to-any-data",
       "list": [
-        "homePageImg/ecosC1.png",
-        "homePageImg/ecosC2.png",
-        "homePageImg/ecosC3.png",
-        "homePageImg/ecosC4.png",
-        "homePageImg/ecosC5.png",
-        "homePageImg/ecosC6.png"
+        "homePageImg/ecoC1.png",
+        "homePageImg/ecoC2.png",
+        "homePageImg/ecoC3.png",
+        "homePageImg/ecoC4.png",
+        "homePageImg/ecoC5.png",
+        "homePageImg/ecoC6.png"
       ]
     }
   ],
-  "useCases":[
+  "useCases": [
     {
-      "title":"interactive-analytics",
-      "desc":"interactive-analytics-desc"
+      "title": "interactive-analytics",
+      "desc": "interactive-analytics-desc"
     },
     {
-      "title":"batch-processing",
-      "desc":"batch-processing-desc"
+      "title": "batch-processing",
+      "desc": "batch-processing-desc"
     },
     {
-      "title":"data-lake-lakehouses",
-      "desc":"data-lake-lakehouses-desc"
+      "title": "data-lake-lakehouses",
+      "desc": "data-lake-lakehouses-desc"
     }
   ],
   "community": [
@@ -80,6 +80,43 @@
       "img": "homePageImg/community3.png",
       "title": "how-to-contribute",
       "href": "how-to-contribute-href"
+    },
+    {
+      "img": "homePageImg/community4.png",
+      "title": "Slack",
+      "href": "Slack-href"
+    },
+    {
+      "img": "homePageImg/community5.png",
+      "title": "Twitter",
+      "href": "Twitter-href"
+    },
+    {
+      "img": "homePageImg/community6.png",
+      "title": "WeChat"
     }
+  ],
+  "powered": [
+    "homePageImg/powered1.png",
+    "homePageImg/powered2.png",
+    "homePageImg/powered3.png",
+    "homePageImg/powered4.png",
+    "homePageImg/powered5.png",
+    "homePageImg/powered6.png",
+    "homePageImg/powered7.png",
+    "homePageImg/powered8.png",
+    "homePageImg/powered9.png",
+    "homePageImg/powered10.png",
+    "homePageImg/powered11.png",
+    "homePageImg/powered12.png",
+    "homePageImg/powered13.png",
+    "homePageImg/powered14.png",
+    "homePageImg/powered15.png",
+    "homePageImg/powered16.png",
+    "homePageImg/powered17.png",
+    "homePageImg/powered18.png",
+    "homePageImg/powered19.png",
+    "homePageImg/powered20.png",
+    "homePageImg/powered21.png"
   ]
 }

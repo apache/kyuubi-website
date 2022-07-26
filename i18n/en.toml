@@ -103,6 +103,27 @@
 [how-to-contribute-href]
   other = "https://kyuubi.apache.org/issue_tracking.html"
 
+[Slack]
+  other = "Slack"
+
+[Slack-href]
+  other = "https://join.slack.com/t/apachekyuubi/shared_invite/zt-1bhswm1n6-n~0wMbkvhsp0WZX0FZXvPA"
+
+[Twitter]
+  other = "Twitter"
+
+[Twitter-href]
+  other = "https://twitter.com/KyuubiApache"
+
+[WeChat]
+  other = "WeChat"
+
+## powered
+
+[powered-by-kyuubi]
+  other = "Powered by  Kyuubi"
+
+
 # release page
 [download-kyuubi]
   other = "Download Apache Kyuubi (Incubating)"
