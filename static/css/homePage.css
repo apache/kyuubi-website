@@ -120,11 +120,20 @@ body {
 
 .blockTitleDesc {
   margin-top: 20px;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 20px;
   text-align: center;
   color: #666666;
   width: 860px;
+}
+
+.titleDescLink{
+  text-decoration: underline;
+  color: #666666;
+}
+.titleDescLink:hover{
+  color: #E7161A;
+  text-decoration: underline;
 }
 
 .listContainer {
@@ -365,7 +374,10 @@ body {
 
   .poweredListContainer img {
     width: 158px;
+    height: auto;
+
   }
+
 }
 
 @media screen and (max-width:768px) {

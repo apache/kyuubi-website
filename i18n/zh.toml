@@ -121,6 +121,15 @@
 [powered-by-kyuubi]
   other = "Powered by  Kyuubi"
 
+[powered-href]
+  other = "https://github.com/apache/incubator-kyuubi/discussions/925"
+
+[powered-desc]
+  other = "To add yourself to the list, please comment on the"
+  
+[powered-website]
+  other = "website"
+
 # release page
 [download-kyuubi]
   other = "下载 Apache Kyuubi (Incubating)"
