@@ -29,6 +29,10 @@ body {
   height: 500px;
 }
 
+.contentContainer>div:last-child .contentBlock {
+  padding-bottom: 56px;
+}
+
 .bannerBg {
   position: absolute;
   height: 500px;
@@ -116,11 +120,20 @@ body {
 
 .blockTitleDesc {
   margin-top: 20px;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 20px;
   text-align: center;
   color: #666666;
   width: 860px;
+}
+
+.titleDescLink{
+  text-decoration: underline;
+  color: #666666;
+}
+.titleDescLink:hover{
+  color: #E7161A;
+  text-decoration: underline;
 }
 
 .listContainer {
@@ -158,7 +171,7 @@ body {
   margin-bottom: 20px;
 }
 
-.useCaseItemDesc {
+.useCaseItem .useCaseItemDesc {
   font-size: 16px;
   line-height: 22px;
   color: #666666;
@@ -235,6 +248,16 @@ body {
   height: 68px;
 }
 
+.community>.contentBlock {
+  padding-bottom: 56px;
+}
+
+.communityListContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .communityItem {
   width: 446px;
   height: 252px;
@@ -246,6 +269,7 @@ body {
   box-sizing: border-box;
   border-radius: 4px;
   position: relative;
+  margin-bottom: 32px;
 }
 
 .communityItem:hover {
@@ -261,39 +285,23 @@ body {
   margin-bottom: 20px;
 }
 
-.communityItemTitle {
+.communityItemTitle,
+.communityItemTitleWithOutLink {
   font-size: 24px;
   line-height: 34px;
   color: #333333;
   transition: all 0.3s;
 }
 
-.communityItemTitle::after {
+.communityItemTitleWithOutLink::after,.communityItemTitle::after {
   display: block;
   height: 1px;
   width: 0;
   background-color: #E7161A;
-  /* position: absolute; */
   transition: all 0.3s;
-  /* left: 50%; */
-  /* margin-left: -62px; */
-  /* bottom: 48px; */
   margin-top: 8px;
-
   content: '';
 }
-
-/* .communityLine {
-  display: block;
-  height: 1px;
-  width: 0;
-  background-color: #E7161A;
-  position: absolute;
-  transition: all 0.3s;
-  left: 50%;
-  margin-left: -62px;
-  bottom: 48px;
-} */
 
 .communityItem:hover .communityItemTitle::after {
   width: 100%;
@@ -302,6 +310,32 @@ body {
 .communityItem:hover .communityItemTitle {
   color: #E7161A;
   text-decoration: none;
+}
+
+.communityItem:hover .communityItemTitleWithOutLink::after {
+  width: 100%;
+}
+
+.communityItem:hover .communityItemTitleWithOutLink {
+  color: #E7161A;
+  text-decoration: none;
+}
+
+.poweredListContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.poweredListContainer img {
+  display: block;
+  width: 187px;
+  height: 68px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.poweredListContainer img:nth-child(7n) {
+  margin-right: 0;
 }
 
 @media screen and (max-width:1450px) {
@@ -337,6 +371,13 @@ body {
   .communityItem {
     width: 378px;
   }
+
+  .poweredListContainer img {
+    width: 158px;
+    height: auto;
+
+  }
+
 }
 
 @media screen and (max-width:768px) {
@@ -357,6 +398,10 @@ body {
     height: auto;
     background-image: url(/homePageImg/bannerBg_m.png);
     background-size: cover;
+  }
+
+  .contentContainer>div:last-child .contentBlock {
+    padding-bottom: 12px;
   }
 
   .bannerBg {
@@ -516,7 +561,7 @@ body {
   .ecoItemBody>img {
     width: calc(50vw - 34px);
     height: auto;
-    height: calc(calc(50vw - 34px) * 0.316) ;
+    height: calc(calc(50vw - 34px) * 0.316);
     margin-bottom: 8px;
     display: block;
   }
@@ -559,7 +604,7 @@ body {
     margin-bottom: 12px;
   }
 
-  .useCaseItemDesc {
+  .useCaseItem .useCaseItemDesc {
     font-size: 14px;
     line-height: 19px;
     color: #666666;
@@ -567,7 +612,7 @@ body {
   }
 
   .communityItem {
-    width: 100%;
+    width: calc(50% - 4px);
     height: 142px;
     display: flex;
     flex-direction: column;
@@ -577,7 +622,7 @@ body {
     box-sizing: border-box;
     border-radius: 4px;
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     box-shadow: 0px 6px 20px 1px rgba(221, 221, 221, 0.7);
   }
 
@@ -592,7 +637,8 @@ body {
     margin-bottom: 8px;
   }
 
-  .communityItemTitle {
+  .communityItemTitle,
+  .communityItemTitleWithOutLink {
     font-size: 16px;
     line-height: 22px;
     color: #333333;
@@ -614,6 +660,21 @@ body {
 
   .communityLine {
     display: none;
+  }
+
+  .poweredListContainer img {
+    width: calc((100% - 16px) / 3);
+    height: 40px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .poweredListContainer img:nth-child(7n) {
+    margin-right: 8px;
+  }
+
+  .poweredListContainer img:nth-child(3n) {
+    margin-right: 0px;
   }
 
 }
