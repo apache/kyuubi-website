@@ -63,6 +63,9 @@ menu:
       <td>Nicholas Jiang</td>
     </tr>
     <tr>
+      <td>Qingbo Jiao</td>
+    </tr>
+    <tr>
       <td>Shaoyun Chen</td>
     </tr>
     <tr>
