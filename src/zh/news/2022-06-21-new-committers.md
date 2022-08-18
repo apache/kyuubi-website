@@ -2,7 +2,7 @@
 title: '新的 Committer: Shaoyun Chen'
 date: 2022-06-21
 linked: true
-description: 我们很高兴地宣布 Shaoyun Chen 成为新的 Kyuubi committer.
+description: 我们很高兴地宣布 Shaoyun Chen 成为新的 Kyuubi Committer.
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

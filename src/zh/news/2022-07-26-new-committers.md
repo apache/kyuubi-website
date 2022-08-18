@@ -2,7 +2,7 @@
 title: '新的 Committer: Qingbo Jiao'
 date: 2022-07-26
 linked: true
-description: 我们很高兴的宣布 Qingbo Jiao 成为新的 Kyuubi committer.
+description: 我们很高兴的宣布 Qingbo Jiao 成为新的 Kyuubi Committer.
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
