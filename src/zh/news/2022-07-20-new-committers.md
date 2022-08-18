@@ -1,5 +1,5 @@
 ---
-title: 'New committer: Min Zhao'
+title: '新的 Committer: Min Zhao'
 date: 2022-07-20
 linked: true
 description: 我们很高兴的宣布 Min Zhao 成为新的 Kyuubi committer.
