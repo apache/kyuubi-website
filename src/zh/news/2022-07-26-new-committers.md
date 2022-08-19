@@ -1,8 +1,8 @@
 ---
-title: 'New committer: Qingbo Jiao'
+title: '新的 Committer: Qingbo Jiao'
 date: 2022-07-26
 linked: true
-description: 我们很高兴的宣布 Qingbo Jiao 成为新的 Kyuubi committer.
+description: 我们很高兴的宣布 Qingbo Jiao 成为新的 Kyuubi Committer.
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ Apache Kyuubi 的 Podling 项目管理委员会已经邀请[Qingbo Jiao](https:/
 
 他目前就职于亚信科技.
 
-Min Zhao已经向Kyuubi项目的多个模块儿持续贡献了9个月以上
+Qingbo Jiao已经向Kyuubi项目的多个模块儿持续贡献了9个月以上
 
 详细来讲，他的贡献包括：
 
