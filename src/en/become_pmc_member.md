@@ -1,8 +1,8 @@
 ---
-title: Current committers
+title: Current PMC members
 menu:
   main:
-      name: "Become A Committer"
+      name: "Become A PMC member"
       parent: "community"
       weight: 2
 ---
@@ -36,16 +36,10 @@ menu:
       <td>Cheng Pan</td>
     </tr>
     <tr>
-      <td>Dongdong Hong</td>
-    </tr>
-    <tr>
       <td>Duo Zhang</td>
     </tr>
     <tr>
       <td>Fei Wang</td>
-    </tr>
-    <tr>
-      <td>Fu Chen</td>
     </tr>
     <tr>
       <td>Hongxiang Jiang</td>
@@ -57,36 +51,18 @@ menu:
       <td>Kent Yao</td>
     </tr>
     <tr>
-      <td>Min Zhao</td>
-    </tr>
-    <tr>
-      <td>Nicholas Jiang</td>
-    </tr>
-    <tr>
-      <td>Qingbo Jiao</td>
-    </tr>
-    <tr>
-      <td>Shaoyun Chen</td>
-    </tr>
-    <tr>
-      <td>Vino Yang</td>
-    </tr>
-    <tr>
       <td>Willem Ning Jiang</td>
     </tr>
     <tr>
       <td>Xiduo You</td>
     </tr>
-    <tr>
-      <td>Zhen Wang</td>
-    </tr>
   </tbody>
 </table>
 
-## Become A Committer of Apache Kyuubi
+## Become A PMC member of Apache Kyuubi
 
 Anyone being supportive of the community and working in any of the
-CoPDoC areas can become an Apache Kyuubi committer. The CoPDoC is an
+CoPDoC areas can become an Apache Kyuubi PMC member. The CoPDoC is an
 acronym from ASF to describe how we recognize your contributions not
 only by code.
 
@@ -100,16 +76,16 @@ only by code.
 
 Apache Kyuubi community strives to be meritocratic. Thus, once someone
 has contributed sufficiently to any area of CoPDoC they can be a
-candidate for committer-ship and at last voted in as a Kyuubi
-committer. Being an Apache Kyuubi committer does not necessarily mean
+candidate for PMC membership and at last voted in as a Kyuubi
+PMC member. Being an Apache Kyuubi PMC member does not necessarily mean
 you must commit code with your commit privilege to the codebase; it
 means you are committed to the Kyuubi project and are productively
 contributing to our community's success.
 
-## Committer requirements:
+## PMC member requirements:
 
 There are no strict rules for becoming a committer or PPMC member.
-Candidates for new committers are typically people that are active
+Candidates for new PMC member are typically people that are active
 contributors and community members. Anyway, if the rules can be
 clarified a little bit, it can somehow clear the doubts in the minds
 of contributors and make the community more transparent, reasonable,
@@ -117,15 +93,15 @@ and fair.
 
 ### Continuous contributions
 
-Committer candidates should have a decent amount of continuous
+PMC member candidates should have a decent amount of continuous
 engagements and contributions (fixing bugs, adding new features,
 writing documentation, maintaining issues boards, code review, or answering
 community questions) to Kyuubi either by contributing to the codebase
 of the main website or Kyuubi's GitHub repositories.
 
 - +3 months with light activity and engagement.
-- +2 months of medium activity and engagement.
-- +1 month with solid activity and engagement.
+- +4 months of medium activity and engagement.
+- +5 month with solid activity and engagement.
 
 ### Quality of contributions
 - A solid general understanding of the project
