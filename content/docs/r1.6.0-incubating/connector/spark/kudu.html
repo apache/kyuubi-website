@@ -1,0 +1,1610 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Kudu &#8212; Apache Kyuubi</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../../_static/kyuubi_logo_red.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Flink Table Store" href="flink_table_store.html" />
+    <link rel="prev" title="Iceberg" href="iceberg.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.0-incubating</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../quick_start/index.html">
+   Quick Start
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../quick_start/quick_start.html">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../quick_start/quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../quick_start/quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../deployment/index.html">
+   Deploying Kyuubi
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/settings.html">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../deployment/engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../deployment/spark/index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../deployment/spark/dynamic_allocation.html">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../deployment/spark/aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../deployment/spark/incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/python/index.html">
+     Python DB-APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../extensions/index.html">
+   Extensions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="../../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="reference internal" href="index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Connectors
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../overview/index.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../overview/architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../overview/kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../overview/kyuubi_vs_thriftserver.html">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../community/index.html">
+   Community
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../community/CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../community/collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../community/release.html">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/connector/spark/kudu.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/connector/spark/kudu.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-apache-kudu">
+   What is Apache Kudu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-kyuubi-on-kudu">
+   Why Kyuubi on Kudu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kudu-integration-with-apache-spark">
+   Kudu Integration with Apache Spark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kudu-integration-with-kyuubi">
+   Kudu Integration with Kyuubi
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-kudu-spark-dependency">
+     Install Kudu Spark Dependency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-kyuubi">
+     Start Kyuubi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-beeline-or-other-client-you-prefer">
+     Start Beeline Or Other Client You Prefer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#register-kudu-table-as-spark-temporary-view">
+     Register Kudu table as Spark Temporary view
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-kudu-table">
+     Query Kudu Table
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join-kudu-table-with-hive-table">
+     Join Kudu table with Hive table
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-to-kudu-table">
+     Insert to Kudu table
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Kudu</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-apache-kudu">
+   What is Apache Kudu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-kyuubi-on-kudu">
+   Why Kyuubi on Kudu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kudu-integration-with-apache-spark">
+   Kudu Integration with Apache Spark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kudu-integration-with-kyuubi">
+   Kudu Integration with Kyuubi
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-kudu-spark-dependency">
+     Install Kudu Spark Dependency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-kyuubi">
+     Start Kyuubi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#start-beeline-or-other-client-you-prefer">
+     Start Beeline Or Other Client You Prefer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#register-kudu-table-as-spark-temporary-view">
+     Register Kudu table as Spark Temporary view
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-kudu-table">
+     Query Kudu Table
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join-kudu-table-with-hive-table">
+     Join Kudu table with Hive table
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-to-kudu-table">
+     Insert to Kudu table
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><section id="kudu">
+<h1>Kudu<a class="headerlink" href="#kudu" title="Permalink to this headline">#</a></h1>
+<section id="what-is-apache-kudu">
+<h2>What is Apache Kudu<a class="headerlink" href="#what-is-apache-kudu" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>A new addition to the open source Apache Hadoop ecosystem, Apache Kudu completes Hadoop’s storage layer to enable fast analytics on fast data.</p>
+</div></blockquote>
+<p>When you are reading this documentation, we suppose that you are not necessary to be familiar with <a class="reference external" href="https://kudu.apache.org/">Apache Kudu</a>. But at least, you have one running Kudu cluster which is able to be connected for you. And it is even better for you to understand what Apache Kudu is capable with.</p>
+<p>Anything missing on this page about Apache Kudu background knowledge, you can refer to its official website.</p>
+</section>
+<section id="why-kyuubi-on-kudu">
+<h2>Why Kyuubi on Kudu<a class="headerlink" href="#why-kyuubi-on-kudu" title="Permalink to this headline">#</a></h2>
+<p>Basically, Kyuubi can take place of HiveServer2 as a multi tenant ad-hoc SQL on Hadoop solution, with the advantages of speed and power coming from Spark SQL. You can run SQL queries towards both data source and Hive tables whose data is secured only with computing resources you are authorized.</p>
+<blockquote>
+<div><p>Spark SQL supports operating on a variety of data sources through the DataFrame interface. A DataFrame can be operated on using relational transformations and can also be used to create a temporary view. Registering a DataFrame as a temporary view allows you to run SQL queries over its data. This section describes the general methods for loading and saving data using the Spark Data Sources and then goes into specific options that are available for the built-in data sources.</p>
+</div></blockquote>
+<p>In Kyuubi, we can register Kudu tables and other data source tables as Spark temporary views to enable federated union queries across Hive, Kudu, and other data sources.</p>
+</section>
+<section id="kudu-integration-with-apache-spark">
+<h2>Kudu Integration with Apache Spark<a class="headerlink" href="#kudu-integration-with-apache-spark" title="Permalink to this headline">#</a></h2>
+<p>Before integrating Kyuubi with Kudu, we strongly suggest that you integrate and test Spark with Kudu first. You may find the guide from Kudu’s online documentation – <a class="reference external" href="https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark">Kudu Integration with Spark</a></p>
+</section>
+<section id="kudu-integration-with-kyuubi">
+<h2>Kudu Integration with Kyuubi<a class="headerlink" href="#kudu-integration-with-kyuubi" title="Permalink to this headline">#</a></h2>
+<section id="install-kudu-spark-dependency">
+<h3>Install Kudu Spark Dependency<a class="headerlink" href="#install-kudu-spark-dependency" title="Permalink to this headline">#</a></h3>
+<p>Confirm your Kudu cluster version and download the corresponding kudu spark dependency library, such as <a class="reference external" href="https://repo1.maven.org/maven2/org/apache/kudu/kudu-spark3_2.12/1.14.0/kudu-spark3_2.12-1.14.0.jar">org.apache.kudu:kudu-spark3_2.12-1.14.0</a> to <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME</span></code>/jars.</p>
+</section>
+<section id="start-kyuubi">
+<h3>Start Kyuubi<a class="headerlink" href="#start-kyuubi" title="Permalink to this headline">#</a></h3>
+<p>Now, you can start Kyuubi server with this kudu embedded Spark distribution.</p>
+</section>
+<section id="start-beeline-or-other-client-you-prefer">
+<h3>Start Beeline Or Other Client You Prefer<a class="headerlink" href="#start-beeline-or-other-client-you-prefer" title="Permalink to this headline">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bin/beeline -u <span class="s1">&#39;jdbc:hive2://&lt;host&gt;:&lt;port&gt;/;principal=&lt;if kerberized&gt;;#spark.yarn.queue=kyuubi_test&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="register-kudu-table-as-spark-temporary-view">
+<h3>Register Kudu table as Spark Temporary view<a class="headerlink" href="#register-kudu-table-as-spark-temporary-view" title="Permalink to this headline">#</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TEMPORARY</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">kudutest</span><span class="w"></span>
+<span class="k">USING</span><span class="w"> </span><span class="n">kudu</span><span class="w"></span>
+<span class="k">options</span><span class="w"> </span><span class="p">(</span><span class="w"> </span>
+<span class="w">  </span><span class="n">kudu</span><span class="p">.</span><span class="n">master</span><span class="w"> </span><span class="ss">&quot;ip1:port1,ip2:port2,...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">kudu</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="ss">&quot;kudu::test.testtbl&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;show tables&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">1104328</span><span class="n">b</span><span class="o">-</span><span class="mi">515</span><span class="k">c</span><span class="o">-</span><span class="mi">4</span><span class="n">f8b</span><span class="o">-</span><span class="mi">8</span><span class="n">a68</span><span class="o">-</span><span class="mi">1</span><span class="n">c0b202bc9ed</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">03</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">1104328</span><span class="n">b</span><span class="o">-</span><span class="mi">515</span><span class="k">c</span><span class="o">-</span><span class="mi">4</span><span class="n">f8b</span><span class="o">-</span><span class="mi">8</span><span class="n">a68</span><span class="o">-</span><span class="mi">1</span><span class="n">c0b202bc9ed</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------+-----------------------------+--------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="k">database</span><span class="w">  </span><span class="o">|</span><span class="w">          </span><span class="n">tableName</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="n">isTemporary</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------+-----------------------------+--------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">kyuubi</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">hive_tbl</span><span class="w">                    </span><span class="o">|</span><span class="w"> </span><span class="k">false</span><span class="w">        </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">kudutest</span><span class="w">                    </span><span class="o">|</span><span class="w"> </span><span class="k">true</span><span class="w">         </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------+-----------------------------+--------------+--+</span>
+<span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">29</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="query-kudu-table">
+<h3>Query Kudu Table<a class="headerlink" href="#query-kudu-table" title="Permalink to this headline">#</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">kudutest</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;select * from kudutest&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">ac3e8553</span><span class="o">-</span><span class="mi">0</span><span class="n">d79</span><span class="o">-</span><span class="mi">4</span><span class="n">c57</span><span class="o">-</span><span class="n">add1</span><span class="o">-</span><span class="mi">7</span><span class="n">d3ffe34ba16</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">17</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">ac3e8553</span><span class="o">-</span><span class="mi">0</span><span class="n">d79</span><span class="o">-</span><span class="mi">4</span><span class="n">c57</span><span class="o">-</span><span class="n">add1</span><span class="o">-</span><span class="mi">7</span><span class="n">d3ffe34ba16</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">userid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sharesetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">notifysetting</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+--+</span>
+<span class="mi">5</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">083</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="join-kudu-table-with-hive-table">
+<h3>Join Kudu table with Hive table<a class="headerlink" href="#join-kudu-table-with-hive-table" title="Permalink to this headline">#</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">userid</span><span class="o">=</span><span class="n">t2</span><span class="p">.</span><span class="n">userid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;select t1.*, t2.* from hive_tbl t1 join kudutest t2 on t1.userid=t2.userid+1&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">6982</span><span class="n">fa5c</span><span class="o">-</span><span class="mi">29</span><span class="n">fa</span><span class="o">-</span><span class="mi">49</span><span class="n">be</span><span class="o">-</span><span class="n">a5bf</span><span class="o">-</span><span class="mi">54</span><span class="n">c935bbad18</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="o">&lt;</span><span class="n">omitted</span><span class="w"> </span><span class="n">lines</span><span class="p">....</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">6982</span><span class="n">fa5c</span><span class="o">-</span><span class="mi">29</span><span class="n">fa</span><span class="o">-</span><span class="mi">49</span><span class="n">be</span><span class="o">-</span><span class="n">a5bf</span><span class="o">-</span><span class="mi">54</span><span class="n">c935bbad18</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">userid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sharesetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">notifysetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">userid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sharesetting</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">notifysetting</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+---------+---------------+----------------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">4</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------------+----------------+---------+---------------+----------------+--+</span>
+<span class="mi">3</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">63</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="insert-to-kudu-table">
+<h3>Insert to Kudu table<a class="headerlink" href="#insert-to-kudu-table" title="Permalink to this headline">#</a></h3>
+<p>You should notice that only <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> is supported by Kudu, <code class="docutils literal notranslate"><span class="pre">OVERWRITE</span></code> data is not supported</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;insert overwrite table kudutest select *  from hive_tbl&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">1</span><span class="n">afdb791</span><span class="o">-</span><span class="mi">1</span><span class="n">aa7</span><span class="o">-</span><span class="mi">4</span><span class="n">ceb</span><span class="o">-</span><span class="mi">8</span><span class="n">ba8</span><span class="o">-</span><span class="n">ff53c17615d1</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">29</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"></span>
+<span class="n">Error</span><span class="w"> </span><span class="n">executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bdms_hzyaoqin</span><span class="p">,</span><span class="w"></span>
+<span class="k">insert</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="w"></span>
+<span class="k">Current</span><span class="w"> </span><span class="k">operation</span><span class="w"> </span><span class="k">state</span><span class="w"> </span><span class="n">RUNNING</span><span class="p">,</span><span class="w"></span>
+<span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">UnsupportedOperationException</span><span class="p">:</span><span class="w"> </span><span class="n">overwrite</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">yet</span><span class="w"> </span><span class="n">supported</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kudu</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="n">kudu</span><span class="p">.</span><span class="n">KuduRelation</span><span class="p">.</span><span class="k">insert</span><span class="p">(</span><span class="n">DefaultSource</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">424</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">datasources</span><span class="p">.</span><span class="n">InsertIntoDataSourceCommand</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">InsertIntoDataSourceCommand</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">command</span><span class="p">.</span><span class="n">ExecutedCommandExec</span><span class="p">.</span><span class="n">sideEffectResult$lzycompute</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">command</span><span class="p">.</span><span class="n">ExecutedCommandExec</span><span class="p">.</span><span class="n">sideEffectResult</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">68</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">command</span><span class="p">.</span><span class="n">ExecutedCommandExec</span><span class="p">.</span><span class="n">executeCollect</span><span class="p">(</span><span class="n">commands</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$$anonfun$6</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">190</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$$anonfun$6</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">190</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$$anonfun$52</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3259</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">execution</span><span class="p">.</span><span class="n">SQLExecution$</span><span class="p">.</span><span class="n">withNewExecutionId</span><span class="p">(</span><span class="n">SQLExecution</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">77</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset</span><span class="p">.</span><span class="n">withAction</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">3258</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset</span><span class="p">.</span><span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">190</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">Dataset$</span><span class="p">.</span><span class="n">ofRows</span><span class="p">(</span><span class="n">Dataset</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">75</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">spark</span><span class="p">.</span><span class="k">sql</span><span class="p">.</span><span class="n">SparkSQLUtils$</span><span class="p">.</span><span class="n">toDataFrame</span><span class="p">(</span><span class="n">SparkSQLUtils</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementInClientMode</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">ExecuteStatementInClientMode</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">152</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementOperation$$anon$1$$anon$2</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ExecuteStatementOperation</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">74</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementOperation$$anon$1$$anon$2</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ExecuteStatementOperation</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="k">security</span><span class="p">.</span><span class="n">AccessController</span><span class="p">.</span><span class="n">doPrivileged</span><span class="p">(</span><span class="n">Native</span><span class="w"> </span><span class="k">Method</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">javax</span><span class="p">.</span><span class="k">security</span><span class="p">.</span><span class="n">auth</span><span class="p">.</span><span class="n">Subject</span><span class="p">.</span><span class="n">doAs</span><span class="p">(</span><span class="n">Subject</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">422</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">hadoop</span><span class="p">.</span><span class="k">security</span><span class="p">.</span><span class="n">UserGroupInformation</span><span class="p">.</span><span class="n">doAs</span><span class="p">(</span><span class="n">UserGroupInformation</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">1698</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">kyuubi</span><span class="p">.</span><span class="k">operation</span><span class="p">.</span><span class="k">statement</span><span class="p">.</span><span class="n">ExecuteStatementOperation$$anon$1</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ExecuteStatementOperation</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">Executors$RunnableAdapter</span><span class="p">.</span><span class="k">call</span><span class="p">(</span><span class="n">Executors</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">511</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">FutureTask</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">FutureTask</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">266</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">runWorker</span><span class="p">(</span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">1142</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">concurrent</span><span class="p">.</span><span class="n">ThreadPoolExecutor$Worker</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">617</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="k">at</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">lang</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">Thread</span><span class="p">.</span><span class="n">java</span><span class="p">:</span><span class="mi">745</span><span class="p">)</span><span class="w"></span>
+
+
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="mi">1</span><span class="n">afdb791</span><span class="o">-</span><span class="mi">1</span><span class="n">aa7</span><span class="o">-</span><span class="mi">4</span><span class="n">ceb</span><span class="o">-</span><span class="mi">8</span><span class="n">ba8</span><span class="o">-</span><span class="n">ff53c17615d1</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">spark5</span><span class="p">.</span><span class="n">jd</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="n">org</span><span class="p">:</span><span class="mi">10009</span><span class="o">/&gt;</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">kudutest</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hive_tbl</span><span class="p">;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">26</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="s1">&#39;insert into table kudutest select *  from hive_tbl&#39;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">f7460400</span><span class="o">-</span><span class="mi">0564</span><span class="o">-</span><span class="mi">4</span><span class="n">f98</span><span class="o">-</span><span class="mi">93</span><span class="n">b6</span><span class="o">-</span><span class="n">ad76e579e7af</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">26</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KyuubiSparkUtil$</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">application_1560304876299_3805060</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">activated</span><span class="w"></span>
+<span class="o">&lt;</span><span class="n">omitted</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="p">...</span><span class="o">&gt;</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">ResultStage</span><span class="w"> </span><span class="mi">36</span><span class="w"> </span><span class="p">(</span><span class="n">foreachPartition</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">KuduContext</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">332</span><span class="p">)</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">322</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="mi">36</span><span class="w"> </span><span class="n">finished</span><span class="p">:</span><span class="w"> </span><span class="n">foreachPartition</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">KuduContext</span><span class="p">.</span><span class="n">scala</span><span class="p">:</span><span class="mi">332</span><span class="p">,</span><span class="w"> </span><span class="n">took</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">324586</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">KuduContext</span><span class="p">:</span><span class="w"> </span><span class="n">completed</span><span class="w"> </span><span class="n">upsert</span><span class="w"> </span><span class="n">ops</span><span class="p">:</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="n">histogram</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">.</span><span class="mi">333333333333336</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="mi">66</span><span class="p">.</span><span class="mi">66666666666667</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="o">%</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="n">ms</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">ExecuteStatementInClientMode</span><span class="p">:</span><span class="w"> </span><span class="n">Executing</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">incremental</span><span class="w"> </span><span class="k">mode</span><span class="p">,</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">optimization</span><span class="w"></span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">09</span><span class="w"> </span><span class="mi">15</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">27</span><span class="w"> </span><span class="n">INFO</span><span class="w"> </span><span class="n">DAGScheduler</span><span class="p">:</span><span class="w"> </span><span class="n">Asked</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">cancel</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="n">f7460400</span><span class="o">-</span><span class="mi">0564</span><span class="o">-</span><span class="mi">4</span><span class="n">f98</span><span class="o">-</span><span class="mi">93</span><span class="n">b6</span><span class="o">-</span><span class="n">ad76e579e7af</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+--+</span>
+<span class="o">|</span><span class="w"> </span><span class="k">Result</span><span class="w">  </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+--+</span>
+<span class="o">+</span><span class="c1">---------+--+</span>
+<span class="k">No</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">selected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">611</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://kudu.apache.org/">https://kudu.apache.org/</a>
+<a class="reference external" href="https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark">https://kudu.apache.org/docs/developing.html#_kudu_integration_with_spark</a>
+<a class="reference external" href="https://github.com/apache/incubator-kyuubi">https://github.com/apache/incubator-kyuubi</a>
+<a class="reference external" href="https://spark.apache.org/docs/latest/sql-data-sources.html">https://spark.apache.org/docs/latest/sql-data-sources.html</a></p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="iceberg.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Iceberg</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="flink_table_store.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Flink Table Store</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
