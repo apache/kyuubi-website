@@ -1,216 +1,1440 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>3. Kyuubi Release Guide &mdash; Kyuubi 1.5.1-incubating documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <title>Kyuubi Release Guide &#8212; Apache Kyuubi</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../_static/kyuubi_logo_red.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Appendixes" href="../appendix/index.html" />
-    <link rel="prev" title="2. Collaborators" href="collaborators.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="prev" title="Collaborators" href="collaborators.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> Kyuubi
-          
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.0-incubating</div>
+<div class="header header-item noprint"></div>
 
-          
-            
-            <img src="../_static/kyuubi_logo_gray.png" class="logo" alt="Logo"/>
-          
-          </a>
+    
+    <div class="container-fluid" id="banner"></div>
 
-          
-            
-            
-          
+    
 
+    <div class="container-xl">
+      <div class="row">
           
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Usage Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deploying Kyuubi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../monitor/index.html">Monitoring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sql/index.html">SQL References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Kyuubi Insider</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../develop_tools/index.html">Develop Tools</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Community</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html">1. Contributing to Apache Kyuubi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaborators.html">2. Collaborators</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Kyuubi Release Guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">3.1. Introduction</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#overview">3.1.1. Overview</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#decide-to-release">3.2. Decide to release</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#checklist-to-proceed-to-the-next-step">3.2.1. Checklist to proceed to the next step</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#prepare-for-the-release">3.3. Prepare for the release</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#one-time-setup-instructions">3.3.1. One-time setup instructions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#cut-branch-if-for-major-release">3.4. Cut branch if for major release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build-a-release-candidate">3.5. Build a release candidate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vote-on-the-release-candidate">3.6. Vote on the release candidate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finalize-the-release">3.7. Finalize the Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#promote-the-release">3.8. Promote the release</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#update-website">3.8.1. Update Website</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#create-an-announcement">3.8.2. Create an Announcement</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#remove-the-dist-repo-directories-for-deprecated-release-candidates">3.9. Remove the dist repo directories for deprecated release candidates</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">Appendixes</a></li>
-</ul>
-
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Kyuubi</a>
+      
+      
+      <img src="../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">Community</a> &raquo;</li>
-        
-      <li><span class="section-number">3. </span>Kyuubi Release Guide</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/community/release.md.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../quick_start/index.html">
+   Quick Start
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start.html">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../deployment/index.html">
+   Deploying Kyuubi
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/settings.html">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../deployment/spark/index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/dynamic_allocation.html">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/python/index.html">
+     Python DB-APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/spark/index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../connector/index.html">
+   Connectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/spark/index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/kudu.html">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../overview/index.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_thriftserver.html">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Community
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/community/release.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/community/release.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     Overview
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decide-to-release">
+   Decide to release
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checklist-to-proceed-to-the-next-step">
+     Checklist to proceed to the next step
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-the-release">
+   Prepare for the release
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-time-setup-instructions">
+     One-time setup instructions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asf-authentication">
+       ASF authentication
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#java-home">
+       Java Home
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#subversion">
+       Subversion
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gpg-key">
+       GPG Key
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cut-branch-if-for-major-release">
+   Cut branch if for major release
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-release-candidate">
+   Build a release candidate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vote-on-the-release-candidate">
+   Vote on the release candidate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finalize-the-release">
+   Finalize the Release
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#promote-the-release">
+   Promote the release
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#update-website">
+     Update Website
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-an-announcement">
+     Create an Announcement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-the-dist-repo-directories-for-deprecated-release-candidates">
+   Remove the dist repo directories for deprecated release candidates
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Kyuubi Release Guide</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     Overview
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decide-to-release">
+   Decide to release
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checklist-to-proceed-to-the-next-step">
+     Checklist to proceed to the next step
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-the-release">
+   Prepare for the release
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-time-setup-instructions">
+     One-time setup instructions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asf-authentication">
+       ASF authentication
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#java-home">
+       Java Home
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#subversion">
+       Subversion
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gpg-key">
+       GPG Key
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cut-branch-if-for-major-release">
+   Cut branch if for major release
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-release-candidate">
+   Build a release candidate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vote-on-the-release-candidate">
+   Vote on the release candidate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finalize-the-release">
+   Finalize the Release
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#promote-the-release">
+   Promote the release
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#update-website">
+     Update Website
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-an-announcement">
+     Create an Announcement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-the-dist-repo-directories-for-deprecated-release-candidates">
+   Remove the dist repo directories for deprecated release candidates
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <!--
  - Licensed to the Apache Software Foundation (ASF) under one or more
  - contributor license agreements.  See the NOTICE file distributed with
@@ -226,10 +1450,10 @@
  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  - See the License for the specific language governing permissions and
  - limitations under the License.
- --><div class="section" id="kyuubi-release-guide">
-<h1><span class="section-number">3. </span>Kyuubi Release Guide<a class="headerlink" href="#kyuubi-release-guide" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2><span class="section-number">3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+ --><section id="kyuubi-release-guide">
+<h1>Kyuubi Release Guide<a class="headerlink" href="#kyuubi-release-guide" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>The Apache Kyuubi (Incubating) project periodically declares and publishes releases. A release is one or more packages
 of the project artifact(s) that are approved for general public distribution and use. They may come with various
 degrees of caveat regarding their perceived quality and potential for change, such as “alpha”, “beta”, “incubating”,
@@ -243,8 +1467,8 @@ and adopted on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;
 <p>Please remember that publishing software has legal consequences. This guide complements the foundation-wide
 <a class="reference external" href="https://www.apache.org/dev/release.html">Product Release Policy</a> and
 <a class="reference external" href="https://www.apache.org/dev/release-distribution">Release Distribution Policy</a>.</p>
-<div class="section" id="overview">
-<h3><span class="section-number">3.1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
 <p>The release process consists of several steps:</p>
 <ol class="simple">
 <li><p>Decide to release</p></li>
@@ -256,10 +1480,10 @@ and adopted on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;
 <li><p>Finalize the release</p></li>
 <li><p>Promote the release</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="decide-to-release">
-<h2><span class="section-number">3.2. </span>Decide to release<a class="headerlink" href="#decide-to-release" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="decide-to-release">
+<h2>Decide to release<a class="headerlink" href="#decide-to-release" title="Permalink to this headline">#</a></h2>
 <p>Deciding to release and selecting a Release Manager is the first step of the release process. This is a consensus-based
 decision of the entire community.</p>
 <p>Anybody can propose a release on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;kyuubi&#46;apache&#46;org">dev mailing list</a>, giving a solid argument and
@@ -269,41 +1493,41 @@ and no timing requirements. Any objections should be resolved by consensus befor
 allows enough people to build expertise in this area and improve processes over time, without Release Managers needing
 to re-learn the processes for each release. That said, if you are a committer interested in serving the community in
 this way, please reach out to the community on the <a class="reference external" href="mailto:dev&#37;&#52;&#48;kyuubi&#46;apache&#46;org">dev mailing list</a>.</p>
-<div class="section" id="checklist-to-proceed-to-the-next-step">
-<h3><span class="section-number">3.2.1. </span>Checklist to proceed to the next step<a class="headerlink" href="#checklist-to-proceed-to-the-next-step" title="Permalink to this headline">¶</a></h3>
+<section id="checklist-to-proceed-to-the-next-step">
+<h3>Checklist to proceed to the next step<a class="headerlink" href="#checklist-to-proceed-to-the-next-step" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>Community agrees to release</p></li>
 <li><p>Community selects a Release Manager</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="prepare-for-the-release">
-<h2><span class="section-number">3.3. </span>Prepare for the release<a class="headerlink" href="#prepare-for-the-release" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="prepare-for-the-release">
+<h2>Prepare for the release<a class="headerlink" href="#prepare-for-the-release" title="Permalink to this headline">#</a></h2>
 <p>Before your first release, you should perform one-time configuration steps. This will set up your security keys for
 signing the release and access to various release repositories.</p>
-<div class="section" id="one-time-setup-instructions">
-<h3><span class="section-number">3.3.1. </span>One-time setup instructions<a class="headerlink" href="#one-time-setup-instructions" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="asf-authentication">
-<h4><span class="section-number">3.3.1.1. </span>ASF authentication<a class="headerlink" href="#asf-authentication" title="Permalink to this headline">¶</a></h4>
+<section id="one-time-setup-instructions">
+<h3>One-time setup instructions<a class="headerlink" href="#one-time-setup-instructions" title="Permalink to this headline">#</a></h3>
+<section id="asf-authentication">
+<h4>ASF authentication<a class="headerlink" href="#asf-authentication" title="Permalink to this headline">#</a></h4>
 <p>The environments <code class="docutils literal notranslate"><span class="pre">ASF_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ASF_PASSWORD</span></code> have been used in several places and several times in the release
 process, you can either one-time set up them in <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code>, or export them in terminal every time.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASF_USERNAME</span><span class="o">=</span>&lt;your apache username&gt;
 <span class="nb">export</span> <span class="nv">ASF_PASSWORD</span><span class="o">=</span>&lt;your apache password&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="java-home">
-<h4><span class="section-number">3.3.1.2. </span>Java Home<a class="headerlink" href="#java-home" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="java-home">
+<h4>Java Home<a class="headerlink" href="#java-home" title="Permalink to this headline">#</a></h4>
 <p>An available environment variable <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, you can do <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$JAVA_HOME</span></code> to check it.
 Note that, the Java version should be 8.</p>
-</div>
-<div class="section" id="subversion">
-<h4><span class="section-number">3.3.1.3. </span>Subversion<a class="headerlink" href="#subversion" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="subversion">
+<h4>Subversion<a class="headerlink" href="#subversion" title="Permalink to this headline">#</a></h4>
 <p>Besides on <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">svn</span></code> is also required for Apache release, please refer to
 https://www.apache.org/dev/version-control.html#https-svn for details.</p>
-</div>
-<div class="section" id="gpg-key">
-<h4><span class="section-number">3.3.1.4. </span>GPG Key<a class="headerlink" href="#gpg-key" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="gpg-key">
+<h4>GPG Key<a class="headerlink" href="#gpg-key" title="Permalink to this headline">#</a></h4>
 <p>You need to have a GPG key to sign the release artifacts. Please be aware of the ASF-wide
 <a class="reference external" href="https://www.apache.org/dev/release-signing.html">release signing guidelines</a>. If you don’t have a GPG key associated
 with your Apache account, please create one according to the guidelines.</p>
@@ -344,11 +1568,11 @@ svn commit --username <span class="s2">&quot;</span><span class="si">${</span><s
 gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys <span class="si">${</span><span class="nv">PUBLIC_KEY</span><span class="si">}</span> <span class="c1"># verify</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="cut-branch-if-for-major-release">
-<h2><span class="section-number">3.4. </span>Cut branch if for major release<a class="headerlink" href="#cut-branch-if-for-major-release" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="cut-branch-if-for-major-release">
+<h2>Cut branch if for major release<a class="headerlink" href="#cut-branch-if-for-major-release" title="Permalink to this headline">#</a></h2>
 <p>Kyuubi use version pattern <code class="docutils literal notranslate"><span class="pre">{MAJOR_VERSION}.{MINOR_VERSION}.{PATCH_VERSION}[-{OPTIONAL_SUFFIX}]</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">1.3.0-incubating</span></code>.
 <strong>Major Release</strong> means <code class="docutils literal notranslate"><span class="pre">MAJOR_VERSION</span></code> or <code class="docutils literal notranslate"><span class="pre">MINOR_VERSION</span></code> changed, and <strong>Patch Release</strong> means <code class="docutils literal notranslate"><span class="pre">PATCH_VERSION</span></code> changed.</p>
 <p>The main step towards preparing a major release is to create a release branch. This is done via standard Git branching
@@ -358,9 +1582,9 @@ mechanism and should be announced to the community once the branch is created.</
 </div></blockquote>
 <p>The release branch pattern is <code class="docutils literal notranslate"><span class="pre">branch-{MAJOR_VERSION}.{MINOR_VERSION}</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">branch-1.3</span></code>.</p>
 <p>After cutting release branch, don’t forget bump version in <code class="docutils literal notranslate"><span class="pre">master</span></code> branch.</p>
-</div>
-<div class="section" id="build-a-release-candidate">
-<h2><span class="section-number">3.5. </span>Build a release candidate<a class="headerlink" href="#build-a-release-candidate" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="build-a-release-candidate">
+<h2>Build a release candidate<a class="headerlink" href="#build-a-release-candidate" title="Permalink to this headline">#</a></h2>
 <blockquote>
 <div><p>Don’t forget to switch to the release branch!</p>
 </div></blockquote>
@@ -404,9 +1628,9 @@ staging Maven repo.</p></li>
 <blockquote>
 <div><p>Note: the pre-release note is used for voting purposes. It would be marked with a <strong>Pre-release</strong> tag. After all the voting works(dev and general) are finished, do not forget to inverse the “This is a pre-release” checkbox. The pre-release version comes from vx.y.z-incubating-rcN tags, and the final version should come from vx.y.z-incubating tags.</p>
 </div></blockquote>
-</div>
-<div class="section" id="vote-on-the-release-candidate">
-<h2><span class="section-number">3.6. </span>Vote on the release candidate<a class="headerlink" href="#vote-on-the-release-candidate" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="vote-on-the-release-candidate">
+<h2>Vote on the release candidate<a class="headerlink" href="#vote-on-the-release-candidate" title="Permalink to this headline">#</a></h2>
 <p>The release voting takes place on the Apache Kyuubi (Incubating) developers list (the (P)PMC is voting).</p>
 <ul class="simple">
 <li><p>If possible, attach a draft of the release notes with the email.</p></li>
@@ -423,9 +1647,9 @@ Also, you should send out a summary email like dev ML voting.</p>
 <blockquote>
 <div><p>Note, any reason causes voting cancel. You should re-vote on the dev ML firstly.</p>
 </div></blockquote>
-</div>
-<div class="section" id="finalize-the-release">
-<h2><span class="section-number">3.7. </span>Finalize the Release<a class="headerlink" href="#finalize-the-release" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="finalize-the-release">
+<h2>Finalize the Release<a class="headerlink" href="#finalize-the-release" title="Permalink to this headline">#</a></h2>
 <p><strong>Be Careful!</strong></p>
 <p><strong>THIS STEP IS IRREVERSIBLE so make sure you selected the correct staging repository.</strong>
 <strong>Once you move the artifacts into the release folder, they cannot be removed.</strong></p>
@@ -444,29 +1668,30 @@ Log in, open Staging Repositories, find the one voted on, select and click Relea
 show up under https://repository.apache.org/content/repositories/releases/org/apache/kyuubi/ and the same under
 https://repository.apache.org/content/groups/maven-staging-group/org/apache/kyuubi/ (look for the correct release version).
 After some time this will be sync’d to <a class="reference external" href="https://search.maven.org/">Maven Central</a> automatically.</p>
-</div>
-<div class="section" id="promote-the-release">
-<h2><span class="section-number">3.8. </span>Promote the release<a class="headerlink" href="#promote-the-release" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="update-website">
-<h3><span class="section-number">3.8.1. </span>Update Website<a class="headerlink" href="#update-website" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="promote-the-release">
+<h2>Promote the release<a class="headerlink" href="#promote-the-release" title="Permalink to this headline">#</a></h2>
+<section id="update-website">
+<h3>Update Website<a class="headerlink" href="#update-website" title="Permalink to this headline">#</a></h3>
 <p>Fork and clone <a class="reference external" href="https://github.com/apache/incubator-kyuubi-website">Apache Kyuubi website</a></p>
 <ol class="simple">
-<li><p>Add a new markdown file in <code class="docutils literal notranslate"><span class="pre">src/news/</span></code></p></li>
-<li><p>Add a new markdown file in <code class="docutils literal notranslate"><span class="pre">src/release/</span></code></p></li>
+<li><p>Add a new markdown file in <code class="docutils literal notranslate"><span class="pre">src/zh/news/</span></code>, <code class="docutils literal notranslate"><span class="pre">src/en/news/</span></code></p></li>
+<li><p>Add a new markdown file in <code class="docutils literal notranslate"><span class="pre">src/zh/release/</span></code>, <code class="docutils literal notranslate"><span class="pre">src/en/release/</span></code></p></li>
 <li><p>Follow <a class="reference internal" href="../develop_tools/build_document.html"><span class="doc">Build Document</span></a> to build documents, then copy <code class="docutils literal notranslate"><span class="pre">apache/incubator-kyuubi</span></code>’s
 folder <code class="docutils literal notranslate"><span class="pre">docs/_build/html</span></code> to <code class="docutils literal notranslate"><span class="pre">apache/incubator-kyuubi-website</span></code>’s folder <code class="docutils literal notranslate"><span class="pre">content/docs/r{RELEASE_VERSION}</span></code></p></li>
 </ol>
-</div>
-<div class="section" id="create-an-announcement">
-<h3><span class="section-number">3.8.2. </span>Create an Announcement<a class="headerlink" href="#create-an-announcement" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="create-an-announcement">
+<h3>Create an Announcement<a class="headerlink" href="#create-an-announcement" title="Permalink to this headline">#</a></h3>
 <p>Once everything is working, create an announcement on the website and then send an e-mail to the mailing list.
 You can generate the announcement via <code class="docutils literal notranslate"><span class="pre">buld/release/script/announce.sh</span></code> automatically.
 The mailing list includes: <code class="docutils literal notranslate"><span class="pre">general&#64;incubator.apache.org</span></code>, <code class="docutils literal notranslate"><span class="pre">announce&#64;apache.org</span></code>, <code class="docutils literal notranslate"><span class="pre">dev&#64;kyuubi.apache.org</span></code>, <code class="docutils literal notranslate"><span class="pre">user&#64;spark.apache.org</span></code>.</p>
+<p>Note that, you must use the apache.org email to send announce to <code class="docutils literal notranslate"><span class="pre">announce&#64;apache.org</span></code>.</p>
 <p>Enjoy an adult beverage of your choice, and congratulations on making a Kyuubi release.</p>
-</div>
-</div>
-<div class="section" id="remove-the-dist-repo-directories-for-deprecated-release-candidates">
-<h2><span class="section-number">3.9. </span>Remove the dist repo directories for deprecated release candidates<a class="headerlink" href="#remove-the-dist-repo-directories-for-deprecated-release-candidates" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="remove-the-dist-repo-directories-for-deprecated-release-candidates">
+<h2>Remove the dist repo directories for deprecated release candidates<a class="headerlink" href="#remove-the-dist-repo-directories-for-deprecated-release-candidates" title="Permalink to this headline">#</a></h2>
 <p>Remove the deprecated dist repo directories at last.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> work/svn-dev
 svn delete https://dist.apache.org/repos/dist/dev/incubator/kyuubi/<span class="o">{</span>RELEASE_TAG<span class="o">}</span> <span class="se">\</span>
@@ -475,24 +1700,41 @@ svn delete https://dist.apache.org/repos/dist/dev/incubator/kyuubi/<span class="
   --message <span class="s2">&quot;Remove deprecated Apache Kyuubi </span><span class="si">${</span><span class="nv">RELEASE_TAG</span><span class="si">}</span><span class="s2">&quot;</span> 
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../appendix/index.html" class="btn btn-neutral float-right" title="Appendixes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="collaborators.html" class="btn btn-neutral float-left" title="2. Collaborators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="collaborators.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Collaborators</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../appendix/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendixes</p>
     </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
 this work for additional information regarding copyright ownership.
@@ -507,38 +1749,20 @@ distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-</footer>
-        </div>
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
 
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>
