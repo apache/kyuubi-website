@@ -62,7 +62,7 @@ defaultContentLanguage = 'en'
   weight = 4
 
 [[menu.main]]
-  name = "Powered By Kyuubi"
+  name = "Powered by Kyuubi"
   url = "powered_by.html"
   weight = 5
 
