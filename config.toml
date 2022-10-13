@@ -63,6 +63,7 @@ defaultContentLanguage = 'en'
 
 [[menu.main]]
   name = "Powered by Kyuubi"
+  identifier = "powered"
   url = "powered_by.html"
   weight = 5
 
@@ -155,15 +156,21 @@ defaultContentLanguage = 'en'
   weight = 4
 
 [[languages.zh.menu.main]]
+  name = "Powered by Kyuubi"
+  identifier = "powered"
+  url = "zh/powered_by.html"
+  weight = 5
+
+[[languages.zh.menu.main]]
   name = "Github"
   identifier = "github"
   url = "https://github.com/apache/incubator-kyuubi"
-  weight = 5
+  weight = 6
 
 [[languages.zh.menu.main]]
   name = "ASF"
   identifier = "asf"
-  weight = 6
+  weight = 7
 
 [[languages.zh.menu.main]]
   name = "基金会"
