@@ -1,0 +1,1833 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS) &#8212; Apache Kyuubi</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../_static/kyuubi_logo_red.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Develop Tools" href="../develop_tools/index.html" />
+    <link rel="prev" title="Kyuubi v.s. HiveServer2" href="kyuubi_vs_hive.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.0-incubating</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../quick_start/index.html">
+   Quick Start
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start.html">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../deployment/index.html">
+   Deploying Kyuubi
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/settings.html">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../deployment/spark/index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/dynamic_allocation.html">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/python/index.html">
+     Python DB-APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/spark/index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../connector/index.html">
+   Connectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/spark/index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/kudu.html">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Overview
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../community/index.html">
+   Community
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/release.html">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/overview/kyuubi_vs_thriftserver.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/overview/kyuubi_vs_thriftserver.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introductions">
+   Introductions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#barriers-to-common-spark-job-usage">
+     Barriers to common Spark job usage
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#high-barrier">
+       High Barrier
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#insecurity">
+       Insecurity
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compatibility">
+       Compatibility
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bootstrap-latency">
+       Bootstrap latency
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-spark-thriftserver">
+   Limitations of Spark ThriftServer
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#driver-bottleneck">
+     Driver Bottleneck
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resource-isolation-issues">
+     Resource isolation issues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-tenancy-limitations">
+     Multi-tenancy limitations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-availability-limitations">
+     High Availability Limitations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#udf-issues">
+     UDF Issues
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kyuubi-vs-spark-thrift-server">
+   Kyuubi VS Spark Thrift Server
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consistent-interfaces">
+     Consistent Interfaces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-tenant-architecture">
+     Multi-tenant Architecture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-availability-capabilities">
+     High Availability Capabilities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#client-concurrency">
+     Client Concurrency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#service-stability">
+     Service Stability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introductions">
+   Introductions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#barriers-to-common-spark-job-usage">
+     Barriers to common Spark job usage
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#high-barrier">
+       High Barrier
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#insecurity">
+       Insecurity
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compatibility">
+       Compatibility
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bootstrap-latency">
+       Bootstrap latency
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-spark-thriftserver">
+   Limitations of Spark ThriftServer
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#driver-bottleneck">
+     Driver Bottleneck
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resource-isolation-issues">
+     Resource isolation issues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-tenancy-limitations">
+     Multi-tenancy limitations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-availability-limitations">
+     High Availability Limitations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#udf-issues">
+     UDF Issues
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kyuubi-vs-spark-thrift-server">
+   Kyuubi VS Spark Thrift Server
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consistent-interfaces">
+     Consistent Interfaces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-tenant-architecture">
+     Multi-tenant Architecture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-availability-capabilities">
+     High Availability Capabilities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#client-concurrency">
+     Client Concurrency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#service-stability">
+     Service Stability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><section id="kyuubi-v-s-spark-thrift-jdbc-odbc-server-sts">
+<h1>Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)<a class="headerlink" href="#kyuubi-v-s-spark-thrift-jdbc-odbc-server-sts" title="Permalink to this headline">#</a></h1>
+<section id="introductions">
+<h2>Introductions<a class="headerlink" href="#introductions" title="Permalink to this headline">#</a></h2>
+<p>The Apache Spark <a class="reference external" href="http://spark.apache.org/docs/latest/sql-distributed-sql-engine.html">Thrift JDBC/ODBC Server</a> is a Thrift service implemented by the Apache Spark community based on HiveServer2.
+Designed to be seamlessly compatible with HiveServer2, it provides Spark SQL capabilities to end-users in a pure SQL way through a JDBC interface.
+This “out-of-the-box” model minimizes the barriers and costs for users to use Spark.</p>
+<p>Kyuubi and Spark are aligned in this goal.
+On top of that, Kyuubi has made enhancements in multi-tenant support, service availability, service concurrency capability, data security, and other aspects.</p>
+<section id="barriers-to-common-spark-job-usage">
+<h3>Barriers to common Spark job usage<a class="headerlink" href="#barriers-to-common-spark-job-usage" title="Permalink to this headline">#</a></h3>
+<p>In this part, the most fundamental one is how we define a <code class="docutils literal notranslate"><span class="pre">Spark</span> <span class="pre">User</span></code>.
+Generally speaking, a Spark user is a guy that calls Spark APIs directly,
+but from Kyuubi and Spark ThriftServer’s perspective,
+the direct API calls occur on the server-side,
+then a Spark user indirectly interacts with Spark’s backend through the more common JDBC specification and protocols.
+With JDBC and SQL, Kyuubi and Spark ThriftServer make users experience the same way that interacts with most of the world’s popular modern DBMSes.</p>
+<p>Using Spark APIs directly is flexible for programmers with a bigdata background but may not be friendly for everyone.</p>
+<section id="high-barrier">
+<h4>High Barrier<a class="headerlink" href="#high-barrier" title="Permalink to this headline">#</a></h4>
+<p>Users need a certain programming framework to use Spark through the Scala/Java/Python interfaces provided by Spark.
+Also, users need to have a good background in big data.
+For example, users need to know which platform their application will be submitted to, YARN, Kubernetes, or others.
+They also need to be aware of the resource consumption of their jobs, for example, executor numbers, memory for each executor.
+If they use too many resources, will it affect other critical tasks?
+Otherwise, will the cluster’s resources be idle and wasted?
+It is also hard for users to set up thousands of Spark configurations properly.
+Key features like <a class="reference internal" href="../deployment/spark/dynamic_allocation.html"><span class="doc">Dynamic Resource Allocation</span></a>, Speculation might be hard to benefit all with a one-time setup.
+And new features like <a class="reference internal" href="../deployment/spark/aqe.html"><span class="doc">Adaptive Query Execution</span></a> could come a long way from the first release involved of Spark to finally get applied to end-users.</p>
+</section>
+<section id="insecurity">
+<h4>Insecurity<a class="headerlink" href="#insecurity" title="Permalink to this headline">#</a></h4>
+<p>Users can access metadata and data by means of code, and data security cannot be guaranteed.
+All client configurations need to be handed over to the user directly or indirectly.
+These configurations may contain sensitive information and let all the backend services be completely exposed to the users.
+For example, in terms of data security, the <a class="reference external" href="https://submarine.apache.org/docs/userDocs/submarine-security/spark-security/README">Submarine Spark Security Plugin</a> provides SQL Standard ACL Management for Apache Spark SQL with Apache Ranger.
+But in the end, this kind of security feature is at most a “gentleman’s agreement” in front of programmers who can write code to submit jobs via Spark code.</p>
+</section>
+<section id="compatibility">
+<h4>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">#</a></h4>
+<p>Client-side compatibility is difficult to guarantee.
+When a user’s Spark job is finally scheduled to run on a cluster, it faces problems such as inconsistencies between the client environment and the cluster environment, conflicts between user job dependencies, Spark dependencies, and Hadoop cluster dependencies.
+When we upgrade the server-side staffs, such as Spark, Hive, and YARN, etc., it is also necessary to upgrade all of the user clients with transitive dependencies as much as possible, which may introduce a lot of unnecessary compatibility testing work, and it is hard to have complete test coverage.</p>
+</section>
+<section id="bootstrap-latency">
+<h4>Bootstrap latency<a class="headerlink" href="#bootstrap-latency" title="Permalink to this headline">#</a></h4>
+<p>For long-running Spark applications, the bootstrap time is negligible compared to the total lifecycle, such as Spark Structured Streaming.
+In this case, the task scheduling and computing are fully thread-level with low latency and fast response.
+For short-term ones, the bootstrap time counts, such as the <code class="docutils literal notranslate"><span class="pre">SparkPi</span></code>.
+Relatively speaking, this process is very time-consuming, especially for some second-and minute-level computation tasks.</p>
+<p>Spark ThriftServer is essentially a Spark application in a multi-threaded scenario.
+It pre-starts a distributed SQL engine consisting of a driver and multiple executors at runtime.
+At the SQL parsing layer, the service takes full advantage of the Spark SQL optimizer,
+and at the computation execution layer, since Spark ThriftServer is resident, there is no bootstrap overhead, and when <a class="reference internal" href="../deployment/spark/dynamic_allocation.html"><span class="doc">DRA</span></a> is not enabled, the entire SQL computation process is in pure threaded scheduling model with excellent performance.</p>
+<p><img alt="../_images/sts.png" src="../_images/sts.png" /></p>
+<p>The JDBC connections and operations are handled by the frontend thread pool as various requests.
+And the corresponding methods of the backend are called to bind to the <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> related interface.
+For example, the <code class="docutils literal notranslate"><span class="pre">DriverManager.getConnection</span></code> at the client-side will invoke <code class="docutils literal notranslate"><span class="pre">SparkSession.newSession()</span></code> at the server-side,
+and all queries from the client-side will be submitted to the backend thread pool asynchronously and executed by <code class="docutils literal notranslate"><span class="pre">SparkSession.sql(...)</span></code>.</p>
+<p>First, in this mode, users can interact with Spark ThriftServer through simple SQL language and JDBC interface to implement their own business logic.
+The basic capacity planning of Spark ThriftServer, the consolidation of underlying services, and all the optimizations can all be made on the server-side.
+Some people may think that only using SQL does not meet all the business, that’s true, but the service itself is targeting users that migrating from HiveServer2 for the reason of query speed.
+With UDF/UDAF support, Some complex logic can still be fulfilled, so basically,  Spark ThriftServer is able to deal with most of the big data processing workloads.</p>
+<p>Secondly, all the setups for backend services, such as YARN, HDFS, and Hive Metastore Server(HMS), are completed in Spark ThriftServer, so there is no need to hand over the configuration of the backend services to the end-users.
+This ensures data security to a certain extent.
+On top of that, the server generally has the ability to do authentication/authorization and other assurance to protect data security.</p>
+<p>Finally, the JDBC interface protocol and C/S architecture under the server-side backward compatibility constraints basically ensure that there will be no client-side compatibility obstacles.
+Users only need to choose the appropriate version of the JDBC driver.
+The server-side upgrade will not cause interface incompatibility.
+As for the potential SQL compatibility problem in Spark version upgrade, it also exists when not using Spark ThriftServer, and is more challenging to solve.
+Moreover, in Spark ThriftServer mode, the server-side can do the full amount of SQL collection in advance, and the verification can be done before the upgrade.</p>
+</section>
+</section>
+</section>
+<section id="limitations-of-spark-thriftserver">
+<h2>Limitations of Spark ThriftServer<a class="headerlink" href="#limitations-of-spark-thriftserver" title="Permalink to this headline">#</a></h2>
+<p>As we can see from the basic architecture of Spark ThriftServer above, it is essentially a single Spark application, and there are generally significant limitations to responding to thousands of client requests.</p>
+<section id="driver-bottleneck">
+<h3>Driver Bottleneck<a class="headerlink" href="#driver-bottleneck" title="Permalink to this headline">#</a></h3>
+<p>The Spark Driver has to both play the role of the scheduler of a Spark application and also the handler of thousands of connections and operations from the client-side.
+In this case,  it is very likely to hit its bottleneck.
+The Hive metastore client on which the Spark analyzer depends for resolving all queries is one and only, so there will be more obvious concurrency issues when accessing the HMS.</p>
+</section>
+<section id="resource-isolation-issues">
+<h3>Resource isolation issues<a class="headerlink" href="#resource-isolation-issues" title="Permalink to this headline">#</a></h3>
+<p>Over-sized Spark jobs encroach on too many of Spark ThriftServer resources, causing other jobs to delay or get stuck.</p>
+<p><img alt="../_images/hang.png" src="../_images/hang.png" /></p>
+<p>With Fair Scheduler Pools, Spark ThriftServer has the ability of resource isolation and sharing to a certain extent.
+It will send queries to a high-weight pool to get more executors for execution.
+In essence, resource isolation such as CPU/memory/IO should be something that resource managers like YARN and Kubernetes should do.
+Doing logical isolation at the computing layer is unlikely to work well, and this problem exists in the Apache Impala project as well, for example.
+And it is difficult to avoid the problem of HMS, HDFS  single point access, especially in the scenario of reading and writing dynamic partition tables or handling queries with numerous <code class="docutils literal notranslate"><span class="pre">Union</span></code>s.</p>
+</section>
+<section id="multi-tenancy-limitations">
+<h3>Multi-tenancy limitations<a class="headerlink" href="#multi-tenancy-limitations" title="Permalink to this headline">#</a></h3>
+<p>Spark ThriftServer itself should be a multi-tenant-enabled system, i.e., it can accept requests from different clients and users.
+However, from Spark’s design point of view, Spark ThriftServer implemented in a single Spark application cannot fully support multi-tenancy because the entire application has only a globally unique username, including both the driver side, and the executor side.
+So, it has to access all users’ data with a single tenant.</p>
+<p>Spark ThriftServer occupies a single resource queue (YARN Queue / Kubernetes Namespace), making it difficult to control the resource pool’s size available to each tenant in a fine-grained or elastic way from the perspective of resource isolation and sharing.
+No one would like to restart the server and stop it from serving to adjust some pool’s weight or increase the total computing resources.</p>
+</section>
+<section id="high-availability-limitations">
+<h3>High Availability Limitations<a class="headerlink" href="#high-availability-limitations" title="Permalink to this headline">#</a></h3>
+<p>The community edition of Spark ThriftServer does not support High Availability (HA).
+It is hard to imagine whether a server-side application without high availability can support the SLA commitment.
+It’s not that difficult to apply an HA implementation to Spark ThriftServer, but tricky.
+For example, there is already a <a class="reference external" href="https://issues.apache.org/jira/browse/SPARK-11100">JIRA ticket: SPARK-11100</a> with a pull request attached, see [SPARK-11100].
+There are generally two ways for the HA implementation of Spark ThriftServer, namely <code class="docutils literal notranslate"><span class="pre">Active/Standby</span></code> and <code class="docutils literal notranslate"><span class="pre">LoadBalancing</span></code>.</p>
+<p>The Active/Standby mode consists of active Spark ThriftServer and several standby servers.
+When the active crashes or hangs, the standby nodes trigger the leader selection to become the new active one to take over.
+The problems here are undeniable:
+There is only one active node runtime, so the concurrency capability is limited.
+When a failover occurs due to hardware and software failure, all current connections and running jobs will fail.
+This kind of failover is expensive for client-side users.
+The clients will retry simultaneously, so it’s hard for the new elected active server to handle the coming flood of client retries.
+It’s very likely to crash again.
+The Standby node causes serious waste of cluster resources, whether Spark dynamic resource allocation is enabled or not.
+A more appropriate approach to solve the server-side single-point problem is to add LoadBalancing support of your own.
+So that when client requests increase, we can expand Spark ThriftServer horizontally. However, this model also has some limitations.
+Each Spark ThriftServer is stateful with transient data or functionalities, such as some global temporary views, UDFs, etc., which cannot be shared between two servers.
+And it’s expensive to expand with computing resources together.</p>
+</section>
+<section id="udf-issues">
+<h3>UDF Issues<a class="headerlink" href="#udf-issues" title="Permalink to this headline">#</a></h3>
+<p>For operations like <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">JAR</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TEMPORARY</span> <span class="pre">FUNCTION</span>&#160; <span class="pre">...</span> <span class="pre">USING...</span></code>, classes or jars might conflict in the Spark ThriftServer.
+And there is no such way for deleting when conflicts.
+Besides, since UDFs are loaded directly into the Spark ThriftServer, if they contain some unintentional or malicious logic, such as calling <code class="docutils literal notranslate"><span class="pre">System.exit(-1)</span></code>, which may kill the service directly, or some operations that affect the server behavior globally like Kerberos authentication.</p>
+</section>
+</section>
+<section id="kyuubi-vs-spark-thrift-server">
+<h2>Kyuubi VS Spark Thrift Server<a class="headerlink" href="#kyuubi-vs-spark-thrift-server" title="Permalink to this headline">#</a></h2>
+<p>The HiveServer2 is also introduced here for a more comprehensive comparison.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>HiveServer2 <br/>(Hive on Spark)</th>
+<th>Spark ThriftServer</th>
+<th>Kyuubi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interface</strong></td>
+<td>HiveJDBC</td>
+<td>HiveJDBC</td>
+<td>HiveJDBC</td>
+</tr>
+<tr>
+<td><strong>SQL<br/>Syntax</strong></td>
+<td>Hive QL</td>
+<td>Spark SQL</td>
+<td>Spark SQL</td>
+</tr>
+<tr>
+<td><strong>SQL<br/>Optimizer</strong></td>
+<td>Hive Optimizer</td>
+<td>Spark SQL<br/>Catalyst</td>
+<td>Spark SQL<br/>Catalyst</td>
+</tr>
+<tr>
+<td><strong>SQL<br/>Parsing &amp; Planing</strong></td>
+<td>Server Side</td>
+<td>Server Side</td>
+<td>Engine Side</td>
+</tr>
+<tr>
+<td><strong>UDF<br/>Loading</strong></td>
+<td>Server Side</td>
+<td>Server Side</td>
+<td>Engine Side</td>
+</tr>
+<tr>
+<td><strong>Job<br/>Submission</strong></td>
+<td>A query is<br/>split into<br/>multiple<br/>Spark<br/>applications,<br/>called<br/><code>RemoteDriver</code></td>
+<td>within the server</td>
+<td>Using Kyuubi Engines with different<br/> policies for isolation<br/> 1. <code>USER</code> level isolation, where different JDBC connections of the same user share the Engine belonging to the user <br/> 2. <code>CONNECTION</code> level isolation, where one JDBC connection has one Engine, and the same Engine executes all SQL within a connection</td>
+</tr>
+<tr>
+<td><strong>Spark<br/>Compatibility</strong></td>
+<td>Single<br/>version-specific</td>
+<td>Builtin</td>
+<td>Multi-versions</td>
+</tr>
+<tr>
+<td><strong>Catalog<br/>Management</strong></td>
+<td>HMS</td>
+<td>HMS</td>
+<td>HMS</td>
+</tr>
+<tr>
+<td><strong>High<br/>Availability</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Multi<br/>tenancy</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Permission<br/>Control</strong></td>
+<td>SQL Standard,<br/>Fine-Grained</td>
+<td>No</td>
+<td>SQL Standard,<br/>Fine-Grained</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Fair</td>
+<td>Good</td>
+<td>Good</td>
+</tr>
+<tr>
+<td><strong>Client<br/>Concurrency</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Queuing</strong></td>
+<td>for queries</td>
+<td>None</td>
+<td>for Engines</td>
+</tr>
+<tr>
+<td><strong>Resource<br/>Setting</strong></td>
+<td>for queries</td>
+<td>for pools</td>
+<td>for Engines</td>
+</tr>
+<tr>
+<td><strong>Compute<br/>Resource<br/>Management</strong></td>
+<td>YARN</td>
+<td>pools</td>
+<td>YARN, Kubernetes, etc.</td>
+</tr>
+<tr>
+<td><strong>Resource<br/>Occupancy<br/>Time</strong></td>
+<td>within a query</td>
+<td>Permanent</td>
+<td>Using Kyuubi Engine to request and<br/> release resources<br/> 1. For <code>CONNECTION</code> level isolation, an Engine terminates when a JDBC connection disconnects <br/> 2. For other modes, an Engine timeouts after all connections disconnect. <br/> 3. All isolation modes support <a href="../deployment/spark/dynamic_allocation.md">DRA</a><br/></td>
+</tr>
+</tbody>
+</table><section id="consistent-interfaces">
+<h3>Consistent Interfaces<a class="headerlink" href="#consistent-interfaces" title="Permalink to this headline">#</a></h3>
+<p>Kyuubi, Spark Thrift Server, and HiveServer2 are identical in terms of interfaces and protocols.
+Therefore, from the user’s point of view, the way of use is unchanged.
+Compared with HiveServer2, the most significant advantage of the first two should be the performance improvement.</p>
+<p>From the perspective of SQL syntax compatibility, Kyuubi and Spark Thrift Server are fully compatible with Spark SQL as they are completely delegated to the Spark SQL Catalyst layer.
+Spark SQL also fully supports Hive QL collections, with only a few enumerable SQL behaviors and syntax differences.</p>
+</section>
+<section id="multi-tenant-architecture">
+<h3>Multi-tenant Architecture<a class="headerlink" href="#multi-tenant-architecture" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">From</span> <span class="pre">wikipedia</span></code>: The term “software multitenancy” refers to a software architecture in which a single instance of the software runs on a server and serves multiple tenants. Systems designed in such a manner are often called shared (in contrast to dedicated or isolated).</p>
+<p>Kyuubi, Spark ThriftServer, and HiveServer2 have been designed for a typical multi-tenant architecture scenario.</p>
+<p>Firstly, we need to consider how to 1) make safer and more efficient use of these compute resources based on resource isolation and 2) how to give users enough control over their own resources.</p>
+<p>HiveServer2 is supposed to be the most flexible one.
+Each SQL is programmed into several Spark applications for execution, and the resource queue, memory, and others can be set before execution.
+But this approach leads to extremely high Spark bootstrap latency and can not efficiently utilize resources.</p>
+<p>Spark ThriftServer goes in the opposite direction because there is only one Spark application.
+It is impossible to adjust the queue, memory, and other resource-related configs from the user side interface as it is already pre-started.
+Queries can be sent to pre-set <code class="docutils literal notranslate"><span class="pre">Fair</span> <span class="pre">Scheduler</span> <span class="pre">Pools</span></code> for running in isolation.
+The <code class="docutils literal notranslate"><span class="pre">Fair</span> <span class="pre">Scheduler</span> <span class="pre">Pools</span></code> can only provide low isolation within a Spark application and be configured before Spark ThriftServer starts.</p>
+<p>Kyuubi has neutralized these aspects with two other system implementations.
+Kyuubi applies the multi-tenant feature based on the concept of Kyuubi Engines, where an Engine is a Spark application.</p>
+<p>In Kyuubi’s system, the Engines are isolated according to tenants.
+The tenant, a.k.a. user, is unified and end-to-end unique through a JDBC connection.
+Kyuubi server will identify and authenticate the user and then retrieve or create an Engine belonging to this particular user.
+This user will be used as the submitter for Engine, and it must have authority to use the resources from YARN, Kubernetes, or just Local machine, e.t.c.
+Inside an Engine, the Engine’s user, a.k.a. <code class="docutils literal notranslate"><span class="pre">Spark</span> <span class="pre">User</span></code>, will also be the same.
+When an Engine runs queries received from the JDBC connection, the Engine’s user must also have rights to access the data.
+Besides, if it needs access to metadata during this process, then we can also add a fine-grained SQL standard ACL management on the metadata layer now with <a class="reference external" href="https://submarine.apache.org/docs/userDocs/submarine-security/spark-security/README">Submarine Spark Security Plugin</a>.</p>
+<p>The Engines have their lifecycle, which is related to the <code class="docutils literal notranslate"><span class="pre">kyuubi.engine.share.level</span></code> specified via client configurations.
+For example, if set to <code class="docutils literal notranslate"><span class="pre">CONNECTION</span></code>, then the corresponding Engine will be created for each JDBC connection and terminates itself when we close the connection.
+For another example, if set to <code class="docutils literal notranslate"><span class="pre">USER</span></code>,  the corresponding Engine is cached and shared with all JDBC connections from the same user, even through different Kyuubi servers in HA mode.
+The Engine will eventually timeout after all the sessions are closed.</p>
+<p>As we need to create Engines, on the one hand, we can configure all the Spark configurations during startup.
+On the other hand, it does bring the Spark application bootstraps overhead here, but overall, it is just a one-time cost.
+All queries or connections of the Engine’s user will share this application.
+The more queries it runs, the lower the bootstraps overhead is.</p>
+</section>
+<section id="high-availability-capabilities">
+<h3>High Availability Capabilities<a class="headerlink" href="#high-availability-capabilities" title="Permalink to this headline">#</a></h3>
+<p>The HA issues in Spark ThriftServer have already been covered in the previous section so that we won’t go over them here again. In Kyuubi, we provide HA in the way of <code class="docutils literal notranslate"><span class="pre">LoadBlancing</span></code>.  Kyuubi is lightweight, as it does not create any Engine when it starts.
+It’s cheap to add Kyuubi HA nodes, so horizontal scaling is not overly burdensome.</p>
+</section>
+<section id="client-concurrency">
+<h3>Client Concurrency<a class="headerlink" href="#client-concurrency" title="Permalink to this headline">#</a></h3>
+<p>The compilation and optimization for queries in both HiveServer2 and Spark ThriftServer are done on the server-side.
+In contrast, Kyuubi will do these at the Engine-side.
+It is instrumental in reducing the workload of the server and improving client concurrency.
+For task scheduling that belongs to the compute phase also happens at Kyuubi’s Engine side.
+It is not as heavy as the Spark ThriftServer, where there is an intense competition between the client concurrency and the task scheduling.
+In principle, the more executors there are, or the more significant the amount of data processed, the more pressure on the server-side.</p>
+</section>
+<section id="service-stability">
+<h3>Service Stability<a class="headerlink" href="#service-stability" title="Permalink to this headline">#</a></h3>
+<p>The intense competition between the client concurrency and the task scheduling increases GC issues and OOM risks of Spark ThriftServer.
+Kyuubi has no problem in this area due to the separation of the server and engines.
+The UDF risks cannot harm the stability of the service either.
+As if a user loads and calls an invalid UDF, which only damages its own Engine and will not affect other users or the Kyuubi server.</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Kyuubi extends the use of Spark ThriftServer in a multi-tenant model based on a unified interface and relies on the concept of multi-tenancy to interact with cluster managers to finally gain the ability of resources sharing/isolation and data security.
+The loosely coupled architecture of Kyuubi Server and Engine greatly improves the concurrency and service stability of the service itself.</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="kyuubi_vs_hive.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Kyuubi v.s. HiveServer2</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../develop_tools/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Develop Tools</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

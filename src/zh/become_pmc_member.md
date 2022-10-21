@@ -36,6 +36,9 @@ menu:
       <td>Cheng Pan</td>
     </tr>
     <tr>
+      <td>Dongdong Hong</td>
+    </tr>
+    <tr>
       <td>Duo Zhang</td>
     </tr>
     <tr>
@@ -49,6 +52,12 @@ menu:
     </tr>
     <tr>
       <td>Kent Yao</td>
+    </tr>
+    <tr>
+      <td>Shaoyun Chen</td>
+    </tr>
+    <tr>
+      <td>Vino Yang</td>
     </tr>
     <tr>
       <td>Willem Ning Jiang</td>
