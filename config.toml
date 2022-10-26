@@ -62,7 +62,7 @@ defaultContentLanguage = 'en'
   weight = 4
 
 [[menu.main]]
-  name = "Powered by Kyuubi"
+  name = "Users"
   identifier = "powered"
   url = "powered_by.html"
   weight = 5
@@ -156,7 +156,7 @@ defaultContentLanguage = 'en'
   weight = 4
 
 [[languages.zh.menu.main]]
-  name = "Powered by Kyuubi"
+  name = "用户"
   identifier = "powered"
   url = "zh/powered_by.html"
   weight = 5
