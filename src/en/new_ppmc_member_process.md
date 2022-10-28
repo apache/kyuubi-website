@@ -24,14 +24,15 @@ menu:
 
 This guideline is based on [new_ppmc](https://incubator.apache.org/guides/ppmc.html#voting_in_a_new_ppmc_member) and [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
 
-- [The process of new PPMC member](new_ppmc_member_process.html#the-process-of-new-pmc-member)
-    - [Call a vote in mailing `private@kyuubi.apache.org`](new_ppmc_member_process.html#call-a-vote-in-mailing-privatekyuubiapacheorg)
-    - [Close the vote](new_ppmc_member_process.html#close-the-vote)
-    - [Send message to IPMC](new_ppmc_member_process.html#send-message-to-ipmc)
-    - [If the result is positive, invite the new PPMC member](new_ppmc_member_process.html#if-the-result-is-positive-invite-the-new-ppmc-member)
-    - [If accept, then: Accept the PPMC member](new_ppmc_member_process.html#if-accept-then-accept-the-ppmc-member)
-    - [Notify the PPMC member of completion](new_ppmc_member_process.html#notify-the-ppmc-member-of-completion)
-    - [Announce the new PPMC member](new_ppmc_member_process.html#announce-the-new-ppmc-member)
+- The process of new PPMC member
+    - Discuss in mailing `private@kyuubi.apache.org`
+    - Call a vote in mailing `private@kyuubi.apache.org`
+    - Close the vote
+    - Send message to IPMC
+    - If the result is positive, invite the new PPMC member
+    - If accept, then: Accept the PPMC member
+    - Notify the PPMC member of completion
+    - Announce the new PPMC member
 
 - [Template](new_ppmc_member_process.html#template)
     - [PPMC Member Discuss Template](new_ppmc_member_process.html#ppmc-member-discuss-template)
@@ -42,40 +43,6 @@ This guideline is based on [new_ppmc](https://incubator.apache.org/guides/ppmc.h
     - [PPMC Member Accept Template](new_ppmc_member_process.html#ppmc-member-accept-template**)
     - [PPMC Member Done Template](new_ppmc_member_process.html#ppmc-member-done-template)
     - [PPMC Member Announce Template](new_ppmc_member_process.html#ppmc-member-announce-template)
-
-## The process of new PPMC member
-
-### discuss in mailing `private@kyuubi.apache.org`
-
-see **PPMC Member Discuss Template**
-
-### Call a vote in mailing `private@kyuubi.apache.org`
-
-see **PMC Member Vote Template**
-
-### Close the vote
-
-see **Close Vote Template**
-
-### Send message to IPMC
-
-see **Send message to IPMC Template**
-
-### If the result is positive, invite the new PPMC member
-
-see **PMC member Invite Template**
-
-### If accept, then: Accept the PPMC member
-
-see **PMC Member Accept Template**
-
-### Notify the PPMC member of completion
-
-see **PMC Member Done Template**
-
-### Announce the new PPMC member
-
-see **PMC Member Announce Template**
 
 ## Template
 
