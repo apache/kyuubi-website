@@ -25,12 +25,12 @@ menu:
 This guideline is based on [new_ppmc](https://incubator.apache.org/guides/ppmc.html#voting_in_a_new_ppmc_member) and [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
 
 - The process of new PPMC member
-    - Discuss in mailing `private@kyuubi.apache.org`
-    - Call a vote in mailing `private@kyuubi.apache.org`
+    - Discuss in the private mailing list
+    - Call a vote in the private mailing list
     - Close the vote
-    - Send message to IPMC
+    - Send a NOTICE to IPMC
     - If the result is positive, invite the new PPMC member
-    - If accept, then: Accept the PPMC member
+    - If the invitation is accepted, then accept the PPMC member
     - Notify the PPMC member of completion
     - Announce the new PPMC member
 
@@ -38,7 +38,7 @@ This guideline is based on [new_ppmc](https://incubator.apache.org/guides/ppmc.h
     - [PPMC Member Discuss Template](new_ppmc_member_process.html#ppmc-member-discuss-template)
     - [PPMC Member Vote Template](new_ppmc_member_process.html#ppmc-member-vote-template)
     - [Close Vote Template](new_ppmc_member_process.html#close-vote-template)
-    - [Send message to IPMC Template](new_ppmc_member_process.html#send-message-to-ipmc-template)
+    - [Send NOTICE to IPMC Template](new_ppmc_member_process.html#send-notice-to-ipmc-template)
     - [PPMC Member Invite Template](new_ppmc_member_process.html#ppmc-member-invite-template)
     - [PPMC Member Accept Template](new_ppmc_member_process.html#ppmc-member-accept-template**)
     - [PPMC Member Done Template](new_ppmc_member_process.html#ppmc-member-done-template)
@@ -108,7 +108,7 @@ Binding Votes:
 The vote is ***successful/not successful***
 ```
 
-### Send message to IPMC Template
+### Send NOTICE to IPMC Template
 ```text
 To: private@incubator.apache.org
 Cc: private@kyuubi.apache.org
