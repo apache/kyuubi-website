@@ -24,24 +24,24 @@ menu:
 
 This guideline is based on [new_ppmc](https://incubator.apache.org/guides/ppmc.html#voting_in_a_new_ppmc_member) and [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
 
-- [The process of new PPMC member](NEW_PPMC_member_process.html#the-process-of-new-pmc-member)
-    - [Call a vote in mailing `private@kyuubi.apache.org`](NEW_PPMC_member_process.html#call-a-vote-in-mailing-privatekyuubiapacheorg)
-    - [Close the vote](NEW_PPMC_member_process.html#close-the-vote)
-    - [Send message to IPMC](NEW_PPMC_member_process.html#send-message-to-ipmc)
-    - [If the result is positive, invite the new PPMC member](NEW_PPMC_member_process.html#if-the-result-is-positive-invite-the-new-ppmc-member)
-    - [If accept, then: Accept the PPMC member](NEW_PPMC_member_process.html#if-accept-then-accept-the-ppmc-member)
-    - [Notify the PPMC member of completion](NEW_PPMC_member_process.html#notify-the-ppmc-member-of-completion)
-    - [Announce the new PPMC member](NEW_PPMC_member_process.html#announce-the-new-ppmc-member)
+- [The process of new PPMC member](new_ppmc_member_process.html#the-process-of-new-pmc-member)
+    - [Call a vote in mailing `private@kyuubi.apache.org`](new_ppmc_member_process.html#call-a-vote-in-mailing-privatekyuubiapacheorg)
+    - [Close the vote](new_ppmc_member_process.html#close-the-vote)
+    - [Send message to IPMC](new_ppmc_member_process.html#send-message-to-ipmc)
+    - [If the result is positive, invite the new PPMC member](new_ppmc_member_process.html#if-the-result-is-positive-invite-the-new-ppmc-member)
+    - [If accept, then: Accept the PPMC member](new_ppmc_member_process.html#if-accept-then-accept-the-ppmc-member)
+    - [Notify the PPMC member of completion](new_ppmc_member_process.html#notify-the-ppmc-member-of-completion)
+    - [Announce the new PPMC member](new_ppmc_member_process.html#announce-the-new-ppmc-member)
 
-- [Template](NEW_PPMC_member_process.html#template)
-    - [PPMC Member Discuss Template](NEW_PPMC_member_process.html#ppmc-member-discuss-template)
-    - [PPMC Member Vote Template](NEW_PPMC_member_process.html#ppmc-member-vote-template)
-    - [Close Vote Template](NEW_PPMC_member_process.html#close-vote-template)
-    - [Send message to IPMC Template](NEW_PPMC_member_process.html#send-message-to-ipmc-template)
-    - [PPMC Member Invite Template](NEW_PPMC_member_process.html#ppmc-member-invite-template)
-    - [PPMC Member Accept Template](NEW_PPMC_member_process.html#ppmc-member-accept-template**)
-    - [PPMC Member Done Template](NEW_PPMC_member_process.html#ppmc-member-done-template)
-    - [PPMC Member Announce Template](NEW_PPMC_member_process.html#ppmc-member-announce-template)
+- [Template](new_ppmc_member_process.html#template)
+    - [PPMC Member Discuss Template](new_ppmc_member_process.html#ppmc-member-discuss-template)
+    - [PPMC Member Vote Template](new_ppmc_member_process.html#ppmc-member-vote-template)
+    - [Close Vote Template](new_ppmc_member_process.html#close-vote-template)
+    - [Send message to IPMC Template](new_ppmc_member_process.html#send-message-to-ipmc-template)
+    - [PPMC Member Invite Template](new_ppmc_member_process.html#ppmc-member-invite-template)
+    - [PPMC Member Accept Template](new_ppmc_member_process.html#ppmc-member-accept-template**)
+    - [PPMC Member Done Template](new_ppmc_member_process.html#ppmc-member-done-template)
+    - [PPMC Member Announce Template](new_ppmc_member_process.html#ppmc-member-announce-template)
 
 ## The process of new PPMC member
 
