@@ -1,0 +1,1607 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi &#8212; Apache Kyuubi</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../../_static/kyuubi_logo_red.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How To Use Spark Adaptive Query Execution (AQE) in Kyuubi" href="aqe.html" />
+    <link rel="prev" title="The Spark SQL Engine Configuration Guide" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.1-incubating</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../quick_start/index.html">
+   Quick Start
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../quick_start/quick_start.html">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../quick_start/quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../quick_start/quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Deploying Kyuubi
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../migration-guide.html">
+     Kyuubi Migration Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings.html">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/python/index.html">
+     Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/python/pyspark.html">
+       PySpark
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../connector/spark/index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../connector/flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../connector/hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../connector/trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../connector/index.html">
+   Connectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../connector/spark/index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/kudu.html">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/spark/tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../connector/flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../connector/hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../connector/trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../connector/trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../overview/index.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../overview/architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../overview/kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../overview/kyuubi_vs_thriftserver.html">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../community/index.html">
+   Community
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../community/CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../community/collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../community/release.html">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/deployment/spark/dynamic_allocation.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/deployment/spark/dynamic_allocation.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-basics-of-dynamic-resource-allocation">
+   The Basics of Dynamic Resource Allocation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-enable-dynamic-resource-allocation">
+   How to Enable Dynamic Resource Allocation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-resource-allocation-w-external-shuffle-service">
+     Dynamic Resource Allocation w/ External Shuffle Service
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-allocation-w-o-external-shuffle-service">
+     Dynamic Allocation w/o External Shuffle Service
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sizing-for-engines-w-dynamic-resource-allocation">
+   Sizing for engines w/ Dynamic Resource Allocation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resource-allocation-policy">
+   Resource Allocation Policy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-practices-for-applying-dra-to-kyuubi">
+   Best Practices for Applying DRA to Kyuubi
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-default-configurations">
+     Setting Default Configurations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-user-default-settings">
+     Setting User Default Settings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamically-setting">
+     Dynamically Setting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-basics-of-dynamic-resource-allocation">
+   The Basics of Dynamic Resource Allocation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-enable-dynamic-resource-allocation">
+   How to Enable Dynamic Resource Allocation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-resource-allocation-w-external-shuffle-service">
+     Dynamic Resource Allocation w/ External Shuffle Service
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-allocation-w-o-external-shuffle-service">
+     Dynamic Allocation w/o External Shuffle Service
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sizing-for-engines-w-dynamic-resource-allocation">
+   Sizing for engines w/ Dynamic Resource Allocation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resource-allocation-policy">
+   Resource Allocation Policy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-practices-for-applying-dra-to-kyuubi">
+   Best Practices for Applying DRA to Kyuubi
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-default-configurations">
+     Setting Default Configurations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-user-default-settings">
+     Setting User Default Settings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamically-setting">
+     Dynamically Setting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><section id="how-to-use-spark-dynamic-resource-allocation-dra-in-kyuubi">
+<h1>How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi<a class="headerlink" href="#how-to-use-spark-dynamic-resource-allocation-dra-in-kyuubi" title="Permalink to this headline">#</a></h1>
+<p>When we adopt Kyuubi in a production environment,
+we always want to use the environment’s computing resources more cost-effectively and efficiently.
+Cluster managers such as  K8S and Yarn manage the cluster compute resources,
+divided into different queues or namespaces with different ACLs and quotas.</p>
+<p>In Kyuubi, we acquire computing resources from the cluster manager to submit the engines.
+The engines respond to various types of client requests,
+some of which consume many computing resources to process,
+while others may require very few resources to complete.
+If we have fixed-sized engines,
+a.k.a. with a fixed number for <code class="docutils literal notranslate"><span class="pre">spark.executor.instances</span></code>,
+it may cause a waste of resources for some lightweight workloads,
+while for some heavyweight workloads,
+it should probably not have enough concurrency capacity resulting in poor performance.</p>
+<p>When the engine has executor idled,
+we should release it back to the resource pool promptly,
+and conversely, when the engine is doing chubby tasks,
+we should be able to get and use more resources more efficiently.
+On the one hand, we need to rely on the resource manager’s capabilities for efficient resource allocation,
+resource isolation, and sharing.
+On the other hand, we need to enable Spark’s DRA feature for the engines’ executors’ elastic scaling.</p>
+<section id="the-basics-of-dynamic-resource-allocation">
+<h2>The Basics of Dynamic Resource Allocation<a class="headerlink" href="#the-basics-of-dynamic-resource-allocation" title="Permalink to this headline">#</a></h2>
+<p>Spark provides a mechanism to dynamically adjust the application resources based on the workload, which means that an application may give resources back to the cluster if they are no longer used and request them again later when there is demand.
+This feature is handy if multiple applications share resources on YARN, Kubernetes, and other platforms.</p>
+<p>For Kyuubi engines,
+which are typical Spark applications,
+the dynamic allocation allows Spark to dynamically scale the cluster resources allocated to them based on the workloads.
+When dynamic allocation is enabled,
+and an engine has a backlog of pending tasks,
+it can request executors via <code class="docutils literal notranslate"><span class="pre">ExecutorAllocationManager</span></code>.
+When the engine has executors that become idle, the executors are released,
+and the occupied resources are given back to the cluster manager.
+Then other engines or other applications run in the same queue could acquire the resources.</p>
+</section>
+<section id="how-to-enable-dynamic-resource-allocation">
+<h2>How to Enable Dynamic Resource Allocation<a class="headerlink" href="#how-to-enable-dynamic-resource-allocation" title="Permalink to this headline">#</a></h2>
+<p>The prerequisite for enabling this feature is for downstream stages to have proper access to shuffle data, even if the executors that generated the data are recycled.</p>
+<p>Spark provides two implementations for shuffle data tracking. If either is enabled, we can use the  DRA feature properly.</p>
+<section id="dynamic-resource-allocation-w-external-shuffle-service">
+<h3>Dynamic Resource Allocation w/ External Shuffle Service<a class="headerlink" href="#dynamic-resource-allocation-w-external-shuffle-service" title="Permalink to this headline">#</a></h3>
+<p>Having an external shuffle service (ESS) makes sure that all the data is stored outside of executors.
+This prerequisite was needed as Spark needed to ensure that the executors’ removal does not remove shuffle data.
+When deploying Kyuubi with a cluster manager that provides ESS, enable DRA for all the engines with the configurations below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.enabled</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+<span class="na">spark.shuffle.service.enabled</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Another thing to be sure of is that <code class="docutils literal notranslate"><span class="pre">spark.shuffle.service.port</span></code> should be configured to point to the port on which the ESS is running.</p>
+</section>
+<section id="dynamic-allocation-w-o-external-shuffle-service">
+<h3>Dynamic Allocation w/o External Shuffle Service<a class="headerlink" href="#dynamic-allocation-w-o-external-shuffle-service" title="Permalink to this headline">#</a></h3>
+<p>Implementations of the ESS feature are cluster manager dependent. Yarn, for instance, where the ESS needs to be deployed cluster-widely and is actually running in the Yarn’s <code class="docutils literal notranslate"><span class="pre">NodeManager</span></code> component. Nevertheless, if run Kyuubi’s engines on Kubernetes, the ESS is not an option yet.
+Since Spark 3.0, the DRA can run without ESS. The relative feature called <code class="docutils literal notranslate"><span class="pre">Shuffle</span> <span class="pre">Tracking</span></code> was introduced by <a class="reference external" href="https://issues.apache.org/jira/browse/SPARK-27963">SPARK-27963</a>.</p>
+<p>When deploying Kyuubi with a cluster manager that without ESS or the ESS is not attractive, enable DRA with <code class="docutils literal notranslate"><span class="pre">Shuffle</span> <span class="pre">Tracking</span></code> instead for all the engines with the configurations below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.enabled</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.shuffleTracking.enabled</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">Shuffle</span> <span class="pre">Tracking</span></code> is enabled, <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.shuffleTracking.timeout(default:</span> <span class="pre">infinity)</span></code> controls the timeout for executors that are holding shuffle data. Spark will rely on the shuffles being garbage collected to be able to release executors by default. When the garbage collection is not cleaning up shuffles quickly enough, this timeout forces Spark to delete executors even when they are storing shuffle data.</p>
+</section>
+</section>
+<section id="sizing-for-engines-w-dynamic-resource-allocation">
+<h2>Sizing for engines w/ Dynamic Resource Allocation<a class="headerlink" href="#sizing-for-engines-w-dynamic-resource-allocation" title="Permalink to this headline">#</a></h2>
+<p>Resources for a single executor, such as CPUs and memory, can be fixed size. So, the range [<code class="docutils literal notranslate"><span class="pre">minExecutors</span></code>, <code class="docutils literal notranslate"><span class="pre">maxExecutors</span></code>] determines how many recourses the engine can take from the cluster manager.</p>
+<p>On the one hand, the  <code class="docutils literal notranslate"><span class="pre">minExecutors</span></code> tells Spark to keep how many executors at least. If it is set too close to 0(default), the engine might complain about a lack of resources if the cluster manager is quite busy and for a long time.
+However, the larger the <code class="docutils literal notranslate"><span class="pre">minExecutors</span></code> goes, the more resources may be wasted during the engine’s idle time.</p>
+<p>On the other hand, the <code class="docutils literal notranslate"><span class="pre">maxExecutors</span></code> determines the upper bound executors of an engine could reach. From the individual engine perspective, this value is the larger, the better, to handle heavier queries. However, we must limit it to a reasonable range in terms of the entire cluster’s resources. Otherwise, a large query may trigger the engine where it runs to consume too many resources from the queue/namespace and occupy them for a considerable time, which could be a bad idea for using the resources efficiently. In this case, we would prefer that such an enormous task be done more slowly in a limited amount of concurrency.</p>
+<p>The following Spark configurations consist of sizing for the DRA.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">dynamicAllocation</span><span class="o">.</span><span class="n">minExecutors</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">dynamicAllocation</span><span class="o">.</span><span class="n">maxExecutors</span><span class="o">=</span><span class="mi">500</span>
+</pre></div>
+</div>
+<p>Additionally, another config called <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.initialExecutors</span></code> can be used to decide how many executors to request during engine bootstrapping or failover.</p>
+<p>Ideally,   the size relationship between them should be as <code class="docutils literal notranslate"><span class="pre">minExecutors</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">initialExecutors</span></code> &lt; <code class="docutils literal notranslate"><span class="pre">maxExecutors</span></code>.</p>
+</section>
+<section id="resource-allocation-policy">
+<h2>Resource Allocation Policy<a class="headerlink" href="#resource-allocation-policy" title="Permalink to this headline">#</a></h2>
+<p>When the DRA notices that the current resources are insufficient for the current workload, it will request more executors.</p>
+<div align=center><p><img alt="../../_images/dra_task_pending.png" src="../../_images/dra_task_pending.png" /></p>
+</div><p>By default, the dynamic allocation will request enough executors to maximize the parallelism according to the number of tasks to process.</p>
+<div align=center><p><img alt="../../_images/dra_executor_added.png" src="../../_images/dra_executor_added.png" /></p>
+</div><p>While this minimizes the latency of the job, but with small tasks, the default behavior can waste many resources due to executor allocation overhead, as some executors might not even do any work.</p>
+<p>In this case, we can adjust <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.executorAllocationRatio</span></code> a bit lower to reduce the number of executors w.r.t. full parallelism.  For instance, 0.5 will divide the target number of executors by 2.</p>
+<div align=center><p><img alt="../../_images/dra_executor_add_ratio.png" src="../../_images/dra_executor_add_ratio.png" /></p>
+</div><p>After finish one task,  Spark Driver will schedule a new task for the executor with available cores. When pending tasks become fewer and fewer, some executors become idle for no new coming tasks.</p>
+<div align=center><p><img alt="../../_images/dra_task_fin.png" src="../../_images/dra_task_fin.png" /></p>
+</div><p>If one executor reached the maximum timeout, it will be removed.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.executorIdleTimeout</span><span class="o">=</span><span class="s">60s</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.cachedExecutorIdleTimeout</span><span class="o">=</span><span class="s">infinity</span><span class="w"></span>
+</pre></div>
+</div>
+<div align=center><p><img alt="../../_images/dra_executor_removal.png" src="../../_images/dra_executor_removal.png" /></p>
+</div><p>If the DRA finds there have been pending tasks backlogged for more than the timeouts, new executors will be requested, controlled by the following configs.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.schedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.sustainedSchedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="best-practices-for-applying-dra-to-kyuubi">
+<h2>Best Practices for Applying DRA to Kyuubi<a class="headerlink" href="#best-practices-for-applying-dra-to-kyuubi" title="Permalink to this headline">#</a></h2>
+<p>Kyuubi is a long-running service to make it easier for end-users to use Spark SQL without having much of Spark’s basic knowledge. It is essential to have a basic configuration for resource management that works for most scenarios on the server-side.</p>
+<section id="setting-default-configurations">
+<h3>Setting Default Configurations<a class="headerlink" href="#setting-default-configurations" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="settings.html#via-spark-defaults-conf">Configuring by <code class="docutils literal notranslate"><span class="pre">spark-defaults.conf</span></code></a> at the engine side is the best way to set up Kyuubi with DRA. All engines will be instantiated with DRA enabled.</p>
+<p>Here is a config setting that we use in our platform when deploying Kyuubi.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">spark.dynamicAllocation.enabled</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+<span class="c">##false if perfer shuffle tracking than ESS</span><span class="w"></span>
+<span class="na">spark.shuffle.service.enabled</span><span class="o">=</span><span class="s">true</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.initialExecutors</span><span class="o">=</span><span class="s">10</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.minExecutors</span><span class="o">=</span><span class="s">10</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.maxExecutors</span><span class="o">=</span><span class="s">500</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.executorAllocationRatio</span><span class="o">=</span><span class="s">0.5</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.executorIdleTimeout</span><span class="o">=</span><span class="s">60s</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.cachedExecutorIdleTimeout</span><span class="o">=</span><span class="s">30min</span><span class="w"></span>
+<span class="c"># true if perfer shuffle tracking than ESS</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.shuffleTracking.enabled</span><span class="o">=</span><span class="s">false</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.shuffleTracking.timeout</span><span class="o">=</span><span class="s">30min</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.schedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span><span class="w"></span>
+<span class="na">spark.dynamicAllocation.sustainedSchedulerBacklogTimeout</span><span class="o">=</span><span class="s">1s</span><span class="w"></span>
+<span class="na">spark.cleaner.periodicGC.interval</span><span class="o">=</span><span class="s">5min</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that, <code class="docutils literal notranslate"><span class="pre">spark.cleaner.periodicGC.interval=5min</span></code> is useful here when <code class="docutils literal notranslate"><span class="pre">spark.dynamicAllocation.shuffleTracking.enabled</span></code> is enabled, as we can tell Spark to be more active for shuffle data GC.</p>
+</section>
+<section id="setting-user-default-settings">
+<h3>Setting User Default Settings<a class="headerlink" href="#setting-user-default-settings" title="Permalink to this headline">#</a></h3>
+<p>On the server-side, the workloads for different users might be different.</p>
+<p>Then we can set different defaults for them via the <a class="reference external" href="../settings.html#user-defaults">User Defaults</a> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code></p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># For a user named kent</span><span class="w"></span>
+<span class="na">___kent___.spark.dynamicAllocation.maxExecutors</span><span class="o">=</span><span class="s">20</span><span class="w"></span>
+<span class="c"># For a user named bob</span><span class="w"></span>
+<span class="na">___bob___.spark.dynamicAllocation.maxExecutors</span><span class="o">=</span><span class="s">600</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, the user named <code class="docutils literal notranslate"><span class="pre">kent</span></code> can only use 20 executors for his engines, but <code class="docutils literal notranslate"><span class="pre">bob</span></code> can use 600 executors for better performance or handle heavy workloads.</p>
+</section>
+<section id="dynamically-setting">
+<h3>Dynamically Setting<a class="headerlink" href="#dynamically-setting" title="Permalink to this headline">#</a></h3>
+<p>All AQE related configurations are static of Spark core and unchangeable by <code class="docutils literal notranslate"><span class="pre">SET</span></code> syntaxes before each SQL query. For example,</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="n">spark</span><span class="p">.</span><span class="n">dynamicAllocation</span><span class="p">.</span><span class="n">maxExecutors</span><span class="o">=</span><span class="mi">33</span><span class="p">;</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">default</span><span class="p">.</span><span class="n">tableA</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For the above case, the value - 33 will not affect as Spark does not support change core configurations in runtime.</p>
+<p>Instead, end-users can set them via <a class="reference external" href="../settings.html#via-jdbc-connection-url">JDBC Connection URL</a> for some specific cases.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/job-scheduling.html#dynamic-resource-allocation">Spark Official Online Document: Dynamic Resource Allocation</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/configuration.html#dynamic-allocation">Spark Official Online Document: Dynamic Resource Allocation Configurations</a></p></li>
+<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SPARK-27963">SPARK-27963: Allow dynamic allocation without an external shuffle service</a></p></li>
+</ol>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Spark SQL Engine Configuration Guide</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="aqe.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">How To Use Spark Adaptive Query Execution (AQE) in Kyuubi</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

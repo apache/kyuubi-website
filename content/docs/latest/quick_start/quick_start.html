@@ -1,0 +1,2095 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Started with Apache Kyuubi &#8212; Apache Kyuubi</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../_static/kyuubi_logo_red.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting Started With Kyuubi on kubernetes" href="quick_start_with_helm.html" />
+    <link rel="prev" title="Quick Start" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.1-incubating</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Quick Start
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../deployment/index.html">
+   Deploying Kyuubi
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/migration-guide.html">
+     Kyuubi Migration Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/settings.html">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../deployment/spark/index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/dynamic_allocation.html">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/python/index.html">
+     Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyspark.html">
+       PySpark
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/spark/index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../connector/index.html">
+   Connectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/spark/index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/kudu.html">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../overview/index.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_thriftserver.html">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../community/index.html">
+   Community
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/release.html">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/quick_start/quick_start.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/quick_start/quick_start.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-kyuubi">
+   Getting Kyuubi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#requirements">
+   Requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-kyuubi">
+   Running Kyuubi
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-java">
+     Setup JAVA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spark-engine">
+     Spark Engine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-spark">
+       Setup Spark
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flink-engine">
+     Flink Engine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-flink">
+       Setup Flink
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-kyuubi-flink-configration">
+       Setup Kyuubi Flink Configration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trino-engine">
+     Trino Engine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-trino">
+       Setup Trino
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-kyuubi-trino-configration">
+       Setup Kyuubi Trino Configration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-kyuubi">
+     Starting Kyuubi
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-hive-beeline">
+   Using Hive Beeline
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#opening-a-connection">
+     Opening a Connection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execute-statements">
+     Execute Statements
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#execute-spark-sql-statements">
+       Execute Spark SQL Statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#execute-flink-sql-statements">
+       Execute Flink SQL Statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#execute-trino-statements">
+       Execute Trino Statements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#closing-a-connection">
+     Closing a Connection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stopping-kyuubi">
+   Stopping Kyuubi
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Started with Apache Kyuubi</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-kyuubi">
+   Getting Kyuubi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#requirements">
+   Requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-kyuubi">
+   Running Kyuubi
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-java">
+     Setup JAVA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spark-engine">
+     Spark Engine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-spark">
+       Setup Spark
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flink-engine">
+     Flink Engine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-flink">
+       Setup Flink
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-kyuubi-flink-configration">
+       Setup Kyuubi Flink Configration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trino-engine">
+     Trino Engine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-trino">
+       Setup Trino
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setup-kyuubi-trino-configration">
+       Setup Kyuubi Trino Configration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-kyuubi">
+     Starting Kyuubi
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-hive-beeline">
+   Using Hive Beeline
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#opening-a-connection">
+     Opening a Connection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execute-statements">
+     Execute Statements
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#execute-spark-sql-statements">
+       Execute Spark SQL Statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#execute-flink-sql-statements">
+       Execute Flink SQL Statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#execute-trino-statements">
+       Execute Trino Statements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#closing-a-connection">
+     Closing a Connection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stopping-kyuubi">
+   Stopping Kyuubi
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><section id="getting-started-with-apache-kyuubi">
+<h1>Getting Started with Apache Kyuubi<a class="headerlink" href="#getting-started-with-apache-kyuubi" title="Permalink to this headline">#</a></h1>
+<section id="getting-kyuubi">
+<h2>Getting Kyuubi<a class="headerlink" href="#getting-kyuubi" title="Permalink to this headline">#</a></h2>
+<p>Currently, Apache Kyuubi maintains all its releases on our official <a class="reference external" href="https://kyuubi.apache.org/releases.html">website</a>.
+You can get the most recent stable release of Apache Kyuubi here:</p>
+<p><a class="btn btn-neutral" href="https://kyuubi.apache.org/releases.html" data-color-scheme="no-preference: light; light: dark; dark: light;" data-icon="octicon-download" data-size="large" aria-label="Download Kyuubi"><span class="fa fa-arrow-circle-down" aria-hidden="true"></span>Download</a></p></section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">#</a></h2>
+<p>These are essential components required for Kyuubi to startup.
+For quick start deployment, the only thing you need is <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> being correctly set.
+The Kyuubi release package you downloaded or built contains the rest prerequisites inside already.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Components</th>
+<th>Role</th>
+<th>Optional</th>
+<th>Version</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java</td>
+<td>Java<br>Runtime<br>Environment</td>
+<td>Required</td>
+<td>Java 8/11</td>
+<td>Kyuubi is pre-built with Java 8</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>Distributed<br>SQL<br>Engine</td>
+<td>Optional</td>
+<td>3.0.0 and above</td>
+<td>By default Kyuubi binary release is delivered without<br> a Spark tarball.</td>
+</tr>
+<tr>
+<td>Flink</td>
+<td>Distributed<br>SQL<br>Engine</td>
+<td>Optional</td>
+<td>1.14.0 and above</td>
+<td>By default Kyuubi binary release is delivered without<br> a Flink tarball.</td>
+</tr>
+<tr>
+<td>Trino</td>
+<td>Distributed<br>SQL<br>Engine</td>
+<td>Optional</td>
+<td>363 and above</td>
+<td>By default Kyuubi binary release is delivered without<br> a Trino tarball.</td>
+</tr>
+<tr>
+<td>HDFS</td>
+<td>Distributed<br>File<br>System</td>
+<td>Optional</td>
+<td>referenced<br>by<br>Spark</td>
+<td>Hadoop Distributed File System is a <br>part of Hadoop framework, used to<br> store and process the datasets.<br> You can interact with any<br> Spark-compatible versions of HDFS.</td>
+</tr>
+<tr>
+<td>Hive</td>
+<td>Metastore</td>
+<td>Optional</td>
+<td>referenced<br>by<br>Spark</td>
+<td>Hive Metastore for Spark SQL to connect</td>
+</tr>
+<tr>
+<td>Zookeeper</td>
+<td>Service<br>Discovery</td>
+<td>Optional</td>
+<td>Any<br>zookeeper<br>ensemble<br>compatible<br>with<br>curator(2.12.0)</td>
+<td>By default, Kyuubi provides a<br> embedded Zookeeper server inside for<br> non-production use.</td>
+</tr>
+</tbody>
+</table><p>Additionally, if you want to work with other Spark/Flink/Trino compatible systems or plugins, you only need to take care of them as using them with regular Spark/Flink/Trino applications.
+For example, you can run Spark/Flink/Trino SQL engines created by the Kyuubi on any cluster manager, including YARN, Kubernetes, Mesos, e.t.c…
+Or, you can manipulate data from different data sources with the Spark Datasource/Flink Table API, e.g. Delta Lake, Apache Hudi, Apache Iceberg, Apache Kudu and e.t.c…</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>To install Kyuubi, you need to unpack the tarball. For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar zxf apache-kyuubi-1.5.0-incubating-bin.tgz
+</pre></div>
+</div>
+<p>This will result in the creation of a subdirectory named <code class="docutils literal notranslate"><span class="pre">apache-kyuubi-1.5.0-incubating-bin</span></code> shown below,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apache-kyuubi-1.5.0-incubating-bin
+├── DISCLAIMER
+├── LICENSE
+├── NOTICE
+├── RELEASE
+├── beeline-jars
+├── bin
+├── conf
+<span class="p">|</span>   ├── kyuubi-defaults.conf.template
+│   ├── kyuubi-env.sh.template
+│   └── log4j2.properties.template
+├── docker
+│   ├── Dockerfile
+│   ├── helm
+│   ├── kyuubi-configmap.yaml
+│   ├── kyuubi-deployment.yaml
+│   ├── kyuubi-pod.yaml
+│   └── kyuubi-service.yaml
+├── externals
+│  └── engines
+├── jars
+├── licenses
+├── logs
+├── pid
+└── work
+</pre></div>
+</div>
+<p>From top to bottom are:</p>
+<ul class="simple">
+<li><p>DISCLAIMER: the disclaimer made by Apache Kyuubi Community as a project still in ASF Incubator.</p></li>
+<li><p>LICENSE: the <a class="reference external" href="https://www.apache.org/licenses/LICENSE-2.0">APACHE LICENSE, VERSION 2.0</a> we claim to obey.</p></li>
+<li><p>RELEASE: the build information of this package.</p></li>
+<li><p>NOTICE: the notice made by Apache Kyuubi Community about its project and dependencies.</p></li>
+<li><p>bin: the entry of the Kyuubi server with <code class="docutils literal notranslate"><span class="pre">kyuubi</span></code> as the startup script.</p></li>
+<li><p>conf: all the defaults used by Kyuubi Server itself or creating a session with Spark applications.</p></li>
+<li><p>externals</p>
+<ul>
+<li><p>engines: contains all kinds of SQL engines that we support, e.g. Apache Spark, Apache Flink, Trino.</p></li>
+</ul>
+</li>
+<li><p>licenses: a bunch of licenses included.</p></li>
+<li><p>jars: packages needed by the Kyuubi server.</p></li>
+<li><p>logs: where the logs of the Kyuubi server locates.</p></li>
+<li><p>pid: stores the PID file of the Kyuubi server instance.</p></li>
+<li><p>work: the root of the working directories of all the forked sub-processes, a.k.a. SQL engines.</p></li>
+</ul>
+</section>
+<section id="running-kyuubi">
+<h2>Running Kyuubi<a class="headerlink" href="#running-kyuubi" title="Permalink to this headline">#</a></h2>
+<p>As mentioned above, for a quick start deployment, then only you need to be sure is that the below environments are correct:</p>
+<ul class="simple">
+<li><p>Java runtime environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code> for the Spark engine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLINK_HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">kyuubi.engine.type</span></code> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> for the Flink engine.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kyuubi.engine.type</span></code> <code class="docutils literal notranslate"><span class="pre">session.engine.trino.connection.url</span></code> and <code class="docutils literal notranslate"><span class="pre">session.engine.trino.connection.catalog</span></code> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> for the Trino engine</p></li>
+</ul>
+<section id="setup-java">
+<h3>Setup JAVA<a class="headerlink" href="#setup-java" title="Permalink to this headline">#</a></h3>
+<p>You can either set it system-widely, e.g. in the <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java -version
+java version <span class="s2">&quot;1.8.0_251&quot;</span>
+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build <span class="m">1</span>.8.0_251-b08<span class="o">)</span>
+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> <span class="m">64</span>-Bit Server VM <span class="o">(</span>build <span class="m">25</span>.251-b08, mixed mode<span class="o">)</span>
+</pre></div>
+</div>
+<p>Or, <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">JAVA_HOME=/path/to/java</span></code> in the local os session.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home
+java -version
+java version <span class="s2">&quot;11.0.5&quot;</span> <span class="m">2019</span>-10-15 LTS
+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="m">18</span>.9 <span class="o">(</span>build <span class="m">11</span>.0.5+10-LTS<span class="o">)</span>
+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> <span class="m">64</span>-Bit Server VM <span class="m">18</span>.9 <span class="o">(</span>build <span class="m">11</span>.0.5+10-LTS, mixed mode<span class="o">)</span>
+</pre></div>
+</div>
+<p>The recommended place to set <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> is <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code>, as the ways above are too flaky.
+The <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code> will take others’ precedence.</p>
+</section>
+<section id="spark-engine">
+<h3>Spark Engine<a class="headerlink" href="#spark-engine" title="Permalink to this headline">#</a></h3>
+<section id="setup-spark">
+<h4>Setup Spark<a class="headerlink" href="#setup-spark" title="Permalink to this headline">#</a></h4>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, you can also set <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code> in different ways. However, we recommend setting it in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code> too.</p>
+<p>For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SPARK_HOME</span><span class="o">=</span>~/Downloads/spark-3.2.0-bin-hadoop3.2
+</pre></div>
+</div>
+</section>
+</section>
+<section id="flink-engine">
+<h3>Flink Engine<a class="headerlink" href="#flink-engine" title="Permalink to this headline">#</a></h3>
+<section id="setup-flink">
+<h4>Setup Flink<a class="headerlink" href="#setup-flink" title="Permalink to this headline">#</a></h4>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, you can also set <code class="docutils literal notranslate"><span class="pre">FLINK_HOME</span></code> in different ways. However, we recommend setting it in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code> too.</p>
+<p>For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">FLINK_HOME</span><span class="o">=</span>/Downloads/flink-1.15.1
+</pre></div>
+</div>
+</section>
+<section id="setup-kyuubi-flink-configration">
+<h4>Setup Kyuubi Flink Configration<a class="headerlink" href="#setup-kyuubi-flink-configration" title="Permalink to this headline">#</a></h4>
+<p>To enable the Flink SQL engine, the <code class="docutils literal notranslate"><span class="pre">kyuubi.engine.type</span></code> in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> need to be set as <code class="docutils literal notranslate"><span class="pre">FLINK_SQL</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kyuubi.engine.type FLINK_SQL
+</pre></div>
+</div>
+</section>
+</section>
+<section id="trino-engine">
+<h3>Trino Engine<a class="headerlink" href="#trino-engine" title="Permalink to this headline">#</a></h3>
+<section id="setup-trino">
+<h4>Setup Trino<a class="headerlink" href="#setup-trino" title="Permalink to this headline">#</a></h4>
+<p>Different from Spark/Flink, you must have a Trino cluster first. Trino client stored in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/externals/engines/trino</span></code>.</p>
+</section>
+<section id="setup-kyuubi-trino-configration">
+<h4>Setup Kyuubi Trino Configration<a class="headerlink" href="#setup-kyuubi-trino-configration" title="Permalink to this headline">#</a></h4>
+<p>To enable the Trino engine, the <code class="docutils literal notranslate"><span class="pre">kyuubi.engine.type</span></code> need to be set as <code class="docutils literal notranslate"><span class="pre">TRINO</span></code>. And <code class="docutils literal notranslate"><span class="pre">kyuubi.session.engine.trino.connection.url</span></code> and <code class="docutils literal notranslate"><span class="pre">kyuubi.session.engine.trino.connection.catalog</span></code> are also necessary. You can set all those configs in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code>, or set them in your connection parameters.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kyuubi.engine.type TRINO
+<span class="c1"># Your trino cluster server url</span>
+kyuubi.session.engine.trino.connection.url http://localhost:8080
+<span class="c1"># The default catalog connect to</span>
+kyuubi.session.engine.trino.connection.catalog hive
+</pre></div>
+</div>
+</section>
+</section>
+<section id="starting-kyuubi">
+<h3>Starting Kyuubi<a class="headerlink" href="#starting-kyuubi" title="Permalink to this headline">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/kyuubi start
+</pre></div>
+</div>
+<p>It will print all essential environment variables on the screen during the server starts, and you may check whether they are expected.</p>
+<div class="highlight-log notranslate"><div class="highlight"><pre><span></span>Starting Kyuubi Server from /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+Warn: Not find kyuubi environment file /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/conf/kyuubi-env.sh, using default ones...
+JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home
+KYUUBI_HOME: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin
+KYUUBI_CONF_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/conf
+KYUUBI_LOG_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/logs
+KYUUBI_PID_DIR: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/pid
+KYUUBI_WORK_DIR_ROOT: /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/work
+SPARK_HOME: /Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2
+SPARK_CONF_DIR: /Users/kentyao/Downloads/spark/spark-3.2.0-bin-hadoop3.2/conf
+HADOOP_CONF_DIR:
+YARN_CONF_DIR:
+Starting org.apache.kyuubi.server.KyuubiServer, logging to /Users/kentyao/svn-kyuubi/v1.3.1-incubating-rc0/apache-kyuubi-1.3.1-incubating-bin/logs/kyuubi-kentyao-org.apache.kyuubi.server.KyuubiServer-hulk.local.out
+Welcome to
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+</pre></div>
+</div>
+<p>If all goes well, this will result in the creation of the Kyuubi server instance with a <code class="docutils literal notranslate"><span class="pre">PID</span></code> stored in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/pid/kyuubi-&lt;username&gt;-org.apache.kyuubi.server.KyuubiServer.pid</span></code></p>
+<p>Then, you can get the JDBC connection URL at the end of the log file, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ThriftFrontendService</span><span class="p">:</span> <span class="n">Starting</span> <span class="ow">and</span> <span class="n">exposing</span> <span class="n">JDBC</span> <span class="n">connection</span> <span class="n">at</span><span class="p">:</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">hive2</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">10009</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>If something goes wrong, you shall be able to find some clues in the log file too.</p>
+<p>Alternatively, it can run in the foreground, with the logs and other output written to stdout/stderr.
+Both streams should be captured if using a supervision system like <code class="docutils literal notranslate"><span class="pre">supervisord</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/kyuubi run
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-hive-beeline">
+<h2>Using Hive Beeline<a class="headerlink" href="#using-hive-beeline" title="Permalink to this headline">#</a></h2>
+<p>Kyuubi server is compatible with Apache Hive beeline, so you can use <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/bin/beeline</span></code> for testing.</p>
+<section id="opening-a-connection">
+<h3>Opening a Connection<a class="headerlink" href="#opening-a-connection" title="Permalink to this headline">#</a></h3>
+<p>The command below will tell the Kyuubi server to create a session with itself.</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span>bin<span class="o">/</span>beeline <span class="o">-</span>u <span class="s">&#39;jdbc:hive2://localhost:10009/&#39;</span>
+<span class="nv">Connecting</span> to jdbc<span class="o">:</span>hive2<span class="o">://</span>localhost<span class="o">:</span><span class="m">10009</span><span class="o">/</span>
+<span class="nv">Connected</span> to<span class="o">:</span> <span class="nv">Spark</span> <span class="nv">SQL</span> (version <span class="m">1.0</span>.<span class="m">2</span>)
+<span class="nv">Driver</span><span class="o">:</span> <span class="nv">Hive</span> <span class="nv">JDBC</span> (version <span class="m">2.3</span>.<span class="m">7</span>)
+<span class="nv">Transaction</span> isolation<span class="o">:</span> <span class="nv">TRANSACTION_REPEATABLE_READ</span>
+<span class="nv">Beeline</span> version <span class="m">2.3</span>.<span class="m">7</span> by <span class="nv">Apache</span> <span class="nv">Hive</span>
+<span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span>localhost<span class="o">:</span><span class="m">10009</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>In this case, the session will create for the user named ‘anonymous’.</p>
+<p>Kyuubi will create a Spark/Flink/Trino SQL engine application using <code class="docutils literal notranslate"><span class="pre">kyuubi-&lt;engine&gt;-sql-engine_2.12-&lt;version&gt;.jar</span></code>.
+It will cost awhile for the application to be ready before fully establishing the session.
+Otherwise, an existing application will be reused, and the time cost here is negligible.</p>
+<p>Similarly, you can create a session for another user(or principal, subject, and maybe something else you defined), e.g. named <code class="docutils literal notranslate"><span class="pre">kentyao</span></code>,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/beeline -u <span class="s1">&#39;jdbc:hive2://localhost:10009/&#39;</span> -n kentyao
+</pre></div>
+</div>
+<p>The formerly created Spark application for user ‘anonymous’ will not be reused in this case, while a brand new application will be submitted for user ‘kentyao’ instead.</p>
+<p>Then, you can see two processes running in your local environment, including one <code class="docutils literal notranslate"><span class="pre">KyuubiServer</span></code> instance, one <code class="docutils literal notranslate"><span class="pre">SparkSubmit</span></code> <code class="docutils literal notranslate"><span class="pre">FlinkSQLEngine</span></code> or <code class="docutils literal notranslate"><span class="pre">TrinoSqlEngine</span></code> instances as the SQL engines.</p>
+<ul class="simple">
+<li><p>Spark</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">75730</span> <span class="n">Jps</span>
+<span class="mi">70843</span> <span class="n">KyuubiServer</span>
+<span class="mi">72566</span> <span class="n">SparkSubmit</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Flink</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">43484</span> <span class="n">Jps</span>
+<span class="mi">43194</span> <span class="n">KyuubiServer</span>
+<span class="mi">43260</span> <span class="n">FlinkSQLEngine</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Trino</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">63483</span> <span class="n">Jps</span>
+<span class="mi">63693</span> <span class="n">KyuubiServer</span>
+<span class="mi">63266</span> <span class="n">TrinoSqlEngine</span>
+</pre></div>
+</div>
+</section>
+<section id="execute-statements">
+<h3>Execute Statements<a class="headerlink" href="#execute-statements" title="Permalink to this headline">#</a></h3>
+<section id="execute-spark-sql-statements">
+<h4>Execute Spark SQL Statements<a class="headerlink" href="#execute-spark-sql-statements" title="Permalink to this headline">#</a></h4>
+<p>If the beeline session is successfully connected, then you can run any query supported by Spark SQL now. For example,</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span><span class="m">10.242</span>.<span class="m">189.214</span><span class="o">:</span><span class="m">2181</span><span class="o">/&gt;</span> select timestamp <span class="s">&#39;2018-11-17&#39;</span><span class="o">;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.509</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[1f619182-20ad-4733-995b-a5e43b80d998]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.547</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[1f619182-20ad-4733-995b-a5e43b80d998]: PENDING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.540</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.541</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: PENDING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.543</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span>
+           <span class="nv">Spark</span> application name<span class="o">:</span> kyuubi_USER_kent_7ad055d0<span class="o">-</span><span class="m">3</span>eca<span class="o">-</span><span class="m">4</span>b78<span class="o">-</span><span class="m">87e8</span><span class="o">-</span><span class="m">94</span>b22f3bade9
+                 application <span class="nv">ID</span><span class="o">:</span> local<span class="o">-</span><span class="m">1635400506190</span>
+                 application web <span class="nv">UI</span><span class="o">:</span> http<span class="o">://</span><span class="m">10.242</span>.<span class="m">189.214</span><span class="o">:</span><span class="m">56774</span>
+                 master<span class="o">:</span> local[<span class="o">*</span>]
+                 deploy mode<span class="o">:</span> client
+                 version<span class="o">:</span> <span class="m">3.2</span>.<span class="m">0</span>
+           <span class="nv">Start</span> time<span class="o">:</span> <span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span><span class="nv">T13</span><span class="o">:</span><span class="m">55</span><span class="o">:</span><span class="m">05.528</span>
+           <span class="nv">User</span><span class="o">:</span> kent
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.604</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: RUNNING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.627</span> <span class="nv">INFO</span> codegen.<span class="nv">CodeGenerator</span><span class="o">:</span> <span class="nv">Code</span> generated in <span class="m">6.696179</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.635</span> <span class="nv">INFO</span> spark.<span class="nv">SparkContext</span><span class="o">:</span> <span class="nv">Starting</span> job<span class="o">:</span> collect at <span class="nv">ExecuteStatement</span>.scala<span class="o">:</span><span class="m">97</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.639</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Query</span> [a46ca504<span class="o">-</span>fe3a<span class="o">-</span><span class="m">4</span>dfb<span class="o">-</span>be1e<span class="o">-</span><span class="m">19770</span>af8ac4c]<span class="o">:</span> <span class="nv">Job</span> <span class="m">3</span> started with <span class="m">1</span> stages, <span class="m">1</span> active jobs running
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.639</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Query</span> [a46ca504<span class="o">-</span>fe3a<span class="o">-</span><span class="m">4</span>dfb<span class="o">-</span>be1e<span class="o">-</span><span class="m">19770</span>af8ac4c]<span class="o">:</span> <span class="nv">Stage</span> <span class="m">3</span> started with <span class="m">1</span> tasks, <span class="m">1</span> active stages running
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.651</span> <span class="nv">INFO</span> scheduler.<span class="nv">DAGScheduler</span><span class="o">:</span> <span class="nv">Job</span> <span class="m">3</span> finished<span class="o">:</span> collect at <span class="nv">ExecuteStatement</span>.scala<span class="o">:</span><span class="m">97</span>, took <span class="m">0.016234</span> s
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.653</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Finished</span> stage<span class="o">:</span> <span class="nv">Stage</span>(<span class="m">3</span>, <span class="m">0</span>)<span class="o">;</span> <span class="nv">Name</span><span class="o">:</span> <span class="s">&#39;collect at ExecuteStatement.scala:97&#39;</span><span class="o">;</span> <span class="nv">Status</span><span class="o">:</span> succeeded<span class="o">;</span> numTasks<span class="o">:</span> <span class="m">1</span><span class="o">;</span> <span class="nv">Took</span><span class="o">:</span> <span class="m">13</span> msec
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.663</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> task runtime<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">8.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">8.000000</span>, min<span class="o">:</span> <span class="m">8.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.664</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.664</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms	<span class="m">8.0</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.665</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> shuffle bytes written<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.665</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.665</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.666</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> fetch wait time<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.666</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.666</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms	<span class="m">0.0</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.667</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> remote bytes read<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.667</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.667</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>	<span class="m">0.0</span> <span class="nv">B</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.668</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> task result size<span class="o">:</span>(count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">1402.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">1402.000000</span>, min<span class="o">:</span> <span class="m">1402.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.668</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.669</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>	<span class="m">1402.0</span> <span class="nv">B</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.669</span> <span class="nv">INFO</span> codegen.<span class="nv">CodeGenerator</span><span class="o">:</span> <span class="nv">Code</span> generated in <span class="m">8.815996</span> ms
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.672</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> executor (non<span class="o">-</span>fetch) time pct<span class="o">:</span> (count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">12.500000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">12.500000</span>, min<span class="o">:</span> <span class="m">12.500000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.672</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.672</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">13</span> <span class="c">%	13 %	13 %	13 %	13 %	13 %	13 %	13 %	13 %</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.673</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> fetch wait time pct<span class="o">:</span> (count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">0.000000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">0.000000</span>, min<span class="o">:</span> <span class="m">0.000000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.673</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.673</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	 <span class="m">0</span> <span class="c">%	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %	 0 %</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> other time pct<span class="o">:</span> (count<span class="o">:</span> <span class="m">1</span>, mean<span class="o">:</span> <span class="m">87.500000</span>, stdev<span class="o">:</span> <span class="m">0.000000</span>, max<span class="o">:</span> <span class="m">87.500000</span>, min<span class="o">:</span> <span class="m">87.500000</span>)
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">0</span><span class="c">%	5%	10%	25%	50%	75%	90%	95%	100%</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> scheduler.<span class="nv">StatsReportListener</span><span class="o">:</span> 	<span class="m">88</span> <span class="c">%	88 %	88 %	88 %	88 %	88 %	88 %	88 %	88 %</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.674</span> <span class="nv">INFO</span> kyuubi.<span class="nv">SQLOperationListener</span><span class="o">:</span> <span class="nv">Query</span> [a46ca504<span class="o">-</span>fe3a<span class="o">-</span><span class="m">4</span>dfb<span class="o">-</span>be1e<span class="o">-</span><span class="m">19770</span>af8ac4c]<span class="o">:</span> <span class="nv">Job</span> <span class="m">3</span> succeeded, <span class="m">0</span> active jobs running
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.744</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[a46ca504-fe3a-4dfb-be1e-19770af8ac4c]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;, time taken: 0.202 seconds</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.784</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Query</span>[<span class="m">1</span>f619182<span class="o">-</span><span class="m">20</span>ad<span class="o">-</span><span class="m">4733</span><span class="o">-</span><span class="m">995</span>b<span class="o">-</span>a5e43b80d998] in <span class="nv">FINISHED_STATE</span>
+<span class="m">2021</span><span class="o">-</span><span class="m">10</span><span class="o">-</span><span class="m">28</span> <span class="m">13</span><span class="o">:</span><span class="m">56</span><span class="o">:</span><span class="m">27.784</span> <span class="nv">INFO</span> operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> kent<span class="s">&#39;s query[1f619182-20ad-4733-995b-a5e43b80d998]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select timestamp &#39;</span><span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span><span class="s">&#39;, time taken: 0.237 seconds</span>
+<span class="o">+----------------------------------+</span>
+| <span class="nv">TIMESTAMP</span> <span class="s">&#39;2018-11-17 00:00:00&#39;</span>  |
+<span class="o">+----------------------------------+</span>
+| <span class="m">2018</span><span class="o">-</span><span class="m">11</span><span class="o">-</span><span class="m">17</span> <span class="m">00</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00.0</span>            |
+<span class="o">+----------------------------------+</span>
+<span class="m">1</span> row selected (<span class="m">0.404</span> seconds)
+</pre></div>
+</div>
+<p>As shown in the above case, you can retrieve all the operation logs, the result schema, and the result to your client-side in the beeline console.</p>
+<p>Additionally, some useful information about the background Spark SQL application associated with this connection is also printed in the operation log.
+For example, you can get the Spark web UI from the log for debugging or tuning.</p>
+<p><img alt="../_images/spark_jobs_page.png" src="../_images/spark_jobs_page.png" /></p>
+</section>
+<section id="execute-flink-sql-statements">
+<h4>Execute Flink SQL Statements<a class="headerlink" href="#execute-flink-sql-statements" title="Permalink to this headline">#</a></h4>
+<p>If the beeline session is successfully connected, then you can run any query supported by Flink SQL now. For example,</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span><span class="m">127.0</span>.<span class="m">0.1</span><span class="o">:</span><span class="m">10009</span><span class="o">/</span>default<span class="o">&gt;</span> <span class="nv">CREATE</span> <span class="nv">TABLE</span> <span class="nv">T</span> (
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span>     a <span class="nv">INT</span>,
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span>     b <span class="nv">VARCHAR</span>(<span class="m">10</span>)
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span> ) <span class="nv">WITH</span> (
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span>     <span class="s">&#39;connector.type&#39;</span> <span class="o">=</span> <span class="s">&#39;filesystem&#39;</span>,
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span>     <span class="s">&#39;connector.path&#39;</span> <span class="o">=</span> <span class="s">&#39;file:///tmp/T.csv&#39;</span>,
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span>     <span class="s">&#39;format.type&#39;</span> <span class="o">=</span> <span class="s">&#39;csv&#39;</span>,
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span>     <span class="s">&#39;format.derive-schema&#39;</span> <span class="o">=</span> <span class="s">&#39;true&#39;</span>
+. . . . . . . . . . . . . . . . . . . . . . <span class="o">&gt;</span> )<span class="o">;</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">47.164</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[22a73e39-d9d7-479b-a118-33f9d2a5ad3f]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: CREATE TABLE T(</span>
+a <span class="nv">INT</span>,
+b <span class="nv">VARCHAR</span>(<span class="m">10</span>)
+) <span class="nv">WITH</span> (
+<span class="s">&#39;connector.type&#39;</span> <span class="o">=</span> <span class="s">&#39;filesystem&#39;</span>,
+<span class="s">&#39;connector.path&#39;</span> <span class="o">=</span> <span class="s">&#39;file:///tmp/T.csv&#39;</span>,
+<span class="s">&#39;format.type&#39;</span> <span class="o">=</span> <span class="s">&#39;csv&#39;</span>,
+<span class="s">&#39;format.derive-schema&#39;</span> <span class="o">=</span> <span class="s">&#39;true&#39;</span>
+)
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">47.187</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[22a73e39-d9d7-479b-a118-33f9d2a5ad3f]: PENDING_STATE -&gt; RUNNING_STATE, statement: CREATE TABLE T(</span>
+a <span class="nv">INT</span>,
+b <span class="nv">VARCHAR</span>(<span class="m">10</span>)
+) <span class="nv">WITH</span> (
+<span class="s">&#39;connector.type&#39;</span> <span class="o">=</span> <span class="s">&#39;filesystem&#39;</span>,
+<span class="s">&#39;connector.path&#39;</span> <span class="o">=</span> <span class="s">&#39;file:///tmp/T.csv&#39;</span>,
+<span class="s">&#39;format.type&#39;</span> <span class="o">=</span> <span class="s">&#39;csv&#39;</span>,
+<span class="s">&#39;format.derive-schema&#39;</span> <span class="o">=</span> <span class="s">&#39;true&#39;</span>
+)
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">47.320</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Query</span>[<span class="m">22</span>a73e39<span class="o">-</span>d9d7<span class="o">-</span><span class="m">479</span>b<span class="o">-</span>a118<span class="o">-</span><span class="m">33</span>f9d2a5ad3f] in <span class="nv">FINISHED_STATE</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">47.322</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[22a73e39-d9d7-479b-a118-33f9d2a5ad3f]: RUNNING_STATE -&gt; FINISHED_STATE, statement: CREATE TABLE T(</span>
+a <span class="nv">INT</span>,
+b <span class="nv">VARCHAR</span>(<span class="m">10</span>)
+) <span class="nv">WITH</span> (
+<span class="s">&#39;connector.type&#39;</span> <span class="o">=</span> <span class="s">&#39;filesystem&#39;</span>,
+<span class="s">&#39;connector.path&#39;</span> <span class="o">=</span> <span class="s">&#39;file:///tmp/T.csv&#39;</span>,
+<span class="s">&#39;format.type&#39;</span> <span class="o">=</span> <span class="s">&#39;csv&#39;</span>,
+<span class="s">&#39;format.derive-schema&#39;</span> <span class="o">=</span> <span class="s">&#39;true&#39;</span>
+), time taken<span class="o">:</span> <span class="m">0.134</span> seconds
+<span class="o">+---------+</span>
+| result  |
+<span class="o">+---------+</span>
+| <span class="nv">OK</span>      |
+<span class="o">+---------+</span>
+<span class="m">1</span> row selected (<span class="m">0.341</span> seconds)
+<span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span><span class="m">127.0</span>.<span class="m">0.1</span><span class="o">:</span><span class="m">10009</span><span class="o">/</span>default<span class="o">&gt;</span> <span class="nv">INSERT</span> <span class="nv">INTO</span> <span class="nv">T</span> <span class="nv">VALUES</span> (<span class="m">1</span>, <span class="s">&#39;Hi&#39;</span>), (<span class="m">2</span>, <span class="s">&#39;Hello&#39;</span>)<span class="o">;</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">52.780</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[d79abf78-d2ae-468f-87b2-19db1fc6e19a]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: INSERT INTO T VALUES (1, &#39;</span><span class="nv">Hi</span><span class="s">&#39;), (2, &#39;</span><span class="nv">Hello</span><span class="s">&#39;)</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">52.786</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[d79abf78-d2ae-468f-87b2-19db1fc6e19a]: PENDING_STATE -&gt; RUNNING_STATE, statement: INSERT INTO T VALUES (1, &#39;</span><span class="nv">Hi</span><span class="s">&#39;), (2, &#39;</span><span class="nv">Hello</span><span class="s">&#39;)</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">57.827</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Query</span>[d79abf78<span class="o">-</span>d2ae<span class="o">-</span><span class="m">468</span>f<span class="o">-</span><span class="m">87</span>b2<span class="o">-</span><span class="m">19</span>db1fc6e19a] in <span class="nv">RUNNING_STATE</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">59.836</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Query</span>[d79abf78<span class="o">-</span>d2ae<span class="o">-</span><span class="m">468</span>f<span class="o">-</span><span class="m">87</span>b2<span class="o">-</span><span class="m">19</span>db1fc6e19a] in <span class="nv">FINISHED_STATE</span>
+<span class="m">16</span><span class="o">:</span><span class="m">28</span><span class="o">:</span><span class="m">59.837</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[d79abf78-d2ae-468f-87b2-19db1fc6e19a]: RUNNING_STATE -&gt; FINISHED_STATE, statement: INSERT INTO T VALUES (1, &#39;</span><span class="nv">Hi</span><span class="s">&#39;), (2, &#39;</span><span class="nv">Hello</span><span class="s">&#39;), time taken: 7.05 seconds</span>
+<span class="o">+-------------------------------------+</span>
+| default_catalog.default_database.<span class="nv">T</span>  |
+<span class="o">+-------------------------------------+</span>
+| <span class="o">-</span><span class="m">1</span>                                  |
+<span class="o">+-------------------------------------+</span>
+<span class="m">1</span> row selected (<span class="m">7.104</span> seconds)
+<span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span><span class="m">127.0</span>.<span class="m">0.1</span><span class="o">:</span><span class="m">10009</span><span class="o">/</span>default<span class="o">&gt;</span>
+<span class="m">0</span><span class="o">:</span> jdbc<span class="o">:</span>hive2<span class="o">://</span><span class="m">127.0</span>.<span class="m">0.1</span><span class="o">:</span><span class="m">10009</span><span class="o">/</span>default<span class="o">&gt;</span> <span class="nv">SELECT</span> <span class="o">*</span> <span class="nv">FROM</span> <span class="nv">T</span><span class="o">;</span>
+<span class="m">16</span><span class="o">:</span><span class="m">29</span><span class="o">:</span><span class="m">08.092</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[af5660c0-fcc4-4f80-b3fd-c4a799faf33f]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: SELECT * FROM T</span>
+<span class="m">16</span><span class="o">:</span><span class="m">29</span><span class="o">:</span><span class="m">08.101</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[af5660c0-fcc4-4f80-b3fd-c4a799faf33f]: PENDING_STATE -&gt; RUNNING_STATE, statement: SELECT * FROM T</span>
+<span class="m">16</span><span class="o">:</span><span class="m">29</span><span class="o">:</span><span class="m">12.519</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Query</span>[af5660c0<span class="o">-</span>fcc4<span class="o">-</span><span class="m">4</span>f80<span class="o">-</span>b3fd<span class="o">-</span>c4a799faf33f] in <span class="nv">FINISHED_STATE</span>
+<span class="m">16</span><span class="o">:</span><span class="m">29</span><span class="o">:</span><span class="m">12.520</span> <span class="nv">INFO</span> org.apache.kyuubi.operation.<span class="nv">ExecuteStatement</span><span class="o">:</span> <span class="nv">Processing</span> anonymous<span class="s">&#39;s query[af5660c0-fcc4-4f80-b3fd-c4a799faf33f]: RUNNING_STATE -&gt; FINISHED_STATE, statement: SELECT * FROM T, time taken: 4.419 seconds</span>
+<span class="o">+----+--------+</span>
+| a  |   b    |
+<span class="o">+----+--------+</span>
+| <span class="m">1</span>  | <span class="nv">Hi</span>     |
+| <span class="m">2</span>  | <span class="nv">Hello</span>  |
+<span class="o">+----+--------+</span>
+<span class="m">2</span> rows selected (<span class="m">4.466</span> seconds)
+</pre></div>
+</div>
+<p>As shown in the above case, you can retrieve all the operation logs, the result schema, and the result to your client-side in the beeline console.</p>
+<p>Additionally, some useful information about the background Flink SQL application associated with this connection is also printed in the operation log.
+For example, you can get the Flink web UI from the log for debugging or tuning.</p>
+<p><img alt="../_images/flink_jobs_page.png" src="../_images/flink_jobs_page.png" /></p>
+</section>
+<section id="execute-trino-statements">
+<h4>Execute Trino Statements<a class="headerlink" href="#execute-trino-statements" title="Permalink to this headline">#</a></h4>
+<p>If the beeline session is successfully connected, then you can run any query supported by Trino now. For example,</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span>0: jdbc:hive2://127.0.0.1:10009/default&gt; select timestamp &#39;2018-11-17&#39;;
+10:33:37.663 INFO org.apache.kyuubi.operation.ExecuteStatement: Processing yizhifeidie123&#39;s query[d059bc77-f2b6-4f95-b72b-859dbc07aacb]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select timestamp &#39;2018-11-17&#39;
+10:33:37.694 INFO org.apache.kyuubi.operation.ExecuteStatement: Processing yizhifeidie123&#39;s query[d059bc77-f2b6-4f95-b72b-859dbc07aacb]: PENDING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;2018-11-17&#39;
+10:33:37.669 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Processing yizhifeidie123&#39;s query[6353e64f-94ba-4770-989b-7186d267d8be]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select timestamp &#39;2018-11-17&#39;10:33:37.693 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Processing yizhifeidie123&#39;s query[6353e64f-94ba-4770-989b-7186d267d8be]: PENDING_STATE -&gt; RUNNING_STATE, statement: select timestamp &#39;2018-11-17&#39;10:33:37.997 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Execute in full collect mode10:33:37.999 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Processing yizhifeidie123&#39;s query[6353e64f-94ba-4770-989b-7186d267d8be]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select timestamp &#39;2018-11-17&#39;, time taken: 0.305 seconds
+10:33:38.003 INFO org.apache.kyuubi.operation.ExecuteStatement: Query[d059bc77-f2b6-4f95-b72b-859dbc07aacb] in FINISHED_STATE
+10:33:38.004 INFO org.apache.kyuubi.operation.ExecuteStatement: Processing yizhifeidie123&#39;s query[d059bc77-f2b6-4f95-b72b-859dbc07aacb]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select timestamp &#39;2018-11-17&#39;, time taken: 0.31 seconds
++------------------------+
+|         _col0          |
++------------------------+
+| 2018-11-17 00:00:00.0  |
++------------------------+
+1 row selected (0.422 seconds)
+0: jdbc:hive2://localhost:10009/default&gt; select * from tpch.tiny.customer limit 6;
+11:10:07.869 INFO org.apache.kyuubi.operation.ExecuteStatement: Processing kyuubi&#39;s query[8b96ccd1-d1e2-4068-b250-c5a66950e629]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select * from tpch.tiny.customer limit 6
+11:10:07.878 INFO org.apache.kyuubi.operation.ExecuteStatement: Processing kyuubi&#39;s query[8b96ccd1-d1e2-4068-b250-c5a66950e629]: PENDING_STATE -&gt; RUNNING_STATE, statement: select * from tpch.tiny.customer limit 6
+11:10:07.871 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Processing kyuubi&#39;s query[d66faea0-fac8-4d3c-a38a-c84fba57d8a7]: INITIALIZED_STATE -&gt; PENDING_STATE, statement: select * from tpch.tiny.customer limit 611:10:07.877 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Processing kyuubi&#39;s query[d66faea0-fac8-4d3c-a38a-c84fba57d8a7]: PENDING_STATE -&gt; RUNNING_STATE, statement: select * from tpch.tiny.customer limit 611:10:08.063 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Execute in full collect mode11:10:08.064 INFO org.apache.kyuubi.engine.trino.operation.ExecuteStatement: Processing kyuubi&#39;s query[d66faea0-fac8-4d3c-a38a-c84fba57d8a7]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select * from tpch.tiny.customer limit 6, time taken: 0.186 seconds
+11:10:08.066 INFO org.apache.kyuubi.operation.ExecuteStatement: Query[8b96ccd1-d1e2-4068-b250-c5a66950e629] in FINISHED_STATE
+11:10:08.066 INFO org.apache.kyuubi.operation.ExecuteStatement: Processing kyuubi&#39;s query[8b96ccd1-d1e2-4068-b250-c5a66950e629]: RUNNING_STATE -&gt; FINISHED_STATE, statement: select * from tpch.tiny.customer limit 6, time taken: 0.188 seconds
++----------+---------------------+----------------------------------+------------+------------------+----------+-------------+----------------------------------------------------+
+| custkey  |        name         |             address              | nationkey  |      phone       | acctbal  | mktsegment  |                      comment                       |
++----------+---------------------+----------------------------------+------------+------------------+----------+-------------+----------------------------------------------------+
+| 749      | Customer#000000749  | U1Dvu0r793a                      | 24         | 34-158-697-9591  | 7491.42  | MACHINERY   | accounts was. final, final requests wake. theodolites was slyly. blithely even foxes wake carefully ac |
+| 750      | Customer#000000750  | 5OyNRajjgjjbaXtI rkxvB2lX4c6u    | 8          | 18-235-587-1274  | 269.9    | BUILDING    | s. regular, regular deposits sleep carefully blithely bol |
+| 751      | Customer#000000751  | e OSrreG6sx7l1t3wAg8u11DWk D 9   | 0          | 10-658-550-2257  | 2130.98  | FURNITURE   | ges sleep furiously bold deposits. furiously regular requests cajole slyly. unusual accounts nag unusual ide |
+| 752      | Customer#000000752  | KtdEacPUecPdPLt99kwZrnH9oIxUxpw  | 8          | 18-924-993-6038  | 8363.66  | MACHINERY   | mong the ironic, final waters. regular deposits above the fluffily ironic instructions |
+| 753      | Customer#000000753  | 9k2PLlDRbMq4oSvW5Hh7Ak5iRDH      | 17         | 27-817-126-3646  | 8114.44  | HOUSEHOLD   | cies. deposits snooze. final, regular excuses wake furiously about the furiously final foxes. dependencies  |
+| 754      | Customer#000000754  | 8r5wwhhlL9MkAxOhRK               | 0          | 10-646-595-5871  | -566.86  | BUILDING    | er regular accounts against the furiously unusual somas sleep carefull |
++----------+---------------------+----------------------------------+------------+------------------+----------+-------------+----------------------------------------------------+
+6 rows selected (0.21 seconds)
+</pre></div>
+</div>
+<p>As shown in the above case, you can retrieve all the operation logs, the result schema, and the result to your client-side in the beeline console.</p>
+<p>Additionally, some useful information about the background Trino application associated with this connection is also printed in the operation log.
+Add, you get the Trino web UI for debugging or tuning.</p>
+<p><img alt="../_images/trino-query-page.png" src="../_images/trino-query-page.png" /></p>
+</section>
+</section>
+<section id="closing-a-connection">
+<h3>Closing a Connection<a class="headerlink" href="#closing-a-connection" title="Permalink to this headline">#</a></h3>
+<p>Close the session between beeline and Kyuubi server by executing <code class="docutils literal notranslate"><span class="pre">!quit</span></code>, for example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span>: jdbc:hive2://localhost:10009/&gt; !quit
+Closing: <span class="m">0</span>: jdbc:hive2://localhost:10009/
+</pre></div>
+</div>
+</section>
+</section>
+<section id="stopping-kyuubi">
+<h2>Stopping Kyuubi<a class="headerlink" href="#stopping-kyuubi" title="Permalink to this headline">#</a></h2>
+<p>Stop Kyuubi by running the following in the <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bin/kyuubi stop
+</pre></div>
+</div>
+<p>And then, you will see the KyuubiServer waving goodbye to you.</p>
+<div class="highlight-logtalk notranslate"><div class="highlight"><pre><span></span>Stopping org.apache.kyuubi.server.KyuubiServer
+  __  __                           __
+ /\ \/\ \                         /\ \      __
+ \ \ \/&#39;/&#39;  __  __  __  __  __  __\ \ \____/\_\
+  \ \ , &lt;  /\ \/\ \/\ \/\ \/\ \/\ \\ \ &#39;__`\/\ \
+   \ \ \\`\\ \ \_\ \ \ \_\ \ \ \_\ \\ \ \L\ \ \ \
+    \ \_\ \_\/`____ \ \____/\ \____/ \ \_,__/\ \_\
+     \/_/\/_/`/___/&gt; \/___/  \/___/   \/___/  \/_/
+                /\___/
+                \/__/
+Bye!
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">KyuubiServer</span></code> instance will be stopped immediately while the SQL engine’s application will still be alive for a while.</p>
+<p>If you start Kyuubi again before the SQL engine application terminates itself, it will reconnect to the newly created <code class="docutils literal notranslate"><span class="pre">KyuubiServer</span></code> instance.</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quick Start</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quick_start_with_helm.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started With Kyuubi on kubernetes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

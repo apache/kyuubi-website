@@ -1,0 +1,3958 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to the Kyuubi Configurations System &#8212; Apache Kyuubi</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../_static/kyuubi_logo_red.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deploy Kyuubi engines on Yarn" href="engine_on_yarn.html" />
+    <link rel="prev" title="Kyuubi Migration Guide" href="migration-guide.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.1-incubating</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../quick_start/index.html">
+   Quick Start
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start.html">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Deploying Kyuubi
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="migration-guide.html">
+     Kyuubi Migration Guide
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="spark/index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="spark/dynamic_allocation.html">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="spark/aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="spark/incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/python/index.html">
+     Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyspark.html">
+       PySpark
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/spark/index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../connector/index.html">
+   Connectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/spark/index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/kudu.html">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../overview/index.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_thriftserver.html">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../community/index.html">
+   Community
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/release.html">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/deployment/settings.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/deployment/settings.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environments">
+   Environments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kyuubi-configurations">
+   Kyuubi Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authentication">
+     Authentication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#backend">
+     Backend
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch">
+     Batch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#credentials">
+     Credentials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ctl">
+     Ctl
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#delegation">
+     Delegation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#engine">
+     Engine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frontend">
+     Frontend
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ha">
+     Ha
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kinit">
+     Kinit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kubernetes">
+     Kubernetes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metadata">
+     Metadata
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metrics">
+     Metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operation">
+     Operation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#server">
+     Server
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#session">
+     Session
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spnego">
+     Spnego
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zookeeper">
+     Zookeeper
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spark-configurations">
+   Spark Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-spark-defaults-conf">
+     Via spark-defaults.conf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-kyuubi-defaults-conf">
+     Via kyuubi-defaults.conf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-jdbc-connection-url">
+     Via JDBC Connection URL
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-set-syntax">
+     Via SET Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flink-configurations">
+   Flink Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-flink-conf-yaml">
+     Via flink-conf.yaml
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Via kyuubi-defaults.conf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Via JDBC Connection URL
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-set-statements">
+     Via SET Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging">
+   Logging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-configurations">
+   Other Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hadoop-configurations">
+     Hadoop Configurations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hive-configurations">
+     Hive Configurations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#user-defaults">
+   User Defaults
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to the Kyuubi Configurations System</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environments">
+   Environments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kyuubi-configurations">
+   Kyuubi Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authentication">
+     Authentication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#backend">
+     Backend
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch">
+     Batch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#credentials">
+     Credentials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ctl">
+     Ctl
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#delegation">
+     Delegation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#engine">
+     Engine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frontend">
+     Frontend
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ha">
+     Ha
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kinit">
+     Kinit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kubernetes">
+     Kubernetes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metadata">
+     Metadata
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metrics">
+     Metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operation">
+     Operation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#server">
+     Server
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#session">
+     Session
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spnego">
+     Spnego
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zookeeper">
+     Zookeeper
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spark-configurations">
+   Spark Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-spark-defaults-conf">
+     Via spark-defaults.conf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-kyuubi-defaults-conf">
+     Via kyuubi-defaults.conf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-jdbc-connection-url">
+     Via JDBC Connection URL
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-set-syntax">
+     Via SET Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flink-configurations">
+   Flink Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-flink-conf-yaml">
+     Via flink-conf.yaml
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Via kyuubi-defaults.conf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Via JDBC Connection URL
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-set-statements">
+     Via SET Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging">
+   Logging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-configurations">
+   Other Configurations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hadoop-configurations">
+     Hadoop Configurations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hive-configurations">
+     Hive Configurations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#user-defaults">
+   User Defaults
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <!--
+ - Licensed to the Apache Software Foundation (ASF) under one or more
+ - contributor license agreements.  See the NOTICE file distributed with
+ - this work for additional information regarding copyright ownership.
+ - The ASF licenses this file to You under the Apache License, Version 2.0
+ - (the "License"); you may not use this file except in compliance with
+ - the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+ --><!-- DO NOT MODIFY THIS FILE DIRECTLY, IT IS AUTO GENERATED BY [org.apache.kyuubi.config.AllKyuubiConfiguration] --><section id="introduction-to-the-kyuubi-configurations-system">
+<h1>Introduction to the Kyuubi Configurations System<a class="headerlink" href="#introduction-to-the-kyuubi-configurations-system" title="Permalink to this headline">#</a></h1>
+<p>Kyuubi provides several ways to configure the system and corresponding engines.</p>
+<section id="environments">
+<h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">#</a></h2>
+<p>You can configure the environment variables in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-env.sh</span></code>, e.g, <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, then this java runtime will be used both for Kyuubi server instance and the applications it launches. You can also change the variable in the subprocess’s env configuration file, e.g.<code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/spark-env.sh</span></code> to use more specific ENV for SQL engine applications.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="c1"># contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="c1"># this work for additional information regarding copyright ownership.</span>
+<span class="c1"># The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="c1"># (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="c1"># the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># - JAVA_HOME               Java runtime to use. By default use &quot;java&quot; from PATH.</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># - KYUUBI_CONF_DIR         Directory containing the Kyuubi configurations to use.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/conf)</span>
+<span class="c1"># - KYUUBI_LOG_DIR          Directory for Kyuubi server-side logs.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/logs)</span>
+<span class="c1"># - KYUUBI_PID_DIR          Directory stores the Kyuubi instance pid file.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/pid)</span>
+<span class="c1"># - KYUUBI_MAX_LOG_FILES    Maximum number of Kyuubi server logs can rotate to.</span>
+<span class="c1">#                           (Default: 5)</span>
+<span class="c1"># - KYUUBI_JAVA_OPTS        JVM options for the Kyuubi server itself in the form &quot;-Dx=y&quot;.</span>
+<span class="c1">#                           (Default: none).</span>
+<span class="c1"># - KYUUBI_CTL_JAVA_OPTS    JVM options for the Kyuubi ctl itself in the form &quot;-Dx=y&quot;.</span>
+<span class="c1">#                           (Default: none).</span>
+<span class="c1"># - KYUUBI_BEELINE_OPTS     JVM options for the Kyuubi BeeLine in the form &quot;-Dx=Y&quot;.</span>
+<span class="c1">#                           (Default: none)</span>
+<span class="c1"># - KYUUBI_NICENESS         The scheduling priority for Kyuubi server.</span>
+<span class="c1">#                           (Default: 0)</span>
+<span class="c1"># - KYUUBI_WORK_DIR_ROOT    Root directory for launching sql engine applications.</span>
+<span class="c1">#                           (Default: $KYUUBI_HOME/work)</span>
+<span class="c1"># - HADOOP_CONF_DIR         Directory containing the Hadoop / YARN configuration to use.</span>
+<span class="c1"># - YARN_CONF_DIR           Directory containing the YARN configuration to use.</span>
+<span class="c1">#</span>
+<span class="c1"># - SPARK_HOME              Spark distribution which you would like to use in Kyuubi.</span>
+<span class="c1"># - SPARK_CONF_DIR          Optional directory where the Spark configuration lives.</span>
+<span class="c1">#                           (Default: $SPARK_HOME/conf)</span>
+<span class="c1"># - FLINK_HOME              Flink distribution which you would like to use in Kyuubi.</span>
+<span class="c1"># - FLINK_CONF_DIR          Optional directory where the Flink configuration lives.</span>
+<span class="c1">#                           (Default: $FLINK_HOME/conf)</span>
+<span class="c1"># - FLINK_HADOOP_CLASSPATH  Required Hadoop jars when you use the Kyuubi Flink engine.</span>
+<span class="c1"># - HIVE_HOME               Hive distribution which you would like to use in Kyuubi.</span>
+<span class="c1"># - HIVE_CONF_DIR           Optional directory where the Hive configuration lives.</span>
+<span class="c1">#                           (Default: $HIVE_HOME/conf)</span>
+<span class="c1"># - HIVE_HADOOP_CLASSPATH   Required Hadoop jars when you use the Kyuubi Hive engine.</span>
+<span class="c1">#</span>
+
+
+<span class="c1">## Examples ##</span>
+
+<span class="c1"># export JAVA_HOME=/usr/jdk64/jdk1.8.0_152</span>
+<span class="c1"># export SPARK_HOME=/opt/spark</span>
+<span class="c1"># export FLINK_HOME=/opt/flink</span>
+<span class="c1"># export HIVE_HOME=/opt/hive</span>
+<span class="c1"># export FLINK_HADOOP_CLASSPATH=/path/to/hadoop-client-runtime-3.3.2.jar:/path/to/hadoop-client-api-3.3.2.jar</span>
+<span class="c1"># export HIVE_HADOOP_CLASSPATH=${HADOOP_HOME}/share/hadoop/common/lib/commons-collections-3.2.2.jar:${HADOOP_HOME}/share/hadoop/client/hadoop-client-runtime-3.1.0.jar:${HADOOP_HOME}/share/hadoop/client/hadoop-client-api-3.1.0.jar:${HADOOP_HOME}/share/hadoop/common/lib/htrace-core4-4.1.0-incubating.jar</span>
+<span class="c1"># export HADOOP_CONF_DIR=/usr/ndp/current/mapreduce_client/conf</span>
+<span class="c1"># export YARN_CONF_DIR=/usr/ndp/current/yarn/conf</span>
+<span class="c1"># export KYUUBI_JAVA_OPTS=&quot;-Xmx10g -XX:+UnlockDiagnosticVMOptions -XX:ParGCCardsPerStrideChunk=4096 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly -XX:+CMSClassUnloadingEnabled -XX:+CMSParallelRemarkEnabled -XX:+UseCondCardMark -XX:MaxDirectMemorySize=1024m  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./logs -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -Xloggc:./logs/kyuubi-server-gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=5M -XX:NewRatio=3 -XX:MetaspaceSize=512m&quot;</span>
+<span class="c1"># export KYUUBI_BEELINE_OPTS=&quot;-Xmx2g -XX:+UnlockDiagnosticVMOptions -XX:ParGCCardsPerStrideChunk=4096 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseCMSInitiatingOccupancyOnly -XX:+CMSClassUnloadingEnabled -XX:+CMSParallelRemarkEnabled -XX:+UseCondCardMark&quot;</span>
+</pre></div>
+</div>
+<p>For the environment variables that only needed to be transferred into engine side, you can set it with a Kyuubi configuration item formatted <code class="docutils literal notranslate"><span class="pre">kyuubi.engineEnv.VAR_NAME</span></code>. For example, with <code class="docutils literal notranslate"><span class="pre">kyuubi.engineEnv.SPARK_DRIVER_MEMORY=4g</span></code>, the environment variable <code class="docutils literal notranslate"><span class="pre">SPARK_DRIVER_MEMORY</span></code> with value <code class="docutils literal notranslate"><span class="pre">4g</span></code> would be transferred into engine side. With <code class="docutils literal notranslate"><span class="pre">kyuubi.engineEnv.SPARK_CONF_DIR=/apache/confs/spark/conf</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">SPARK_CONF_DIR</span></code> in engine side is set to <code class="docutils literal notranslate"><span class="pre">/apache/confs/spark/conf</span></code>.</p>
+</section>
+<section id="kyuubi-configurations">
+<h2>Kyuubi Configurations<a class="headerlink" href="#kyuubi-configurations" title="Permalink to this headline">#</a></h2>
+<p>You can configure the Kyuubi properties in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="c1"># contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="c1"># this work for additional information regarding copyright ownership.</span>
+<span class="c1"># The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="c1"># (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="c1"># the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+
+<span class="c1">## Kyuubi Configurations</span>
+
+<span class="c1">#</span>
+<span class="c1"># kyuubi.authentication           NONE</span>
+<span class="c1"># kyuubi.frontend.bind.host       localhost</span>
+<span class="c1"># kyuubi.frontend.bind.port       10009</span>
+<span class="c1">#</span>
+
+<span class="c1"># Details in https://kyuubi.apache.org/docs/latest/deployment/settings.html</span>
+</pre></div>
+</div>
+<section id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.authentication</td>
+<td>NONE</td>
+<td>A comma separated list of client authentication types.<ul> <li>NOSASL: raw transport.</li> <li>NONE: no authentication check.</li> <li>KERBEROS: Kerberos/GSSAPI authentication.</li> <li>CUSTOM: User-defined authentication.</li> <li>JDBC: JDBC query authentication.</li> <li>LDAP: Lightweight Directory Access Protocol authentication.</li></ul> Note that: For KERBEROS, it is SASL/GSSAPI mechanism, and for NONE, CUSTOM and LDAP, they are all SASL/PLAIN mechanism. If only NOSASL is specified, the authentication will be NOSASL. For SASL authentication, KERBEROS and PLAIN auth type are supported at the same time, and only the first specified PLAIN auth type is valid.</td>
+<td>seq</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.custom.class</td>
+<td>&lt;undefined&gt;</td>
+<td>User-defined authentication implementation of org.apache.kyuubi.service.authentication.PasswdAuthenticationProvider</td>
+<td>string</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.jdbc.driver.class</td>
+<td>&lt;undefined&gt;</td>
+<td>Driver class name for JDBC Authentication Provider.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.jdbc.password</td>
+<td>&lt;undefined&gt;</td>
+<td>Database password for JDBC Authentication Provider.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.jdbc.query</td>
+<td>&lt;undefined&gt;</td>
+<td>Query SQL template with placeholders for JDBC Authentication Provider to execute. Authentication passes if the result set is not empty.The SQL statement must start with the <code>SELECT</code> clause. Available placeholders are <code>${user}</code> and <code>${password}</code>.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.jdbc.url</td>
+<td>&lt;undefined&gt;</td>
+<td>JDBC URL for JDBC Authentication Provider.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.jdbc.user</td>
+<td>&lt;undefined&gt;</td>
+<td>Database user for JDBC Authentication Provider.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.ldap.base.dn</td>
+<td>&lt;undefined&gt;</td>
+<td>LDAP base DN.</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.ldap.domain</td>
+<td>&lt;undefined&gt;</td>
+<td>LDAP domain.</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.ldap.guidKey</td>
+<td>uid</td>
+<td>LDAP attribute name whose values are unique in this LDAP server.For example:uid or cn.</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.ldap.url</td>
+<td>&lt;undefined&gt;</td>
+<td>SPACE character separated LDAP connection URL(s).</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.authentication.sasl.qop</td>
+<td>auth</td>
+<td>Sasl QOP enable higher levels of protection for Kyuubi communication with clients.<ul> <li>auth - authentication only (default)</li> <li>auth-int - authentication plus integrity protection</li> <li>auth-conf - authentication plus integrity and confidentiality protection. This is applicable only if Kyuubi is configured to use Kerberos authentication.</li> </ul></td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="backend">
+<h3>Backend<a class="headerlink" href="#backend" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.backend.engine.exec.pool.keepalive.time</td>
+<td>PT1M</td>
+<td>Time(ms) that an idle async thread of the operation execution thread pool will wait for a new task to arrive before terminating in SQL engine applications</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.engine.exec.pool.shutdown.timeout</td>
+<td>PT10S</td>
+<td>Timeout(ms) for the operation execution thread pool to terminate in SQL engine applications</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.engine.exec.pool.size</td>
+<td>100</td>
+<td>Number of threads in the operation execution thread pool of SQL engine applications</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.engine.exec.pool.wait.queue.size</td>
+<td>100</td>
+<td>Size of the wait queue for the operation execution thread pool in SQL engine applications</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.server.event.json.log.path</td>
+<td>file:///tmp/kyuubi/events</td>
+<td>The location of server events go for the builtin JSON logger</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.server.event.loggers</td>
+<td></td>
+<td>A comma separated list of server history loggers, where session/operation etc events go.<ul> <li>JSON: the events will be written to the location of kyuubi.backend.server.event.json.log.path</li> <li>JDBC: to be done</li> <li>CUSTOM: to be done.</li></ul></td>
+<td>seq</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.server.exec.pool.keepalive.time</td>
+<td>PT1M</td>
+<td>Time(ms) that an idle async thread of the operation execution thread pool will wait for a new task to arrive before terminating in Kyuubi server</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.server.exec.pool.shutdown.timeout</td>
+<td>PT10S</td>
+<td>Timeout(ms) for the operation execution thread pool to terminate in Kyuubi server</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.server.exec.pool.size</td>
+<td>100</td>
+<td>Number of threads in the operation execution thread pool of Kyuubi server</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.backend.server.exec.pool.wait.queue.size</td>
+<td>100</td>
+<td>Size of the wait queue for the operation execution thread pool of Kyuubi server</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="batch">
+<h3>Batch<a class="headerlink" href="#batch" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.batch.application.check.interval</td>
+<td>PT5S</td>
+<td>The interval to check batch job application information.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.batch.conf.ignore.list</td>
+<td></td>
+<td>A comma separated list of ignored keys for batch conf. If the batch conf contains any of them, the key and the corresponding value will be removed silently during batch job submission. Note that this rule is for server-side protection defined via administrators to prevent some essential configs from tampering. You can also pre-define some config for batch job submission with prefix: kyuubi.batchConf.[batchType]. For example, you can pre-define <code>spark.master</code> for spark batch job with key <code>kyuubi.batchConf.spark.spark.master</code>.</td>
+<td>seq</td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="credentials">
+<h3>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.credentials.check.interval</td>
+<td>PT5M</td>
+<td>The interval to check the expiration of cached <user, CredentialsRef> pairs.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.hadoopfs.enabled</td>
+<td>true</td>
+<td>Whether to renew Hadoop filesystem delegation tokens</td>
+<td>boolean</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.hadoopfs.uris</td>
+<td></td>
+<td>Extra Hadoop filesystem URIs for which to request delegation tokens. The filesystem that hosts fs.defaultFS does not need to be listed here.</td>
+<td>seq</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.hive.enabled</td>
+<td>true</td>
+<td>Whether to renew Hive metastore delegation token</td>
+<td>boolean</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.idle.timeout</td>
+<td>PT6H</td>
+<td>inactive users' credentials will be expired after a configured timeout</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.renewal.interval</td>
+<td>PT1H</td>
+<td>How often Kyuubi renews one user's delegation tokens</td>
+<td>duration</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.renewal.retry.wait</td>
+<td>PT1M</td>
+<td>How long to wait before retrying to fetch new credentials after a failure.</td>
+<td>duration</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.credentials.update.wait.timeout</td>
+<td>PT1M</td>
+<td>How long to wait until credentials are ready.</td>
+<td>duration</td>
+<td>1.5.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="ctl">
+<h3>Ctl<a class="headerlink" href="#ctl" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.ctl.batch.log.on.failure.timeout</td>
+<td>PT10S</td>
+<td>The timeout for fetching remaining batch logs if the batch failed.</td>
+<td>duration</td>
+<td>1.6.1</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.batch.log.query.interval</td>
+<td>PT3S</td>
+<td>The interval for fetching batch logs.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.auth.schema</td>
+<td>basic</td>
+<td>The authentication schema. Valid values are: basic, spnego.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.base.url</td>
+<td>&lt;undefined&gt;</td>
+<td>The REST API base URL, which contains the scheme (http:// or https://), host name, port number</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.connect.timeout</td>
+<td>PT30S</td>
+<td>The timeout[ms] for establishing the connection with the kyuubi server.A timeout value of zero is interpreted as an infinite timeout.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.request.attempt.wait</td>
+<td>PT3S</td>
+<td>How long to wait between attempts of ctl rest request.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.request.max.attempts</td>
+<td>3</td>
+<td>The max attempts number for ctl rest request.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.socket.timeout</td>
+<td>PT2M</td>
+<td>The timeout[ms] for waiting for data packets after connection is established.A timeout value of zero is interpreted as an infinite timeout.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ctl.rest.spnego.host</td>
+<td>&lt;undefined&gt;</td>
+<td>When auth schema is spnego, need to config spnego host.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="delegation">
+<h3>Delegation<a class="headerlink" href="#delegation" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.delegation.key.update.interval</td>
+<td>PT24H</td>
+<td>unused yet</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.delegation.token.gc.interval</td>
+<td>PT1H</td>
+<td>unused yet</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.delegation.token.max.lifetime</td>
+<td>PT168H</td>
+<td>unused yet</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.delegation.token.renew.interval</td>
+<td>PT168H</td>
+<td>unused yet</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="engine">
+<h3>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.engine.connection.url.use.hostname</td>
+<td>true</td>
+<td>(deprecated) When true, engine register with hostname to zookeeper. When spark run on k8s with cluster mode, set to false to ensure that server can connect to engine</td>
+<td>boolean</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.deregister.exception.classes</td>
+<td></td>
+<td>A comma separated list of exception classes. If there is any exception thrown, whose class matches the specified classes, the engine would deregister itself.</td>
+<td>seq</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.deregister.exception.messages</td>
+<td></td>
+<td>A comma separated list of exception messages. If there is any exception thrown, whose message or stacktrace matches the specified message list, the engine would deregister itself.</td>
+<td>seq</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.deregister.exception.ttl</td>
+<td>PT30M</td>
+<td>Time to live(TTL) for exceptions pattern specified in kyuubi.engine.deregister.exception.classes and kyuubi.engine.deregister.exception.messages to deregister engines. Once the total error count hits the kyuubi.engine.deregister.job.max.failures within the TTL, an engine will deregister itself and wait for self-terminated. Otherwise, we suppose that the engine has recovered from temporary failures.</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.deregister.job.max.failures</td>
+<td>4</td>
+<td>Number of failures of job before deregistering the engine.</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.event.json.log.path</td>
+<td>file:///tmp/kyuubi/events</td>
+<td>The location of all the engine events go for the builtin JSON logger.<ul><li>Local Path: start with 'file://'</li><li>HDFS Path: start with 'hdfs://'</li></ul></td>
+<td>string</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.event.loggers</td>
+<td>SPARK</td>
+<td>A comma separated list of engine history loggers, where engine/session/operation etc events go. We use spark logger by default.<ul> <li>SPARK: the events will be written to the spark listener bus.</li> <li>JSON: the events will be written to the location of kyuubi.engine.event.json.log.path</li> <li>JDBC: to be done</li> <li>CUSTOM: to be done.</li></ul></td>
+<td>seq</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.flink.extra.classpath</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra classpath for the flink sql engine, for configuring location of hadoop client jars, etc</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.flink.java.options</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra java options for the flink sql engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.flink.memory</td>
+<td>1g</td>
+<td>The heap memory for the flink sql engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.hive.extra.classpath</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra classpath for the hive query engine, for configuring location of hadoop client jars, etc</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.hive.java.options</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra java options for the hive query engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.hive.memory</td>
+<td>1g</td>
+<td>The heap memory for the hive query engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.initialize.sql</td>
+<td>SHOW DATABASES</td>
+<td>SemiColon-separated list of SQL statements to be initialized in the newly created engine before queries. i.e. use <code>SHOW DATABASES</code> to eagerly active HiveClient. This configuration can not be used in JDBC url due to the limitation of Beeline/JDBC driver.</td>
+<td>seq</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.connection.password</td>
+<td>&lt;undefined&gt;</td>
+<td>The password is used for connecting to server</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.connection.properties</td>
+<td></td>
+<td>The additional properties are used for connecting to server</td>
+<td>seq</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.connection.provider</td>
+<td>&lt;undefined&gt;</td>
+<td>The connection provider is used for getting a connection from server</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.connection.url</td>
+<td>&lt;undefined&gt;</td>
+<td>The server url that engine will connect to</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.connection.user</td>
+<td>&lt;undefined&gt;</td>
+<td>The user is used for connecting to server</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.driver.class</td>
+<td>&lt;undefined&gt;</td>
+<td>The driver class for jdbc engine connection</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.extra.classpath</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra classpath for the jdbc query engine, for configuring location of jdbc driver, etc</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.java.options</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra java options for the jdbc query engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.memory</td>
+<td>1g</td>
+<td>The heap memory for the jdbc query engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.jdbc.type</td>
+<td>&lt;undefined&gt;</td>
+<td>The short name of jdbc type</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.operation.convert.catalog.database.enabled</td>
+<td>true</td>
+<td>When set to true, The engine converts the JDBC methods of set/get Catalog and set/get Schema to the implementation of different engines</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.operation.log.dir.root</td>
+<td>engine_operation_logs</td>
+<td>Root directory for query operation log at engine-side.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.pool.name</td>
+<td>engine-pool</td>
+<td>The name of engine pool.</td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.pool.size</td>
+<td>-1</td>
+<td>The size of engine pool. Note that, if the size is less than 1, the engine pool will not be enabled; otherwise, the size of the engine pool will be min(this, kyuubi.engine.pool.size.threshold).</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.pool.size.threshold</td>
+<td>9</td>
+<td>This parameter is introduced as a server-side parameter, and controls the upper limit of the engine pool.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.session.initialize.sql</td>
+<td></td>
+<td>SemiColon-separated list of SQL statements to be initialized in the newly created engine session before queries. This configuration can not be used in JDBC url due to the limitation of Beeline/JDBC driver.</td>
+<td>seq</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.share.level</td>
+<td>USER</td>
+<td>Engines will be shared in different levels, available configs are: <ul> <li>CONNECTION: engine will not be shared but only used by the current client connection</li> <li>USER: engine will be shared by all sessions created by a unique username, see also kyuubi.engine.share.level.subdomain</li> <li>GROUP: engine will be shared by all sessions created by all users belong to the same primary group name. The engine will be launched by the group name as the effective username, so here the group name is kind of special user who is able to visit the compute resources/data of a team. It follows the <a href="https://reurl.cc/xE61Y5">Hadoop GroupsMapping</a> to map user to a primary group. If the primary group is not found, it fallback to the USER level. <li>SERVER: the App will be shared by Kyuubi servers</li></ul></td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.share.level.sub.domain</td>
+<td>&lt;undefined&gt;</td>
+<td>(deprecated) - Using kyuubi.engine.share.level.subdomain instead</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.share.level.subdomain</td>
+<td>&lt;undefined&gt;</td>
+<td>Allow end-users to create a subdomain for the share level of an engine. A subdomain is a case-insensitive string values that must be a valid zookeeper sub path. For example, for <code>USER</code> share level, an end-user can share a certain engine within a subdomain, not for all of its clients. End-users are free to create multiple engines in the <code>USER</code> share level. When disable engine pool, use 'default' if absent.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.single.spark.session</td>
+<td>false</td>
+<td>When set to true, this engine is running in a single session mode. All the JDBC/ODBC connections share the temporary views, function registries, SQL configuration and the current database.</td>
+<td>boolean</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.trino.extra.classpath</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra classpath for the trino query engine, for configuring other libs which may need by the trino engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.trino.java.options</td>
+<td>&lt;undefined&gt;</td>
+<td>The extra java options for the trino query engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.trino.memory</td>
+<td>1g</td>
+<td>The heap memory for the trino query engine</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.type</td>
+<td>SPARK_SQL</td>
+<td>Specify the detailed engine that supported by the Kyuubi. The engine type bindings to SESSION scope. This configuration is experimental. Currently, available configs are: <ul> <li>SPARK_SQL: specify this engine type will launch a Spark engine which can provide all the capacity of the Apache Spark. Note, it's a default engine type.</li> <li>FLINK_SQL: specify this engine type will launch a Flink engine which can provide all the capacity of the Apache Flink.</li> <li>TRINO: specify this engine type will launch a Trino engine which can provide all the capacity of the Trino.</li> <li>HIVE_SQL: specify this engine type will launch a Hive engine which can provide all the capacity of the Hive Server2.</li> <li>JDBC: specify this engine type will launch a JDBC engine which can provide a mysql protocol connector, for now we only support Doris dialect.</li></ul></td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.ui.retainedSessions</td>
+<td>200</td>
+<td>The number of SQL client sessions kept in the Kyuubi Query Engine web UI.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.ui.retainedStatements</td>
+<td>200</td>
+<td>The number of statements kept in the Kyuubi Query Engine web UI.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.ui.stop.enabled</td>
+<td>true</td>
+<td>When true, allows Kyuubi engine to be killed from the Spark Web UI.</td>
+<td>boolean</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.user.isolated.spark.session</td>
+<td>true</td>
+<td>When set to false, if the engine is running in a group or server share level, all the JDBC/ODBC connections will be isolated against the user. Including: the temporary views, function registries, SQL configuration and the current database. Note that, it does not affect if the share level is connection or user.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.user.isolated.spark.session.idle.interval</td>
+<td>PT1M</td>
+<td>The interval to check if the user isolated spark session is timeout.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.engine.user.isolated.spark.session.idle.timeout</td>
+<td>PT6H</td>
+<td>If kyuubi.engine.user.isolated.spark.session is false, we will release the spark session if its corresponding user is inactive after this configured timeout.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="frontend">
+<h3>Frontend<a class="headerlink" href="#frontend" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.frontend.backoff.slot.length</td>
+<td>PT0.1S</td>
+<td>(deprecated) Time to back off during login to the thrift frontend service.</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.bind.host</td>
+<td>&lt;undefined&gt;</td>
+<td>(deprecated) Hostname or IP of the machine on which to run the thrift frontend service via binary protocol.</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.bind.port</td>
+<td>10009</td>
+<td>(deprecated) Port of the machine on which to run the thrift frontend service via binary protocol.</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.connection.url.use.hostname</td>
+<td>true</td>
+<td>When true, frontend services prefer hostname, otherwise, ip address. Note that, the default value is set to <code>false</code> when engine running on Kubernetes to prevent potential network issue.</td>
+<td>boolean</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.login.timeout</td>
+<td>PT20S</td>
+<td>(deprecated) Timeout for Thrift clients during login to the thrift frontend service.</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.max.message.size</td>
+<td>104857600</td>
+<td>(deprecated) Maximum message size in bytes a Kyuubi server will accept.</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.max.worker.threads</td>
+<td>999</td>
+<td>(deprecated) Maximum number of threads in the of frontend worker thread pool for the thrift frontend service</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.min.worker.threads</td>
+<td>9</td>
+<td>(deprecated) Minimum number of threads in the of frontend worker thread pool for the thrift frontend service</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql.bind.host</td>
+<td>&lt;undefined&gt;</td>
+<td>Hostname or IP of the machine on which to run the MySQL frontend service.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql.bind.port</td>
+<td>3309</td>
+<td>Port of the machine on which to run the MySQL frontend service.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql.max.worker.threads</td>
+<td>999</td>
+<td>Maximum number of threads in the command execution thread pool for the MySQL frontend service</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql.min.worker.threads</td>
+<td>9</td>
+<td>Minimum number of threads in the command execution thread pool for the MySQL frontend service</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql.netty.worker.threads</td>
+<td>&lt;undefined&gt;</td>
+<td>Number of thread in the netty worker event loop of MySQL frontend service. Use min(cpu_cores, 8) in default.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.mysql.worker.keepalive.time</td>
+<td>PT1M</td>
+<td>Time(ms) that an idle async thread of the command execution thread pool will wait for a new task to arrive before terminating in MySQL frontend service</td>
+<td>duration</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.protocols</td>
+<td>THRIFT_BINARY</td>
+<td>A comma separated list for all frontend protocols <ul> <li>THRIFT_BINARY - HiveServer2 compatible thrift binary protocol.</li> <li>THRIFT_HTTP - HiveServer2 compatible thrift http protocol.</li> <li>REST - Kyuubi defined REST API(experimental).</li>  <li>MYSQL - MySQL compatible text protocol(experimental).</li> </ul></td>
+<td>seq</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.proxy.http.client.ip.header</td>
+<td>X-Real-IP</td>
+<td>The http header to record the real client ip address. If your server is behind a load balancer or other proxy, the server will see this load balancer or proxy IP address as the client IP address, to get around this common issue, most load balancers or proxies offer the ability to record the real remote IP address in an HTTP header that will be added to the request for other devices to use. Note that, because the header value can be specified to any ip address, so it will not be used for authentication.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.rest.bind.host</td>
+<td>&lt;undefined&gt;</td>
+<td>Hostname or IP of the machine on which to run the REST frontend service.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.rest.bind.port</td>
+<td>10099</td>
+<td>Port of the machine on which to run the REST frontend service.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.backoff.slot.length</td>
+<td>PT0.1S</td>
+<td>Time to back off during login to the thrift frontend service.</td>
+<td>duration</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.binary.bind.host</td>
+<td>&lt;undefined&gt;</td>
+<td>Hostname or IP of the machine on which to run the thrift frontend service via binary protocol.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.binary.bind.port</td>
+<td>10009</td>
+<td>Port of the machine on which to run the thrift frontend service via binary protocol.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.allow.user.substitution</td>
+<td>true</td>
+<td>Allow alternate user to be specified as part of open connection request when using HTTP transport mode.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.bind.host</td>
+<td>&lt;undefined&gt;</td>
+<td>Hostname or IP of the machine on which to run the thrift frontend service via http protocol.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.bind.port</td>
+<td>10010</td>
+<td>Port of the machine on which to run the thrift frontend service via http protocol.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.compression.enabled</td>
+<td>true</td>
+<td>Enable thrift http compression via Jetty compression support</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.cookie.auth.enabled</td>
+<td>true</td>
+<td>When true, Kyuubi in HTTP transport mode, will use cookie based authentication mechanism</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.cookie.domain</td>
+<td>&lt;undefined&gt;</td>
+<td>Domain for the Kyuubi generated cookies</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.cookie.is.httponly</td>
+<td>true</td>
+<td>HttpOnly attribute of the Kyuubi generated cookie.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.cookie.max.age</td>
+<td>86400</td>
+<td>Maximum age in seconds for server side cookie used by Kyuubi in HTTP mode.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.cookie.path</td>
+<td>&lt;undefined&gt;</td>
+<td>Path for the Kyuubi generated cookies</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.max.idle.time</td>
+<td>PT30M</td>
+<td>Maximum idle time for a connection on the server when in HTTP mode.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.path</td>
+<td>cliservice</td>
+<td>Path component of URL endpoint when in HTTP mode.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.request.header.size</td>
+<td>6144</td>
+<td>Request header size in bytes, when using HTTP transport mode. Jetty defaults used.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.response.header.size</td>
+<td>6144</td>
+<td>Response header size in bytes, when using HTTP transport mode. Jetty defaults used.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.ssl.keystore.password</td>
+<td>&lt;undefined&gt;</td>
+<td>SSL certificate keystore password.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.ssl.keystore.path</td>
+<td>&lt;undefined&gt;</td>
+<td>SSL certificate keystore location.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.ssl.protocol.blacklist</td>
+<td>SSLv2,SSLv3</td>
+<td>SSL Versions to disable when using HTTP transport mode.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.use.SSL</td>
+<td>false</td>
+<td>Set this to true for using SSL encryption in http mode.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.http.xsrf.filter.enabled</td>
+<td>false</td>
+<td>If enabled, Kyuubi will block any requests made to it over http if an X-XSRF-HEADER header is not present</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.login.timeout</td>
+<td>PT20S</td>
+<td>Timeout for Thrift clients during login to the thrift frontend service.</td>
+<td>duration</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.max.message.size</td>
+<td>104857600</td>
+<td>Maximum message size in bytes a Kyuubi server will accept.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.max.worker.threads</td>
+<td>999</td>
+<td>Maximum number of threads in the of frontend worker thread pool for the thrift frontend service</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.min.worker.threads</td>
+<td>9</td>
+<td>Minimum number of threads in the of frontend worker thread pool for the thrift frontend service</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.thrift.worker.keepalive.time</td>
+<td>PT1M</td>
+<td>Keep-alive time (in milliseconds) for an idle worker thread</td>
+<td>duration</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.frontend.worker.keepalive.time</td>
+<td>PT1M</td>
+<td>(deprecated) Keep-alive time (in milliseconds) for an idle worker thread</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="ha">
+<h3>Ha<a class="headerlink" href="#ha" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.ha.addresses</td>
+<td></td>
+<td>The connection string for the discovery ensemble</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.client.class</td>
+<td>org.apache.kyuubi.ha.client.zookeeper.ZookeeperDiscoveryClient</td>
+<td>Class name for service discovery client.<ul> <li>Zookeeper: org.apache.kyuubi.ha.client.zookeeper.ZookeeperDiscoveryClient</li> <li>Etcd: org.apache.kyuubi.ha.client.etcd.EtcdDiscoveryClient</li></ul></td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.etcd.lease.timeout</td>
+<td>PT10S</td>
+<td>Timeout for etcd keep alive lease. The kyuubi server will known unexpected loss of engine after up to this seconds.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.etcd.ssl.ca.path</td>
+<td>&lt;undefined&gt;</td>
+<td>Where the etcd CA certificate file is stored.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.etcd.ssl.client.certificate.path</td>
+<td>&lt;undefined&gt;</td>
+<td>Where the etcd SSL certificate file is stored.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.etcd.ssl.client.key.path</td>
+<td>&lt;undefined&gt;</td>
+<td>Where the etcd SSL key file is stored.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.etcd.ssl.enabled</td>
+<td>false</td>
+<td>When set to true, will build a ssl secured etcd client.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.namespace</td>
+<td>kyuubi</td>
+<td>The root directory for the service to deploy its instance uri</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.acl.enabled</td>
+<td>false</td>
+<td>Set to true if the zookeeper ensemble is kerberized</td>
+<td>boolean</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.auth.digest</td>
+<td>&lt;undefined&gt;</td>
+<td>The digest auth string is used for zookeeper authentication, like: username:password.</td>
+<td>string</td>
+<td>1.3.2</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.auth.keytab</td>
+<td>&lt;undefined&gt;</td>
+<td>Location of Kyuubi server's keytab is used for zookeeper authentication.</td>
+<td>string</td>
+<td>1.3.2</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.auth.principal</td>
+<td>&lt;undefined&gt;</td>
+<td>Name of the Kerberos principal is used for zookeeper authentication.</td>
+<td>string</td>
+<td>1.3.2</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.auth.type</td>
+<td>NONE</td>
+<td>The type of zookeeper authentication, all candidates are <ul><li>NONE</li><li> KERBEROS</li><li> DIGEST</li></ul></td>
+<td>string</td>
+<td>1.3.2</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.connection.base.retry.wait</td>
+<td>1000</td>
+<td>Initial amount of time to wait between retries to the zookeeper ensemble</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.connection.max.retries</td>
+<td>3</td>
+<td>Max retry times for connecting to the zookeeper ensemble</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.connection.max.retry.wait</td>
+<td>30000</td>
+<td>Max amount of time to wait between retries for BOUNDED_EXPONENTIAL_BACKOFF policy can reach, or max time until elapsed for UNTIL_ELAPSED policy to connect the zookeeper ensemble</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.connection.retry.policy</td>
+<td>EXPONENTIAL_BACKOFF</td>
+<td>The retry policy for connecting to the zookeeper ensemble, all candidates are: <ul><li>ONE_TIME</li><li> N_TIME</li><li> EXPONENTIAL_BACKOFF</li><li> BOUNDED_EXPONENTIAL_BACKOFF</li><li> UNTIL_ELAPSED</li></ul></td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.connection.timeout</td>
+<td>15000</td>
+<td>The timeout(ms) of creating the connection to the zookeeper ensemble</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.engine.auth.type</td>
+<td>NONE</td>
+<td>The type of zookeeper authentication for engine, all candidates are <ul><li>NONE</li><li> KERBEROS</li><li> DIGEST</li></ul></td>
+<td>string</td>
+<td>1.3.2</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.namespace</td>
+<td>kyuubi</td>
+<td>(deprecated) The root directory for the service to deploy its instance uri</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.node.creation.timeout</td>
+<td>PT2M</td>
+<td>Timeout for creating zookeeper node</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.publish.configs</td>
+<td>false</td>
+<td>When set to true, publish Kerberos configs to Zookeeper.Note that the Hive driver needs to be greater than 1.3 or 2.0 or apply HIVE-11581 patch.</td>
+<td>boolean</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.quorum</td>
+<td></td>
+<td>(deprecated) The connection string for the zookeeper ensemble</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.ha.zookeeper.session.timeout</td>
+<td>60000</td>
+<td>The timeout(ms) of a connected session to be idled</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="kinit">
+<h3>Kinit<a class="headerlink" href="#kinit" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.kinit.interval</td>
+<td>PT1H</td>
+<td>How often will Kyuubi server run <code>kinit -kt [keytab] [principal]</code> to renew the local Kerberos credentials cache</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.kinit.keytab</td>
+<td>&lt;undefined&gt;</td>
+<td>Location of Kyuubi server's keytab.</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.kinit.max.attempts</td>
+<td>10</td>
+<td>How many times will <code>kinit</code> process retry</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.kinit.principal</td>
+<td>&lt;undefined&gt;</td>
+<td>Name of the Kerberos principal.</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="kubernetes">
+<h3>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.kubernetes.context</td>
+<td>&lt;undefined&gt;</td>
+<td>The desired context from your kubernetes config file used to configure the K8S client for interacting with the cluster.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.metadata.cleaner.enabled</td>
+<td>true</td>
+<td>Whether to clean the metadata periodically. If it is enabled, Kyuubi will clean the metadata that is in terminate state with max age limitation.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.cleaner.interval</td>
+<td>PT30M</td>
+<td>The interval to check and clean expired metadata.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.max.age</td>
+<td>PT72H</td>
+<td>The maximum age of metadata, the metadata that exceeds the age will be cleaned.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.recovery.threads</td>
+<td>10</td>
+<td>The number of threads for recovery from metadata store when Kyuubi server restarting.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.request.retry.interval</td>
+<td>PT5S</td>
+<td>The interval to check and trigger the metadata request retry tasks.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.request.retry.queue.size</td>
+<td>65536</td>
+<td>The maximum queue size for buffering metadata requests in memory when the external metadata storage is down. Requests will be dropped if the queue exceeds.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.request.retry.threads</td>
+<td>10</td>
+<td>Number of threads in the metadata request retry manager thread pool. The metadata store might be unavailable sometimes and the requests will fail, to tolerant for this case and unblock the main thread, we support to retry the failed requests in async way.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.class</td>
+<td>org.apache.kyuubi.server.metadata.jdbc.JDBCMetadataStore</td>
+<td>Fully qualified class name for server metadata store.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.jdbc.database.schema.init</td>
+<td>true</td>
+<td>Whether to init the jdbc metadata store database schema.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.jdbc.database.type</td>
+<td>DERBY</td>
+<td>The database type for server jdbc metadata store.<ul> <li>DERBY: Apache Derby, jdbc driver <code>org.apache.derby.jdbc.AutoloadedDriver</code>.</li> <li>MYSQL: MySQL, jdbc driver <code>com.mysql.jdbc.Driver</code>.</li> <li>CUSTOM: User-defined database type, need to specify corresponding jdbc driver.</li> Note that: The jdbc datasource is powered by HiKariCP, for datasource properties, please specify them with prefix: kyuubi.metadata.store.jdbc.datasource. For example, kyuubi.metadata.store.jdbc.datasource.connectionTimeout=10000.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.jdbc.driver</td>
+<td>&lt;undefined&gt;</td>
+<td>JDBC driver class name for server jdbc metadata store.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.jdbc.password</td>
+<td></td>
+<td>The password for server jdbc metadata store.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.jdbc.url</td>
+<td>jdbc:derby:memory:kyuubi_state_store_db;create=true</td>
+<td>The jdbc url for server jdbc metadata store. By defaults, it is a DERBY in-memory database url, and the state information is not shared across kyuubi instances. To enable multiple kyuubi instances high available, please specify a production jdbc url.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.metadata.store.jdbc.user</td>
+<td></td>
+<td>The username for server jdbc metadata store.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="metrics">
+<h3>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.metrics.console.interval</td>
+<td>PT5S</td>
+<td>How often should report metrics to console</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.enabled</td>
+<td>true</td>
+<td>Set to true to enable kyuubi metrics system</td>
+<td>boolean</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.json.interval</td>
+<td>PT5S</td>
+<td>How often should report metrics to json file</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.json.location</td>
+<td>metrics</td>
+<td>Where the json metrics file located</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.prometheus.path</td>
+<td>/metrics</td>
+<td>URI context path of prometheus metrics HTTP server</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.prometheus.port</td>
+<td>10019</td>
+<td>Prometheus metrics HTTP server port</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.reporters</td>
+<td>JSON</td>
+<td>A comma separated list for all metrics reporters<ul> <li>CONSOLE - ConsoleReporter which outputs measurements to CONSOLE periodically.</li> <li>JMX - JmxReporter which listens for new metrics and exposes them as MBeans.</li>  <li>JSON - JsonReporter which outputs measurements to json file periodically.</li> <li>PROMETHEUS - PrometheusReporter which exposes metrics in prometheus format.</li> <li>SLF4J - Slf4jReporter which outputs measurements to system log periodically.</li></ul></td>
+<td>seq</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.metrics.slf4j.interval</td>
+<td>PT5S</td>
+<td>How often should report metrics to SLF4J logger</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="operation">
+<h3>Operation<a class="headerlink" href="#operation" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.operation.idle.timeout</td>
+<td>PT3H</td>
+<td>Operation will be closed when it's not accessed for this duration of time</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.interrupt.on.cancel</td>
+<td>true</td>
+<td>When true, all running tasks will be interrupted if one cancels a query. When false, all running tasks will remain until finished.</td>
+<td>boolean</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.language</td>
+<td>SQL</td>
+<td>Choose a programing language for the following inputs <ul><li>SQL: (Default) Run all following statements as SQL queries.</li> <li>SCALA: Run all following input a scala codes</li></ul></td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.log.dir.root</td>
+<td>server_operation_logs</td>
+<td>Root directory for query operation log at server-side.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.plan.only.excludes</td>
+<td>ResetCommand,SetCommand,SetNamespaceCommand,UseStatement,SetCatalogAndNamespace</td>
+<td>Comma-separated list of query plan names, in the form of simple class names, i.e, for <code>set abc=xyz</code>, the value will be <code>SetCommand</code>. For those auxiliary plans, such as <code>switch databases</code>, <code>set properties</code>, or <code>create temporary view</code> e.t.c, which are used for setup evaluating environments for analyzing actual queries, we can use this config to exclude them and let them take effect. See also kyuubi.operation.plan.only.mode.</td>
+<td>seq</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.plan.only.mode</td>
+<td>NONE</td>
+<td>Whether to perform the statement in a PARSE, ANALYZE, OPTIMIZE, PHYSICAL, EXECUTION only way without executing the query. When it is NONE, the statement will be fully executed</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.progress.enabled</td>
+<td>false</td>
+<td>Whether to enable the operation progress. When true, the operation progress will be returned in <code>GetOperationStatus</code>.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.query.timeout</td>
+<td>&lt;undefined&gt;</td>
+<td>Timeout for query executions at server-side, take affect with client-side timeout(<code>java.sql.Statement.setQueryTimeout</code>) together, a running query will be cancelled automatically if timeout. It's off by default, which means only client-side take fully control whether the query should timeout or not. If set, client-side timeout capped at this point. To cancel the queries right away without waiting task to finish, consider enabling kyuubi.operation.interrupt.on.cancel together.</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.result.max.rows</td>
+<td>0</td>
+<td>Max rows of Spark query results. Rows that exceeds the limit would be ignored. By setting this value to 0 to disable the max rows limit.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.scheduler.pool</td>
+<td>&lt;undefined&gt;</td>
+<td>The scheduler pool of job. Note that, this config should be used after change Spark config spark.scheduler.mode=FAIR.</td>
+<td>string</td>
+<td>1.1.1</td>
+</tr>
+<tr>
+<td>kyuubi.operation.spark.listener.enabled</td>
+<td>true</td>
+<td>When set to true, Spark engine registers a SQLOperationListener before executing the statement, logs a few summary statistics when each stage completes.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.operation.status.polling.timeout</td>
+<td>PT5S</td>
+<td>Timeout(ms) for long polling asynchronous running sql query's status</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="server">
+<h3>Server<a class="headerlink" href="#server" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.server.info.provider</td>
+<td>SERVER</td>
+<td>The server information provider name, some clients may rely on this information to check the server compatibilities and functionalities. <li>SERVER: Return Kyuubi server information.</li> <li>ENGINE: Return Kyuubi engine information.</li></td>
+<td>string</td>
+<td>1.6.1</td>
+</tr>
+<tr>
+<td>kyuubi.server.limit.connections.per.ipaddress</td>
+<td>&lt;undefined&gt;</td>
+<td>Maximum kyuubi server connections per ipaddress. Any user exceeding this limit will not be allowed to connect.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.server.limit.connections.per.user</td>
+<td>&lt;undefined&gt;</td>
+<td>Maximum kyuubi server connections per user. Any user exceeding this limit will not be allowed to connect.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.server.limit.connections.per.user.ipaddress</td>
+<td>&lt;undefined&gt;</td>
+<td>Maximum kyuubi server connections per user:ipaddress combination. Any user-ipaddress exceeding this limit will not be allowed to connect.</td>
+<td>int</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.server.name</td>
+<td>&lt;undefined&gt;</td>
+<td>The name of Kyuubi Server.</td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.server.redaction.regex</td>
+<td>&lt;undefined&gt;</td>
+<td>Regex to decide which Kyuubi contain sensitive information. When this regex matches a property key or value, the value is redacted from the various logs.</td>
+<td></td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="session">
+<h3>Session<a class="headerlink" href="#session" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.session.check.interval</td>
+<td>PT5M</td>
+<td>The check interval for session timeout.</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.conf.advisor</td>
+<td>&lt;undefined&gt;</td>
+<td>A config advisor plugin for Kyuubi Server. This plugin can provide some custom configs for different user or session configs and overwrite the session configs before open a new session. This config value should be a class which is a child of 'org.apache.kyuubi.plugin.SessionConfAdvisor' which has zero-arg constructor.</td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.conf.ignore.list</td>
+<td></td>
+<td>A comma separated list of ignored keys. If the client connection contains any of them, the key and the corresponding value will be removed silently during engine bootstrap and connection setup. Note that this rule is for server-side protection defined via administrators to prevent some essential configs from tampering but will not forbid users to set dynamic configurations via SET syntax.</td>
+<td>seq</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.conf.restrict.list</td>
+<td></td>
+<td>A comma separated list of restricted keys. If the client connection contains any of them, the connection will be rejected explicitly during engine bootstrap and connection setup. Note that this rule is for server-side protection defined via administrators to prevent some essential configs from tampering but will not forbid users to set dynamic configurations via SET syntax.</td>
+<td>seq</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.alive.probe.enabled</td>
+<td>false</td>
+<td>Whether to enable the engine alive probe, it true, we will create a companion thrift client that sends simple request to check whether the engine is keep alive.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.alive.probe.interval</td>
+<td>PT10S</td>
+<td>The interval for engine alive probe.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.alive.timeout</td>
+<td>PT2M</td>
+<td>The timeout for engine alive. If there is no alive probe success in the last timeout window, the engine will be marked as no-alive.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.check.interval</td>
+<td>PT1M</td>
+<td>The check interval for engine timeout</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.flink.main.resource</td>
+<td>&lt;undefined&gt;</td>
+<td>The package used to create Flink SQL engine remote job. If it is undefined, Kyuubi will use the default</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.flink.max.rows</td>
+<td>1000000</td>
+<td>Max rows of Flink query results. For batch queries, rows that exceeds the limit would be ignored. For streaming queries, the query would be canceled if the limit is reached.</td>
+<td>int</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.hive.main.resource</td>
+<td>&lt;undefined&gt;</td>
+<td>The package used to create Hive engine remote job. If it is undefined, Kyuubi will use the default</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.idle.timeout</td>
+<td>PT30M</td>
+<td>engine timeout, the engine will self-terminate when it's not accessed for this duration. 0 or negative means not to self-terminate.</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.initialize.timeout</td>
+<td>PT3M</td>
+<td>Timeout for starting the background engine, e.g. SparkSQLEngine.</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.launch.async</td>
+<td>true</td>
+<td>When opening kyuubi session, whether to launch backend engine asynchronously. When true, the Kyuubi server will set up the connection with the client without delay as the backend engine will be created asynchronously.</td>
+<td>boolean</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.log.timeout</td>
+<td>PT24H</td>
+<td>If we use Spark as the engine then the session submit log is the console output of spark-submit. We will retain the session submit log until over the config value.</td>
+<td>duration</td>
+<td>1.1.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.login.timeout</td>
+<td>PT15S</td>
+<td>The timeout of creating the connection to remote sql query engine</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.share.level</td>
+<td>USER</td>
+<td>(deprecated) - Using kyuubi.engine.share.level instead</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.spark.main.resource</td>
+<td>&lt;undefined&gt;</td>
+<td>The package used to create Spark SQL engine remote application. If it is undefined, Kyuubi will use the default</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.spark.max.lifetime</td>
+<td>PT0S</td>
+<td>Max lifetime for spark engine, the engine will self-terminate when it reaches the end of life. 0 or negative means not to self-terminate.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.spark.progress.timeFormat</td>
+<td>yyyy-MM-dd HH:mm:ss.SSS</td>
+<td>The time format of the progress bar</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.spark.progress.update.interval</td>
+<td>PT1S</td>
+<td>Update period of progress bar.</td>
+<td>duration</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.spark.showProgress</td>
+<td>false</td>
+<td>When true, show the progress bar in the spark engine log.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.startup.error.max.size</td>
+<td>8192</td>
+<td>During engine bootstrapping, if error occurs, using this config to limit the length error message(characters).</td>
+<td>int</td>
+<td>1.1.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.startup.maxLogLines</td>
+<td>10</td>
+<td>The maximum number of engine log lines when errors occur during engine startup phase. Note that this max lines is for client-side to help track engine startup issue.</td>
+<td>int</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.startup.waitCompletion</td>
+<td>true</td>
+<td>Whether to wait for completion after engine starts. If false, the startup process will be destroyed after the engine is started. Note that only use it when the driver is not running locally, such as yarn-cluster mode; Otherwise, the engine will be killed.</td>
+<td>boolean</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.trino.connection.catalog</td>
+<td>&lt;undefined&gt;</td>
+<td>The default catalog that trino engine will connect to</td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.trino.connection.url</td>
+<td>&lt;undefined&gt;</td>
+<td>The server url that trino engine will connect to</td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.trino.main.resource</td>
+<td>&lt;undefined&gt;</td>
+<td>The package used to create Trino engine remote job. If it is undefined, Kyuubi will use the default</td>
+<td>string</td>
+<td>1.5.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.trino.showProgress</td>
+<td>true</td>
+<td>When true, show the progress bar and final info in the trino engine log.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.engine.trino.showProgress.debug</td>
+<td>false</td>
+<td>When true, show the progress debug info in the trino engine log.</td>
+<td>boolean</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.idle.timeout</td>
+<td>PT6H</td>
+<td>session idle timeout, it will be closed when it's not accessed for this duration</td>
+<td>duration</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.local.dir.allow.list</td>
+<td></td>
+<td>The local dir list that are allowed to access by the kyuubi session application. User might set some parameters such as <code>spark.files</code> and it will upload some local files when launching the kyuubi engine, if the local dir allow list is defined, kyuubi will check whether the path to upload is in the allow list. Note that, if it is empty, there is no limitation for that and please use absolute path list.</td>
+<td>seq</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.name</td>
+<td>&lt;undefined&gt;</td>
+<td>A human readable name of session and we use empty string by default. This name will be recorded in event. Note that, we only apply this value from session conf.</td>
+<td>string</td>
+<td>1.4.0</td>
+</tr>
+<tr>
+<td>kyuubi.session.timeout</td>
+<td>PT6H</td>
+<td>(deprecated)session timeout, it will be closed when it's not accessed for this duration</td>
+<td>duration</td>
+<td>1.0.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="spnego">
+<h3>Spnego<a class="headerlink" href="#spnego" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.spnego.keytab</td>
+<td>&lt;undefined&gt;</td>
+<td>Keytab file for SPNego principal</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+<tr>
+<td>kyuubi.spnego.principal</td>
+<td>&lt;undefined&gt;</td>
+<td>SPNego service principal, typical value would look like HTTP/_HOST@EXAMPLE.COM. SPNego service principal would be used when restful Kerberos security is enabled. This needs to be set only if SPNEGO is to be used in authentication.</td>
+<td>string</td>
+<td>1.6.0</td>
+</tr>
+</tbody>
+</table></section>
+<section id="zookeeper">
+<h3>Zookeeper<a class="headerlink" href="#zookeeper" title="Permalink to this headline">#</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Since</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kyuubi.zookeeper.embedded.client.port</td>
+<td>2181</td>
+<td>clientPort for the embedded zookeeper server to listen for client connections, a client here could be Kyuubi server, engine and JDBC client</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.client.port.address</td>
+<td>&lt;undefined&gt;</td>
+<td>clientPortAddress for the embedded zookeeper server to</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.data.dir</td>
+<td>embedded_zookeeper</td>
+<td>dataDir for the embedded zookeeper server where stores the in-memory database snapshots and, unless specified otherwise, the transaction log of updates to the database.</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.data.log.dir</td>
+<td>embedded_zookeeper</td>
+<td>dataLogDir for the embedded zookeeper server where writes the transaction log .</td>
+<td>string</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.directory</td>
+<td>embedded_zookeeper</td>
+<td>The temporary directory for the embedded zookeeper server</td>
+<td>string</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.max.client.connections</td>
+<td>120</td>
+<td>maxClientCnxns for the embedded zookeeper server to limits the number of concurrent connections of a single client identified by IP address</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.max.session.timeout</td>
+<td>60000</td>
+<td>maxSessionTimeout in milliseconds for the embedded zookeeper server will allow the client to negotiate. Defaults to 20 times the tickTime</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.min.session.timeout</td>
+<td>6000</td>
+<td>minSessionTimeout in milliseconds for the embedded zookeeper server will allow the client to negotiate. Defaults to 2 times the tickTime</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.port</td>
+<td>2181</td>
+<td>The port of the embedded zookeeper server</td>
+<td>int</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>kyuubi.zookeeper.embedded.tick.time</td>
+<td>3000</td>
+<td>tickTime in milliseconds for the embedded zookeeper server</td>
+<td>int</td>
+<td>1.2.0</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="spark-configurations">
+<h2>Spark Configurations<a class="headerlink" href="#spark-configurations" title="Permalink to this headline">#</a></h2>
+<section id="via-spark-defaults-conf">
+<h3>Via spark-defaults.conf<a class="headerlink" href="#via-spark-defaults-conf" title="Permalink to this headline">#</a></h3>
+<p>Setting them in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/spark-defaults.conf</span></code> supplies with default values for SQL engine application. Available properties can be found at Spark official online documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html">Spark Configurations</a></p>
+</section>
+<section id="via-kyuubi-defaults-conf">
+<h3>Via kyuubi-defaults.conf<a class="headerlink" href="#via-kyuubi-defaults-conf" title="Permalink to this headline">#</a></h3>
+<p>Setting them in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> supplies with default values for SQL engine application too. These properties will override all settings in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf/spark-defaults.conf</span></code></p>
+</section>
+<section id="via-jdbc-connection-url">
+<h3>Via JDBC Connection URL<a class="headerlink" href="#via-jdbc-connection-url" title="Permalink to this headline">#</a></h3>
+<p>Setting them in the JDBC Connection URL supplies session-specific for each SQL engine. For example: <code class="docutils literal notranslate"><span class="pre">jdbc:hive2://localhost:10009/default;#spark.sql.shuffle.partitions=2;spark.executor.memory=5g</span></code></p>
+<ul class="simple">
+<li><p><strong>Runtime SQL Configuration</strong></p>
+<ul>
+<li><p>For <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#runtime-sql-configuration">Runtime SQL Configurations</a>, they will take affect every time</p></li>
+</ul>
+</li>
+<li><p><strong>Static SQL and Spark Core Configuration</strong></p>
+<ul>
+<li><p>For <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#static-sql-configuration">Static SQL Configurations</a> and other spark core configs, e.g. <code class="docutils literal notranslate"><span class="pre">spark.executor.memory</span></code>, they will take affect if there is no existing SQL engine application. Otherwise, they will just be ignored</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="via-set-syntax">
+<h3>Via SET Syntax<a class="headerlink" href="#via-set-syntax" title="Permalink to this headline">#</a></h3>
+<p>Please refer to the Spark official online documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/sql-ref-syntax-aux-conf-mgmt-set.html">SET Command</a></p>
+</section>
+</section>
+<section id="flink-configurations">
+<h2>Flink Configurations<a class="headerlink" href="#flink-configurations" title="Permalink to this headline">#</a></h2>
+<section id="via-flink-conf-yaml">
+<h3>Via flink-conf.yaml<a class="headerlink" href="#via-flink-conf-yaml" title="Permalink to this headline">#</a></h3>
+<p>Setting them in <code class="docutils literal notranslate"><span class="pre">$FLINK_HOME/conf/flink-conf.yaml</span></code> supplies with default values for SQL engine application. Available properties can be found at Flink official online documentation for <a class="reference external" href="https://nightlies.apache.org/flink/flink-docs-stable/docs/deployment/config/">Flink Configurations</a></p>
+</section>
+<section id="id1">
+<h3>Via kyuubi-defaults.conf<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Setting them in <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/kyuubi-defaults.conf</span></code> supplies with default values for SQL engine application too. You can use properties with the additional prefix <code class="docutils literal notranslate"><span class="pre">flink.</span></code> to override settings in <code class="docutils literal notranslate"><span class="pre">$FLINK_HOME/conf/flink-conf.yaml</span></code>.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flink</span><span class="o">.</span><span class="n">parallelism</span><span class="o">.</span><span class="n">default</span> <span class="mi">2</span>
+<span class="n">flink</span><span class="o">.</span><span class="n">taskmanager</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">size</span> <span class="mi">5</span><span class="n">g</span>
+</pre></div>
+</div>
+<p>The below options in <code class="docutils literal notranslate"><span class="pre">kyuubi-defaults.conf</span></code> will set <code class="docutils literal notranslate"><span class="pre">parallelism.default:</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">taskmanager.memory.process.size:</span> <span class="pre">5g</span></code> into flink configurations.</p>
+</section>
+<section id="id2">
+<h3>Via JDBC Connection URL<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>Setting them in the JDBC Connection URL supplies session-specific for each SQL engine. For example: <code class="docutils literal notranslate"><span class="pre">jdbc:hive2://localhost:10009/default;#parallelism.default=2;taskmanager.memory.process.size=5g</span></code></p>
+</section>
+<section id="via-set-statements">
+<h3>Via SET Statements<a class="headerlink" href="#via-set-statements" title="Permalink to this headline">#</a></h3>
+<p>Please refer to the Flink official online documentation for <a class="reference external" href="https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/table/sql/set/">SET Statements</a></p>
+</section>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">#</a></h2>
+<p>Kyuubi uses <a class="reference external" href="https://logging.apache.org/log4j/2.x/">log4j</a> for logging. You can configure it using <code class="docutils literal notranslate"><span class="pre">$KYUUBI_HOME/conf/log4j2.xml</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>?&gt;
+&lt;!--
+  ~ Licensed to the Apache Software Foundation <span class="o">(</span>ASF<span class="o">)</span> under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work <span class="k">for</span> additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version <span class="m">2</span>.0
+  ~ <span class="o">(</span>the <span class="s2">&quot;License&quot;</span><span class="o">)</span><span class="p">;</span> you may not use this file except <span class="k">in</span> compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to <span class="k">in</span> writing, software
+  ~ distributed under the License is distributed on an <span class="s2">&quot;AS IS&quot;</span> BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License <span class="k">for</span> the specific language governing permissions and
+  ~ limitations under the License.
+  --&gt;
+
+&lt;!-- Provide log4j2.xml.template to fix <span class="sb">`</span>ERROR Filters contains invalid attributes <span class="s2">&quot;onMatch&quot;</span>, <span class="s2">&quot;onMismatch&quot;</span><span class="sb">`</span>, see KYUUBI-2247 --&gt;
+&lt;!-- Extra logging related to initialization of Log4j.
+ Set to debug or trace <span class="k">if</span> log4j initialization is failing. --&gt;
+&lt;Configuration <span class="nv">status</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>&gt;
+    &lt;Appenders&gt;
+        &lt;Console <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stdout&quot;</span> <span class="nv">target</span><span class="o">=</span><span class="s2">&quot;SYSTEM_OUT&quot;</span>&gt;
+            &lt;PatternLayout <span class="nv">pattern</span><span class="o">=</span><span class="s2">&quot;%d{yyyy-MM-dd HH:mm:ss.SSS} %p %c: %m%n&quot;</span>/&gt;
+            &lt;Filters&gt;
+                &lt;RegexFilter <span class="nv">regex</span><span class="o">=</span><span class="s2">&quot;.*Thrift error occurred during processing of message.*&quot;</span> <span class="nv">onMatch</span><span class="o">=</span><span class="s2">&quot;DENY&quot;</span> <span class="nv">onMismatch</span><span class="o">=</span><span class="s2">&quot;NEUTRAL&quot;</span>/&gt;
+            &lt;/Filters&gt;
+        &lt;/Console&gt;
+    &lt;/Appenders&gt;
+    &lt;Loggers&gt;
+        &lt;Root <span class="nv">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>&gt;
+            &lt;AppenderRef <span class="nv">ref</span><span class="o">=</span><span class="s2">&quot;stdout&quot;</span>/&gt;
+        &lt;/Root&gt;
+        &lt;Logger <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;org.apache.kyuubi.ctl.ServiceControlCli&quot;</span> <span class="nv">level</span><span class="o">=</span><span class="s2">&quot;error&quot;</span> <span class="nv">additivity</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>&gt;
+            &lt;AppenderRef <span class="nv">ref</span><span class="o">=</span><span class="s2">&quot;stdout&quot;</span>/&gt;
+        &lt;/Logger&gt;
+        &lt;!--
+        &lt;Logger <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;org.apache.kyuubi.server.mysql.codec&quot;</span> <span class="nv">level</span><span class="o">=</span><span class="s2">&quot;trace&quot;</span> <span class="nv">additivity</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>&gt;
+            &lt;AppenderRef <span class="nv">ref</span><span class="o">=</span><span class="s2">&quot;stdout&quot;</span>/&gt;
+        &lt;/Logger&gt;
+        --&gt;
+        &lt;Logger <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;org.apache.hive.beeline.KyuubiBeeLine&quot;</span> <span class="nv">level</span><span class="o">=</span><span class="s2">&quot;error&quot;</span> <span class="nv">additivity</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>&gt;
+            &lt;AppenderRef <span class="nv">ref</span><span class="o">=</span><span class="s2">&quot;stdout&quot;</span>/&gt;
+        &lt;/Logger&gt;
+    &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</pre></div>
+</div>
+</section>
+<section id="other-configurations">
+<h2>Other Configurations<a class="headerlink" href="#other-configurations" title="Permalink to this headline">#</a></h2>
+<section id="hadoop-configurations">
+<h3>Hadoop Configurations<a class="headerlink" href="#hadoop-configurations" title="Permalink to this headline">#</a></h3>
+<p>Specifying <code class="docutils literal notranslate"><span class="pre">HADOOP_CONF_DIR</span></code> to the directory contains hadoop configuration files or treating them as Spark properties with a <code class="docutils literal notranslate"><span class="pre">spark.hadoop.</span></code> prefix. Please refer to the Spark official online documentation for <a class="reference external" href="http://spark.apache.org/docs/latest/configuration.html#inheriting-hadoop-cluster-configuration">Inheriting Hadoop Cluster Configuration</a>. Also, please refer to the <a class="reference external" href="http://hadoop.apache.org">Apache Hadoop</a>’s online documentation for an overview on how to configure Hadoop.</p>
+</section>
+<section id="hive-configurations">
+<h3>Hive Configurations<a class="headerlink" href="#hive-configurations" title="Permalink to this headline">#</a></h3>
+<p>These configurations are used for SQL engine application to talk to Hive MetaStore and could be configured in a <code class="docutils literal notranslate"><span class="pre">hive-site.xml</span></code>. Placed it in <code class="docutils literal notranslate"><span class="pre">$SPARK_HOME/conf</span></code> directory, or treating them as Spark properties with a <code class="docutils literal notranslate"><span class="pre">spark.hadoop.</span></code> prefix.</p>
+</section>
+</section>
+<section id="user-defaults">
+<h2>User Defaults<a class="headerlink" href="#user-defaults" title="Permalink to this headline">#</a></h2>
+<p>In Kyuubi, we can configure user default settings to meet separate needs. These user defaults override system defaults, but will be overridden by those from <a class="reference external" href="#via-jdbc-connection-url">JDBC Connection URL</a> or <a class="reference external" href="#via-set-syntax">Set Command</a> if could be. They will take effect when creating the SQL engine application ONLY.
+User default settings are in the form of <code class="docutils literal notranslate"><span class="pre">___{username}___.{config</span> <span class="pre">key}</span></code>. There are three continuous underscores(<code class="docutils literal notranslate"><span class="pre">_</span></code>) at both sides of the <code class="docutils literal notranslate"><span class="pre">username</span></code> and a dot(<code class="docutils literal notranslate"><span class="pre">.</span></code>) that separates the config key and the prefix. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For system defaults</span>
+spark.master<span class="o">=</span><span class="nb">local</span>
+spark.sql.adaptive.enabled<span class="o">=</span><span class="nb">true</span>
+<span class="c1"># For a user named kent</span>
+___kent___.spark.master<span class="o">=</span>yarn
+___kent___.spark.sql.adaptive.enabled<span class="o">=</span><span class="nb">false</span>
+<span class="c1"># For a user named bob</span>
+___bob___.spark.master<span class="o">=</span>spark://master:7077
+___bob___.spark.executor.memory<span class="o">=</span>8g
+</pre></div>
+</div>
+<p>In the above case, if there are related configurations from <a class="reference external" href="#via-jdbc-connection-url">JDBC Connection URL</a>, <code class="docutils literal notranslate"><span class="pre">kent</span></code> will run his SQL engine application on YARN and prefer the Spark AQE to be off, while <code class="docutils literal notranslate"><span class="pre">bob</span></code> will activate his SQL engine application on a Spark standalone cluster with 8g heap memory for each executor and obey the Spark AQE behavior of Kyuubi system default. On the other hand, for those users who do not have custom configurations will use system defaults.</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="migration-guide.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Kyuubi Migration Guide</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="engine_on_yarn.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deploy Kyuubi engines on Yarn</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
