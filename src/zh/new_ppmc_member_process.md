@@ -2,7 +2,7 @@
 title: 新晋 PPMC 流程
 menu:
     main:
-        name: "New PPMC Process"
+        name: "新晋 PPMC 流程"
         parent: "community"
         weight: 3 
 ---

@@ -1,0 +1,1277 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Changelog for Apache Kyuubi(Incubating) v1.6.0-incubating &#8212; Apache Kyuubi</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <link rel="shortcut icon" href="../_static/kyuubi_logo_red.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">&#129418; Welcome to Kyuubi’s online documentation &#x2728;, v1.6.1-incubating</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/kyuubi_logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    HOME
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../quick_start/index.html">
+   Quick Start
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start.html">
+     Getting Started with Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_helm.html">
+     Getting Started With Kyuubi on kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../quick_start/quick_start_with_jdbc.html">
+     Getting Started With Hive JDBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../deployment/index.html">
+   Deploying Kyuubi
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/kyuubi_on_kubernetes.html">
+     Deploy Kyuubi On Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/hive_metastore.html">
+     Integration with Hive Metastore
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/high_availability_guide.html">
+     Kyuubi High Availability Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/migration-guide.html">
+     Kyuubi Migration Guide
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/settings.html">
+     Introduction to the Kyuubi Configurations System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_yarn.html">
+     Deploy Kyuubi engines on Yarn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_on_kubernetes.html">
+     Deploy Kyuubi engines on Kubernetes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_share_level.html">
+     The Share Level Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../deployment/engine_lifecycle.html">
+     The TTL Of Kyuubi Engines
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../deployment/spark/index.html">
+     The Spark SQL Engine Configuration Guide
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/dynamic_allocation.html">
+       How To Use Spark Dynamic Resource Allocation (DRA) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/aqe.html">
+       How To Use Spark Adaptive Query Execution (AQE) in Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../deployment/spark/incremental_collection.html">
+       Solution for Big Result Sets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../security/index.html">
+   Security
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authentication.html">
+     Authentication
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/kerberos.html">
+       Configure Kyuubi to use Kerberos Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/ldap.html">
+       Configure Kyuubi to use LDAP Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../security/jdbc.html">
+       Configure Kyuubi to Use JDBC Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../security/authorization/index.html">
+     Authorization
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../security/authorization/spark/index.html">
+       Spark AuthZ Plugin
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/overview.html">
+         Overview
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/build.html">
+         Building
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/install.html">
+         Installing
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/kinit.html">
+     Kinit Auxiliary Service
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../security/hadoop_credentials_manager.html">
+     Hadoop Credentials Manager
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../monitor/index.html">
+   Monitoring
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/logging.html">
+     1. Monitoring Kyuubi - Logging System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/metrics.html">
+     2. Monitoring Kyuubi - Server Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../monitor/trouble_shooting.html">
+     3. Trouble Shooting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tools/index.html">
+   Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/spark_block_cleaner.html">
+     Kubernetes Tools Spark Block Cleaner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-ctl.html">
+     Managing kyuubi servers and engines Tool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tools/kyuubi-admin.html">
+     Kyuubi Administer Tool
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../client/index.html">
+   Clients &amp; APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/jdbc/index.html">
+     JDBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/kyuubi_jdbc.html">
+       Kyuubi Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/hive_jdbc.html">
+       Hive JDBC Driver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/jdbc/mysql_jdbc.html">
+       MySQL Connectors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/cli/index.html">
+     Command Line Interface(CLI)s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/kyuubi_beeline.html">
+       Kyuubi Beeline
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/cli/hive_beeline.html">
+       Hive Beeline
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/bi_tools/index.html">
+     Business Intelligence Tools and SQL IDEs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/superset.html">
+       Apache Superset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/hue.html">
+       Cloudera Hue
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/datagrip.html">
+       DataGrip
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/dbeaver.html">
+       DBeaver
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/powerbi.html">
+       PowerBI
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/bi_tools/tableau.html">
+       Tableau
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/odbc/index.html">
+     ODBC Drivers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/thrift/index.html">
+     Thrift APIs
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/rest/index.html">
+     RESTful APIs and Clients
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/rest/rest_api.html">
+       REST API v1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/ui/index.html">
+     Web UI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/python/index.html">
+     Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyhive.html">
+       PyHive
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/python/pyspark.html">
+       PySpark
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../client/advanced/index.html">
+     Client Commons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/configurations.html">
+       Client Configuration Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/logging.html">
+       Logging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../client/advanced/kerberos.html">
+       Configure Kerberos for clients to Access Kerberized Kyuubi
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../client/advanced/features/index.html">
+       Advanced Features
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+      <label for="toctree-checkbox-20">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_type.html">
+         Using Different Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_share_level.html">
+         Sharing and Isolation for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_ttl.html">
+         Setting Time to Live for Kyuubi Engines
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/engine_pool.html">
+         Enabling Kyuubi Engine Pool
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/scala.html">
+         Running Scala Snippets
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../client/advanced/features/plan_only.html">
+         Plan Only Execution Mode
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Extension Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extensions/index.html">
+   Extensions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/server/index.html">
+     Server Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/authentication.html">
+       Configure Kyuubi to use Custom Authentication
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/configuration.html">
+       Inject Session Conf with Custom Config Advisor
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/events.html">
+       Handle Events with Custom Event Handler
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../extensions/server/applications.html">
+       Manage Applications against Extra Cluster Managers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../extensions/engines/index.html">
+     Engine Side Extensions
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+    <label for="toctree-checkbox-23">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/spark/index.html">
+       Extensions for Spark
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+      <label for="toctree-checkbox-24">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/z-order.html">
+         Z-Ordering Support
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/rules.html">
+         Auxiliary Optimization Rules
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../security/authorization/spark/index.html">
+         Kyuubi Spark AuthZ Plugin
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../extensions/engines/spark/functions.html">
+         Auxiliary SQL Functions
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/spark/index.html">
+         Connectors for Spark SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/flink/index.html">
+       Extensions for Flink
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+      <label for="toctree-checkbox-25">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/flink/index.html">
+         Connectors For Flink SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/hive/index.html">
+       Extensions for Hive
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+      <label for="toctree-checkbox-26">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/hive/index.html">
+         Connectors for Hive SQL Query Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../extensions/engines/trino/index.html">
+       Extensions for Trino
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+      <label for="toctree-checkbox-27">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connector/trino/index.html">
+         Connectors For Trino SQL Engine
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Connectors
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../connector/index.html">
+   Connectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+  <label for="toctree-checkbox-28">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/spark/index.html">
+     Connectors for Spark SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake.html">
+       Delta Lake
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/delta_lake_with_azure_blob.html">
+       Delta Lake with Microsoft Azure Blob Storage
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/kudu.html">
+       Kudu
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tidb.html">
+       TiDB
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpcds.html">
+       TPC-DS
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/spark/tpch.html">
+       TPC-H
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/flink/index.html">
+     Connectors For Flink SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/hudi.html">
+       Hudi
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/flink/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/hive/index.html">
+     Connectors for Hive SQL Query Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="simple">
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../connector/trino/index.html">
+     Connectors For Trino SQL Engine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+    <label for="toctree-checkbox-32">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/flink_table_store.html">
+       Flink Table Store
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../connector/trino/iceberg.html">
+       Iceberg
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Kyuubi Insider
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../overview/index.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/>
+  <label for="toctree-checkbox-33">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/architecture.html">
+     Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_hive.html">
+     Kyuubi v.s. HiveServer2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../overview/kyuubi_vs_thriftserver.html">
+     Kyuubi v.s. Spark Thrift JDBC/ODBC Server (STS)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../develop_tools/index.html">
+   Develop Tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/>
+  <label for="toctree-checkbox-34">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/building.html">
+     Building Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/distribution.html">
+     Building a Runnable Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/build_document.html">
+     Building Kyuubi Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/testing.html">
+     Running Tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/debugging.html">
+     Debugging Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/developer.html">
+     Developer Tools
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../develop_tools/idea_setup.html">
+     IntelliJ IDEA Setup Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../community/index.html">
+   Community
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/>
+  <label for="toctree-checkbox-35">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/CONTRIBUTING.html">
+     Contributing to Apache Kyuubi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/collaborators.html">
+     Collaborators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../community/release.html">
+     Kyuubi Release Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/index.html">
+   Appendixes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/>
+  <label for="toctree-checkbox-36">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/terminology.html">
+     1. Terminologies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/apache/incubator-kyuubi/edit/master/docs/changelog/v1.6.0-incubating.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/changelog/v1.6.0-incubating.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Changelog for Apache Kyuubi(Incubating) v1.6.0-incubating</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="changelog-for-apache-kyuubi-incubating-v1-6-0-incubating">
+<h1>Changelog for Apache Kyuubi(Incubating) v1.6.0-incubating<a class="headerlink" href="#changelog-for-apache-kyuubi-incubating-v1-6-0-incubating" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1f57b108">Revert “[KYUUBI #3020] kyuubi ldap add new config property kyuubi.authentication.ldap.bindpw and kyuubi.authentication.ldap.attrs”</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2191dea0">Revert “[KYUUBI #3020][FOLLOWUP] Refactor the code style”</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2b713f6d">[KYUUBI #3316] [BUILD] Enable spark-3.3 profile for license check on GA</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e2c66515">[KYUUBI #3254] Supplement the licenses of support etcd discovery</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7fd54499">[KYUUBI #3301] Construct lifetimeTerminatingChecker only when needed</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fe79deee">[KYUUBI #3272] Synchronize graceful shutdown with main stop sequence</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7c157714">[KYUUBI #3281] [MINOR] Use AccessControlException instead of RuntimeException if check privilege failed</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8b65e0e4">[KYUUBI #3222][FOLLOWUP] Fixing placeholder and config of user in JDBC Authentication Provider</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/04f31153">[KYUUBI #3275] [KYUUBI 3269] [DOCS] Doc for JDBC authentication provider</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e76f8f7b">[KYUUBI #3217] [DOCS] Doc for using Marcos in row-level filter in Authz</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1e3dc52f">[KYUUBI #3297] [MINOR] Null is replaced by KyuubiSQLException.featureNotSupported()</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/84b164ee">[KYUUBI #3244] Bump Hudi 0.12.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1348abb1">[KYUUBI #3287] Exclude reload4j from hadoop-minikdc</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9d83e632">[KYUUBI #3222][FOLLOWUP] Introdude JdbcUtils to simplify code</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a8e201a8">[KYUUBI #3020][FOLLOWUP] Refactor the code style</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ef109e18">[KYUUBI #3020] kyuubi ldap add new config property kyuubi.authentication.ldap.bindpw and kyuubi.authentication.ldap.attrs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6ac28198">[KYUUBI #3226] Privileges should be checked only once in <code class="docutils literal notranslate"><span class="pre">RuleAuthorization</span></code></a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d15ca518">[KYUUBI #3156] Expose REST frontend connection metrics</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dab0583e">[KYUUBI #3241][DOCS] Update <code class="docutils literal notranslate"><span class="pre">Develop</span> <span class="pre">Tools</span> <span class="pre">/</span> <span class="pre">Building</span> <span class="pre">a</span> <span class="pre">Runnable</span> <span class="pre">Distribution</span></code></a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a3b6c675">[KYUUBI #3255] Add miss engine type config docs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/92f3a532">[KYUUBI #3214] Plan only mode should unset when mode value is incorrect</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3cf5a20b">[KYUUBI #3239] [Subtask] DorisSQLEngine - Add integration tests</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ecda4188">[KYUUBI #3252] Fix the problem that |release| in the document was not replaced correctly</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3b990d71">[KYUUBI #3247] Minor clean up Kyuubi JDBC code</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a63587b1">[KYUUBI #3222]  JDBC Authentication Provider for server</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8c2e7746">[KYUUBI #3243] Move trait Logging#initializeLogging to object Logging</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e584880f">[KYUUBI #3245] Add spark-3.3 profile in building.md</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1466165a">[KYUUBI #3184] OperationResource rowset api should have default values for maxrows and fetchorientation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/76b44c98">[KYUUBI #3220] Make kyuubi.engine.ui.stop.enabled false in HistoryServer</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f60e9d47">[KYUUBI #1776][FOLLOWUP] Fill empty td tag for <code class="docutils literal notranslate"><span class="pre">Failure</span> <span class="pre">Reason</span></code> column in EngineTable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bbe7a4d7">[KYUUBI #3157][DOC] Modify logging doc due to using log4j2 instead of log4j</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5ed671c8">[KYUUBI #3228] [Subtask] Connectors for Spark SQL Query Engine -&gt; TPC-DS</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c473634e">[KYUUBI #3138] [Subtask] DorisSQLEngine - Add jdbc engine to dist</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/db0047d5">[KYUUBI #3230] Flink SQL engine supports run across versions</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/06d43cb3">[KYUUBI #3072][DOC] Add a doc of Flink Table Store for Flink SQL engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/23ad7801">[KYUUBI #3170] Expose thrift binary connection metrics</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9bdff9ba">[KYUUBI #3227] SparkConfParser supports parse bytes and time</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6c4a8b08">[KYUUBI #3219] Error renew delegation tokens: Unknown version of delegation token 8</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e847ab35">[KYUUBI #3080][DOC] Add a doc of the Flink Table Store for the Trino SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/33b70cfe">[KYUUBI #3107] [Subtask] DorisSQLEngine - Add process builder (#3123)</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f36508b5">[KYUUBI #3211] [Subtask] Connectors for Spark SQL Query Engine -&gt; TPC-H</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/86964fef">[KYUUBI #3206] Change Flink default version to 1.15</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b3723392">[KYUUBI #833] Check if <code class="docutils literal notranslate"><span class="pre">spark.kubernetes.executor.podNamePrefix</span></code> is invalid</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d0865255">[KYUUBI #3098] Unify the event log code path</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6aa898e5">[KYUUBI #3210] [DOCS] Mention Kyuubi Spark SQL extension supports Spark 3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bedc22cb">[KYUUBI #3204] Fix duplicated ldapServer#close in LdapAuthenticationProviderImplSuite</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c9cc9b7e">[KYUUBI #3209] Support configure TPC-H connector in runtime</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/875fedd1">[KYUUBI #3200] Make KyuubiSessionEvent.sessionId clear</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/64b1d920">[KYUUBI #3186] Support applying Row-level Filter and Data Masking policies for DatasourceV2 in Authz module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6061098a">[KYUUBI #2584][INFRA] Migrate CI to Ubuntu 22.04</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a75de1b5">[KYUUBI #3172][FLINK] Fix failed test cases in Flink 1.15</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e48205d7">[KYUUBI #3203] [DOCS] Fix typo</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7720c9f6">[KYUUBI #3192] Refactor TPCDSConf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3cdf84e9">[KYUUBI #3180] Add component version util</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/782e5fb9">[KYUUBI #3162] Bump Hadoop 3.3.4</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b8162f15">[KYUUBI #3191] [DOCS] Add missing binary scala version in engine jar name</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9d4d2948">[KYUUBI #3199] [BUILD] Fix travis JAVA_HOME</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fdb91686">[KYUUBI #3194][Scala-2.13] Refine deprecated config</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c64b7648">[KYUUBI #3198] [DOCS] Fix index of Hudi Flink connector</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a46d6550">[KYUUBI #3189] [BUILD] Bump jetcd 0.7.3 and pin Netty dependencies</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ea47cbc1">[KYUUBI #3190] [BUILD] Use jdk_switcher to setup JAVA_HOME</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3618002b">[KYUUBI #3145] Bump log4j from 2.17.2 to 2.18.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b87ee983">[KYUUBI #3135] Bump gRPC from 1.47.0 to 1.48.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/30da9068">[KYUUBI #3178] Add application operation docs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/024fa2db">[KYUUBI #3174] Update MATURITY for C30, RE50, CO20, CO40, CO50, CS10, IN10</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3e860145">[KYUUBI #3175] Add session conf advisor docs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c6caeb83">[KYUUBI #3141] Trino engine etcd support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0089f2f0">[KYUUBI #3150] Expose metadata request metrics</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/38c7c160">[KYUUBI #3070][DOC] Add a doc of the Hudi connector for the Flink SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c17829bf">[KYUUBI #3104] Support SSL for Etcd</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/65ccf78b">[KYUUBI #3152] Introduce JDBC parameters to control connection timeout</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/24b93840">[KYUUBI #3136] Change Map to a case class ApplicationInfo as the application info holder</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7aca75b1">[KYUUBI #2240][SUB-TASK] Skip add metadata manager if frontend does not support rest</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/210d3567">[KYUUBI #3131] Improve operation state change logging</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0ddf7e38">[KYUUBI #3158] Fix npe issue when formatting the kyuubi-ctl output</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3729a998">[KYUUBI #3160][DOCS] <code class="docutils literal notranslate"><span class="pre">Dependencies</span></code> links in <code class="docutils literal notranslate"><span class="pre">Connectors</span> <span class="pre">for</span> <span class="pre">Spark</span> <span class="pre">SQL</span> <span class="pre">Query</span> <span class="pre">Engine</span></code> pages jump to wrong place #3160 (#3161)</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/da87ca55">[KYUUBI #3154][Subtask] Connectors for Spark SQL Query Engine -&gt; TiDB/TiKV</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/60cb4bd0">[KYUUBI #3082] Add iceberg connector doc for Trino SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0f21aa94">[KYUUBI #3071][DOC] Add iceberg connector for Flink SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/34e7d1ad">[KYUUBI #3153] Move batch util class to kyuubi rest sdk for programing friendly</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/91a25349">[KYUUBI #3067][DOC] Add Flink Table Store connector doc for Spark SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/137e818c">[KYUUBI #3148] Change etcd docker image to recover arm64 CI</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6b414083">[KYUUBI #3119] [TEST] Using  more light-weight SparkPi for batch related tests</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/87782097">[KYUUBI #3023] Kyuubi Hive JDBC: Replace UGI-based Kerberos authentication w/ JAAS</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d5dae096">[KYUUBI #3144] Remove deprecated KyuubiDriver in services manifest</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d07d7cc2">[KYUUBI #3143] Check class loadable before applying SLF4JBridgeHandler</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7b15f2ed">[KYUUBI #3139] Override toString method for rest dto classes</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/eb96db54">[KYUUBI #3087] Convert the kyuubi batch conf with <code class="docutils literal notranslate"><span class="pre">spark.</span></code> prefix so that spark could identify</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/976af3d9">[KYUUBI #3133] Always run Flink statement in sync mode</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0e910197">[KYUUBI #3121] [CI] Fix GA oom issue</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/64090f50">[KYUUBI #3126] Using markdown 3.3.7 for kyuubi document build</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0b3f6b73">[KYUUBI #3106] Correct <code class="docutils literal notranslate"><span class="pre">RelMetadataProvider</span></code> used in flink-sql-engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5c1ea6e5">[KYUUBI #3069][DOC] Add Iceberg connector doc for Spark SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f1312ea4">[KYUUBI #3068][DOC] Add the Hudi connector doc for Spark SQL Query Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4b640b72">[KYUUBI #3108][DOC] Fix path errors in the build document</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a5a97489">[KYUUBI #3111] Replace HashMap with singletonMap</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/65c3d2fb">[KYUUBI #3113] Bump up delta lake version from 2.0.0rc1 to 2.0.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6c8024c8">[KYUUBI #3101] [Subtask][#3100] Build the content for extension points documentation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/16f41694">[KYUUBI #3102] Fix multi endpoints for etcd</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b0685f9b">[KYUUBI #3008] Bump prometheus from 0.14.1 to 0.16.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7f592ecf">[KYUUBI #3095] Move TPC-DS/TPC-H queries to unique folder</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/eb705bd1">[KYUUBI #3094] Code refactor on Kyuubi Hive JDBC driver</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/47f8f9cc">[KYUUBI #3092] Replace apache commons Base64 w/ JDK</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/77b6ee0d">[KYUUBI #3093] Fix Kyuubi Hive JDBC driver SPNEGO header</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/69996224">[KYUUBI #3050] Bump Apache Iceberg 0.14.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/720bc00c">[KYUUBI #3044] Bump Spark 3.2.2</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d75f48ea">[KYUUBI #3052][FOLLOWUP] Do not use the ip in proxy http header for authentication to prevent CVE</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8f3d7898">[KYUUBI #3051] Support to get the  real client ip address for thrift connection when using VIP as kyuubi server load balancer</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4bb06542">[KYUUBI #3046][Metrics] Add meter metrics for recording the rate of the operation state for each kyuubi operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/99934591">[KYUUBI #3045][FOLLOWUP] Correct the common options and add docs for kyuubi-admin command</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9cb8041d">[KYUUBI #3076][Subtask][#3039] Add the docs for rest api - Batch Resource</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6a6044be">[KYUUBI #3077] Remove meaningless statement override in LaunchEngine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/419d725c">[KYUUBI #3018] [Subtask] DorisSQLEngine - GetColumns Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/82d61c9f">[KYUUBI #3073] CredentialsManager should use appUser to renew credential</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0857786e">[KYUUBI #3065] Support to retry the killApplicationByTag for JpsApplicationOperation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ce72a502">[KYUUBI #3054] Add description of the discovery client in the conf doc</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/642b2769">[KYUUBI #3043][FOLLOWUP] Restore accidentally removed public APIs of kyuubi-hive-jdbc module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/48647623">[KYUUBI #3060] [Subtask][#3059] Build content of the connector document section</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a7d190dd">[KYUUBI #3045] Support to do admin rest request with kyuubi-adminctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4c3a9ed0">[KYUUBI #3055] Expose client ip address into batch request conf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a3973a0b">[KYUUBI #3052] Support to get the real client ip address for http connection when using VIP as kyuubi server load balancer</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b99f25f2">[KYUUBI #3043] Clean up Kyuubi Hive JDBC client</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a5f733b4">[KYUUBI #3047] Fallback krb5 conf to OS if not configured</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/32970ce6">[KYUUBI #2644] Add etcd discovery client for HA</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9060bf22">[KYUUBI #3040] [Subtask][#3039] Build the skeleton of client side documentation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c1158acc">[KYUUBI #2974][FEATURE] EOL Support for Spark 3.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1bc3916d">[KYUUBI #3042] Kyuubi Hive JDBC should throw KyuubiSQLException</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c5d29260">[KYUUBI #3037] Handles configuring the JUL -&gt; SLF4J bridge</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d3446675">[KYUUBI #3033][Bug] Kyuubi failed to start due to PID directory not exists</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1fbe16fc">[KYUUBI #3028][FLINK] Bump Flink versions to 1.14.5 and 1.15.1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e4929949">[KYUUBI #2478][FOLLOWUP] Fix bin/beeline without -u exits unexpectedly</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/95cb57e8">[KYUUBI #3025] Fix the kyuubi restful href link format issue</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c652bba4">[KYUUBI #3007] Bump scopt from 4.0.1 to 4.1.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a6499c6c">[KYUUBI #3019] Backport HIVE-21538 - Beeline: password source though the console reader did not pass to connection param</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3c75e9de">[KYUUBI #3017] kyuubi-ctl should print error message to right place</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1f59a592">[KYUUBI #3010] Bump Jetty from 9.4.41.v20210516 to 9.4.48.v20220622</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dc6e764f">[KYUUBI #3011] Bump swagger from 2.1.11 to 2.2.1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a2431d0c">[KYUUBI #3009] Bump Jersey from 2.35 to 2.36</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c922ae28">[KYUUBI #2801][FOLLOWUP] Also check whether the batch main resource path is in local dir allow list</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/13e618cf">[KYUUBI #3012] Remove unused thrift request max attempts and related ut</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3203829f">[KYUUBI #3005] [DOCS] Correct spelling errors and optimizations in ‘Building Kyuubi Documentation’ part</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3e5a92ef">[KYUUBI #3004] Clean up JDBC shaded client pom and license</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/66a45f3e">[KYUUBI #2895] Show final info in trino engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9e2aaffc">[KYUUBI #2984] Refactor TPCDS configurations using SparkConfParser</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4b8dc796">[KYUUBI #2996] Remove Hive storage-api dependencies from Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/407fc8db">[KYUUBI #2997] Use spark shim set current namespace</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/774934fe">[KYUUBI #2994] Remove Hive common dependencies from Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c7e2b322">[KYUUBI #2850][FOLLOWUP] Replace log4j2.properties by log4j2.xml</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b585fb42">[KYUUBI #2801] Add local dir allow list and check the application access path URI</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/03e55e0c">[KYUUBI #2953] Support to interrupt the thrift request if remote engine is broken</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5eb83b4c">[KYUUBI #2999] Fix Kyuubi Hive Beeline dependencies</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8dddfeb0">[KYUUBI #2850][FOLLOWUP] Fix default log4j2 configuration</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b174d0c1">[KYUUBI #2977] [BATCH] Using KyuubiApplicationManger#tagApplication help tag batch application</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/163e0f82">[KYUUBI #2993] Fix typo in KyuubiConf and mark more config entries server only</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d8d6903f">[KYUUBI #2987] Remove Hive shims-common and shims-0.23 dependencies from Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8d09c83b">[KYUUBI #2985] Prompt configuration when starting engine timeout</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/56c01616">[KYUUBI #2989] Remove HS2 active-passive support in Kyuubi Hive JDBC client</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e41ef566">[KYUUBI #2983] Remove Hive llap-client dependencies from Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3a80f33b">[KYUUBI #2981] Improve TPC-DS scan performance</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/145a18db">[KYUUBI #2917] Remove Hive service dependencies from Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3bc299d0">[KYUUBI #2868] [K8S] Add KubernetesApplicationOperation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cfe380ae">[KYUUBI #2979] Fix helm icon url</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b115c8dd">[KYUUBI #2978] [SUB-TASK][KPIP-4] If batch app status not found from cluster manager, fall back to metadata store</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bd2f5b23">[KYUUBI #2975] Code improvement in rest client</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6f308c43">[KYUUBI #2964] [SUB-TASK][KPIP-4] Refine the batch response and render</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2d0bb9f2">[KYUUBI #2976] Expose session name into kyuubi engine tab</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cec8b03f">[KYUUBI #2850][FOLLOWUP] Provide log4j2.xml.template in binary and use log4j2-defaults.xml</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b7cd6f97">[KYUUBI #2963] Bump Delta 2.0.0rc1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8d4d00fe">[KYUUBI #2918][Bug] Kyuubi integrated Ranger failed to query: table stats must be specified</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a9908a1b">[KYUUBI #2966] Remove TProtocolVersion from SessionHandle/OperationHandle</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/33872057">[KYUUBI #2972] Using stdout for the output of kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5412d1b9">[KYUUBI #2973] Decorate LOG in the RetryableRestClient with static final</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/10affbf6">[KYUUBI #2962] [SUB-TASK][KPIP-4] Throw exception if the metadata update count is zero</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6e4b5582">[KYUUBI #2956] Support to config the connect/socket timeout of rest client for kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cf27278f">[KYUUBI #2960] TFrontendService.SERVER_VERSION shall be HIVE_CLI_SERVICE_PROTOCOL_V11</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/defae6bd">[KYUUBI #2957] [SUB-TASK][KPIP-4] Use canonical host name for kyuubi instance</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6c44a7bb">[KYUUBI #2952] Remove OperationType from OperationHandle for simplification</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fbb434c4">[KYUUBI #2955] BatchRequest args fix: need toString operation for different data types</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/994dc6ce">[KYUUBI #2949] Flaky test: execute statement - analysis exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c8f18f00">[KYUUBI #2951] No need to extend CompositeService for MetadataManager</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6a9d5ff2">[KYUUBI #2948] Remove thrift request timeout for KyuubiSyncThriftClient</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/caa3ed2a">[KYUUBI #2943][Bug][K8S] Remove Start Local Kyuubi Server For Kyuubi On K8S Test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/de2e11c2">[KYUUBI #2924] Correct the frontend server start state</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9bc0aa67">[KYUUBI #886][FOLLOWUP] Support to reload hadoop conf for KyuubiTHttpFrontendService</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7460e745">[KYUUBI #2929] Kyuubi integrated Ranger does not support the CTAS syntax</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ceb66bd6">[KYUUBI #2935] Support spnego authentication for thrift http transport mode</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/37c0d425">[KYUUBI #2894] Add synchronized for the ciphers of internal security accessor</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f629992f">[KYUUBI #2927] Fix the thread in  ScheduleThreadExecutorPool can’t be shutdown immediately</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/125730a7">[KYUUBI #2876] Bump Hudi 0.11.1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/aba785f3">[KYUUBI #2922] Clean up SparkConsoleProgressBar when SQL execution fails</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/825c70db">[KYUUBI #2919] Fix typo and wording for JDBCMetadataStoreConf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f3610b2b">[KYUUBI #2920] Fix typo for mysql metadata schema</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/062d8746">[KYUUBI #2890] Get the db From Sparksession When TableIdentifier’s Database Field Is Empty</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3435e2ae">[KYUUBI #2915] Revert “[KYUUBI #2000][DEPS] Bump Hadoop 3.3.2”</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/089cf412">[KYUUBI #2911] [SUB-TASK][KPIP-4] If the kyuubi instance unreachable, support to backfill state from resource manager and mark batch closed by remote kyuubi instance</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/07080f35">[KYUUBI #2912] [INFRA][DOCS] Improve release md</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2305159a">[KYUUBI #2905][DOCS] Update the number of new committers in MATURITY.md</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ea7ca789">[KYUUBI #2745] [Subtask] DorisSQLEngine - GetTables Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c664c84f">[KYUUBI #2628][FOLLOWUP] Support waitCompletion for submit batch</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2fd4e3a8">[KYUUBI #2827] [BUILD][TEST] Decouple integration tests from kyuubi-server</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7f0c53a0">[KYUUBI #2898] Bump maven-surefire-plugin 3.0.0-M7</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e1f74673">[KYUUBI #2628][FOLLOWUP] Reuse the kyuubi-ctl batch commands for SubmitBatchCommand</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/62b6987a">[KYUUBI #2897] Remove Hive metastore dependencies from Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e3bf6044">[KYUUBI #2782] Decouple Kyuubi Hive JDBC from Hive Serde</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/99959b89">[KYUUBI #2854] Add exception field in KyuubiSessionEvent</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9de3365f">[KYUUBI #2873] [INFRA][DOCS] Improve release template script</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4e975507">[KYUUBI #2761] Flaky Test: engine.jdbc.doris.StatementSuite - test select</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7baf9895">[KYUUBI #2834] [SUB-TASK][KPIP-4] Support to retry the metadata requests on transient issue and unblock main thread</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7b24ee93">[KYUUBI #2543] Add <code class="docutils literal notranslate"><span class="pre">maxPartitionBytes</span></code> configuration for TPC-DS connecter</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1ea245d2">[KYUUBI #886] Add HTTP transport mode support to KYUUBI - no Kerberos support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/27330ddb">[KYUUBI #2628][FOLLOWUP] Refine kyuubi-ctl batch commands</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/57e37334">[KYUUBI #2859][SUB-TASK][KPIP-4] Support <code class="docutils literal notranslate"><span class="pre">--conf</span></code> for kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/eaffb27c">[KYUUBI #2888] Bump Spark-3.3.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/37229d41">[KYUUBI #2708] Open engine session and renew engine credentials in the one</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b987a680">[KYUUBI #2668][FOLLOWUP] Add log4j for rest client test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dea68bc0">[KYUUBI #2881] [SUB-TASK][KPIP-4] Rest client supports retry request if catch net exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bdceaaf1">[KYUUBI #2883] [Bug] java.lang.NoClassDefFoundError: org/apache/hadoop/hive/common/ValidWriteIdList in HiveDelegationTokenProvider#initialize</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/87dd1df5">[KYUUBI #2813] Bump Iceberg 0.13.2</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cb483385">[KYUUBI #2628][SUB-TASK][KPIP-4] Implement kyuubi-ctl for batch job operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/383a7a84">[KYUUBI #2872] Catch the exception for the iterator job when incremental collect is enabled</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/88388951">[KYUUBI #2870] Fix sf0 query error in TPCH</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e7a872fd">[KYUUBI #2861][FOLLOWUP][GA] Daily publish snapshot with profile spark-3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5510421b">[KYUUBI #2865] Bump Spark 3.3.0-rc6</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9403566d">[KYUUBI #2863] Unify the logic of tpch and tpcds to generate golden file</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c4955a8d">[KYUUBI #2862] [BUILD] Release script supports Spark 3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/67ad2556">[KYUUBI #2861] [GA] Daily publish snapshot with profile spark-3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ee8eceb2">[KYUUBI #2624] Support isExtended for FilteredShowTablesCommand in AuthZ module.</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b3fcc9ed">[KYUUBI #2858] Support skipTests for kyuubi rest client module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/60b0cd18">[KYUUBI #2848] Global temp view should only exist in session catalog</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ce56d700">[KYUUBI #2849] Close the engine alive pool gracefully</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/21abfd2b">[KYUUBI #2851] Log session name when opening/closing session</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0acf9717">[KYUUBI #2247] Change log4j2 properties to xml</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/df1ebbad">[KYUUBI #2704] verify TPC-DS query output</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d958a2c8">[KYUUBI #2846] Add v1.5.2-incubating changelog</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c2874818">[KYUUBI #2842] [TEST] Optimize the output of ExceptionThrowingDelegationTokenProvider in the Test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/12a48ba2">[KYUUBI #2829] Make secret id static and remove thrift protocol from RPC handles</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3bfebd24">[KYUUBI #2820][FOLLOWUP] Fix duplicate SPNEGO typo</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2c7a5651">[KYUUBI #2839] Refactor changelog</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/85d0656b">[KYUUBI #2781] Fix KyuubiDataSource#getConnection to set user and password</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/24c74e8c">[KYUUBI #2845] [GA] Stop daily publish on branch-1.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/032d9ca7">[KYUUBI #2805] Add TPC-H queries verification</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ead33d79">[KYUUBI #2837] [BUILD] Support publish to private repo</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f8e20e3c">[KYUUBI #2820][SUB-TASK][KPIP-4] Support to redirect getLocalLog and closeBatchSession requests across kyuubi instances</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9d706e55">[KYUUBI #2830] Imporve Z-Order with Spark3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a06a2ca4">[KYUUBI #2746][INFRA] Improve NOTICE of binary release</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ddd60fc4">[KYUUBI #2825] [BUILD] Remove kyuubi-flink-sql-engine from kyuubi-server dependencies</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dd96983b">[KYUUBI #2211] [Improvement] Add CHANGELOG.md to codebase for maintaining release notes</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/daa5bfed">[KYUUBI #2643][FOLLOWUP] Using javax AuthenticationException instead of hadoop AuthenticationException</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e7257251">[KYUUBI #2373][SUB-TASK][KPIP-4] Support to recovery batch session on Kyuubi instances restart</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/afb08c74">[KYUUBI #2824] [TEST] Replace test tag ExtendedSQLTest by Slow</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8539a568">[KYUUBI #2822] [GA] Set log level to info</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9ee4a9e3">[KYUUBI #2817] Bump Spark 3.3.0-rc5</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/411992cd">[KYUUBI #2676] Flaky Test: SparkOperationProgressSuite: test operation progress</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0cb6f162">[KYUUBI #2812] [SUB-TASK][KPIP-4] Refine the batch info response</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c56a13af">[KYUUBI #2469] Support RangerDefaultAuditHandler for AuthZ module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/aabc53ec">[KYUUBI #2807] Trino, Hive and JDBC Engine support session conf in newExecuteStatementOperation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9265cf3e">[KYUUBI #2814] Set JAVA_HOME in travis via javac</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/aaf14a12">[KYUUBI #2804] add flaky test report template</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d881d318">[KYUUBI #2800][FOLLOWUP] Return CloseBatchReponse for kyuubi rest client deleteBatch</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bb98aa75">[KYUUBI #2800] Refine batch mode code path</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/21845266">[KYUUBI #2802] Retry opening the TSocket in KyuubiSyncThriftClient</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b0495f3c">[KYUUBI #2742] Introduce admin resource for service admin - refresh frontend hadoop conf without restart</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9ed652e9">[KYUUBI #2794] Change KyuubiRestException to extend RuntimeException</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a3718f9b">[KYUUBI #2793][DOCS] Add debugging engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/05ee1964">[KYUUBI #2788] Add excludeDatabases for TPC-H catalogs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6cd2ad9e">[KYUUBI #2780] Refine stylecheck</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/74ff5cf3">[KYUUBI #2789] Kyuubi Spark TPC-H Connector - Add tiny scale</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a4622301">[KYUUBI #2765][SUB-TASK][KPIP-4] Refactor current kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/80d45e42">[KYUUBI #2717][FOLLOWUP] Fix BatchRestApiSuite due to jdbc state store UPPER the batch type</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/73c6b1b1">[KYUUBI #2717] [SUB-TASK][KPIP-4] Introduce jdbc session state store for batch session multiple HA</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a04afabd">[KYUUBI #2643][FOLLOWUP] Generate spnego auth token dynamically per request</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d24c18db">[KYUUBI #2741] Add kyuubi-spark-connector-common module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d2ceb041">[KYUUBI #2775] Add excludeDatabases for TPC-DS catalogs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fc51cfb3">[KYUUBI #2643][FOLLOWUP] Refine the rest sdk</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8578bcd4">[KYUUBI #2553] Kyuubi Spark TPC-DS Connector - Add tiny scale</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d49377e7">[KYUUBI #2772] Kyuubi Spark TPC-H Connector - use log4j1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b817fcf7">[KYUUBI #2643] [SUB-TASK][KPIP-4] Implement kyuubi rest sdk for batch job operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/60d559ef">[KYUUBI #2763] Expected error code for invalid basic/spnego authentication should be SC_FORBIDDEN</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a8270163">[KYUUBI #2768] Use the default DB passed in by session in Flink</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/414d1a86">[KYUUBI #2764] [DOCS] Fix tables in docs being coverd by right toc sidebar</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/42f18378">[KYUUBI #2760] Add adapter layer in Kyuubi Hive JDBC module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e1921fc8">[KYUUBI #2751] [DOC] Replace sphinx_rtd_theme with sphinx_book_theme</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b1895913">[KYUUBI #2754] [GA] Separate log archive name</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1ca56c17">[KYUUBI #2755] [Subtask] DorisSQLEngine - add jdbc label</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9766db12">[KYUUBI #2752] Kyuubi Spark TPC-DS Connector - configurable catalog’s name by initialize method</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9b502307">[KYUUBI #2721] Implement dedicated set/get catalog/database operators</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dbe315e8">[KYUUBI #2664] Kyuubi Spark TPC-H Connector - SupportsReportStatistics</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ff1d7ec7">[KYUUBI #2471][FOLLOWUP] Remove unexpected test-function.jar</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c0f0089f">[KYUUBI #2743] colorfully kyuubi logo support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a8943bc3">[KYUUBI #2736] Upgrade Jackson 2.13.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e9797c02">[KYUUBI #2735] Test Spark 3.3.0-rc3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/49352b5a">[KYUUBI #2665] Kyuubi Spark TPC-H Connector - SupportsNamespaces</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/25383698">[KYUUBI #2543] Add TPCDSTable generate benchmark</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7f945017">[KYUUBI #2658] [Subtask] DorisSQLEngine with execute statement support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c84ea87c">[KYUUBI #2730] [WIP][KYUUBI #2238] Support Flink 1.15</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/81c48b0c">[KYUUBI #2663] Kyuubi Spark TPC-H Connector - Initial implementation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3b81a495">[KYUUBI #2631] Rename high availability config key to support multi discovery client</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7a789a25">[KYUUBI #2733] [CI] Cross version verification for spark-3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3114b393">[KYUUBI #2285] trino’s result fetching method is changed to a streaming iterator mode to avoid hold data at server side</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5b9d92e9">[KYUUBI #2718] [KYUUBI#2405] Support Flink StringData Data Type</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f1cf95fe">[KYUUBI #2719] [SUB-TASK][KPIP-4] Support internal rest request authentication to enable http request redirection across kyuubi instances</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/95784751">[KYUUBI #2720] Fix KyuubiDatabaseMetaData#supportsCatalogs*</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/85cbea40">[KYUUBI #2706] Spark extensions support Spark-3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7584e3ab">[KYUUBI #2714] Log4j2 layout pattern add date</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/45531f01">[KYUUBI #2686][FOLLOWUP] Avoid potential flaky test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8905bded">[KYUUBI #2594][FOLLOWUP] Fix flaky Test - support engine alive probe to fast fail on engine broken</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b673b2f5">[KYUUBI #2701] Kyuubi Spark TPC-DS Connector - Rework SupportsReportStatistics and code refactor</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7d81fd08">[KYUUBI #2712] Bump Spark master to 3.4.0-SNAPSHOT</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/93753292">[KYUUBI #2541] Set nullable in table schema</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0c5b0d1a">[KYUUBI #2709] Improve TPCDSTable display in Spark Web UI</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/85d68b20">[KYUUBI #2619] Add profile spark-3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/aa4ac58c">[KYUUBI #2702] Fix TPC-DS columns name and add TPC-DS queries verification</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/33c81624">[KYUUBI #2348] Add it test for trino engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c210fdae">[KYUUBI #2686] Fix lock bug if engine initialization timeout</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/010a34d1">[KYUUBI #2690] Make ProcessBuilder.commands immutable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5585dd01">[KYUUBI #2696] [TEST] Stop NoopServer should not throw exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/18e9d09e">[KYUUBI #2700] Handle SPARK-37929 breaking change in TPCDSCatalog</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/866e4d1f">[KYUUBI #2683] Add INFO log in ServiceDiscovery.stopGracefully</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/27030d39">[KYUUBI #2694] EngineEvent.toString outputs application tags</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/56efdf8c">[KYUUBI #2594] Fix flaky Test - support engine alive probe to fast fail on engine broken</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b2495e96">[KYUUBI #2668][FOLLOWUP] Remove unused Option because the collection is never null</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/60b9f6bc">[KYUUBI #2675] Fix compatibility for spark authz with spark v3.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/98ed40f5">[KYUUBI #2680] Remove SwaggerScalaModelConverter after rest dto classes rewritten in Java</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c1fb7bfb">[KYUUBI #2642] Fix flaky test - JpsApplicationOperation with spark local mode</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/31fdd7ec">[KYUUBI #2668] [SUB-TASK][KPIP-4] Rewrite the rest DTO classes in java</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/32165362">[KYUUBI #2670] Delete the useless judgment in the extractURLComponents method of Utils.java</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5588cd50">[KYUUBI #2672] Check if the table exists</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b40bcbda">[KYUUBI #2641] Client should not assume launch engine has completed on exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/27cf57bd">[KYUUBI #2666] Backport HIVE-24694 to Kyuubi Hive JDBC</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a163f3a8">[KYUUBI #2661] [SUB-TASK][KPIP-4] Rename GET /batches/$batchId/log to GET /batches/$batchId/localLog</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2facc0b6">[KYUUBI #2650] Add FilteredShowColumnsCommand to AuthZ module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f16ac8be">[KYUUBI #2576][FOLLOWUP] Bump Hudi 0.11.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b088f39f">[KYUUBI #2540] Kyuubi Spark TPC-DS Connector - SupportsNamespaces</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/31878859">[KYUUBI #2655] Using the defined app keys for JpsApplicationOperation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8de2f5f1">[KYUUBI #2640] Implement TGetInfoType CLI_ODBC_KEYWORDS</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/50584f2a">[KYUUBI #2601] Add a config to support different service discovery client class implementation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1ab68974">[KYUUBI #2471] Fix the bug of dynamically loading external packages</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a5bb93e5">[KYUUBI #2636] Refine BatchesResourceSuite</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e4e88355">[KYUUBI #2634] [SUB-TASK][KPIP-4] Enhance the response error msg</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/52817e81">[KYUUBI #2616] Remove embedded mode support in Kyuubi Hive JDBC driver</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9a2fc86b">[KYUUBI #2605] Make SQLOperationListener configurable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d30f078c">[KYUUBI #2474] [Improvement] Add FilteredShowFunctionsCommand to Authz module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f2b9776e">[KYUUBI #2604] Hive Backend Engine - Multi tenancy support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cb5f49e3">[KYUUBI #2576] Bump Hudi 0.11.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bea53092">[KYUUBI #2473][FOLLOWUP] Simplify FilteredShowNamespaceExec</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/981b4161">[KYUUBI #2621] Always use Hadoop shaded client</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/25471506">[KYUUBI #2615] Add support HIVE_CLI_SERVICE_PROTOCOL_V11</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/42936aa2">[KYUUBI #2473] [Improvement] Add FilteredShowDatabasesCommand to AuthZ module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/32b38cc6">[KYUUBI #2626] Replace literal by FetchType.LOG</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/098ae16c">[KYUUBI #2614] Add commons-io to beeline module since jdbc upgraded to 3.1.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d3b9c77c">[KYUUBI #2539][Subtask] Kyuubi Spark TPC-DS Connector - SupportsReportStatistics</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1fee068c">[KYUUBI #2591] Redact secret information from ProcBuilder log</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/802890a7">[KYUUBI #2542] [Subtask] Kyuubi Spark TPC-DS Connector - Make useAnsiStringType configurable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b85045ad">[KYUUBI #2607] Introduce new module and setup testcontainers-based Kudu service for testing</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6b6da1f4">[KYUUBI #2333][KYUUBI #2554] Configuring Flink Engine heap memory and java opts</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b8fd3785">[KYUUBI #2029] Hive Backend Engine - Operation Logs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c1df427f">[KYUUBI #2609] Set Kyuubi server thrift client socket timeout to inf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a6e14ac3">[KYUUBI #2560] Upgrade kyuubi-hive-jdbc hive version to 3.1.3</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/867e0beb">[KYUUBI #2602] Bump testcontainers-scala 0.40.7</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7f8369bf">[KYUUBI #2565] Variable substitution should work in plan only mode</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0f0708b7">[KYUUBI #2493][FOLLOWUP] Fix the exception that occurred when beeline rendered spark progress</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8c1fc100">[KYUUBI #2378] Implement BatchesResource GET /batches/${batchId}/log</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ec561bf4">[KYUUBI #2599] Bump scala-maven-plugin 4.6.1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1cb4193d">[KYUUBI #2493] Implement the progress of statement for spark sql engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bcf30beb">[KYUUBI #2375][FOLLOWUP] Implement BatchesResource GET /batches</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5b788a13">[KYUUBI #2588] Reformat kyuubi-hive-sql-engine/pom.xml</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/282f105a">[KYUUBI #2558] fix warn message</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/80e068df">[KYUUBI #2427][FOLLOWUP] Flaky test: deregister when meeting specified exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a7443285">[KYUUBI #2582] Minimize Travis build and test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cad0bcd5">[KYUUBI #2500][FOLLOWUP] Resolve flink conf at engine side</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9d604955">[KYUUBI #2571] Minimize YARN tests overhead</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/965bf218">[KYUUBI #2573] [KPIP-4][SUB-TASK] Add a seekable buffered reader for random access operation log</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c967c74f">[KYUUBI #2375][SUB-TASK][KPIP-4] Implement BatchesResource GET /batches</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/270a5726">[KYUUBI #2571] Release connection to prevent the engine leak</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6e17e794">[KYUUBI #2522] Even the process exit code is zero, also check the application state from resource manager</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9d5fba56">[KYUUBI #2569] Change the acquisition method of flinkHome to keep it consistent with other engines</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/90140cc3">[KYUUBI #2550] Fix swagger does not show the request/response schema issue</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1932ad72">[KYUUBI #2500] Command OptionParser for launching Flink Backend Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5b3123e4">[KYUUBI #2379][SUB-TASK][KPIP-4] Implement BatchesResource DELETE /batches/${batchId}</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a58e1cf4">[KYUUBI #2513] Support NULL type in trino engine and add QueryTests</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9e263d79">[KYUUBI #2403] [Improvement] move addTimeoutMonitor to AbstractOperation because it was used in multiple engines</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dcc3ccf3">[KYUUBI #2531] [Subtask] Kyuubi Spark TPC-DS Connector - Initial implementation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/792c5422">[KYUUBI #2523] Flaky Test: KyuubiBatchYarnClusterSuite - open batch session</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/147c83bf">[KYUUBI #2376][SUB-TASK][KPIP-4] Implement BatchesResource GET /batches/${batchId}</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5392591a">[KYUUBI #2547] Support jdbc url prefix jdbc:kyuubi://</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/841a3635">[KYUUBI #2549] Do not auth the request to load OpenApiConf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/672e8e95">[KYUUBI #2548] Prevent dead loop if the batch job submission process it not alive</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3208410d">[KYUUBI #2533] Make Utils.parseURL public to remove unnecessary reflection</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7612f0af">[KYUUBI #2524] [DOCS] Update metrics.md</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/05161158">[KYUUBI #2532] avoid NPE in KyuubiHiveDriver.acceptsURL</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cdfae8d8">[KYUUBI #2478][FOLLOWUP] Invoke getOpts method instead of Reflection</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/973339db">[KYUUBI #2490][FOLLOWUP] Fix and move set command test case</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/04a91e10">[KYUUBI #2517] Rename ZorderSqlAstBuilder to KyuubiSparkSQLAstBuilder</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/02356a38">[KYUUBI #2025][HIVE] Add a Hive on Yarn doc</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3ab2c81d">[KYUUBI #2032][Subtask] Hive Backend Engine - new APIs with hive-service-rpc 3.1.2 - SetClientInfo</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/96da2544">[KYUUBI #2490] Fix NPE in getOperationStatus</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b739d39f">[KYUUBI #2516] [DOCS] Add Contributor over time in README.md</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3b04d994">[KYUUBI #2346] [Improvement] Simplify FlinkProcessBuilder with java executable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c969433f">[KYUUBI #2472] Support FilteredShowTablesCommand for AuthZ module</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5a36db65">[KYUUBI #2309][SUB-TASK][KPIP-4] Implement BatchesResource POST /batches</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9ac5faaa">[KYUUBI #2028][FOLLOWUP] add engine stop event and fix the partition of initialized event</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/03d4bbe9">[KYUUBI #2512] Fix broken link of IntelliJ IDEA Setup Guide</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8e4a2954">[KYUUBI #2450][FOLLOWUP] Remove opHandle from opHandleSet when exception occurs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c0963e1b">[KYUUBI #2510] Fix NPE when invoking YarnApplicationOperation::getApplicationInfoByTag</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/beb132f9">[KYUUBI #2496] Prevent empty auth user when anonymous is allowed</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fa61da62">[KYUUBI #2498] Upgrade Delta version to 1.2.1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/93f13ef6">[KYUUBI #2419] Release engine during closing kyuubi server session if share level is connection</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/af162b1f">[KYUUBI #2487] Fix test command to make it runnable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/38cf4ccc">[KYUUBI #2457] Fix flaky test: engine log truncation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/268db010">[KYUUBI #2478] Backport HIVE-19018 to Kyuubi Beeline</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b41be9eb">[KYUUBI #2020] [Subtask] Hive Backend Engine - new APIs with hive-service-rpc 3.1.2 - TGetQueryId</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/06da8cf8">[KYUUBI #2484] Add conf to SessionEvent and display it in EngineSessionPage</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/679d23f0">[KYUUBI #2433] HiveSQLEngine load required jars from HIVE_HADOOP_CLASSPATH</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7b70a6a0">[KYUUBI #2477] Change state early on stopping</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/61873214">[KYUUBI #2451] Support isWrapperFor and unwrap</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/68ac8a19">[KYUUBI #2453] [Improvement] checkValue of TypedConfigBuilder shall also print the config name</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/40739a9f">[KYUUBI #2427] Flaky test: deregister when meeting specified exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c5210547">[KYUUBI #2456] Supports managing engines of different share level in kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7cede6fd">[KYUUBI #1987] Support preserve user context in group/server share level</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9fd62a21">[KYUUBI #2467] Remove close launchEngineOp</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8a44b6bf">[KYUUBI #2440] [Improvement] spark engine event add endTime when it is stopped</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dcea90b0">[KYUUBI #2461] Use the original host argument</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f13856aa">[KYUUBI #2463] Redact <code class="docutils literal notranslate"><span class="pre">kyuubi.ha.zookeeper.auth.digest</span></code> in Spark engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5e6d645e">[KYUUBI #2445] Implement ApplicationManager and Yarn/ JPS-local Application Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5ae7c9c0">[KYUUBI #1936][FOLLOWUP] Stop updating credentials when credentials are expired</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/86f016d9">[KYUUBI #2450] Update lastAccessTime in getStatus and add opHandle to opHandleSet before run</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3ecdd422">[KYUUBI #2439] Using Pure Java TPC-DS generator</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/eeb8a94f">[KYUUBI #2448] Log the engine id when opening Kyuubi connection</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/71bc0dc1">[KYUUBI #2436] Add AlterTableRecoverPartitionsCommand for Spark Sql Authz PrivilegesBuilder</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a3e8f7ac">[KYUUBI #2432][DOCS] button “Download” is invalid</a><br />[[KYUUBI #2429] KYUUBI #2416] Increase Test Coverage For Privileges Builder](https://github.com/apache/incubator-kyuubi/commit/14f675d2)<br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7fa04947">[KYUUBI #2344] [Improvement] Add Kyuubi Server on Kubernetes with Spark Cluster mode integration test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4fb93275">[KYUUBI #2201] Show ExecutionId when running status on query engine page</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a09ad0b6">[KYUUBI #2424] [Improvement] add Flink compile version and Trino client compile version to KyuubiServer Log</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4ec707b7">[KYUUBI #2253] [Improvement] Trino Engine - Events support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/deb0e620">[KYUUBI #2426] Return complete error stack trace information</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5f04aa67">[KYUUBI #2410] [Improvement] Fix docker-image-tool.sh example version to 1.4.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/45e5eda0">[KYUUBI #2351] Fix Hive Engine terminating blocked by non-daemon threads</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/70a3005e">[KYUUBI #2422] Wrap close session with try-finally</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/60179171">[KYUUBI #2420] Fix outdate .gitignore for dependency-reduced-pom.xml</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4f4960cf">[KYUUBI #2368] [Improvement] Command OptionParser for launching Trino Backend Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/bafc2f84">[KYUUBI #2021][FOLLOWUP] Move derby workaround to test code</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dba9e223">[KYUUBI #2301] Limit the maximum number of concurrent connections per user and ipaddress</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d851b23a">[KYUUBI #2323] Separate events to a submodule - kyuubi-event</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c9ea7fac">[KYUUBI #2289] Use unique tag to kill applications</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/20af38ee">[KYUUBI #2021] Command OptionParser for launching Hive Backend Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b8877323">[KYUUBI #2414] [KYUUBI apache#2413  ] Fix InsertIntoHiveTableCommand case in PrivilegesBuilder#buildCommand()</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cbde503f">[KYUUBI #2406] Add Flink environments to template</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5bf4184c">[KYUUBI #2355] Bump Delta Lake 1.2.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a59188ff">[KYUUBI #2349][DOCS] Usage docs for kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/62db92f7">[KYUUBI #2381] [Test] Add Kyuubi on k8s With Spark on k8s client deploy-mode unit test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/eb7ad512">[KYUUBI #2390] RuleEliminateMarker stays in analyze phase for data masking</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8f29b4fd">[KYUUBI #2395] [DOC] Add Documentation for Spark AuthZ Extension</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a7674d29">[KYUUBI #2397] Supports managing engines of different versions in kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9fb62772">[KYUUBI #2402] [Improvement] addTimeoutMonitor for trino engine when it run query async</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/26d52faa">[KYUUBI #2360] [Subtask] Configuring Hive engine heap memory and java opts</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/91adc3fd">[KYUUBI #2399] Fix PrivilegesBuilder Build Wrong PrivilegeObjets When Query Without Project But With OrderBy/PartitionBy</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4b42c735">[KYUUBI #2308][SUB-TASK][KPIP-4] Batch job configuration ignore list and pre-defined configuration in server-side</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1a58aaf7">[KYUUBI #2369] [Improvement] update developer.md to describe what append descriptions of new configurations to settings.md</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/88f168c6">[KYUUBI #2391] Fix privileges builder return wrong result when there is no project but has filter/join</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1a68b866">[KYUUBI #2361] [Improvement] Configuring Trino Engine heap memory and java opts</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7c6789a6">[KYUUBI #2338] [DOCS] Upgrade sphinx dependencies for documentation build</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b8d04af4">[KYUUBI #2385] Export JAVA_HOME. It seems TravisCI stopped doing it recently</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b6d5c64c">[KYUUBI #2353] [SUB-TASK][KPIP-4] Implement BatchJobSubmission operation and basic KyuubiBatchSessionImpl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/65a272f6">[KYUUBI #2359] [Test] Build WithKyuubiServerOnKuberntes</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6d147894">[KYUUBI #2330] [Subtask] Hive Backend Engine - GetTypeInfo Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/86c6b1f8">[KYUUBI #2257] Replace replace conf vars with strings in HiveSQLEngine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d0a4697f">[KYUUBI #2248][DOCS] Add a flink on yarn kerberos doc</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fa95281b">[KYUUBI #1451] Support Data Column Masking</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d5acb78e">[KYUUBI #2357] [Improvement] Add warn log and check in class of HiveProcessBuilder</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8ef211a1">[KYUUBI #2328] Support getting mainResource in the module target directory of KYUUBI_HOME</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d11866df">[KYUUBI #2354] Fix NPE in process builder log capture thread</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/659d981c">[KYUUBI #2337] [DOCS] Access Kyuubi with Kyuubi JDBC Driver</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8a525e52">[KYUUBI #2331] Add createSession method to further abstract openSession</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/55c4cae1">[KYUUBI #2347] Output trino query id within query execute</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/12416a78">[KYUUBI #2345] [DOC] Hot Upgrade Kyuubi Server</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9e486080">[KYUUBI #2336] Simplify TrinoProcessBuilder with java executable</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0888abd9">[KYUUBI #2343] [KYUUBI#2297] HiveEngineEvent toString is not pretty</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/91010689">[KYUUBI #1989] Decouple curator from other modules</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a63e811e">[KYUUBI #2324] [SUB-TASK][KPIP-4] Implement SparkBatchProcessBuilder to submit spark batch job</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ff19ae73">[KYUUBI #2329] [KYUUBI#2214][FOLLOWUP] Cleanup kubernetes-deployment-it</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a4c521c6">[KYUUBI #2216] [Test] [K8s] Add Spark Cluster mode on Kubernetes integration test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a56e4b4f">[KYUUBI #2024][FOLLOWUP] Hive Backend Engine - ProcBuilder for HiveEngine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/04c536b9">[KYUUBI #2281] The RenewDelegationToken method of TFrontendService should return SUCCESS_STATUS by default</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9bd91054">[KYUUBI #2300] Add http UGIAssuming handler wrapper for kerberos enabled restful frontend service</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/93627611">[KYUUBI #2292][FOLLOWUP] Unify kyuubi server plugin location</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c29d2d85">[KYUUBI #2320] Make the CodeSource location correctly obtained on Windows</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d3d73c6b">[KYUUBI #2316] [DOCS] Fix typo in GitHub issue template</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ff1bb555">[KYUUBI #2317][BUILD] Bump hive-service-rpc 3.1.3 version</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fbb2d974">[KYUUBI #2311] Refine github label</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ed827708">[KYUUBI #2310] Make ranger extension work with mac m1</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e1e0b358">[KYUUBI #2312] Spark data type TimestampNTZ supported version changes as 3.4.0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e5834ae7">[KYUUBI #2296] Fix operation log file handler leak</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4bc14657">[KYUUBI #2250] Support to limit the spark engine max running time</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9c4af55f">[KYUUBI #2299] Fix flaky test: support engine alive probe to fast fail on engine broken</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b41ec939">[KYUUBI #2292] Unify kyuubi server plugin location</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/82a024a9">[KYUUBI #2292] Unify spark extension location</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0ed865f7">[KYUUBI #2084][FOLLOWUP] Support arbitrary parameters for KyuubiConf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/19f1d411">[KYUUBI #2287] Revamp Flink IT by random port and merge tests</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c4a608f9">[KYUUBI #1451] Add Row-level filtering support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/03b72268">[KYUUBI #2280] [INFRA] Replace BSD 3-clause with ASF License v2 for scala binaries</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6a231519">[KYUUBI #2277] Inline kyuubi prefix in KyuubiConf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c1a68a7c">[KYUUBI #2266] The default value of frontend.connection.url.use.hostname should be set to true to be consistent with previous versions</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a6ba6420">[KYUUBI #2260] The running query will not update the duration of the page</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f0d6ca0f">[KYUUBI #2272] Fix incorrect doc link</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2af5067a">[KYUUBI #2268] Flaky test: submit spark app timeout with last log output</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a18a3a95">[KYUUBI #2275][DOCS] Fix missing prefix in trino engine quick start</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0ee53710">[KYUUBI #2243][DOCS] Add quick start for trino engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6bd9edf2">[KYUUBI #2255]The engine state of Spark’s EngineEvent is hardcoded with 0</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/89edeaee">[KYUUBI #2263] [KYUUBI  #2262]Kyuubi Spark Nightly failed - select timestamp_ntz *** FAILED ***</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5733452b">[KYUUBI #2209] Add detail usage documents of Flink engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0fd47381">[KYUUBI #2246] [BUILD] Pick Commons-Logging dependence out of Hudi-Common</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9da22e66">[KYUUBI #2028] Hive Backend Engine - Events support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d77882a8">[KYUUBI #2207]  Fix DayTimeIntervalType/YearMonthIntervalType Column Size</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/513ea834">[KYUUBI #1451] Introduce Kyuubi Spark AuthZ Module with column-level fine-grained authorization</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/6fe69753">[KYUUBI #1798] Add EventBus module to unify the distribution and subscription of Kyuubi’s events</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dcc71b30">[KYUUBI #2207]Support newly added spark data types: TimestampNTZType</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e16c728d">[KYUUBI #1021] Expire CredentialsRef in a proper time to reduce memor…</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f80d1a8b">[KYUUBI #2241] Remove unused deployment documents of Spark</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cf490a1b">[KYUUBI #2244] load-kyuubi-env.sh should print SPARK_ENGINE_HOME for consistent</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a7708076">[KYUUBI #2023] Hive Backend Engine - Shade HiveSQLEngine runtime</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ea0121bc">[KYUUBI #1498] Support operation log for ExecuteScala</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fe3ece1d">[KYUUBI #2087] Add issue template for documentation improvement</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8b06f135">[KYUUBI #1962] Add timeout check for createSpark</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/98887e75">[KYUUBI #2218] Fix maven options about hive-provided</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9797ff0d">[KYUUBI #2225] Support to set result max rows for spark engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/015cbe5d">[KYUUBI #2008][FOLLOWUP] Support engine type and subdomain in kyuubi-ctl</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b18be382">[KYUUBI #2231] Close action and default sparksession before <code class="docutils literal notranslate"><span class="pre">createSpark</span></code>.</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a5b4c1b9">[KYUUBI #2222] Refactor the log when failing to get hadoop fs delegation token</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/55052f96">[KYUUBI #2227] Fix operation log dir not deleted issue</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c1ffc3ca">[KYUUBI #2223] Return the last rows of log for prompts even exception detected</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/86cd685d">[KYUUBI #2221] Shade hive-service-rpc and thrift in Spark engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e8445b7f">[KYUUBI #2102] Support to retry the internal thrift request call and add engine liveness probe to enable fast fail before retry</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d0c92caa">[KYUUBI #2207] Support newly added spark data types: DayTimeIntervalType/YearMonthIntervalType</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/fb3e1235">[KYUUBI #2085][FOLLOWUP] Fix kyuubi-common wrong label</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a13a89e8">[KYUUBI #2208] Fixed session close operator log session dir not deleted</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4f0323d5">[KYUUBI #2214] Add Spark Engine on Kubernetes integration test</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c09cd654">[KYUUBI #2203][FLINK] Support flink conf set by kyuubi conf file</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/88e0bcd2">[KYUUBI #2197][BUILD] Bump jersey 2.35 version</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/89497c41">[KYUUBI #2204] Make comments consistent with code in EngineRef</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8f2b7358">[KYUUBI #2186] Manage test failures with kyuubi spark nightly build - execute statement - select interval</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5ed8f148">[KYUUBI #2195] Using while-loop or for-loop instead of map/range to improve performance in RowSet</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4e01f9b9">[KYUUBI #2033] Hive Backend Engine - GetCrossReference</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e390f34c">[KYUUBI #2135] Build and test all modules on Linux ARM64</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/04896233">[KYUUBI #2035] Hive Backend Engine - <code class="docutils literal notranslate"><span class="pre">build/dist</span></code> support</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0025505a">[KYUUBI #2189] Manage test failures with kyuubi spark nightly build - deregister when meeting specified exception *** FAILED ***</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e7c42012">[KYUUBI #2119][FOLLOWUP] Support output progress bar in Spark engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b02fb584">[KYUUBI #2187] Manage test failures with kyuubi spark nightly build - execute simple scala code *** FAILED ***</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/55b14056">[KYUUBI #2184] Manage test failures with kyuubi spark nightly build - operation listener *** FAILED ***</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f333e6ba">[KYUUBI #2034] Hive Backend Engine - GetPrimaryKeys</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ea6e02b5">[KYUUBI #2086] Add issue template for subtasks - remove duplicate labels</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0b721f4f">[KYUUBI #2086] Add issue template for subtasks</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f29adb2f">[KYUUBI #2163][K8s] copy beeline-jars into docker image</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3eb1fa9e">[KYUUBI #2175] Improve CI with cancel &amp; concurrency &amp; paths filter</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/3c2463b1">[KYUUBI #2172][BUILD] Bump Flink 1.14.4 version</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4eb5df34">[KYUUBI #2159][FLINK] Prevent loss of exception message line separator</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2911ac26">[KYUUBI #2024] Hive Backend Engine - ProcBuilder for HiveEngine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f22a14f1">[KYUUBI #2017] Hive Backend Engine - GetColumns Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/db987998">[KYUUBI #2019] Hive Backend Engine - GetTableTypes Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/57edfcd0">[KYUUBI #2018] Hive Backend Engine - GetFunctions Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/62f685ff">[KYUUBI #2156][FOLLOWUP] Fix configuration format in document</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f65db034">[KYUUBI #2119] Support output progress bar in Spark engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/449c4260">[KYUUBI #2016] Hive Backend Engine - GetTables Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/31be7a30">[KYUUBI #2156] Change log to reflect exactly why getting token failed</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/36507f8e">[KYUUBI #2148][DOCS] Add dev/reformat usage</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/95fc6da9">[KYUUBI #2150] [DOCS] Fix Getting Started With Kyuubi on Kubernetes</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2225b9a1">[KYUUBI #2143] [KYUBBI #2142][DOCS] Add IDEA setup guide</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/07d36320">[KYUUBI #2015] Hive Backend Engine - GetSchemas Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/eb4d2890">[KYUUBI #1936][FOLLOWUP] Send credentials when opening session and wait for completion</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ffb7a6f4">[KYUUBI #2085][FOLLOWUP] Fix the wrong path of <code class="docutils literal notranslate"><span class="pre">module:hive</span></code></a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/d7d8b05d">[KYUUBI #2134] Respect Spark bundled log4j in extension modules</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/54c0035b">[KYUUBI #2014] Hive Backend Engine - GetCatalog Operation</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/4e2fdd52">[KYUUBI #2129] FlinkEngine throws UnsupportedOperationException in GetColumns</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/0cfbcd2e">[KYUUBI #2022] Hive Backend Engine - maven-google-downloader plugin support for hive distribution</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8f15622d">[KYUUBI #2084] Support arbitrary parameters for KyuubiConf</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/55b422bf">[KYUUBI #2112]  Improve the compatibility of queryTimeout in more version clients</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/33424a1b">[KYUUBI #2115] Update license and enhance collect_licenses script</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/da22498a">[KYUUBI #2085] Add a labeler github action to triage PRs</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a83cd49e">[KYUUBI #1866][FOLLOWUP] Add Deploy Kyuubi Flink engine on Yarn</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/450cf691">[KYUUBI #2120] Optimize RenewDelegationToken logs in Spark engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/ffdd665f">[KYUUBI #2104] Kill yarn job using yarn client API when kyuubi engine …</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/537a0f82">[KYUUBI #2118] [SUB-TASK][KPIP-2] Support session jars management</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/48c0059d">[KYUUBI #2127] avoid to set HA_ZK_NAMESPACE and HA_ZK_ENGINE_REF_ID repetitively when create flink sql engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f97350de">[KYUUBI #2123] Output engine information after openEngineSession call fails</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8c85480b">[KYUUBI #2125] closeSession should avoid sending RPC after openSession fails</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e4af5513">[KYUUBI #2116] move toString() to ProcBuilder trait from its implements</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f8efcb71">[KYUUBI #2103] Revert “[KYUUBI #1948] Upgrade thrift version to 0.16.0”</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b8389dae">[KYUUBI #1866][FOLLOWUP] Add logging of Flink SQL Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8f7b2c66">[KYUUBI #1866][DOCS] Add flink sql engine quick start</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b7a5cfcf">[KYUUBI #2108] Add description about trino in the config of engine.type</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/e942df40">[KYUUBI #2071] Using while-loop instead of map/range to improve performance in RowSet</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/7d66e9aa">[KYUUBI #2070][FLINK] Support Flink job submission on yarn-session mode</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2486c5df">[KYUUBI #2089] Add debugging instructions for Flink engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/c5a7c669">[KYUUBI #2097] [CI] Upload Test Log for CI failure shall contain trino engine log #2094</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/46234594">[KYUUBI #2095] Remove useless logic about add conf when create a new engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/12d56422">[KYUUBI #1948][FOLLOWUP] Relocate fb303 classes</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/1e23e7a9">[KYUUBI #1978] Support NEGOTIATE/BASIC authorization for restful frontend service</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a71c511b">[KYUUBI #2081] YARN_CONF_DIR shall be added to kyuubi server classpath as HADOOP_CONF_DIR</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/cf014ee2">[KYUUBI #2078] <code class="docutils literal notranslate"><span class="pre">logCaptureThread</span></code> does not catch sparksubmit exception</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/8e983a19">[KYUUBI #1936] Send credentials when opening session and wait for completion</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/a882c4bf">[KYUUBI #2079] Update kyuubi layer source file to add flink and trino…</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/95a4974e">[KYUUBI #1563] Fix broken link and add new link in <code class="docutils literal notranslate"><span class="pre">CONTRIBUTION.md</span></code></a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/746a94a7">[KYUUBI #2072] Improve rest server behavior</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/5a64e124">[KYUUBI #2075] Using thread-safe FastDateFormat instead of SimpleDateFormat</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/caeb6a43">[KYUUBI #2066] fix spelling mistake and appropriate naming</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dde83819">[KYUUBI #2063] Fix engine idle timeout lose efficacy for Flink Engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9bf8ff83">[KYUUBI #2061] Implementation of the very basic UI on current Jetty server</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/2b50aaa4">[KYUUBI #2011] Introduce to very basic hive engine</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/54dfb4bb">[KYUUBI #1215][DOC] Document incremental collection</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/dc6085e0">[KYUUBI #2043] Upgrade log4j/2.x/ to 2.17.2</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/f8d9010b">[KYUUBI #2060] Clear job group for init SQL</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/35a6b9b3">[KYUUBI #2044] Remove authentication thread local objects to prevent memory leak</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/df2ff6e8">[KYUUBI #1955] Add CI for branch-1.5 &amp; 1.4 SNAPSHOTS</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/9518724c">[KYUUBI #2054] [KYUUBI-1819] Support closing Flink SQL engine process</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/b1e949d4">[KYUUBI #2055] correct the log service name</a><br /><a class="reference external" href="https://github.com/apache/incubator-kyuubi/commit/109569bc">[KYUUBI #2047] Support more MySQL JDBC driver versions</a></p>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kent Yao<br/>
+  
+      &copy; Copyright 
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the &#34;License&#34;); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
