@@ -21,29 +21,24 @@ googleAnalytics = "UA-7453027-1"
 contentDir = "src"
 publishDir = "content"
 defaultContentLanguage = 'en'
+docs_base_url = "https://kyuubi.readthedocs.io/en/"
 
 [[menu.main]]
   name = "Download"
   url = "releases.html"
   weight = 1
 
-
 [[menu.main]]
-  name = "Documentation"
-  identifier = "documentation"
+  name = "Docs"
+  identifier = "docs"
   weight = 2
 
 [[menu.main]]
-  name = "Latest"
-  parent = "documentation"
-  url = "docs/latest/index.html"
+  name = "master (dev-only)"
+  parent = "docs"
+  url = "https://kyuubi.readthedocs.io/en/master/"
   weight = 1
 
-[[menu.main]]
-  name = "Master(unreleased)"
-  parent = "documentation"
-  url = "https://kyuubi.readthedocs.io/en/latest/index.html"
-  weight = 10
 
 [[menu.main]]
   name = "Community"
@@ -124,20 +119,8 @@ defaultContentLanguage = 'en'
 
 [[languages.zh.menu.main]]
   name = "文档"
-  identifier = "documentation"
+  identifier = "docs"
   weight = 2
-
-[[languages.zh.menu.main]]
-  name = "最新"
-  parent = "documentation"
-  url = "docs/latest/index.html"
-  weight = 1
-
-[[languages.zh.menu.main]]
-  name = "Master(unreleased)"
-  parent = "documentation"
-  url = "https://kyuubi.readthedocs.io/en/latest/index.html"
-  weight = 10
 
 [[languages.zh.menu.main]]
   name = "社区"
@@ -291,3 +274,6 @@ defaultContentLanguage = 'en'
 [minify]
   [minify.tdewolff.html]
     keepQuotes = true
+
+[params]
+  releases = [ 'v1.6.1-incubating', 'v1.5.2-incubating', 'v1.4.1-incubating', 'v1.3.1-incubating' ]

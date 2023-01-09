@@ -32,10 +32,18 @@
         {{ end }}
         {{ end }}
 
-        {{if or (eq .Name "Documentation")  (eq .Name "文档") }}
+        {{if or (eq .Name "Docs")  (eq .Name "文档") }}
         <li role="separator" class="dividerLine"></li>
-        {{range (where (where $currentPage.Site.Pages "Section" "release") ".Params.linked" true)}}
-        <li><a class="childNavLink" href="docs/r{{.File.BaseFileName}}/">{{.File.BaseFileName}}</a></li>
+        {{range $idx, $release := $currentPage.Site.Params.releases }}
+        <li>
+          <a class="childNavLink" href="https://kyuubi.readthedocs.io/en/{{ $release }}/">
+            {{ trim $release "v"}}
+            {{ if (eq $idx 0) }}
+              (latest)
+            {{ else }}
+            {{ end }}
+          </a>
+        </li>
         {{end}}
         {{end}}
       </ul>
