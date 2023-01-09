@@ -61,9 +61,5 @@ To creat news, create a file in ```src/news``` directory with the similar way.
 
 Note: date is used to sort the releases when the latests are displayed in the site.
 
-### Docs sub-dir
-The docs are not generated as part of the website.
-
-They are built separately for each release of Kyuubi from the Kyuubi source repository and then copied to the website under the ```content/docs``` directory.
-
-The sub-dir name should like ```r<version>``` such as ```r0.0.1```, please also update soft links ```latest```.
+### Update Docs
+The docs are hosted on readthedocs.
