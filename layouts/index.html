@@ -26,8 +26,10 @@
           {{ i18n "kyuubi-introduce" }}
         </p>
         <div class="bannerBtnContainer">
-          <a class="bannerBtn" href="https://kyuubi.apache.org/docs/latest/quick_start">{{ i18n "getting-started" }} »</a>
-          <a class="bannerBtn" href="https://github.com/apache/incubator-kyuubi">GitHub »</a>
+          {{ range $release := first 1 .Site.Params.releases }}
+            <a class="bannerBtn" href="https://kyuubi.readthedocs.io/en/{{ $release }}/quick_start">{{ i18n "getting-started" }} »</a>
+          {{ end }}
+          <a class="bannerBtn" href="https://github.com/apache/kyuubi">GitHub »</a>
         </div>
       </div>
     </div>

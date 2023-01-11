@@ -21,7 +21,6 @@ googleAnalytics = "UA-7453027-1"
 contentDir = "src"
 publishDir = "content"
 defaultContentLanguage = 'en'
-docs_base_url = "https://kyuubi.readthedocs.io/en/"
 
 [[menu.main]]
   name = "Download"
