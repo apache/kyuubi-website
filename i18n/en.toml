@@ -17,7 +17,7 @@
   other = "Serverless SQL on Lakehouse"
 
 [kyuubi-introduce]
-  other = "Apache Kyuubi (Incubating), a distributed and multi-tenant gateway to provide serverless SQL on lakehouses."
+  other = "Apache Kyuubi, a distributed and multi-tenant gateway to provide serverless SQL on lakehouses."
 
 [getting-started]
   other = "Getting started"
@@ -134,7 +134,7 @@
 
 # release page
 [download-kyuubi]
-  other = "Download Apache Kyuubi (Incubating)"
+  other = "Download Apache Kyuubi"
 
 [instructions]
   other = "Instructions"

@@ -64,8 +64,25 @@ defaultContentLanguage = 'en'
 [[menu.main]]
   name = "Github"
   identifier = "github"
-  url = "https://github.com/apache/incubator-kyuubi"
   weight = 6
+
+[[menu.main]]
+  name = "kyuubi"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi"
+  weight = 1
+
+[[menu.main]]
+  name = "kyuubi-client"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi-client"
+  weight = 2
+
+[[menu.main]]
+  name = "kyuubi-website"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi-website"
+  weight = 3
 
 [[menu.main]]
   name = "ASF"
@@ -103,6 +120,11 @@ defaultContentLanguage = 'en'
   parent = "asf"
 
 [[menu.main]]
+  name = "Privacy Policy"
+  url = "https://privacy.apache.org/policies/privacy-policy-public.html"
+  parent = "asf"
+
+[[menu.main]]
   name = "Language"
   identifier = "language"
   weight = 7
@@ -120,6 +142,12 @@ defaultContentLanguage = 'en'
   name = "文档"
   identifier = "docs"
   weight = 2
+
+[[languages.zh.menu.main]]
+  name = "master (dev-only)"
+  parent = "docs"
+  url = "https://kyuubi.readthedocs.io/en/master/"
+  weight = 1
 
 [[languages.zh.menu.main]]
   name = "社区"
@@ -146,8 +174,25 @@ defaultContentLanguage = 'en'
 [[languages.zh.menu.main]]
   name = "Github"
   identifier = "github"
-  url = "https://github.com/apache/incubator-kyuubi"
   weight = 6
+
+[[languages.zh.menu.main]]
+  name = "kyuubi"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi"
+  weight = 1
+
+[[languages.zh.menu.main]]
+  name = "kyuubi-client"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi-client"
+  weight = 2
+
+[[languages.zh.menu.main]]
+  name = "kyuubi-website"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi-website"
+  weight = 3
 
 [[languages.zh.menu.main]]
   name = "ASF"
@@ -182,6 +227,11 @@ defaultContentLanguage = 'en'
 [[languages.zh.menu.main]]
   name = "感谢"
   url = "https://www.apache.org/foundation/thanks.html"
+  parent = "asf"
+
+[[languages.zh.menu.main]]
+  name = "隐私条款"
+  url = "https://privacy.apache.org/policies/privacy-policy-public.html"
   parent = "asf"
 
 [[languages.zh.menu.main]]

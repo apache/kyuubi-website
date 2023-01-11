@@ -21,23 +21,9 @@
         around the world to share the latest technology developments and practices.
       </p>
     </div>
-    <div class="footerItem">
-      <img class="footerImg" src="{{ "incubator_feather_egg_gray_logo.png" | relURL}}"/>
-      <p>
-        <span class="footerSep"> Apache Kyuubi is an effort undergoing Incubation at The Apache Software Foundation (ASF), sponsored by the Incubator. 
-        Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, 
-        communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. 
-        While incubation status is not necessarily a reflection of the completeness or stability of the code, 
-        it does indicate that the project has yet to be fully endorsed by the ASF.
-        </span>
-        Apache, the Apache Feather logo, and the Apache Incubator project logo are trademarks of The Apache Software Foundation.
-      </p>
-    </div>
-    <div class="footerCopyRight">
-      <div class="footerBlock"></div>
-      <div class="footerCopyRightContent">
-        <span>{{ replace .Site.Copyright "{year}" now.Year }} The Apache Software Foundation</span>
-        <a class="fgooterPrivacy" href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy Policy</a>
+    <div class="footerBox">
+      <div class="footerCopyRight">
+        {{ replace .Site.Copyright "{year}" now.Year }} The Apache Software Foundation, Licensed under the Apache License, Version 2.0. Apache, the Apache Feather logo, and the Apache Incubator project logo are trademarks of The Apache Software Foundation.
       </div>
     </div>
   </div>
