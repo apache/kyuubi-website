@@ -32,8 +32,7 @@
         {{ end }}
         {{ end }}
 
-        {{if or (eq .Name "Docs")  (eq .Name "文档") }}
-        <li role="separator" class="dividerLine"></li>
+        {{if or (eq .Identifier "docs") }}
         {{range $idx, $release := $currentPage.Site.Params.releases }}
         <li>
           <a class="childNavLink" href="https://kyuubi.readthedocs.io/en/{{ $release }}/">
