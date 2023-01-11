@@ -245,11 +245,11 @@ body {
   display: inline-block;
 }
 
-.fgooterPrivacy {
+.footerPrivacy {
   color: rgb(86, 164, 221);
 }
 
-.fgooterPrivacy:hover {
+.footerPrivacy:hover {
   color: rgb(177, 222, 255);
   /* text-decoration: none; */
 }
