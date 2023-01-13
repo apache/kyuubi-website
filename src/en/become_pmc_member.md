@@ -2,7 +2,7 @@
 title: Current Podling PMC members
 menu:
   main:
-      name: "Become A PPMC member"
+      name: "Become A PMC member"
       parent: "community"
       weight: 2
 ---
@@ -71,7 +71,7 @@ menu:
 ## Become A Podling PMC member of Apache Kyuubi
 
 Anyone being supportive of the community and working in any of the
-CoPDoC areas can become an Apache Kyuubi Podling PMC(PPMC) member.
+CoPDoC areas can become an Apache Kyuubi Podling PMC(PMC) member.
 The CoPDoC is an acronym from ASF to describe how we recognize your
 contributions not only by code.
 
@@ -85,25 +85,25 @@ contributions not only by code.
 
 Apache Kyuubi community strives to be meritocratic. Thus, once someone
 has contributed sufficiently to any area of CoPDoC they can be a
-candidate for PPMC membership and at last voted in as a Kyuubi
-PPMC member. The PPMC should take an active role in watching committers
+candidate for PMC membership and at last voted in as a Kyuubi
+PMC member. The PMC should take an active role in watching committers
 develop as community participants.
 
-## PPMC member requirements:
+## PMC member requirements:
 
-There are no strict rules for becoming a PPMC member. Candidates for
-new PPMC member are typically committers that are stilling actively
+There are no strict rules for becoming a PMC member. Candidates for
+new PMC member are typically committers that are stilling actively
 participate in the community development after obtaining the committer
 membership, or contributors and community members that make significant
 contributions to the community for both code and contributor develop.
 
 It is a clear goal of Kyuubi to have all committers participate in
-the PPMC based on their contributions, which are considered at a
+the PMC based on their contributions, which are considered at a
 community level (not just a technical one).
 
 ### Continuous contributions
 
-PPMC member candidates should have a decent amount of continuous
+PMC member candidates should have a decent amount of continuous
 engagements and contributions (fixing bugs, adding new features,
 writing documentation, maintaining issues boards, code review,
 mentoring new contributors, and answering community questions)
