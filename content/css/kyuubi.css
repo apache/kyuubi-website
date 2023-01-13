@@ -185,11 +185,11 @@ body {
 
 /* footer */
 .footer {
-  margin: 32px 0 0 0;
-  min-width: 1250px;
-  height: 489px;
+  margin: auto;
+  min-width: auto;
+  height: auto;
   background: rgb(26, 26, 26);
-  padding: 88px 0;
+  padding: 30px 0;
   font-size: 14px;
   line-height: 20px;
   color: #FFFFFF;
