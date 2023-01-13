@@ -22,6 +22,6 @@ menu:
 ## Overview
 
 The Kyuubi source code resides in the Apache git repository, and available from here:
-https://gitbox.apache.org/repos/asf?p=incubator-kyuubi.git
+https://gitbox.apache.org/repos/asf?p=kyuubi.git
 
-The changes are also mirrored to the github repository https://github.com/apache/incubator-kyuubi
+The changes are also mirrored to the github repository https://github.com/apache/kyuubi

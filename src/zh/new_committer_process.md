@@ -76,7 +76,7 @@ This is a formal vote about inviting ${NEW_COMMITTER_NAME} as our new committer.
 
 ${Work list}[1]
 
-[1] https://github.com/apache/incubator-kyuubi/commits?author=${NEW_COMMITTER_NAME}
+[1] https://github.com/apache/kyuubi/commits?author=${NEW_COMMITTER_NAME}
 ```
 
 请注意，投票从今天开始一周结束，即[midnight UTC on YYYY-MM-DD](https://www.timeanddate.com/counters/customcounter.html?year=YYYY&month=MM&day=DD)

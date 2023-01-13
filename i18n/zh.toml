@@ -122,7 +122,7 @@
   other = "Powered by  Kyuubi"
 
 [powered-href]
-  other = "https://github.com/apache/incubator-kyuubi/discussions/925"
+  other = "https://github.com/apache/kyuubi/discussions/925"
 
 [powered-desc]
   other = "To add yourself to the list, please comment on the"
