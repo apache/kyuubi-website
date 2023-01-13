@@ -79,10 +79,16 @@ defaultContentLanguage = 'en'
   weight = 2
 
 [[menu.main]]
+  name = "kyuubi-docker"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi-docker"
+  weight = 3
+
+[[menu.main]]
   name = "kyuubi-website"
   parent = "github"
   url = "https://github.com/apache/kyuubi-website"
-  weight = 3
+  weight = 4
 
 [[menu.main]]
   name = "ASF"
@@ -189,10 +195,16 @@ defaultContentLanguage = 'en'
   weight = 2
 
 [[languages.zh.menu.main]]
+  name = "kyuubi-docker"
+  parent = "github"
+  url = "https://github.com/apache/kyuubi-docker"
+  weight = 3
+
+[[languages.zh.menu.main]]
   name = "kyuubi-website"
   parent = "github"
   url = "https://github.com/apache/kyuubi-website"
-  weight = 3
+  weight = 4
 
 [[languages.zh.menu.main]]
   name = "ASF"
