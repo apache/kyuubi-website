@@ -22,7 +22,7 @@ menu:
 ## Overview
 
 Kyuubi 源代码位于 Apache git 存储库中，可从此处获得：
-https://gitbox.apache.org/repos/asf?p=incubator-kyuubi.git
+https://gitbox.apache.org/repos/asf?p=kyuubi.git
 
 更改也反映到 github 存储库：
-https://github.com/apache/incubator-kyuubi
+https://github.com/apache/kyuubi

@@ -32,20 +32,20 @@ The review guide can see [Google’s Engineering Practices documentation](https:
 Before proceeding, it's better to search the issues and pull requests history first. Likely, the problem or request has been discussed.
 
 After checking, you can create a new issue to describe what want to do, and about issues, we have rich types to
-choose, see [here](https://github.com/apache/incubator-kyuubi/issues/new/choose).
+choose, see [here](https://github.com/apache/kyuubi/issues/new/choose).
 
 Then submit your code within a pull request. If you are a new contributor, please follow this guide to get a gentle step-by-step
 introductionto setting up the development environment and making your first contribution.
 
 ```shell
 # 1. Fork the repository on GitHub
-#    Go to 'https://github.com/apache/incubator-kyuubi' and click the 'Fork' button to your repository
+#    Go to 'https://github.com/apache/kyuubi' and click the 'Fork' button to your repository
 # 2. Clone the repository locally using follow git cmd
-     git clone https://github.com/${Github_user}/incubator-kyuubi.git
-     cd incubator-kyuubi
+     git clone https://github.com/${Github_user}/kyuubi.git
+     cd kyuubi
 # 3. Add git remmote repository
-     git remote add origin https://github.com/${Github_user}/incubator-kyuubi.git
-     git remote add apache https://github.com/apache/incubator-kyuubi.git
+     git remote add origin https://github.com/${Github_user}/kyuubi.git
+     git remote add apache https://github.com/apache/kyuubi.git
 # 4. Set up your identifier
      git config user.name "${Your_github_name}"
      git config user.email "${Your_public_email}"
@@ -55,7 +55,7 @@ introductionto setting up the development environment and making your first cont
      git commit -am "${Your_commit_information}"
 # 7. Push your branch to your repository
      git push origin ${Your_branch_name}
-# 8. Go to 'https://github.com/apache/incubator-kyuubi' and click the 'new pull request' button
+# 8. Go to 'https://github.com/apache/kyuubi' and click the 'new pull request' button
 ```
 
 It is highly recommended providing a clear descriptions for a better code review process.
@@ -63,13 +63,13 @@ Writing good pull request descriptions is a great way to help reviewers know wha
 As developers, our responsibility is to fix issues or implement new features and clearly communicate the development work to reviewers.
 A developer can convey proposed code changes and their purposes either through detailed PR descriptions.
 They're also a great way to help track things that should be done for every change, such as testing, adding unit tests, and updating documentation in the git log.
-See [Pull Request Template](https://github.com/apache/incubator-kyuubi/blob/master/.github/PULL_REQUEST_TEMPLATE).
+See [Pull Request Template](https://github.com/apache/kyuubi/blob/master/.github/PULL_REQUEST_TEMPLATE).
 
 ### After
 
 It may take some time to wait other developer to review. Feel free to ping any committer who has worked on the similar area.
 In general, you can find out the right people to review your code through git commit history.
 
-One more thing, Kyuubi leverages [Github Actions](https://github.com/apache/incubator-kyuubi/actions) to cover unit 
-test and integration test on Linux AMD64 and [TravisCI](https://app.travis-ci.com/github/apache/incubator-kyuubi) 
+One more thing, Kyuubi leverages [Github Actions](https://github.com/apache/kyuubi/actions) to cover unit 
+test and integration test on Linux AMD64 and [TravisCI](https://app.travis-ci.com/github/apache/kyuubi) 
 on Linux ARM64, so please make sure your pull request's tests are green. It will Speed up the merging :).

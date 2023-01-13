@@ -79,7 +79,7 @@ This is a formal vote about inviting ${NEW_PPMC_NAME} as our new PPMC member.
 
 ${Work list}[1]
 
-[1] https://github.com/apache/incubator-kyuubi/commits?author=${NEW_PPMC_NAME}
+[1] https://github.com/apache/kyuubi/commits?author=${NEW_PPMC_NAME}
 ```
 
 Note that, Voting ends one week from today, i.e. [midnight UTC on YYYY-MM-DD](https://www.timeanddate.com/counters/customcounter.html?year=YYYY&month=MM&day=DD)
@@ -274,5 +274,5 @@ submission process. This should enable better productivity.
 A PPMC member helps manage and guide the direction of the project.
 
 Thanks,
-On behalf of the Apache Kyuubi (Incubating) PPMC
+On behalf of the Apache Kyuubi PPMC
 ```

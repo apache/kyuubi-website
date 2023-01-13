@@ -12,7 +12,7 @@
   limitations under the License. See accompanying LICENSE file.
 -->
 
-# Apache Kyuubi(Incubating) site
+# Apache Kyuubi site
 
 ## Usage
 

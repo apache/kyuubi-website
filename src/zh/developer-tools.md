@@ -87,7 +87,7 @@ build/mvn clean package -Pmirror-cn
 
 ## 构建可运行的发行版
 
-创建一个 Kyuubi 发行版，就像 [Kyuubi Release Page](https://github.com/apache/incubator-kyuubi/releases)
+创建一个 Kyuubi 发行版，就像 [Kyuubi Release Page](https://github.com/apache/kyuubi/releases)
 中展示的一样，在项目根目录中使用 `./build/dist` 构建。
 
 有关使用的更多信息，请运行 `./build/dist --help`
