@@ -22,7 +22,7 @@ menu:
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
-This guideline is based on [new_pmc](https://incubator.apache.org/guides/pmc.html#voting_in_a_new_pmc_member) and [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
+This guideline is based on [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
 
 - The process of new PMC member
     - Discuss in the private mailing list
@@ -112,7 +112,7 @@ The vote is ***successful/not successful***
 ```text
 To: board@apache.org
 Cc: private@kyuubi.apache.org
-Subject: [NOTICE] Jane Doe for Kyuubi PMC
+Subject: [NOTICE] ${NEW_PMC_NAME} for Kyuubi PMC
 ```
 ```text
 ${NEW_PMC_NAME} has been voted as a new member of the Kyuubi PMC.
@@ -208,11 +208,6 @@ resources:
   https://www.apache.org/foundation/how-it-works.html
   https://www.apache.org/dev/
 
-The incubator also has some useful information for new PMC
-in incubating projects:
-  https://incubator.apache.org/guides/committer.html
-  https://incubator.apache.org/guides/pmc.html
-
 Just as before you became a PMC member, participation in any ASF community
 requires adherence to the ASF Code of Conduct:
   https://www.apache.org/foundation/policies/conduct.html
@@ -245,7 +240,6 @@ If you have any questions during this phase, then please
 see the following resources:
 
 Apache developer's pages: https://www.apache.org/dev/
-Incubator committer guide: https://incubator.apache.org/guides/committer.html
 
 Naturally, if you don't understand anything be sure to ask us on the dev@kyuubi.apache.org mailing list. 
 Documentation is maintained by volunteers and hence can be out-of-date and incomplete - of course
