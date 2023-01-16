@@ -87,7 +87,7 @@ To: private@kyuubi.apache.org
 Subject: [VOTE] New committer: ${NEW_COMMITTER_NAME}
 ```
 ```text
-Hi Kyuubi PPMC,
+Hi Kyuubi PMC,
 
 This is a formal vote about inviting ${NEW_COMMITTER_NAME} as our new committer.
 
@@ -107,7 +107,7 @@ To: private@kyuubi.apache.org
 Subject: [RESULT] [VOTE] New committer: ${NEW_COMMITTER_NAME}
 ```
 ```text
-Hi Kyuubi PPMC,
+Hi Kyuubi PMC,
 
 The vote has now closed. The results are:
 
@@ -210,17 +210,12 @@ resources:
   https://www.apache.org/foundation/how-it-works.html
   https://www.apache.org/dev/
 
-The incubator also has some useful information for new committers
-in incubating projects:
-  https://incubator.apache.org/guides/committer.html
-  https://incubator.apache.org/guides/ppmc.html
-
 Just as before you became a committer, participation in any ASF community
 requires adherence to the ASF Code of Conduct:
   https://www.apache.org/foundation/policies/conduct.html
 
 Yours,
-The Apache Kyuubi PPMC
+The Apache Kyuubi PMC
 ```
 
 ### Committer Done Template
@@ -247,11 +242,10 @@ If you have any questions during this phase, then please
 see the following resources:
 
 Apache developer's pages: https://www.apache.org/dev/
-Incubator committer guide: https://incubator.apache.org/guides/committer.html
 
 Naturally, if you don't understand anything be sure to ask us on the dev@kyuubi.apache.org mailing list. 
 Documentation is maintained by volunteers and hence can be out-of-date and incomplete - of course
 you can now help fix that.
 
-A PPMC member will announce your election to the dev list soon.
+A PMC member will announce your election to the dev list soon.
 ```

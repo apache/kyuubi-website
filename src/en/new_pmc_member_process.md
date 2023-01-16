@@ -1,8 +1,8 @@
 ---
-title: 新晋 PPMC 流程
+title: New PMC Member Process
 menu:
     main:
-        name: "新晋 PPMC 流程"
+        name: "New PMC Member Process"
         parent: "community"
         weight: 3 
 ---
@@ -22,64 +22,66 @@ menu:
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
-本指南基于 [new_ppmc](https://incubator.apache.org/guides/ppmc.html#voting_in_a_new_ppmc_member) 和 [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
+This guideline is based on [apache newpmc](https://community.apache.org/newcommitter.html#new-committer-process).
 
-## 新晋 PPMC 成员流程
+- The process of new PMC member
+    - Discuss in the private mailing list
+    - Call a vote in the private mailing list
+    - Close the vote
+    - Send a NOTICE to IPMC
+    - If the result is positive, invite the new PMC member
+    - If the invitation is accepted, then accept the PMC member
+    - Notify the PMC member of completion
+    - Announce the new PMC member
 
-### 在 `private@kyuubi.apache.org` 发起讨论
-
-see **PPMC Member Discuss Template**
-
-### 在 `private@kyuubi.apache.org` 中发起投票
-
-see **PMC Member Vote Template**
-
-### 关闭投票
-
-see **Close Vote Template**
-
-### 发送投票结果至 IPMC
-
-see **Send message to IPMC Template**
-
-### 如果通过，则邀请成为 PPMC 成员
-
-see **PMC Member Invite Template**
-
-### 如果接受，然后: 接受成为 PPMC 成员
-
-see **PMC Member Accept Template**
-
-### 通知 PPMC 成员完成
-
-see **PMC Member Done Template**
-
-### 宣布新的 PPMC 成员
-
-see **PMC Member Announce Template**
+- [Template](new_pmc_member_process.html#template)
+    - [PMC Member Discuss Template](new_pmc_member_process.html#pmc-member-discuss-template)
+    - [PMC Member Vote Template](new_pmc_member_process.html#pmc-member-vote-template)
+    - [Close Vote Template](new_pmc_member_process.html#close-vote-template)
+    - [Send NOTICE to board Template](new_pmc_member_process.html#send-notice-to-board-template)
+    - [PMC Member Invite Template](new_pmc_member_process.html#pmc-member-invite-template)
+    - [PMC Member Accept Template](new_pmc_member_process.html#pmc-member-accept-template**)
+    - [PMC Member Done Template](new_pmc_member_process.html#pmc-member-done-template)
+    - [PMC Member Announce Template](new_pmc_member_process.html#pmc-member-announce-template)
 
 ## Template
 
 Note that, there are three placeholder in template should be replaced before using
 
-- NEW_PPMC_NAME
-- NEW_PPMC_EMAIL
-- NEW_PPMC_APACHE_NAME
+- NEW_PMC_NAME
+- NEW_PMC_EMAIL
+- NEW_PMC_APACHE_NAME
 
-### PPMC Member Vote Template
+### PMC Member Discuss Template
 
 ```text
 To: private@kyuubi.apache.org
-Subject: [VOTE] New PPMC member candidate: ${NEW_PPMC_NAME}
+Subject: [DISCUSS] New PMC member candidate: ${NEW_PMC_NAME}
 ```
 ```text
-Hi Kyuubi PPMC,
+Hi Kyuubi PMC,
 
-This is a formal vote about inviting ${NEW_PPMC_NAME} as our new PPMC member.
+I recommend inviting ${NEW_PMC_NAME} as our new PMC member.
 
 ${Work list}[1]
 
-[1] https://github.com/apache/kyuubi/commits?author=${NEW_PPMC_NAME}
+[1] https://github.com/apache/kyuubi/commits?author=${NEW_PMC_NAME}
+```
+
+### PMC Member Vote Template
+
+```text
+To: private@kyuubi.apache.org
+Subject: [VOTE] New PMC member candidate: ${NEW_PMC_NAME}
+```
+```text
+Hi Kyuubi PMC,
+
+This is a formal vote about inviting ${NEW_PMC_NAME} as our new PMC member.
+
+${Work list}[1]
+
+[1] https://github.com/apache/kyuubi/commits?author=${NEW_PMC_NAME}
 ```
 
 Note that, Voting ends one week from today, i.e. [midnight UTC on YYYY-MM-DD](https://www.timeanddate.com/counters/customcounter.html?year=YYYY&month=MM&day=DD)
@@ -90,10 +92,10 @@ See voting [guidelines](https://community.apache.org/newcommitter.html)
 
 ```text
 To: private@kyuubi.apache.org
-Subject: [RESULT] [VOTE] New PPMC member: ${NEW_PPMC_NAME}
+Subject: [RESULT] [VOTE] New PMC member: ${NEW_PMC_NAME}
 ```
 ```text
-Hi Kyuubi PPMC,
+Hi Kyuubi PMC,
 
 The vote has now closed. The results are:
 
@@ -106,37 +108,37 @@ Binding Votes:
 The vote is ***successful/not successful***
 ```
 
-### Send message to IPMC Template
+### Send NOTICE to board Template
 ```text
-To: private@incubator.apache.org
+To: board@apache.org
 Cc: private@kyuubi.apache.org
-Subject: [VOTE][RESULT] ${NEW_PPMC_NAME} PPMC membership
+Subject: [NOTICE] ${NEW_PMC_NAME} for Kyuubi PMC
 ```
 ```text
-${NEW_PPMC_NAME} has been voted as a new member of the Kyuubi PPMC.
+${NEW_PMC_NAME} has been voted as a new member of the Kyuubi PMC.
 The vote thread is at https://lists.apache.org/...
 ```
 
-### PPMC Member Invite Template
+### PMC Member Invite Template
 
 ```text
-To: ${NEW_PPMC_EMAIL}
+To: ${NEW_PMC_EMAIL}
 Cc: private@kyuubi.apache.org
-Subject: Invitation to become Kyuubi PPMC member: ${NEW_PPMC_NAME}
+Subject: Invitation to become Kyuubi PMC member: ${NEW_PMC_NAME}
 ```
 ```text
-Hello ${NEW_PPMC_NAME},
+Hello ${NEW_PMC_NAME},
 
 The Kyuubi Project Management Committee (PMC) 
 hereby offers you committer privileges to the project
-as well as membership in the PPMC.
+as well as membership in the PMC.
 These privileges are offered on the understanding that
 you'll use them reasonably and with common sense.
 We like to work on trust rather than unnecessary constraints. 
 
-Being a PPMC member enables you to guide the direction of the project.
+Being a PMC member enables you to guide the direction of the project.
 
-Being a PPMC member does not require you to 
+Being a PMC member does not require you to 
 participate any more than you already do. It does 
 tend to make one even more committed.  You will 
 probably find that you spend more time here.
@@ -162,23 +164,23 @@ B. If you accept, the next step is to register an iCLA:
     unique Apache ID. Look to see if your preferred 
     ID is already taken at 
     https://people.apache.org/committer-index.html
-    This will allow the Secretary to notify the PPMC 
+    This will allow the Secretary to notify the PMC 
     when your iCLA has been recorded.
 
 When recording of your iCLA is noted, you will 
 receive a follow-up message with the next steps for 
-establishing you as a PPMC member.
+establishing you as a PMC member.
 ```
 
-### PPMC Member Accept Template
+### PMC Member Accept Template
 
 ```text
-To: ${NEW_PPMC_EMAIL}
+To: ${NEW_PMC_EMAIL}
 Cc: private@kyuubi.apache.org
-Subject: Re: invitation to become Kyuubi PPMC member
+Subject: Re: invitation to become Kyuubi PMC member
 ```
 ```text
-Welcome. Here are the next steps in becoming a project PPMC. After that
+Welcome. Here are the next steps in becoming a project PMC. After that
 we will make an announcement to the dev@kyuubi.apache.org list.
 
 You need to send a Contributor License Agreement to the ASF.
@@ -206,28 +208,23 @@ resources:
   https://www.apache.org/foundation/how-it-works.html
   https://www.apache.org/dev/
 
-The incubator also has some useful information for new PPMC
-in incubating projects:
-  https://incubator.apache.org/guides/committer.html
-  https://incubator.apache.org/guides/ppmc.html
-
-Just as before you became a PPMC member, participation in any ASF community
+Just as before you became a PMC member, participation in any ASF community
 requires adherence to the ASF Code of Conduct:
   https://www.apache.org/foundation/policies/conduct.html
 
 Yours,
-The Apache Kyuubi PPMC
+The Apache Kyuubi PMC
 ```
 
-### PPMC Member Done Template
+### PMC Member Done Template
 
 ```text
-To: private@kyuubi.apache.org, ${NEW_PPMC_EMAIL}
-Subject: account request: ${NEW_PPMC_NAME}
+To: private@kyuubi.apache.org, ${NEW_PMC_EMAIL}
+Subject: account request: ${NEW_PMC_NAME}
 ```
 ```text
-${NEW_PPMC_EMAIL}, as you know, the ASF Infrastructure has set up your
-committer account with the username '${NEW_PPMC_APACHE_NAME}'.
+${NEW_PMC_EMAIL}, as you know, the ASF Infrastructure has set up your
+committer account with the username '${NEW_PMC_APACHE_NAME}'.
 
 Please follow the instructions to set up your SSH,
 svn password, svn configuration, email forwarding, etc.
@@ -243,36 +240,35 @@ If you have any questions during this phase, then please
 see the following resources:
 
 Apache developer's pages: https://www.apache.org/dev/
-Incubator committer guide: https://incubator.apache.org/guides/committer.html
 
 Naturally, if you don't understand anything be sure to ask us on the dev@kyuubi.apache.org mailing list. 
 Documentation is maintained by volunteers and hence can be out-of-date and incomplete - of course
 you can now help fix that.
 
-A PPMC member will announce your election to the dev list soon.
+A PMC member will announce your election to the dev list soon.
 ```
 
-### PPMC Member Announce Template
+### PMC Member Announce Template
 ```text
 To: dev@kyuubi.apache.org
-[ANNONCE] New PPMC member: ${NEW_PPMC_NAME}
+[ANNONCE] New PMC member: ${NEW_PMC_NAME}
 ```
 ```text
 Hi Kyuubi Community,
 
-The Podling Project Management Committee (PPMC) for Apache Kyuubi
-has invited ${NEW_PPMC_NAME} to become our PPMC member and
+The Project Management Committee (PMC) for Apache Kyuubi
+has invited ${NEW_PMC_NAME} to become our PMC member and
 we are pleased to announce that he has accepted.
 
 ### add specific details here ###
 
-Please join me in congratulating ${NEW_PPMC_NAME}!
+Please join me in congratulating ${NEW_PMC_NAME}!
 
 Being a committer enables easier contribution to the
 project since there is no need to go via the patch
 submission process. This should enable better productivity.
-A PPMC member helps manage and guide the direction of the project.
+A PMC member helps manage and guide the direction of the project.
 
 Thanks,
-On behalf of the Apache Kyuubi PPMC
+On behalf of the Apache Kyuubi PMC
 ```
