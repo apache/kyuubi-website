@@ -1,5 +1,5 @@
 ---
-title: Current Podling PMC members
+title: Current PMC members
 menu:
   main:
       name: "Become A PMC member"
@@ -68,10 +68,10 @@ menu:
   </tbody>
 </table>
 
-## Become A Podling PMC member of Apache Kyuubi
+## Become A PMC member of Apache Kyuubi
 
 Anyone being supportive of the community and working in any of the
-CoPDoC areas can become an Apache Kyuubi Podling PMC(PMC) member.
+CoPDoC areas can become an Apache Kyuubi PMC member.
 The CoPDoC is an acronym from ASF to describe how we recognize your
 contributions not only by code.
 

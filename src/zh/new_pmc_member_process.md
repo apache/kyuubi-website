@@ -254,7 +254,7 @@ To: dev@kyuubi.apache.org
 ```text
 Hi Kyuubi Community,
 
-The Podling Project Management Committee (PMC) for Apache Kyuubi
+The Project Management Committee (PMC) for Apache Kyuubi
 has invited ${NEW_PMC_NAME} to become our PMC member and
 we are pleased to announce that he has accepted.
 
