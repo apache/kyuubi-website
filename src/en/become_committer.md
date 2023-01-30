@@ -57,6 +57,9 @@ menu:
       <td>Jeff Zhang</td>
     </tr>
     <tr>
+      <td>Kaifei Yi</td>
+    </tr>
+    <tr>
       <td>Kent Yao</td>
     </tr>
     <tr>
