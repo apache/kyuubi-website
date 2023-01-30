@@ -33,6 +33,9 @@ menu:
       <td>Akira Ajisaka</td>
     </tr>
     <tr>
+      <td>Bowen Liang</td>
+    </tr>
+    <tr>
       <td>Cheng Pan</td>
     </tr>
     <tr>
