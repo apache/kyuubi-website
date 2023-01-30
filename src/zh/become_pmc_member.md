@@ -25,7 +25,7 @@ menu:
 <table border=0>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>姓名</th>
     </tr>
   </thead>
   <tbody>
