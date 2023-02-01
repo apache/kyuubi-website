@@ -19,7 +19,7 @@ description: We are happy to announce Qingbo Jiao becomes a new Kyuubi committer
 -->
 
 The Podling Project Management Committee (PPMC) for Apache Kyuubi
-has invited [Qingbo Jiao](https://github.com/jiaoqingbo) to become our committers and
+has invited [Qingbo Jiao](https://github.com/jiaoqingbo) to become our committer and
 we are pleased to announce that he has accepted.
 
 He is currently working for AsiaInfo.

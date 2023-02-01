@@ -22,7 +22,7 @@
     <tr>
       <th class="center aligned">{{ i18n "date" }}</th>
       <th class="center aligned">{{ i18n "title" }}</th>
-      <th class="center aligned">{{ i18n "brief" }}</th>
+      <th class="left aligned">{{ i18n "brief" }}</th>
       <th class="center aligned">{{ i18n "link" }}</th>
     </tr>
     </thead>
@@ -38,12 +38,14 @@
       <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
       {{ end }}
       <td class="center aligned">{{.Title }}</td>
-      <td class="center aligned">{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Content }}{{ end }}</td>
+      <td class="left aligned">{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Content }}{{ end }}</td>
       <td class="center aligned"><a href="{{ $langVar }}/news/{{ .File.BaseFileName }}.html">{{ i18n "see-more" }}</a></td>
     </tr>
     {{end}}
   </table>
   {{.Content}}
 </div>
+
+
 {{partial "footer.html" .}}
 
