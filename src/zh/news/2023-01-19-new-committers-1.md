@@ -18,7 +18,7 @@ description: 我们很高兴的宣布 Bowen Liang 成为新的 Kyuubi Committer.
   limitations under the License. See accompanying LICENSE file.
 -->
 
-Apache Kyuubi 的 Podling 项目管理委员会已经邀请[Bowen Liang](https://github.com/bowenliang123)
+Apache Kyuubi 的项目管理委员会已经邀请[Bowen Liang](https://github.com/bowenliang123)
 成为我们的Committer，我们很高兴地宣布他已经接受邀请。
 
 Bowen Liang 目前就职于广发证券，他专注于安全领域，在 Kyuubi 项目中的贡献包括

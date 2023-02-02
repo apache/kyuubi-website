@@ -18,7 +18,7 @@ description: 我们很高兴的宣布 Kaifei Yi 成为新的 Kyuubi Committer.
   limitations under the License. See accompanying LICENSE file.
 -->
 
-Apache Kyuubi 的 Podling 项目管理委员会已经邀请[Kaifei Yi](https://github.com/Yikf)
+Apache Kyuubi 的项目管理委员会已经邀请[Kaifei Yi](https://github.com/Yikf)
 成为我们的Committer，我们很高兴地宣布他已经接受邀请。
 
 Kaifei Yi 目前就职于百度，他在 Kyuubi 项目中的贡献包括
