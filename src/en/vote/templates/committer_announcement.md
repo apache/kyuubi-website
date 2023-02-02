@@ -1,5 +1,5 @@
 ---
-title: Template - Complete Invitation to Become Kyuubi Committer
+title: Template - Announce New Kyuubi Committer
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");

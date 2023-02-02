@@ -48,5 +48,3 @@ ${YOUR_NAME}
 
 It's recommended to discuss committer candidates in different threads one by one.
 This makes it much easier to review the email archives.
-
-
