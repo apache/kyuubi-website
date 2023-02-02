@@ -22,8 +22,7 @@ The Project Management Committee (PMC) for Apache Kyuubi
 has invited [Bowen Liang](https://github.com/bowenliang123) to become our committer and
 we are pleased to announce that he has accepted.
 
-Bowen Liang was focused on security areas, including
-
+Bowen Liang is currently working on GF Securities, he focuses on security areas, including
 
    - Authz module, he is the most active contributor to this module
    - JDBC-based authentication mechanism
@@ -32,10 +31,9 @@ Bowen Liang was focused on security areas, including
    - Promoting Kyuubi by sharing a talk on Datafun
    - Continuously infrastructure improvements
 
-
 Please join me in congratulating Bowen!
 
 Being a committer enables easier contribution to the
 project since there is no need to go via the patch
 submission process. This should enable better productivity.
-A PPMC member helps manage and guide the direction of the project.
+A PPM member helps manage and guide the direction of the project.
