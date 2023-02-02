@@ -1,5 +1,5 @@
 ---
-title: Current committers
+title: Become A Committer & Current committers
 menu:
   main:
       name: "Become A Committer"
@@ -21,73 +21,6 @@ menu:
 -->
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
-
-<table border=0>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Akira Ajisaka</td>
-    </tr>
-    <tr>
-      <td>Bowen Liang</td>
-    </tr>
-    <tr>
-      <td>Cheng Pan</td>
-    </tr>
-    <tr>
-      <td>Dongdong Hong</td>
-    </tr>
-    <tr>
-      <td>Duo Zhang</td>
-    </tr>
-    <tr>
-      <td>Fei Wang</td>
-    </tr>
-    <tr>
-      <td>Fu Chen</td>
-    </tr>
-    <tr>
-      <td>Hongxiang Jiang</td>
-    </tr>
-    <tr>
-      <td>Jeff Zhang</td>
-    </tr>
-    <tr>
-      <td>Kaifei Yi</td>
-    </tr>
-    <tr>
-      <td>Kent Yao</td>
-    </tr>
-    <tr>
-      <td>Min Zhao</td>
-    </tr>
-    <tr>
-      <td>Nicholas Jiang</td>
-    </tr>
-    <tr>
-      <td>Qingbo Jiao</td>
-    </tr>
-    <tr>
-      <td>Shaoyun Chen</td>
-    </tr>
-    <tr>
-      <td>Vino Yang</td>
-    </tr>
-    <tr>
-      <td>Willem Ning Jiang</td>
-    </tr>
-    <tr>
-      <td>Xiduo You</td>
-    </tr>
-    <tr>
-      <td>Zhen Wang</td>
-    </tr>
-  </tbody>
-</table>
 
 ## Become A Committer of Apache Kyuubi
 
@@ -112,7 +45,7 @@ you must commit code with your commit privilege to the codebase; it
 means you are committed to the Kyuubi project and are productively
 contributing to our community's success.
 
-## Committer requirements:
+### Committer requirements:
 
 There are no strict rules for becoming a committer or PMC member.
 Candidates for new committers are typically people that are active
@@ -121,7 +54,7 @@ clarified a little bit, it can somehow clear the doubts in the minds
 of contributors and make the community more transparent, reasonable,
 and fair.
 
-### Continuous contributions
+#### Continuous contributions
 
 Committer candidates should have a decent amount of continuous
 engagements and contributions (fixing bugs, adding new features,
@@ -133,13 +66,13 @@ of the main website or Kyuubi's GitHub repositories.
 - +2 months of medium activity and engagement.
 - +1 month with solid activity and engagement.
 
-### Quality of contributions
+#### Quality of contributions
 - A solid general understanding of the project
 - Well tested, well-designed, following Apache Kyuubi coding
   standards, and simple patches.
 - Well-organized and detailed user-oriented documentation.
 
-### Community involvement
+#### Community involvement
 
 - Be active, courteous, and respectful on the dev mailing list and
   help mentor newer contributors
@@ -150,3 +83,112 @@ of the main website or Kyuubi's GitHub repositories.
 - Be involved in the design road map discussions with a professional
   and diplomatic approach even if there is a disagreement
 - Promoting the project by writing articles or holding events
+
+## Current committers
+
+<table class="ui selectable celled table">
+  <thead>
+    <tr>
+      <th>Public Name</th>
+      <th>Apache Id</th>
+      <th>Github Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Akira Ajisaka</td>
+      <td>aajisaka</td>
+      <td>aajisaka</td>
+   </tr>
+    <tr>
+      <td>Bowen Liang</td>
+      <td>bowenliang</td>
+      <td>bowenliang123</td>
+    </tr>
+    <tr>
+      <td>Cheng Pan</td>
+      <td>chengpan</td>
+      <td>pan3793</td>
+    </tr>
+    <tr>
+      <td>Dongdong Hong</td>
+      <td>hongdd</td>
+      <td>hddong</td>
+    </tr>
+    <tr>
+      <td>Duo Zhang</td>
+      <td>zhangduo</td>
+      <td>Apache9</td>
+    </tr>
+    <tr>
+      <td>Fei Wang</td>
+      <td>feiwang</td>
+      <td>turbofei</td>
+    </tr>
+    <tr>
+      <td>Fu Chen</td>
+      <td>fchen</td>
+      <td>cfmcgrady</td>
+    </tr>
+    <tr>
+      <td>Hongxiang Jiang</td>
+      <td>jhx1008</td>
+      <td>jhx1008</td>
+    </tr>
+    <tr>
+      <td>Jeff Zhang</td>
+      <td>zjffdu</td>
+      <td>zjffdu</td>
+    </tr>
+    <tr>
+      <td>Kaifei Yi</td>
+      <td>yikaifei</td>
+      <td>Yikf</td>
+    </tr>
+    <tr>
+      <td>Kent Yao</td>
+      <td>yao</td>
+      <td>yaooqinn</td>
+    </tr>
+    <tr>
+      <td>Min Zhao</td>
+      <td>zhaomin</td>
+      <td>zhaomin1423</td>
+    </tr>
+    <tr>
+      <td>Nicholas Jiang</td>
+      <td>nicholasjiang</td>
+      <td>SteNicholas</td>
+    </tr>
+    <tr>
+      <td>Qingbo Jiao</td>
+      <td>jiaoqingbo</td>
+      <td>jiaoqingbo</td>
+    </tr>
+    <tr>
+      <td>Shaoyun Chen</td>
+      <td>csy</td>
+      <td>cxzl25</td>
+    </tr>
+    <tr>
+      <td>Vino Yang</td>
+      <td>vinoyang</td>
+      <td>yanghua</td>
+    </tr>
+    <tr>
+      <td>Willem Ning Jiang</td>
+      <td>ningjiang</td>
+      <td>WillemJiang</td>
+    </tr>
+    <tr>
+      <td>Xiduo You</td>
+      <td>ulyssesyou</td>
+      <td>ulysses-you</td>
+    </tr>
+    <tr>
+      <td>Zhen Wang</td>
+      <td>wangzhen</td>
+      <td>wForget</td>
+    </tr>
+  </tbody>
+</table>
