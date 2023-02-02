@@ -22,7 +22,7 @@ The Project Management Committee (PMC) for Apache Kyuubi
 has invited [Fu Chen](https://github.com/cfmcgrady) to become our PMC Member and
 we are pleased to announce that he has accepted.
 
-Fu Chen is currently working on Dingxiang Yuan, he has been doing significant work
+Fu Chen is currently working on DXY, he has been doing significant work
 on Kyuubi community, such as PySpark and Arrow based results serialization,
 which are key features for the community and enterprise users.
 He is also dedicated for the Kyuubi Spark engine enhancements.
