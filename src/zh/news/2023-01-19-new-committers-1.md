@@ -24,7 +24,7 @@ Apache Kyuubi 的 Podling 项目管理委员会已经邀请[Bowen Liang](https:/
 Bowen Liang 目前就职于广发证券，他专注于安全领域，在 Kyuubi 项目中的贡献包括
 
    - 他是 Authz 模块最活跃的开发者
-   - 机遇 JDBC 的认证机制
+   - 基于 JDBC 的认证机制
    - 非对称加密签名机制
    - 支持将 Kyuubi 最为 Spark 的 JDBC 数据源
    - 通过在 Datafun 分享应用案例推广 Kyuubi
