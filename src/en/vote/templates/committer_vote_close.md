@@ -1,5 +1,5 @@
 ---
-title: The Kyuubi Ecosystem (present and future)
+title: Template - [RESULT][VOTE] New Committer
 ---
 <!---
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,39 @@ title: The Kyuubi Ecosystem (present and future)
   limitations under the License. See accompanying LICENSE file.
 -->
 
-The figure below shows our vision for the Kyuubi Ecosystem. Some of them have been realized, some in development, and others would not be possible without your help.
+```textmate
+To: private@kyuubi.apache.org
+Subject: [RESULT][VOTE] New Committer: ${NEW_COMMITTER_NAME}
 
-<img src="kyuubi_ecosystem.png" title="kyuubi ecosystem" width="100%" height="auto">
+---
+
+Hi Kyuubi PMC,
+
+The vote[1] has now closed. The results are:
+
+Binding Votes:
+
++1 [TOTAL BINDING +1 VOTES]:
+
+- PMC Member 1
+- PMC Member 2
+- PMC Member 3
+- ...
+
+0 [TOTAL BINDING +0/-0 VOTES]:
+
+-1 [TOTAL BINDING -1 VOTES]:
+
+
+The vote is ***successful/not successful***
+
+Best Regards,
+
+${YOUR_NAME}
+
+[1] the url of the vote thread
+
+```
+
+
+
