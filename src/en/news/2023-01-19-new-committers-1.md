@@ -36,4 +36,4 @@ Please join me in congratulating Bowen!
 Being a committer enables easier contribution to the
 project since there is no need to go via the patch
 submission process. This should enable better productivity.
-A PPM member helps manage and guide the direction of the project.
+A PMC member helps manage and guide the direction of the project.

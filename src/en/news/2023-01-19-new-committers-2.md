@@ -22,7 +22,7 @@ The Project Management Committee (PMC) for Apache Kyuubi
 has invited [Kaifei Yi](https://github.com/Yikf) to become our committer and
 we are pleased to announce that he has accepted.
 
-Kaifei Yi is currently working Baidu, he has been working for
+Kaifei Yi is currently working on Baidu, he has been working for
 
    - Major contributor of Kyuubi Spark Hive connector
    - Major contributor of Trino Frontend protocol
@@ -34,4 +34,4 @@ Please join me in congratulating Kaifei!
 Being a committer enables easier contribution to the
 project since there is no need to go via the patch
 submission process. This should enable better productivity.
-A PPM member helps manage and guide the direction of the project.
+A PMC member helps manage and guide the direction of the project.
