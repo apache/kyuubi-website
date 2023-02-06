@@ -185,7 +185,7 @@ body {
 
 /* footer */
 .footer {
-  margin: auto;
+  margin: 30px auto auto auto;
   min-width: auto;
   height: auto;
   background: rgb(26, 26, 26);
