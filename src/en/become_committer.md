@@ -22,76 +22,14 @@ menu:
 
 <img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right" />
 
-## Become A Committer of Apache Kyuubi
-
-Anyone being supportive of the community and working in any of the
-CoPDoC areas can become an Apache Kyuubi committer. The CoPDoC is an
-acronym from ASF to describe how we recognize your contributions not
-only by code.
-
-- **Co**mmunity - You can join us via our mailing list, issue
-  trackers, discussions page to interact with community members, and
-  share vision and knowledge
-- **P**roject - a clear vision and consensus are needed
-- **Do**cumentation - without it, the stuff remains only in the minds
-  of the authors
-- **C**ode - discussion goes nowhere without code
-
-Apache Kyuubi community strives to be meritocratic. Thus, once someone
-has contributed sufficiently to any area of CoPDoC they can be a
-candidate for committer-ship and at last voted in as a Kyuubi
-committer. Being an Apache Kyuubi committer does not necessarily mean
-you must commit code with your commit privilege to the codebase; it
-means you are committed to the Kyuubi project and are productively
-contributing to our community's success.
-
-### Committer requirements:
-
-There are no strict rules for becoming a committer or PMC member.
-Candidates for new committers are typically people that are active
-contributors and community members. Anyway, if the rules can be
-clarified a little bit, it can somehow clear the doubts in the minds
-of contributors and make the community more transparent, reasonable,
-and fair.
-
-#### Continuous contributions
-
-Committer candidates should have a decent amount of continuous
-engagements and contributions (fixing bugs, adding new features,
-writing documentation, maintaining issues boards, code review, or answering
-community questions) to Kyuubi either by contributing to the codebase
-of the main website or Kyuubi's GitHub repositories.
-
-- +3 months with light activity and engagement.
-- +2 months of medium activity and engagement.
-- +1 month with solid activity and engagement.
-
-#### Quality of contributions
-- A solid general understanding of the project
-- Well tested, well-designed, following Apache Kyuubi coding
-  standards, and simple patches.
-- Well-organized and detailed user-oriented documentation.
-
-#### Community involvement
-
-- Be active, courteous, and respectful on the dev mailing list and
-  help mentor newer contributors
-  and users.
-- Be active, courteous, and respectful on the issue tracker for
-  project maintenance
-- Be active, courteous, and respectful for pull requests reviewing
-- Be involved in the design road map discussions with a professional
-  and diplomatic approach even if there is a disagreement
-- Promoting the project by writing articles or holding events
-
 ## Current committers
 
-<table class="ui selectable celled table">
+<table border=0>
   <thead>
     <tr>
       <th>Public Name</th>
-      <th>Apache Id</th>
-      <th>Github Id</th>
+      <th>Apache ID</th>
+      <th>Github ID</th>
     </tr>
   </thead>
   <tbody>
@@ -192,3 +130,66 @@ of the main website or Kyuubi's GitHub repositories.
     </tr>
   </tbody>
 </table>
+
+## Become A Committer of Apache Kyuubi
+
+Anyone being supportive of the community and working in any of the
+CoPDoC areas can become an Apache Kyuubi committer. The CoPDoC is an
+acronym from ASF to describe how we recognize your contributions not
+only by code.
+
+- **Co**mmunity - You can join us via our mailing list, issue
+  trackers, discussions page to interact with community members, and
+  share vision and knowledge
+- **P**roject - a clear vision and consensus are needed
+- **Do**cumentation - without it, the stuff remains only in the minds
+  of the authors
+- **C**ode - discussion goes nowhere without code
+
+Apache Kyuubi community strives to be meritocratic. Thus, once someone
+has contributed sufficiently to any area of CoPDoC they can be a
+candidate for committer-ship and at last voted in as a Kyuubi
+committer. Being an Apache Kyuubi committer does not necessarily mean
+you must commit code with your commit privilege to the codebase; it
+means you are committed to the Kyuubi project and are productively
+contributing to our community's success.
+
+### Committer requirements:
+
+There are no strict rules for becoming a committer or PMC member.
+Candidates for new committers are typically people that are active
+contributors and community members. Anyway, if the rules can be
+clarified a little bit, it can somehow clear the doubts in the minds
+of contributors and make the community more transparent, reasonable,
+and fair.
+
+#### Continuous contributions
+
+Committer candidates should have a decent amount of continuous
+engagements and contributions (fixing bugs, adding new features,
+writing documentation, maintaining issues boards, code review, or answering
+community questions) to Kyuubi either by contributing to the codebase
+of the main website or Kyuubi's GitHub repositories.
+
+- +3 months with light activity and engagement.
+- +2 months of medium activity and engagement.
+- +1 month with solid activity and engagement.
+
+#### Quality of contributions
+- A solid general understanding of the project
+- Well tested, well-designed, following Apache Kyuubi coding
+  standards, and simple patches.
+- Well-organized and detailed user-oriented documentation.
+
+#### Community involvement
+
+- Be active, courteous, and respectful on the dev mailing list and
+  help mentor newer contributors
+  and users.
+- Be active, courteous, and respectful on the issue tracker for
+  project maintenance
+- Be active, courteous, and respectful for pull requests reviewing
+- Be involved in the design road map discussions with a professional
+  and diplomatic approach even if there is a disagreement
+- Promoting the project by writing articles or holding events
+- 
