@@ -26,65 +26,105 @@ menu:
   <thead>
     <tr>
       <th>姓名</th>
+      <th>Apache ID</th>
+      <th>Github ID</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Akira Ajisaka</td>
-    </tr>
+      <td>aajisaka</td>
+      <td>aajisaka</td>
+   </tr>
     <tr>
       <td>Bowen Liang</td>
+      <td>bowenliang</td>
+      <td>bowenliang123</td>
     </tr>
     <tr>
       <td>Cheng Pan</td>
+      <td>chengpan</td>
+      <td>pan3793</td>
     </tr>
     <tr>
       <td>Dongdong Hong</td>
+      <td>hongdd</td>
+      <td>hddong</td>
     </tr>
     <tr>
       <td>Duo Zhang</td>
+      <td>zhangduo</td>
+      <td>Apache9</td>
     </tr>
     <tr>
       <td>Fei Wang</td>
+      <td>feiwang</td>
+      <td>turbofei</td>
     </tr>
     <tr>
       <td>Fu Chen</td>
+      <td>fchen</td>
+      <td>cfmcgrady</td>
     </tr>
     <tr>
       <td>Hongxiang Jiang</td>
+      <td>jhx1008</td>
+      <td>jhx1008</td>
     </tr>
     <tr>
       <td>Jeff Zhang</td>
+      <td>zjffdu</td>
+      <td>zjffdu</td>
     </tr>
     <tr>
       <td>Kaifei Yi</td>
+      <td>yikaifei</td>
+      <td>Yikf</td>
     </tr>
     <tr>
       <td>Kent Yao</td>
+      <td>yao</td>
+      <td>yaooqinn</td>
     </tr>
     <tr>
       <td>Min Zhao</td>
+      <td>zhaomin</td>
+      <td>zhaomin1423</td>
     </tr>
     <tr>
       <td>Nicholas Jiang</td>
+      <td>nicholasjiang</td>
+      <td>SteNicholas</td>
     </tr>
     <tr>
       <td>Qingbo Jiao</td>
+      <td>jiaoqingbo</td>
+      <td>jiaoqingbo</td>
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
+      <td>csy</td>
+      <td>cxzl25</td>
     </tr>
     <tr>
       <td>Vino Yang</td>
+      <td>vinoyang</td>
+      <td>yanghua</td>
     </tr>
     <tr>
       <td>Willem Ning Jiang</td>
+      <td>ningjiang</td>
+      <td>WillemJiang</td>
     </tr>
     <tr>
       <td>Xiduo You</td>
+      <td>ulyssesyou</td>
+      <td>ulysses-you</td>
     </tr>
     <tr>
       <td>Zhen Wang</td>
+      <td>wangzhen</td>
+      <td>wForget</td>
     </tr>
   </tbody>
 </table>
