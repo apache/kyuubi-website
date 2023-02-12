@@ -36,97 +36,97 @@ menu:
     <tr>
       <td>Akira Ajisaka</td>
       <td>aajisaka</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=aajisaka">aajisaka</a></td>
+      <td>aajisaka</td>
    </tr>
     <tr>
       <td>Bowen Liang</td>
       <td>bowenliang</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=bowenliang123">bowenliang123</a></td>
+      <td>bowenliang123</td>
     </tr>
     <tr>
       <td>Cheng Pan</td>
       <td>chengpan</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=pan3793">pan3793</a></td>
+      <td>pan3793</td>
     </tr>
     <tr>
       <td>Dongdong Hong</td>
       <td>hongdd</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=hddong">hddong</a></td>
+      <td>hddong</td>
     </tr>
     <tr>
       <td>Duo Zhang</td>
       <td>zhangduo</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=Apache9">Apache9</a></td>
+      <td>Apache9</td>
     </tr>
     <tr>
       <td>Fei Wang</td>
       <td>feiwang</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=turbofei">turbofei</a></td>
+      <td>turbofei</td>
     </tr>
     <tr>
       <td>Fu Chen</td>
       <td>fchen</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=cfmcgrady">cfmcgrady</a></td>
+      <td>cfmcgrady</td>
     </tr>
     <tr>
       <td>Hongxiang Jiang</td>
       <td>jhx1008</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=jhx1008">jhx1008</a></td>
+      <td>jhx1008</td>
     </tr>
     <tr>
       <td>Jeff Zhang</td>
       <td>zjffdu</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=zjffdu">zjffdu</a></td>
+      <td>zjffdu</td>
     </tr>
     <tr>
       <td>Kaifei Yi</td>
       <td>yikaifei</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=Yikf">Yikf</a></td>
+      <td>Yikf</td>
     </tr>
     <tr>
       <td>Kent Yao</td>
       <td>yao</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=yaooqinn">yaooqinn</a></td>
+      <td>yaooqinn</td>
     </tr>
     <tr>
       <td>Min Zhao</td>
       <td>zhaomin</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=zhaomin1423">zhaomin1423</a></td>
+      <td>zhaomin1423</td>
     </tr>
     <tr>
       <td>Nicholas Jiang</td>
       <td>nicholasjiang</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=SteNicholas">SteNicholas</a></td>
+      <td>SteNicholas</td>
     </tr>
     <tr>
       <td>Qingbo Jiao</td>
       <td>jiaoqingbo</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=jiaoqingbo">jiaoqingbo</a></td>
+      <td>jiaoqingbo</td>
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
       <td>csy</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=cxzl25">cxzl25</a></td>
+      <td>cxzl25</td>
     </tr>
     <tr>
       <td>Vino Yang</td>
       <td>vinoyang</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=yanghua">yanghua</a></td>
+      <td>yanghua</td>
     </tr>
     <tr>
       <td>Willem Ning Jiang</td>
       <td>ningjiang</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=WillemJiang">WillemJiang</a></td>
+      <td>WillemJiang</td>
     </tr>
     <tr>
       <td>Xiduo You</td>
       <td>ulyssesyou</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=ulysses-you">ulysses-you</a></td>
+      <td>ulysses-you</td>
     </tr>
     <tr>
       <td>Zhen Wang</td>
       <td>wangzhen</td>
-      <td><a href="https://github.com/apache/kyuubi/commits?author=wForget">wForget</a></td>
+      <td>wForget</td>
     </tr>
 </tbody>
 </table>
