@@ -58,17 +58,19 @@ build/mvn clean package -pl :kyuubi-common,:kyuubi-ha -DskipTests
 例如，构建没有 Kyuubi Codecov 和 Assembly 模块，可以使用命令:
 
 ```
- mvn clean install -pl '!:kyuubi-codecov,!:kyuubi-assembly' -DskipTests
+build/mvn clean install -pl '!:kyuubi-codecov,!:kyuubi-assembly' -DskipTests
 ```
 
 ### 针对不同的 Apache Spark 版本构建 Kyuubi
 
 从 v1.1.0 开始，Kyuubi 可以支持使用不同的 Spark 配置文件构建：
 
-Profile | Default  | Since
---- | --- | --- 
--Pspark-3.0 | Yes | 1.0.0
--Pspark-3.1 | No | 1.1.0
+| Profile     | Default | Since |
+|-------------|---------|-------|
+| -Pspark-3.0 | No      | 1.0.0 |
+| -Pspark-3.1 | No      | 1.1.0 |
+| -Pspark-3.2 | Yes     | 1.4.0 |
+| -Pspark-3.3 | No      | 1.6.0 |
 
 
 ### 配置 Apache Spark 的镜像
@@ -77,7 +79,7 @@ Profile | Default  | Since
 但是如果发现下载速度很慢或者无法下载，可以使用配置 `spark.archive.mirror` 配置到合适的镜像地址从而加速下载。 例如：
 
 ```
-build/mvn clean package -Dspark.archive.mirror=https://mirrors.bfsu.edu.cn/apache/spark/spark-3.0.1
+build/mvn clean package -Dspark.archive.mirror=https://mirrors.bfsu.edu.cn/apache/spark/spark-3.2.1
 ```
 
 专门针对中国大陆的开发者，可以使用名为 `mirror-cn` 的预定义配置，该配置文件使用 `mirrors.bfsu.edu.cn` 来加速 Spark 二进制文件的下载。例如，
@@ -251,7 +253,7 @@ build/mvn versions:set -DgenerateBackupPoms=false
 
 ### 更新文档版本
 
-每当项目版本更新时，请同时更新 `docsconf.py` 中的文档版本以针对即将发布的版本。
+每当项目版本更新时，请同时更新 `docs/conf.py` 中的文档版本以针对即将发布的版本。
 
 例如：
 

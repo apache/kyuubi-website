@@ -58,20 +58,19 @@ build/mvn clean package -pl :kyuubi-common,:kyuubi-ha -DskipTests
 For instance, you can build the Kyuubi modules without Kyuubi Codecov and Assembly modules using:
 
 ```
- mvn clean install -pl '!:kyuubi-codecov,!:kyuubi-assembly' -DskipTests
+build/mvn clean install -pl '!:kyuubi-codecov,!:kyuubi-assembly' -DskipTests
 ```
 
 ### Building Kyuubi against Different Apache Spark versions
 
 Since v1.1.0, Kyuubi support building with different Spark profiles,
 
-Profile     | Default  | Since
------------ | -------- | --- 
--Pspark-3.0 | No       | 1.0.0
--Pspark-3.1 | No       | 1.1.0
--Pspark-3.2 | Yes      | 1.4.0
--Pspark-3.3 | No       | 1.6.0
-
+| Profile     | Default | Since |
+|-------------|---------|-------|
+| -Pspark-3.0 | No      | 1.0.0 |
+| -Pspark-3.1 | No      | 1.1.0 |
+| -Pspark-3.2 | Yes     | 1.4.0 |
+| -Pspark-3.3 | No      | 1.6.0 |
 
 ### Defining the Apache Mirror for Spark
 
@@ -207,7 +206,7 @@ When developing locally, it’s convenient to run one single test, or a couple o
 With Maven, you can use the -DwildcardSuites flag to run individual Scala tests:
 
 ```
-./build/mvn install `test -Dtest=none -DwildcardSuites=org.apache.kyuubi.service.FrontendServiceSuite
+./build/mvn  test -Dtest=none -DwildcardSuites=org.apache.kyuubi.service.FrontendServiceSuite
 ```
 
 If you want to make a single test that need integrate with kyuubi-spark-sql-engine module, please build the package for kyuubi-spark-sql-engine module at first.
