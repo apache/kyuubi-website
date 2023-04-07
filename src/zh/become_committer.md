@@ -122,6 +122,11 @@ menu:
       <td><a href="https://github.com/ulysses-you">ulysses-you</a></td>
     </tr>
     <tr>
+      <td>Yaodong Zhang</td>
+      <td>zhangyaodong</td>
+      <td><a href="https://github.com/iodone">wForget</a></td>
+    </tr>
+    <tr>
       <td>Zhen Wang</td>
       <td>wangzhen</td>
       <td><a href="https://github.com/wForget">wForget</a></td>
