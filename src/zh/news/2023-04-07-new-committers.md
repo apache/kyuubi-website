@@ -19,7 +19,7 @@ description: 我们很高兴的宣布 Yaodong Zhang 成为新的 Kyuubi Committe
 -->
 
 Apache Kyuubi 的项目管理委员会已经邀请[Yaodong Zhang](https://github.com/iodone)
-成为我们的Committer，我们很高兴地宣布他已经接受邀请。
+成为我们的 Committer，我们很高兴地宣布他已经接受邀请。
 
 Yaodong Zhang 目前就职于小米，他在 Kyuubi 项目中的贡献包括
 
