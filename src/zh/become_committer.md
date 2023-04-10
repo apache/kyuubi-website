@@ -124,7 +124,7 @@ menu:
     <tr>
       <td>Yaodong Zhang</td>
       <td>zhangyaodong</td>
-      <td><a href="https://github.com/iodone">wForget</a></td>
+      <td><a href="https://github.com/iodone">iodone</a></td>
     </tr>
     <tr>
       <td>Zhen Wang</td>
