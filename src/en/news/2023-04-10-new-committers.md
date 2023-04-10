@@ -19,7 +19,7 @@ description: We are happy to announce Tianlin Liao becomes a new Kyuubi committe
 -->
 
 The Project Management Committee (PMC) for Apache Kyuubi
-has invited [Yaodong Zhang](https://github.com/iodone) to become our committer and
+has invited [Tianlin Liao](https://github.com/lightning-L) to become our committer and
 we are pleased to announce that she has accepted.
 
 Tianlin Liao is currently working in eBay Shanghai. She joined Kyuubi community 1 year ago.

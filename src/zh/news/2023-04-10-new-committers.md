@@ -18,7 +18,7 @@ description: 我们很高兴的宣布 Tianlin Liao 成为新的 Kyuubi Committer
   limitations under the License. See accompanying LICENSE file.
 -->
 
-Apache Kyuubi 的项目管理委员会已经邀请[Yaodong Zhang](https://github.com/iodone)
+Apache Kyuubi 的项目管理委员会已经邀请[Tianlin Liao](https://github.com/lightning-L)
 成为我们的 Committer，我们很高兴地宣布她已经接受邀请。
 
 Tianlin Liao 目前就职于eBay，她在 Kyuubi 项目中的贡献包括
