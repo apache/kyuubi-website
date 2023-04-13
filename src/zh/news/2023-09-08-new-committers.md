@@ -24,7 +24,7 @@ Apache Kyuubi 的项目管理委员会已经邀请[Denis Krivenko](https://githu
 DDenis Krivenko 从 2022 年 12 月起持续为 Kyuubi 项目做出贡献, 他为 Kyuubi Helm chart
 做出了重大改进。
 
-让我们一起祝贺 DDenis
+让我们一起祝贺 Denis !
 
 成为 Committer 可以更轻松地为项目做出贡献，因为不需要通过补丁提交过程，这能够提高生产力。
 PMC 成员帮助管理和指导项目的方向。
