@@ -47,6 +47,11 @@ menu:
       <td><a href="https://github.com/pan3793">pan3793</a></td>
     </tr>
     <tr>
+      <td>Denis Krivenko</td>
+      <td>dnskr</td>
+      <td><a href="https://github.com/dnskr">dnskr</a></td>
+    </tr>
+    <tr>
       <td>Dongdong Hong</td>
       <td>hongdd</td>
       <td><a href="https://github.com/hddong">hddong</a></td>

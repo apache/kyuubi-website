@@ -54,6 +54,11 @@ menu:
       <td><a href="https://github.com/hddong">hddong</a></td>
     </tr>
     <tr>
+      <td>Denis Krivenko</td>
+      <td>dnskr</td>
+      <td><a href="https://github.com/dnskr">dnskr</a></td>
+    </tr>
+    <tr>
       <td>Duo Zhang</td>
       <td>zhangduo</td>
       <td><a href="https://github.com/Apache9">Apache9</a></td>
