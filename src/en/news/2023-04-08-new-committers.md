@@ -1,6 +1,6 @@
 ---
 title: 'New committer: Denis Krivenko'
-date: 2023-09-08
+date: 2023-04-08
 linked: true
 description: We are happy to announce Denis Krivenko becomes a new Kyuubi committer.
 ---
