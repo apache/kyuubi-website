@@ -108,6 +108,34 @@
     </tr>
     {{end}}
   </table>
+
+  <h2>{{ i18n "all-kyuubi-shaded-releases"}} </h2>
+
+  <table class="ui selectable celled table">
+    {{ partial "shaded_release_table_head.html" .}}
+    {{ range (where (where .Site.Pages "Section" "shaded-release") ".Params.linked" true) }}
+    <tr>
+      {{ $dir := print "kyuubi-shaded-" .File.BaseFileName "/" }}
+      {{ $source := print "apache-kyuubi-shaded" .File.BaseFileName "-source.tgz" }}
+      {{ $link_base := .Site.Params.downloadLink }}
+      <td class="center aligned">{{.File.BaseFileName }}</td>
+      {{ if eq $langVar "zh"}}
+      <td class="center aligned">{{dateFormat "2006年01月02日" .Date}}</td>
+      {{ else }}
+      <td class="center aligned">{{dateFormat "2006 Jan 2 " .Date}}</td>
+      {{ end }}
+      <td class="center aligned">
+        <a href="{{ $link_base }}{{ $dir }}{{ $source }}">source</a>
+        (<a href="{{ $link_base }}{{ $dir }}{{ $source }}.sha512">sha512</a>,
+        <a href="{{ $link_base }}{{ $dir }}{{ $source }}.asc">signature</a>)
+      </td>
+      <td class="center aligned">
+        <a href="{{ $langVar }}/shaded-release/{{.File.BaseFileName }}.html">{{ lower (i18n "release-notes") }}</a>
+      </td>
+    </tr>
+    {{end}}
+  </table>
+
   {{.Content}}
 </div>
 {{partial "footer.html" .}}

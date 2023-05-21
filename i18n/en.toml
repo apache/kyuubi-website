@@ -178,6 +178,9 @@
 [all-archived-releases]
   other = "All archived releases"
 
+[all-kyuubi-shaded-releases]
+  other = "All archived releases of Kyuubi Shaded"
+
 [consider-use-the-latest-kyuubi]
   other = "Previous releases of Kyuubi may be affected by security issues, please consider use the latest one."
 

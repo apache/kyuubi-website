@@ -176,6 +176,9 @@
 [all-archived-releases]
   other = "所有存档的版本"
 
+[all-kyuubi-shaded-releases]
+  other = "Kyuubi Shaded 所有存档的版本"
+
 [consider-use-the-latest-kyuubi]
   other = "以前版本的 Kyuubi 可能会受到安全问题的影响，请考虑使用最新版本。"
 
