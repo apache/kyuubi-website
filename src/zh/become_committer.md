@@ -91,6 +91,10 @@ menu:
       <td>yao</td>
       <td><a href="https://github.com/yaooqinn">yaooqinn</a></td>
     </tr>
+    <td>Paul lin</td>
+      <td>paullin</td>
+      <td><a href="https://github.com/link3280">link3280</a></td>
+    </tr>
     <tr>
       <td>Min Zhao</td>
       <td>zhaomin</td>
