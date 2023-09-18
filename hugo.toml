@@ -337,6 +337,6 @@ defaultContentLanguage = 'en'
     keepQuotes = true
 
 [params]
-  releases = [ 'v1.7.1', 'v1.6.1-incubating', 'v1.5.2-incubating', 'v1.4.1-incubating', 'v1.3.1-incubating' ]
+  releases = [ 'v1.7.2', 'v1.6.1-incubating', 'v1.5.2-incubating', 'v1.4.1-incubating', 'v1.3.1-incubating' ]
   downloadLink = 'https://www.apache.org/dyn/closer.lua/kyuubi/'
   downloadLinkIncubator = 'https://www.apache.org/dyn/closer.lua/incubator/kyuubi/'
