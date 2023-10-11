@@ -44,6 +44,11 @@ menu:
       <td><a href="https://github.com/bowenliang123">bowenliang123</a></td>
     </tr>
     <tr>
+      <td>Binjie Yang</td>
+      <td>binjieyang</td>
+      <td><a href="https://github.com/zwangsheng">zwangsheng</a></td>
+    </tr>
+    <tr>
       <td>Cheng Pan</td>
       <td>chengpan</td>
       <td><a href="https://github.com/pan3793">pan3793</a></td>
