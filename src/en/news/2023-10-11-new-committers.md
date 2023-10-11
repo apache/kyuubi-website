@@ -1,5 +1,5 @@
 ---
-title: '新的 committer: Binjie Yang'
+title: 'New committer: Binjie Yang'
 date: 2023-10-11
 linked: true
 description: We are happy to announce Binjie Yang becomes a new Kyuubi committer.
