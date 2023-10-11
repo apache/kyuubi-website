@@ -22,12 +22,12 @@ The Project Management Committee (PMC) for Apache Kyuubi
 has invited [Binjie Yang](https://github.com/zwangsheng) to become a committer and we are pleased
 to announce that he has accepted.
 
-Binjie Yang works at NetEase Games, he
+Binjie Yang works at NetEase, he
 
 - started contribution to Kyuubi community since Mar. 2021
 - made a major contribution to fit Kyuubi with Spark Engine On Kubernetes
 - participate in Kyuubi On Kubernetes adaptation and integration test construction
-- join the construction of Kyuubi Web UI & Restful Api V2
+- join the construction of Kyuubi Web UI & Batch V2
 - participated in various discussions on the mail list and GitHub issues
 - helped users resolve problems on GitHub and WeChat
 

@@ -26,7 +26,7 @@ Binjie Yang 现就职于网易, 他
 - 自 2021 年 3 月以来，参与 Kyuubi 社区贡献
 - Kyuubi Spark Engine On Kubernetes 适配的主要贡献者
 - 参与 Kyuubi On Kubernetes 适配以及集成测试构建
-- 参与 Kyuubi Web UI & Restful Api V2 建设工作
+- 参与 Kyuubi Web UI & Batch V2 建设工作
 - 在邮件列表和 GitHub Issue 中参与了多项讨论
 - 在 GitHub 和微信群中为用户解决问题
 
