@@ -30,6 +30,7 @@ menu:
       <th>Public Name</th>
       <th>Apache ID</th>
       <th>Github ID</th>
+      <th>Organization</th>
     </tr>
   </thead>
   <tbody>
@@ -37,121 +38,145 @@ menu:
       <td>Akira Ajisaka</td>
       <td>aajisaka</td>
       <td><a href="https://github.com/aajisaka">aajisaka</a></td>
+      <td>AWS</td>
    </tr>
     <tr>
       <td>Bowen Liang</td>
       <td>bowenliang</td>
       <td><a href="https://github.com/bowenliang123">bowenliang123</a></td>
+      <td>Guangfa Securities</td>
     </tr>
     <tr>
       <td>Binjie Yang</td>
       <td>binjieyang</td>
       <td><a href="https://github.com/zwangsheng">zwangsheng</a></td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Cheng Pan</td>
       <td>chengpan</td>
       <td><a href="https://github.com/pan3793">pan3793</a></td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Dongdong Hong</td>
       <td>hongdd</td>
       <td><a href="https://github.com/hddong">hddong</a></td>
+      <td>Mobile (Suzhou)</td>
     </tr>
     <tr>
       <td>Denis Krivenko</td>
       <td>dnskr</td>
       <td><a href="https://github.com/dnskr">dnskr</a></td>
+      <td>Platform24</td>
     </tr>
     <tr>
       <td>Duo Zhang</td>
       <td>zhangduo</td>
       <td><a href="https://github.com/Apache9">Apache9</a></td>
+      <td></td>
     </tr>
     <tr>
       <td>Fei Wang</td>
       <td>feiwang</td>
       <td><a href="https://github.com/turbofei">turbofei</a></td>
+      <td>eBay</td>
     </tr>
     <tr>
       <td>Fu Chen</td>
       <td>fchen</td>
       <td><a href="https://github.com/cfmcgrady">cfmcgrady</a></td>
+      <td>DingXiangYuan</td>
     </tr>
     <tr>
       <td>Hongxiang Jiang</td>
       <td>jhx1008</td>
       <td><a href="https://github.com/jhx1008">jhx1008</a></td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Jeff Zhang</td>
       <td>zjffdu</td>
       <td><a href="https://github.com/zjffdu">zjffdu</a></td>
+      <td>Hortonworks</td>
     </tr>
     <tr>
       <td>Kaifei Yi</td>
       <td>yikaifei</td>
       <td><a href="https://github.com/Yikf">Yikf</a></td>
+      <td>Baidu</td>
     </tr>
     <tr>
       <td>Kent Yao</td>
       <td>yao</td>
       <td><a href="https://github.com/yaooqinn">yaooqinn</a></td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Paul Lin</td>
       <td>paullin</td>
       <td><a href="https://github.com/link3280">link3280</a></td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Min Zhao</td>
       <td>zhaomin</td>
       <td><a href="https://github.com/zhaomin1423">zhaomin1423</a></td>
+      <td>AntGroup</td>
     </tr>
     <tr>
       <td>Nicholas Jiang</td>
       <td>nicholasjiang</td>
       <td><a href="https://github.com/SteNicholas">SteNicholas</a></td>
+      <td>Bilibili</td>
     </tr>
     <tr>
       <td>Qingbo Jiao</td>
       <td>jiaoqingbo</td>
       <td><a href="https://github.com/jiaoqingbo">jiaoqingbo</a></td>
+      <td></td>
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
       <td>csy</td>
       <td><a href="https://github.com/cxzl25">cxzl25</a></td>
+      <td>Trip</td>
     </tr>
     <tr>
       <td>Tianlin Liao</td>
       <td>tianlinliao</td>
       <td><a href="https://github.com/lightning-L">tianlinliao</a></td>
+      <td>eBay</td>
     </tr>
     <tr>
       <td>Vino Yang</td>
       <td>vinoyang</td>
       <td><a href="https://github.com/yanghua">yanghua</a></td>
+      <td>T3</td>
     </tr>
     <tr>
       <td>Willem Ning Jiang</td>
       <td>ningjiang</td>
       <td><a href="https://github.com/WillemJiang">WillemJiang</a></td>
+      <td>ByteDance</td>
     </tr>
     <tr>
       <td>Xiduo You</td>
       <td>ulyssesyou</td>
       <td><a href="https://github.com/ulysses-you">ulysses-you</a></td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Yaodong Zhang</td>
       <td>zhangyaodong</td>
       <td><a href="https://github.com/iodone">iodone</a></td>
+      <td>Xiaomi</td>
     </tr>
     <tr>
       <td>Zhen Wang</td>
       <td>wangzhen</td>
       <td><a href="https://github.com/wForget">wForget</a></td>
+      <td>iQIYI</td>
     </tr>
 </tbody>
 </table>

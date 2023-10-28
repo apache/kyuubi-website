@@ -26,47 +26,61 @@ menu:
   <thead>
     <tr>
       <th>姓名</th>
+      <th>组织</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Akira Ajisaka</td>
+      <td>AWS</td>
     </tr>
     <tr>
       <td>Cheng Pan</td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Dongdong Hong</td>
+      <td>Mobile (Suzhou)</td>
     </tr>
     <tr>
       <td>Duo Zhang</td>
+      <td></td>
     </tr>
     <tr>
       <td>Fei Wang</td>
+      <td>eBay</td>
     </tr>
     <tr>
       <td>Fu Chen</td>
+      <td>DingXiangYuan</td>
     </tr>
     <tr>
       <td>Hongxiang Jiang</td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Jeff Zhang</td>
+      <td>Hortonworks</td>
     </tr>
     <tr>
       <td>Kent Yao</td>
+      <td>NetEase</td>
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
+      <td>Trip</td>
     </tr>
     <tr>
       <td>Vino Yang</td>
+      <td>T3</td>
     </tr>
     <tr>
       <td>Willem Ning Jiang</td>
+      <td>ByteDance</td>
     </tr>
     <tr>
       <td>Xiduo You</td>
+      <td>NetEase</td>
     </tr>
   </tbody>
 </table>
