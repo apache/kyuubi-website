@@ -44,7 +44,7 @@ menu:
     </tr>
     <tr>
       <td>Duo Zhang</td>
-      <td></td>
+      <td>Sensors Data</td>
     </tr>
     <tr>
       <td>Fei Wang</td>
@@ -60,7 +60,7 @@ menu:
     </tr>
     <tr>
       <td>Jeff Zhang</td>
-      <td>Hortonworks</td>
+      <td>eBay</td>
     </tr>
     <tr>
       <td>Kent Yao</td>
@@ -68,7 +68,7 @@ menu:
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
-      <td>Trip</td>
+      <td>ctrip</td>
     </tr>
     <tr>
       <td>Vino Yang</td>

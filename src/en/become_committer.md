@@ -74,7 +74,7 @@ menu:
       <td>Duo Zhang</td>
       <td>zhangduo</td>
       <td><a href="https://github.com/Apache9">Apache9</a></td>
-      <td></td>
+      <td>Sensors Data</td>
     </tr>
     <tr>
       <td>Fei Wang</td>
@@ -98,7 +98,7 @@ menu:
       <td>Jeff Zhang</td>
       <td>zjffdu</td>
       <td><a href="https://github.com/zjffdu">zjffdu</a></td>
-      <td>Hortonworks</td>
+      <td>eBay</td>
     </tr>
     <tr>
       <td>Kaifei Yi</td>
@@ -134,13 +134,13 @@ menu:
       <td>Qingbo Jiao</td>
       <td>jiaoqingbo</td>
       <td><a href="https://github.com/jiaoqingbo">jiaoqingbo</a></td>
-      <td></td>
+      <td>AsiaInfo</td>
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
       <td>csy</td>
       <td><a href="https://github.com/cxzl25">cxzl25</a></td>
-      <td>Trip</td>
+      <td>ctrip</td>
     </tr>
     <tr>
       <td>Tianlin Liao</td>
