@@ -22,7 +22,7 @@ The Project Management Committee (PMC) for Apache Kyuubi
 has invited [Bowen Liang](https://github.com/bowenliang123) to become our PMC Member and
 we are pleased to announce that he has accepted.
 
-Bowen Liang is currently working at Guangfa Security, he has continuously contributed to Apache Kyuubi project.
+Bowen Liang is currently working at GF Securities, he has continuously contributed to Apache Kyuubi project.
 He is also the core maintainer for Kyuubi Spark AuthZ Plugin.
 
 Please join me in congratulating Bowen!
