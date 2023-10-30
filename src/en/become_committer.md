@@ -140,7 +140,7 @@ menu:
       <td>Shaoyun Chen</td>
       <td>csy</td>
       <td><a href="https://github.com/cxzl25">cxzl25</a></td>
-      <td>ctrip</td>
+      <td>Trip</td>
     </tr>
     <tr>
       <td>Tianlin Liao</td>

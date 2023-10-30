@@ -68,7 +68,7 @@ menu:
     </tr>
     <tr>
       <td>Shaoyun Chen</td>
-      <td>ctrip</td>
+      <td>Trip</td>
     </tr>
     <tr>
       <td>Vino Yang</td>
