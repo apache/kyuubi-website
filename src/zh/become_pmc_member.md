@@ -36,7 +36,7 @@ menu:
     </tr>
     <tr>
       <td>Bowen Liang</td>
-      <td>Guangfa Securities</td>
+      <td>GF Securities</td>
     </tr>
     <tr>
       <td>Cheng Pan</td>

@@ -42,7 +42,7 @@ menu:
       <td>Bowen Liang</td>
       <td>bowenliang</td>
       <td><a href="https://github.com/bowenliang123">bowenliang123</a></td>
-      <td>Guangfa Securities</td>
+      <td>GF Securities</td>
     </tr>
     <tr>
       <td>Binjie Yang</td>
