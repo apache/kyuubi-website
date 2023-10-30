@@ -35,6 +35,10 @@ menu:
       <td>AWS</td>
     </tr>
     <tr>
+      <td>Bowen Liang</td>
+      <td>GF Securities</td>
+    </tr>
+    <tr>
       <td>Cheng Pan</td>
       <td>NetEase</td>
     </tr>
