@@ -86,6 +86,10 @@ menu:
       <td>Xiduo You</td>
       <td>NetEase</td>
     </tr>
+    <tr>
+      <td>Zhen Wang</td>
+      <td>iQIYI</td>
+    </tr>
   </tbody>
 </table>
 
@@ -135,7 +139,7 @@ to the Kyuubi codebase and community.
 - +3 month with solid activity and engagement.
 
 ### Quality of contributions
- 
+
 - A solid general understanding of the project
 - Well tested, well-designed, following Apache Kyuubi coding
   standards, and simple patches.
