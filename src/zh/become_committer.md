@@ -51,6 +51,12 @@ menu:
       <td>NetEase</td>
     </tr>
     <tr>
+      <td>Bogdan Kyryliuk</td>
+      <td>bkyryliuk</td>
+      <td><a href="https://github.com/bkyryliuk">bkyryliuk</a></td>
+      <td>Dropbox</td>
+    </tr>
+    <tr>
       <td>Cheng Pan</td>
       <td>chengpan</td>
       <td><a href="https://github.com/pan3793">pan3793</a></td>
