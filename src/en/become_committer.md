@@ -179,6 +179,12 @@ menu:
       <td>Xiaomi</td>
     </tr>
     <tr>
+      <td>Yi Zhu</td>
+      <td>angerszhuuuu</td>
+      <td><a href="https://github.com/AngersZhuuuu">AngersZhuuuu</a></td>
+      <td>Shopee</td>
+    </tr>
+    <tr>
       <td>Zhen Wang</td>
       <td>wangzhen</td>
       <td><a href="https://github.com/wForget">wForget</a></td>
