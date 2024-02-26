@@ -35,17 +35,7 @@
         {{if or (eq .Identifier "docs") }}
         {{range $idx, $release := $currentPage.Site.Params.releases }}
         <li>
-          <!--
-            TODO: Remove this workaround when
-              - the build of readthedocs supports OpenSSL 1.1.1+
-              - 1.7.2 comes out
-            More info: https://github.com/urllib3/urllib3/issues/2168
-           -->
-          {{ $fixed_release := $release }}
-          {{ if eq $release "v1.7.1" }}
-          {{ $fixed_release = "v1.7.1-rc0" }}
-          {{ end }}
-          <a class="childNavLink" href="https://kyuubi.readthedocs.io/en/{{ $fixed_release }}/">
+          <a class="childNavLink" href="https://kyuubi.readthedocs.io/en/{{ $release }}/">
             {{ trim $release "v"}}
             {{ if (eq $idx 0) }}
               (latest)
