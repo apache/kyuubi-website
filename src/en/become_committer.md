@@ -190,6 +190,12 @@ menu:
       <td><a href="https://github.com/wForget">wForget</a></td>
       <td>iQIYI</td>
     </tr>
+    <tr>
+      <td>Zhou Yifan</td>
+      <td>zhouyifan</td>
+      <td><a href="https://github.com/zhouyifan279">zhouyifan279</a></td>
+      <td>NetEase</td>
+    </tr>
 </tbody>
 </table>
 
