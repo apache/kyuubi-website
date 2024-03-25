@@ -90,7 +90,7 @@ menu:
       <td>Fu Chen</td>
       <td>fchen</td>
       <td><a href="https://github.com/cfmcgrady">cfmcgrady</a></td>
-      <td>DingXiangYuan</td>
+      <td>Xiaohongshu</td>
     </tr>
     <tr>
       <td>Hongxiang Jiang</td>
