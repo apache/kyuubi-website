@@ -48,7 +48,7 @@ menu:
       <td>Binjie Yang</td>
       <td>binjieyang</td>
       <td><a href="https://github.com/zwangsheng">zwangsheng</a></td>
-      <td>NetEase</td>
+      <td>Poizon</td>
     </tr>
     <tr>
       <td>Bogdan Kyryliuk</td>
