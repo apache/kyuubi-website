@@ -27,15 +27,7 @@
         </p>
         <div class="bannerBtnContainer">
           {{ range $release := first 1 .Site.Params.releases }}
-          <!--
-            TODO: Remove this workaround when
-              - 1.8.2 comes out
-           -->
-          {{ $fixed_release := $release }}
-          {{ if eq $release "v1.8.1" }}
-          {{ $fixed_release = "v1.8.1-docs" }}
-          {{ end }}
-            <a class="bannerBtn" href="https://kyuubi.readthedocs.io/en/{{ $fixed_release }}/quick_start">{{ i18n "getting-started" }} »</a>
+            <a class="bannerBtn" href="https://kyuubi.readthedocs.io/en/{{ $release }}/quick_start">{{ i18n "getting-started" }} »</a>
           {{ end }}
           <a class="bannerBtn" href="https://github.com/apache/kyuubi">GitHub »</a>
         </div>
