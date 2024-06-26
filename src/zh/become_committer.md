@@ -141,6 +141,12 @@ menu:
       <td>AsiaInfo</td>
     </tr>
     <tr>
+      <td>Senmiao Liu</td>
+      <td>lsm</td>
+      <td><a href="https://github.com/lsm1">lsm1</a></td>
+      <td>Trip</td>
+    </tr>
+    <tr>
       <td>Shaoyun Chen</td>
       <td>csy</td>
       <td><a href="https://github.com/cxzl25">cxzl25</a></td>
