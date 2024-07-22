@@ -24,3 +24,4 @@ jobs:
           publish_branch: asf-site
           publish_dir: content
           destination_dir: content
+          force_orphan: true
