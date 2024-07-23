@@ -25,3 +25,13 @@ jobs:
           publish_dir: content
           destination_dir: content
           force_orphan: true
+      - run: |
+          git config --global user.name  "GitHub Actions"
+          git config --global user.email "dev@kyuubi.apache.org"
+          git fetch --all
+          git checkout asf-site
+          echo 'publish:'           >> .asf.yaml
+          echo '  whoami: asf-site' >> .asf.yaml
+          git add .asf.yaml
+          git commit -m '.asf.yaml'
+          git push origin asf-site
