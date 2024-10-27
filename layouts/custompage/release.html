@@ -31,7 +31,7 @@
     {{ if ne .Site.Language.Lang "en" }}
     {{ $langVar = .Site.Language.Lang }}
     {{ end }}
-    {{ range first 1 (sort (where (where .Site.Pages "Section" "release") ".Params.linked" true) ".File.BaseFileName" "desc") }}
+    {{ range first 1 (sort (where (where .Site.Pages "Section" "release") ".Params.linked" true) ".Date" "desc") }}
     <tr>
       {{ $dir := print "kyuubi-" .File.BaseFileName "/" }}
       {{ $source := print "apache-kyuubi-" .File.BaseFileName "-source.tgz" }}
@@ -75,7 +75,7 @@
   </div>
   <table class="ui selectable celled table">
     {{ partial "release_table_head.html" .}}
-    {{ range sort (where (where .Site.Pages "Section" "release") ".Params.linked" true) ".File.BaseFileName" "desc" }}
+    {{ range sort (where (where .Site.Pages "Section" "release") ".Params.linked" true) ".Date" "desc" }}
     <tr>
       {{ $dir := print "kyuubi-" .File.BaseFileName "/" }}
       {{ $source := print "apache-kyuubi-" .File.BaseFileName "-source.tgz" }}
