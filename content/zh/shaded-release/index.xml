@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shaded-Releases on Apache Kyuubi</title><link>https://kyuubi.apache.org/zh/shaded-release.html</link><description>Recent content in Shaded-Releases on Apache Kyuubi</description><generator>Hugo</generator><language>zh-cn</language><copyright>Copyright © 2021-{year}</copyright><lastBuildDate>Mon, 22 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://kyuubi.apache.org/zh/shaded-release/index.xml" rel="self" type="application/rss+xml"/><item><title>Kyuubi Shaded 发布记录 - 0.4.1</title><link>https://kyuubi.apache.org/zh/shaded-release/0.4.1.html</link><pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate><guid>https://kyuubi.apache.org/zh/shaded-release/0.4.1.html</guid><description>&lt;!---
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. See accompanying LICENSE file.
+-->
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;ul>
+&lt;li>[KYUUBI #6496] Port ZOOKEEPER-4377 to Kyuubi shaded ZooKeeper 3.4 and 3.6&lt;/li>
+&lt;/ul>
+&lt;h3 id="致谢">致谢&lt;/h3>
+&lt;p>最后但同样重要的是，如果没有以下贡献者，该版本是不可能发布的：&lt;/p></description></item><item><title>Kyuubi Shaded 发布记录 - 0.4.0</title><link>https://kyuubi.apache.org/zh/shaded-release/0.4.0.html</link><pubDate>Tue, 09 Apr 2024 00:00:00 +0000</pubDate><guid>https://kyuubi.apache.org/zh/shaded-release/0.4.0.html</guid><description>&lt;!---
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. See accompanying LICENSE file.
+-->
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;ul>
+&lt;li>[KYUUBI-SHADED #44] Add Hive DelegationTokenIdentifier ServiceLoader file&lt;/li>
+&lt;li>[KYUUBI-SHADED #45] Upgrade hive-service-rpc 4.0.0&lt;/li>
+&lt;/ul>
+&lt;h3 id="致谢">致谢&lt;/h3>
+&lt;p>最后但同样重要的是，如果没有以下贡献者，该版本是不可能发布的：&lt;/p></description></item><item><title>Kyuubi Shaded 发布记录 - 0.3.0</title><link>https://kyuubi.apache.org/zh/shaded-release/0.3.0.html</link><pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate><guid>https://kyuubi.apache.org/zh/shaded-release/0.3.0.html</guid><description>&lt;!---
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. See accompanying LICENSE file.
+-->
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;ul>
+&lt;li>[KYUUBI-SHADED #33] Port ZOOKEEPER-1718 to support JLine2 in ZK client 3.4&lt;/li>
+&lt;li>[KYUUBI-SHADED #35] Create a light shaded HiveMetaStoreClient for getting DelegationToken&lt;/li>
+&lt;li>[KYUUBI-SHADED #36] Remove dependencyManagement in shaded zookeeper pom&lt;/li>
+&lt;li>[KYUUBI-SHADED #37] Split Thrift out from relocated hive-service-rpc&lt;/li>
+&lt;li>[KYUUBI-SHADED #39] Bump Thrift 0.16.0&lt;/li>
+&lt;li>[KYUUBI-SHADED #40] kyuubi-relocated-hive-metastore-client supports ZooKeeper 3.4&lt;/li>
+&lt;li>[KYUUBI-SHADED #41] Relocated Hive MetaStore client uses relocated Thrift&lt;/li>
+&lt;/ul>
+&lt;h3 id="致谢">致谢&lt;/h3>
+&lt;p>最后但同样重要的是，如果没有以下贡献者，该版本是不可能发布的：&lt;/p></description></item><item><title>Kyuubi Shaded 发布记录 - 0.2.0</title><link>https://kyuubi.apache.org/zh/shaded-release/0.2.0.html</link><pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate><guid>https://kyuubi.apache.org/zh/shaded-release/0.2.0.html</guid><description>&lt;!---
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. See accompanying LICENSE file.
+-->
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;ul>
+&lt;li>[KYUUBI-SHADED #20] 新增 kyuubi-shaded-hive-service-rpc&lt;/li>
+&lt;li>[KYUUBI-SHADED #22] 模块名称中使用 &amp;lsquo;relocated&amp;rsquo; 替换 &amp;lsquo;shaded&amp;rsquo;&lt;/li>
+&lt;li>[KYUUBI-SHADED #27] README 中新增免责说明&lt;/li>
+&lt;li>[KYUUBI-SHADED #28] 通过复写 SnapStream 以移除 Zookeeper 3.6 客户端中的 snappy 依赖&lt;/li>
+&lt;/ul>
+&lt;h1 id="致谢">致谢&lt;/h1>
+&lt;p>最后但同样重要的是，如果没有以下贡献者，该版本是不可能发布的：&lt;/p></description></item><item><title>Kyuubi Shaded 发布记录 - 0.1.0</title><link>https://kyuubi.apache.org/zh/shaded-release/0.1.0.html</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>https://kyuubi.apache.org/zh/shaded-release/0.1.0.html</guid><description>&lt;!---
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. See accompanying LICENSE file.
+-->
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;ul>
+&lt;li>为 Zookeeper 3.4 和 3.6 构建 shaded 二进制包&lt;/li>
+&lt;li>[KYUUBI-SHADED #5] 修复 ZOOKEEPER-3779 以允许 Zookeeper 3.4 客户端兼容 JDK 17&lt;/li>
+&lt;/ul>
+&lt;h1 id="致谢">致谢&lt;/h1>
+&lt;p>最后但同样重要的是，如果没有以下贡献者，该版本是不可能发布的：&lt;/p></description></item></channel></rss>
