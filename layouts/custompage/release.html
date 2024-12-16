@@ -31,7 +31,7 @@
     {{ if ne .Site.Language.Lang "en" }}
     {{ $langVar = .Site.Language.Lang }}
     {{ end }}
-    {{ range first 1 (sort (where (where .Site.Pages "Section" "release") ".Params.linked" true) ".Date" "desc") }}
+    {{ range  where (where (where .Site.Pages "Section" "release") ".Params.linked" true) ".File.BaseFileName" .Site.Params.latestRelease  }}
     <tr>
       {{ $dir := print "kyuubi-" .File.BaseFileName "/" }}
       {{ $source := print "apache-kyuubi-" .File.BaseFileName "-source.tgz" }}
