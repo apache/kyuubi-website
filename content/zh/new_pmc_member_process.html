@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content><meta name="author" content><link rel="icon" href="/favicon.ico"><base href="https://kyuubi.apache.org/"><title>Apache Kyuubi - Multi-tenant Thrift JDBC/ODBC server</title>
+<link rel="stylesheet" href="/css/vendor/bootstrap.min.css"><link rel="stylesheet" href="/css/vendor/bootstrap-theme.min.css"><link rel="stylesheet" href="/css/vendor/semantic.min.css"><link rel="stylesheet" href="/css/homePage.css"><link rel="stylesheet" href="/css/kyuubi.css"></head><body><div id="nav_mask" class='nav_mask' style="display:none"></div><nav id="header" class="header"><a href="/zh"><img class="navbar_logo" src="/kyuubi_logo_hd.png"></a><ul class="navContainer"><li class="navItem"><a class="navLink" href="zh/releases.html">下载</a></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">文档
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/master/">master (dev-only)</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.10.1/">1.10.1
+(latest)</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.9.3/">1.9.3</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.8.3/">1.8.3</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.7.4/">1.7.4</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.6.1-incubating/">1.6.1-incubating</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.5.2-incubating/">1.5.2-incubating</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.4.1-incubating/">1.4.1-incubating</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.3.1-incubating/">1.3.1-incubating</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">社区
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://www.apache.org/foundation/policies/conduct">行为守则</a></li><li><a class="childNavLink" href="/zh/become_committer.html">成为 Committer</a></li><li><a class="childNavLink" href="/zh/become_pmc_member.html">成为 PMC 成员</a></li><li><a class="childNavLink" href="/zh/new_pmc_member_process.html">新晋 PMC 流程</a></li><li><a class="childNavLink" href="/zh/project_history.html">最新消息</a></li><li><a class="childNavLink" href="/zh/mailing_lists.html">加入邮件列表</a></li><li><a class="childNavLink" href="/zh/new_committer_process.html">新晋 Committer 流程</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">发展
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="/zh/issue_tracking.html">问题追踪</a></li><li><a class="childNavLink" href="/zh/pull_request.html">提交PR指南</a></li><li><a class="childNavLink" href="/zh/improvement-proposals.html">改进提案 (KPIP)</a></li><li><a class="childNavLink" href="/zh/developer-tools.html">有用的开发者工具</a></li><li><a class="childNavLink" href="/zh/version_control.html">版本控制</a></li></ul></div></li><li class="navItem"><a class="navLink" href="zh/powered_by.html">用户</a></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">Github
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://github.com/apache/kyuubi">kyuubi</a></li><li><a class="childNavLink" href="https://github.com/apache/kyuubi-client">kyuubi-client</a></li><li><a class="childNavLink" href="https://github.com/apache/kyuubi-docker">kyuubi-docker</a></li><li><a class="childNavLink" href="https://github.com/apache/kyuubi-website">kyuubi-website</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">ASF
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://www.apache.org/licenses/">License</a></li><li><a class="childNavLink" href="https://www.apache.org/">基金会</a></li><li><a class="childNavLink" href="https://www.apache.org/security/">安全</a></li><li><a class="childNavLink" href="https://www.apache.org/foundation/thanks.html">感谢</a></li><li><a class="childNavLink" href="https://www.apache.org/events/current-event">活动</a></li><li><a class="childNavLink" href="https://www.apache.org/foundation/sponsorship.html">赞助</a></li><li><a class="childNavLink" href="https://privacy.apache.org/policies/privacy-policy-public.html">隐私条款</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">Language
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://kyuubi.apache.org/new_pmc_member_process.html">English</a></li></ul></div></li></ul><a class="shareImgContainer" href="https://www.apache.org/">Apache Software Foundation
+<span class="shareImg"></span>
+<img class="disappear" src="/share.png">
+<img class="disappear" src="/activeShare.png"></a></nav><nav id="header_mobile" class="header_mobile"><a href="/"><img class="navbar_logo" src="/kyuubi_logo_hd.png"></a><div class="phoneBtn" id="phoneBtn"><span></span>
+<span></span>
+<span class="headerClose"></span></div><div class="mobileNavContainer"><ul class="navContainer"><li class="navItem"><a class="navLink" href="zh/releases.html">下载</a></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">文档
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/master/">master (dev-only)</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.10.1/">1.10.1
+(latest)</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.9.3/">1.9.3</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.8.3/">1.8.3</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.7.4/">1.7.4</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.6.1-incubating/">1.6.1-incubating</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.5.2-incubating/">1.5.2-incubating</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.4.1-incubating/">1.4.1-incubating</a></li><li><a class="childNavLink" href="https://kyuubi.readthedocs.io/en/v1.3.1-incubating/">1.3.1-incubating</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">社区
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://www.apache.org/foundation/policies/conduct">行为守则</a></li><li><a class="childNavLink" href="/zh/become_committer.html">成为 Committer</a></li><li><a class="childNavLink" href="/zh/become_pmc_member.html">成为 PMC 成员</a></li><li><a class="childNavLink" href="/zh/new_pmc_member_process.html">新晋 PMC 流程</a></li><li><a class="childNavLink" href="/zh/project_history.html">最新消息</a></li><li><a class="childNavLink" href="/zh/mailing_lists.html">加入邮件列表</a></li><li><a class="childNavLink" href="/zh/new_committer_process.html">新晋 Committer 流程</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">发展
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="/zh/issue_tracking.html">问题追踪</a></li><li><a class="childNavLink" href="/zh/pull_request.html">提交PR指南</a></li><li><a class="childNavLink" href="/zh/improvement-proposals.html">改进提案 (KPIP)</a></li><li><a class="childNavLink" href="/zh/developer-tools.html">有用的开发者工具</a></li><li><a class="childNavLink" href="/zh/version_control.html">版本控制</a></li></ul></div></li><li class="navItem"><a class="navLink" href="zh/powered_by.html">用户</a></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">Github
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://github.com/apache/kyuubi">kyuubi</a></li><li><a class="childNavLink" href="https://github.com/apache/kyuubi-client">kyuubi-client</a></li><li><a class="childNavLink" href="https://github.com/apache/kyuubi-docker">kyuubi-docker</a></li><li><a class="childNavLink" href="https://github.com/apache/kyuubi-website">kyuubi-website</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">ASF
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://www.apache.org/licenses/">License</a></li><li><a class="childNavLink" href="https://www.apache.org/">基金会</a></li><li><a class="childNavLink" href="https://www.apache.org/security/">安全</a></li><li><a class="childNavLink" href="https://www.apache.org/foundation/thanks.html">感谢</a></li><li><a class="childNavLink" href="https://www.apache.org/events/current-event">活动</a></li><li><a class="childNavLink" href="https://www.apache.org/foundation/sponsorship.html">赞助</a></li><li><a class="childNavLink" href="https://privacy.apache.org/policies/privacy-policy-public.html">隐私条款</a></li></ul></div></li><li class="navItem"><a href="javascript:;" class="navLink navLinkWithChild" role="button" aria-haspopup="true" aria-expanded="false">Language
+<span class="navAngle"></span></a><div class="childNavContainer"><ul class="childNav"><li><a class="childNavLink" href="https://kyuubi.apache.org/new_pmc_member_process.html">English</a></li></ul></div></li></ul><a class="shareImgContainer" href="https://www.apache.org/">Apache Software Foundation
+<span class="shareImg"></span>
+<img class="disappear" src="/share.png">
+<img class="disappear" src="/activeShare.png"></a></div></nav><script>var header_mobile,header,phoneBtn=document.getElementById("phoneBtn"),mask=document.getElementById("nav_mask");phoneBtn.addEventListener("click",function(){var t=mask.style.display!=="none";phoneBtn.className=t?"phoneBtn":"phoneBtn closeBtn",mask.style.display=t?"none":" block"}),mask.addEventListener("click",function(){phoneBtn.className="phoneBtn",mask.style.display="none"}),header_mobile=document.getElementById("header_mobile"),header_mobile.addEventListener("click",function(e){var t,n,s=e.target.className;s==="navLink navLinkWithChild"&&(t=e.target.parentNode,n=t.className!=="navItem",t.className=n?"navItem":"navItem openNavItem")}),header=document.getElementById("header"),window.onscroll=function(){var e=document.documentElement.scrollLeft||document.body.scrollLeft;header.style.left=-e+"px"}</script><div class="container"><h1>新晋 PMC 流程</h1><img src="https://svn.apache.org/repos/asf/comdev/project-logos/originals/kyuubi-1.svg" alt="Kyuubi logo" width="30%" align="right"><p>本指南基于 <a href="https://community.apache.org/newcommitter.html#new-committer-process">apache newpmc</a>.</p><h2 id="新晋-pmc-成员流程">新晋 PMC 成员流程</h2><h3 id="在-privatekyuubiapacheorg-发起讨论">在 <code>private@kyuubi.apache.org</code> 发起讨论</h3><p>see <strong>PMC Member Discuss Template</strong></p><h3 id="在-privatekyuubiapacheorg-中发起投票">在 <code>private@kyuubi.apache.org</code> 中发起投票</h3><p>see <strong>PMC Member Vote Template</strong></p><h3 id="关闭投票">关闭投票</h3><p>see <strong>Close Vote Template</strong></p><h3 id="发送投票结果至-board">发送投票结果至 board</h3><p>see <strong>Send NOTICE to board Template</strong></p><h3 id="如果通过则邀请成为-pmc-成员">如果通过，则邀请成为 PMC 成员</h3><p>see <strong>PMC Member Invite Template</strong></p><h3 id="如果接受然后-接受成为-pmc-成员">如果接受，然后: 接受成为 PMC 成员</h3><p>see <strong>PMC Member Accept Template</strong></p><h3 id="通知-pmc-成员完成">通知 PMC 成员完成</h3><p>see <strong>PMC Member Done Template</strong></p><h3 id="宣布新的-pmc-成员">宣布新的 PMC 成员</h3><p>see <strong>PMC Member Announce Template</strong></p><h2 id="template">Template</h2><p>Note that, there are three placeholder in template should be replaced before using</p><ul><li>NEW_PMC_NAME</li><li>NEW_PMC_EMAIL</li><li>NEW_PMC_APACHE_NAME</li></ul><h3 id="pmc-member-vote-template">PMC Member Vote Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: private@kyuubi.apache.org
+</span></span><span style="display:flex"><span>Subject: [VOTE] New PMC member candidate: ${NEW_PMC_NAME}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>Hi Kyuubi PMC,
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>This is a formal vote about inviting ${NEW_PMC_NAME} as our new PMC member.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>${Work list}[1]
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>[1] https://github.com/apache/kyuubi/commits?author=${NEW_PMC_NAME}
+</span></span></code></pre></div><p>Note that, Voting ends one week from today, i.e. <a href="https://www.timeanddate.com/counters/customcounter.html?year=YYYY&month=MM&day=DD">midnight UTC on YYYY-MM-DD</a>
+See voting <a href="https://community.apache.org/newcommitter.html">guidelines</a></p><h3 id="close-vote-template">Close Vote Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: private@kyuubi.apache.org
+</span></span><span style="display:flex"><span>Subject: [RESULT] [VOTE] New PMC member: ${NEW_PMC_NAME}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>Hi Kyuubi PMC,
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>The vote has now closed. The results are:
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Binding Votes:
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>+1 [TOTAL BINDING +1 VOTES]
+</span></span><span style="display:flex"><span> 0 [TOTAL BINDING +0/-0 VOTES]
+</span></span><span style="display:flex"><span>-1 [TOTAL BINDING -1 VOTES]
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>The vote is ***successful/not successful***
+</span></span></code></pre></div><h3 id="send-notice-to-board-template">Send NOTICE to board Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: board@apache.org
+</span></span><span style="display:flex"><span>Cc: private@kyuubi.apache.org
+</span></span><span style="display:flex"><span>Subject: [NOTICE] ${NEW_PMC_NAME} for Kyuubi PMC
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>${NEW_PMC_NAME} has been voted as a new member of the Kyuubi PMC.
+</span></span><span style="display:flex"><span>The vote thread is at https://lists.apache.org/...
+</span></span></code></pre></div><h3 id="pmc-member-invite-template">PMC Member Invite Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: ${NEW_PMC_EMAIL}
+</span></span><span style="display:flex"><span>Cc: private@kyuubi.apache.org
+</span></span><span style="display:flex"><span>Subject: Invitation to become Kyuubi PMC member: ${NEW_PMC_NAME}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>Hello ${NEW_PMC_NAME},
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>The Kyuubi Project Management Committee (PMC) 
+</span></span><span style="display:flex"><span>hereby offers you committer privileges to the project
+</span></span><span style="display:flex"><span>as well as membership in the PMC.
+</span></span><span style="display:flex"><span>These privileges are offered on the understanding that
+</span></span><span style="display:flex"><span>you&#39;ll use them reasonably and with common sense.
+</span></span><span style="display:flex"><span>We like to work on trust rather than unnecessary constraints. 
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Being a PMC member enables you to guide the direction of the project.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Being a PMC member does not require you to 
+</span></span><span style="display:flex"><span>participate any more than you already do. It does 
+</span></span><span style="display:flex"><span>tend to make one even more committed.  You will 
+</span></span><span style="display:flex"><span>probably find that you spend more time here.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Of course, you can decline and instead remain as a 
+</span></span><span style="display:flex"><span>contributor, participating as you do now.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>A. This personal invitation is a chance for you to 
+</span></span><span style="display:flex"><span>accept or decline in private.  Either way, please 
+</span></span><span style="display:flex"><span>let us know in reply to the private@kyuubi.apache.org
+</span></span><span style="display:flex"><span>address only.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>B. If you accept, the next step is to register an iCLA:
+</span></span><span style="display:flex"><span>    1. Details of the iCLA and the forms are found 
+</span></span><span style="display:flex"><span>    through this link: https://www.apache.org/licenses/#clas
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>    2. Instructions for its completion and return to 
+</span></span><span style="display:flex"><span>    the Secretary of the ASF are found at
+</span></span><span style="display:flex"><span>    https://www.apache.org/licenses/#submitting
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>    3. When you transmit the completed iCLA, request 
+</span></span><span style="display:flex"><span>    to notify the Apache Kyuubi and choose a 
+</span></span><span style="display:flex"><span>    unique Apache ID. Look to see if your preferred 
+</span></span><span style="display:flex"><span>    ID is already taken at 
+</span></span><span style="display:flex"><span>    https://people.apache.org/committer-index.html
+</span></span><span style="display:flex"><span>    This will allow the Secretary to notify the PMC 
+</span></span><span style="display:flex"><span>    when your iCLA has been recorded.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>When recording of your iCLA is noted, you will 
+</span></span><span style="display:flex"><span>receive a follow-up message with the next steps for 
+</span></span><span style="display:flex"><span>establishing you as a PMC member.
+</span></span></code></pre></div><h3 id="pmc-member-accept-template">PMC Member Accept Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: ${NEW_PMC_EMAIL}
+</span></span><span style="display:flex"><span>Cc: private@kyuubi.apache.org
+</span></span><span style="display:flex"><span>Subject: Re: invitation to become Kyuubi PMC member
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>Welcome. Here are the next steps in becoming a project PMC. After that
+</span></span><span style="display:flex"><span>we will make an announcement to the dev@kyuubi.apache.org list.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>You need to send a Contributor License Agreement to the ASF.
+</span></span><span style="display:flex"><span>Normally you would send an Individual CLA. If you also make
+</span></span><span style="display:flex"><span>contributions done in work time or using work resources,
+</span></span><span style="display:flex"><span>see the Corporate CLA. Ask us if you have any issues.
+</span></span><span style="display:flex"><span>https://www.apache.org/licenses/#clas.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>You need to choose a preferred ASF user name and alternatives.
+</span></span><span style="display:flex"><span>In order to ensure it is available you can view a list of taken IDs at
+</span></span><span style="display:flex"><span>https://people.apache.org/committer-index.html
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Please notify us when you have submitted the CLA and by what means 
+</span></span><span style="display:flex"><span>you did so. This will enable us to monitor its progress.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>We will arrange for your Apache user account when the CLA has 
+</span></span><span style="display:flex"><span>been recorded.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>After that is done, please make followup replies to the dev@kyuubi.apache.org list.
+</span></span><span style="display:flex"><span>We generally discuss everything there and keep the
+</span></span><span style="display:flex"><span>private@kyuubi.apache.org list for occasional matters which must be private.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>The developer section of the website describes roles within the ASF and provides other
+</span></span><span style="display:flex"><span>resources:
+</span></span><span style="display:flex"><span>  https://www.apache.org/foundation/how-it-works.html
+</span></span><span style="display:flex"><span>  https://www.apache.org/dev/
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Just as before you became a PMC member, participation in any ASF community
+</span></span><span style="display:flex"><span>requires adherence to the ASF Code of Conduct:
+</span></span><span style="display:flex"><span>  https://www.apache.org/foundation/policies/conduct.html
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Yours,
+</span></span><span style="display:flex"><span>The Apache Kyuubi PMC
+</span></span></code></pre></div><h3 id="pmc-member-done-template">PMC Member Done Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: private@kyuubi.apache.org, ${NEW_PMC_EMAIL}
+</span></span><span style="display:flex"><span>Subject: account request: ${NEW_PMC_NAME}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>${NEW_PMC_EMAIL}, as you know, the ASF Infrastructure has set up your
+</span></span><span style="display:flex"><span>committer account with the username &#39;${NEW_PMC_APACHE_NAME}&#39;.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Please follow the instructions to set up your SSH,
+</span></span><span style="display:flex"><span>svn password, svn configuration, email forwarding, etc.
+</span></span><span style="display:flex"><span>https://www.apache.org/dev/#committers
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>You have commit access to specific sections of the
+</span></span><span style="display:flex"><span>ASF repository, as follows:
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>The general &#34;committers&#34; at:
+</span></span><span style="display:flex"><span>  https://svn.apache.org/repos/private/committers
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>If you have any questions during this phase, then please
+</span></span><span style="display:flex"><span>see the following resources:
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Apache developer&#39;s pages: https://www.apache.org/dev/
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Naturally, if you don&#39;t understand anything be sure to ask us on the dev@kyuubi.apache.org mailing list. 
+</span></span><span style="display:flex"><span>Documentation is maintained by volunteers and hence can be out-of-date and incomplete - of course
+</span></span><span style="display:flex"><span>you can now help fix that.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>A PMC member will announce your election to the dev list soon.
+</span></span></code></pre></div><h3 id="pmc-member-announce-template">PMC Member Announce Template</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>To: dev@kyuubi.apache.org
+</span></span><span style="display:flex"><span>[ANNONCE] New PMC member: ${NEW_PMC_NAME}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"><span style="display:flex"><span>Hi Kyuubi Community,
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>The Project Management Committee (PMC) for Apache Kyuubi
+</span></span><span style="display:flex"><span>has invited ${NEW_PMC_NAME} to become our PMC member and
+</span></span><span style="display:flex"><span>we are pleased to announce that he has accepted.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>### add specific details here ###
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Please join me in congratulating ${NEW_PMC_NAME}!
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Being a committer enables easier contribution to the
+</span></span><span style="display:flex"><span>project since there is no need to go via the patch
+</span></span><span style="display:flex"><span>submission process. This should enable better productivity.
+</span></span><span style="display:flex"><span>A PMC member helps manage and guide the direction of the project.
+</span></span><span style="display:flex"><span>
+</span></span><span style="display:flex"><span>Thanks,
+</span></span><span style="display:flex"><span>On behalf of the Apache Kyuubi PMC
+</span></span></code></pre></div></div><footer class="footer"><div class="footerBox"><div class="footerItem"><a class="acevent" data-class="footerPcImg" data-format="wide" data-mode="dark" data-width="310"></a><a class="acevent" data-class="footerMobileImg" data-format="wide" data-mode="dark" data-width="114"></a><p>The Official Global Conference Series of The Apache Software Foundation, connecting open source technology enthusiasts from
+around the world to share the latest technology developments and practices.</p></div><div class="footerBox"><div class="footerCopyRight">Copyright © 2021-2025 The Apache Software Foundation, Licensed under the Apache License, Version 2.0. Apache, the Apache Feather logo is trademarks of The Apache Software Foundation.</div></div></div></footer><script src="/js/vendor/jquery-1.12.4.min.js"></script><script src="/js/vendor/bootstrap.min.js"></script><script src="/js/vendor/semantic.min.js"></script><script src="https://www.apachecon.com/event-images/snippet.js"></script><script>$(function(){$("table").addClass("table table-striped")})</script></body></html>
