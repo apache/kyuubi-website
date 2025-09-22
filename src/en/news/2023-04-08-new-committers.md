@@ -22,7 +22,7 @@ The Project Management Committee (PMC) for Apache Kyuubi
 has invited [Denis Krivenko](https://github.com/dnskr) to become our committer and
 we are pleased to announce that he has accepted.
 
-DDenis Krivenko has been contributing to Kyuubi since Dec. 2022, he made major
+Denis Krivenko has been contributing to Kyuubi since Dec. 2022, he made major
 improvements to the Kyuubi Helm chart.
 
 Please join me in congratulating Denis!

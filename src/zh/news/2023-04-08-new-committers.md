@@ -21,7 +21,7 @@ description: 我们很高兴的宣布 Denis Krivenko 成为新的 Kyuubi Committ
 Apache Kyuubi 的项目管理委员会已经邀请[Denis Krivenko](https://github.com/dnskr)
 成为我们的Committer，我们很高兴地宣布他已经接受邀请。
 
-DDenis Krivenko 从 2022 年 12 月起持续为 Kyuubi 项目做出贡献, 他为 Kyuubi Helm chart
+Denis Krivenko 从 2022 年 12 月起持续为 Kyuubi 项目做出贡献, 他为 Kyuubi Helm chart
 做出了重大改进。
 
 让我们一起祝贺 Denis !
