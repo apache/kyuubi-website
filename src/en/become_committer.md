@@ -74,7 +74,7 @@ menu:
       <td>Denis Krivenko</td>
       <td>dnskr</td>
       <td><a href="https://github.com/dnskr">dnskr</a></td>
-      <td>Platform24</td>
+      <td>Epidemic Sound</td>
     </tr>
     <tr>
       <td>Duo Zhang</td>
