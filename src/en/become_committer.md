@@ -38,7 +38,7 @@ menu:
       <td>Akira Ajisaka</td>
       <td>aajisaka</td>
       <td><a href="https://github.com/aajisaka">aajisaka</a></td>
-      <td>AWS</td>
+      <td>LY Corporation</td>
    </tr>
     <tr>
       <td>Bowen Liang</td>
