@@ -32,7 +32,7 @@ menu:
   <tbody>
     <tr>
       <td>Akira Ajisaka</td>
-      <td>AWS</td>
+      <td>LY Corporation</td>
     </tr>
     <tr>
       <td>Bowen Liang</td>
