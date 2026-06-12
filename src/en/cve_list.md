@@ -19,7 +19,7 @@ menu:
   limitations under the License. See accompanying LICENSE file.
 -->
 
-This page lists security fixes that the Kyuubi PMC felt warranted a CVE. If you think something is missing from this list or if you think the set of impacted or fixed versions is incomplete then please ask on security@apache.org.
+This page lists security fixes that the Kyuubi PMC felt warranted a CVE. If you think something is missing from this list or if you think the set of impacted or fixed versions is incomplete then please ask on security@kyuubi.apache.org.
 
 CVEs are presented in most-recent-first order of announcement.
 
