@@ -2,6 +2,7 @@ hugo.exe
 .idea
 *.iml
 .DS_Store
+.vscode/
 npm-debug.log
 resources
 content/*
