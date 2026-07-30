@@ -37,6 +37,19 @@ One paragraph summary goes here. Don't need nuts-and-bolts detail, just enough f
 - **Issue Announced**:
 -->
 
+## [CVE-2026-52680](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-52680) REST batch multipart upload path traversal allows controlled file write
+
+Apache Kyuubi REST batch multipart upload handling uses the client-supplied multipart filename when creating a temporary uploaded resource.
+A remote attacker who can access the REST batch upload endpoint can provide path traversal sequences in the filename and cause
+the Kyuubi server process to write controlled content outside the intended upload directory, subject to filesystem permissions.
+
+- **Versions affected**: 1.7.0 to 1.11.1
+- **Fixed versions**: 1.12.0
+- **Impact**: privilege escalation
+- **Reporter**: LTSHFWJT
+- **Reported Date**: 2026/05/31
+- **Issue Announced**: 2026/07/30 ([dev@kyuubi](https://lists.apache.org/thread/b0qx2v8k5v4rrqsh53pb146t7so0lmrk))
+
 ## [CVE-2026-23904](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23904) Unrestricted access via Kyuubi engine-ui proxy
 
 Kyuubi Engine UI proxy accepts a host and port from the request path and proxies HTTP requests to that destination.
