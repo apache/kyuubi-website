@@ -37,6 +37,18 @@ One paragraph summary goes here. Don't need nuts-and-bolts detail, just enough f
 - **Issue Announced**:
 -->
 
+## [CVE-2026-62391](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-62391) kyuubi.session.local.dir.allow.list bypass via unprefixed Spark file-conf aliases
+
+The security fix for CVE-2025-66518 is incomplete. Any client who can access to Apache Kyuubi Server via Kyuubi frontend protocols can
+bypass server-side config `kyuubi.session.local.dir.allowlist` via unprefixed Spark config aliases.
+
+- **Versions affected**: 1.6.0 to 1.11.1
+- **Fixed versions**: 1.12.0
+- **Impact**: privilege escalation
+- **Reporter**: Anand Nalya
+- **Reported Date**: 2026/07/13
+- **Issue Announced**: 2026/07/31 ([dev@kyuubi](https://lists.apache.org/thread/vo4k4nxz23kfzrpp120nsojb0vrkx4w1))
+
 ## [CVE-2026-52680](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-52680) REST batch multipart upload path traversal allows controlled file write
 
 Apache Kyuubi REST batch multipart upload handling uses the client-supplied multipart filename when creating a temporary uploaded resource.
